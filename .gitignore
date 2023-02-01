@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Selenium drivers
+drivers/*
+
+# Mac
+.DS_Store
