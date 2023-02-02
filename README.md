@@ -19,7 +19,7 @@ pip install webdriver-manager
 ```
 
 # Approach
-![Fine-grained context selection](./images/method_flow.jpeg)
+![Fine-grained context selection](./images/method-flow.jpeg)
 
 # Models
 - [BLIP]() for get context from image to text 
