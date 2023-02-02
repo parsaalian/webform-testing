@@ -9,7 +9,13 @@ Source code for webform testing automation project
 Create The following steps create an isolated environment webform-env and install required dependencies.
 conda create --name webform-env python=3.9 # creates the webform-env environment
 conda activate webform-env                 # activates the codex-env environment
+
 conda install openai                       # installs dependency - openai
+conda install -c conda-forge python-dotenv
+conda install -c anaconda beautifulsoup4
+conda install -c conda-forge selenium
+conda install notebook
+pip install webdriver-manager
 ```
 
 # Models
