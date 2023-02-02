@@ -22,5 +22,5 @@ pip install webdriver-manager
 ![Fine-grained context selection](./images/method-flow.jpeg)
 
 # Models
-- [BLIP]() for get context from image to text 
+- [BLIP](https://huggingface.co/docs/transformers/main/model_doc/blip) for get context from image to text 
 - [MarkupLM](https://github.com/microsoft/unilm/tree/master/markuplm) to understand the web page layout better
