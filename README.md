@@ -18,6 +18,9 @@ conda install notebook
 pip install webdriver-manager
 ```
 
+# Subjects
+[Opensource Apps](https://github.com/unicodeveloper/awesome-opensource-apps)
+
 # Approach
 ![Fine-grained context selection](./images/method-flow.jpeg)
 
