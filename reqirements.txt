@@ -1,0 +1,4 @@
+beautifulsoup4==4.8.1
+openai==0.26.3
+selenium==4.8.0
+selenium-wire==5.1.0
