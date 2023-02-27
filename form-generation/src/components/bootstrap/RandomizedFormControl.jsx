@@ -45,6 +45,7 @@ function getDefaultValue(type) {
     }
 }
 
+
 function getPlainText(type) {
     switch (type) {
         case 'text':
