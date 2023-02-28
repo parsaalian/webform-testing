@@ -1,7 +1,7 @@
-import { Nullify  } from '../types/modifiers';
-import { ILabel } from './label';
-import { IValidation } from './validation';
-import { IPrefixSuffix } from './prefixSuffix';
+import { Nullify  } from '../../types/modifiers';
+import { ILabel } from '../primitives/label';
+import { IValidation } from '../primitives/validation';
+import { IPrefixSuffix } from '../primitives/prefixSuffix';
 
 export interface IInput<T> {
     value: Nullify<T>;

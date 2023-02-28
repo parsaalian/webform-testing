@@ -1,4 +1,4 @@
-import { Nullify } from "../types/modifiers";
+import { Nullify } from "../../types/modifiers";
 import { ITextualInput } from "./textualInput";
 
 export interface ITextAreaInput extends ITextualInput {

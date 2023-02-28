@@ -1,6 +1,6 @@
-import { Nullify } from "../types/modifiers";
-import { IButton } from "./button";
-import { IIcon } from "./icon";
+import { Nullify } from "../../types/modifiers";
+import { IButton } from "../primitives/button";
+import { IIcon } from "../primitives/icon";
 import { IInput } from "./input";
 
 export enum BooleanInputEnum {

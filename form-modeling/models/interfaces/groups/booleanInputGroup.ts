@@ -1,10 +1,10 @@
-import { Nullify } from "../types/modifiers";
-import { InputOrientationEnum } from "../types/orientation";
+import { Nullify } from "../../types/modifiers";
+import { InputOrientationEnum } from "../../types/orientation";
 import {
     IBooleanInput,
     BooleanInputStateEnum
-} from "./booleanInput";
-import { ILabel } from "./label";
+} from "../inputs/booleanInput";
+import { ILabel } from "../primitives/label";
 
 export interface IBooleanInputGroup {
     label: Nullify<ILabel>;

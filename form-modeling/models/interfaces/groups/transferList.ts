@@ -1,5 +1,5 @@
 import { IBooleanInputGroup } from "./booleanInputGroup";
-import { ISearchInput } from "./textualInput";
+import { ISearchInput } from "../inputs/textualInput";
 
 export interface ITransferList {
     source: IBooleanInputGroup,

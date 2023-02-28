@@ -1,5 +1,5 @@
 import { IRegexPatternStorage } from "../interfaces/regexPatternStorage";
-import { TextualInputTypeEnum } from "../interfaces/generalTextualInput";
+import { TextualInputTypeEnum } from "../interfaces/inputs/generalTextualInput";
 
 export const RegexPatternStorage: IRegexPatternStorage = {
     "color": /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,

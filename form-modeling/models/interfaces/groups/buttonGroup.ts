@@ -1,4 +1,4 @@
-import { IButton } from "./button";
+import { IButton } from "../primitives/button";
 
 export interface IButtonGroup {
     buttons: Array<IButton>;

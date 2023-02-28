@@ -1,4 +1,4 @@
-import { IInput } from "./input";
+import { IInput } from "../inputs/input";
 import { IButton } from "./button";
 import { IIcon } from "./icon";
 
