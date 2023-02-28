@@ -11,7 +11,7 @@ export const RegexPatternStorage: IRegexPatternStorage = {
 
 export class RegexPatternGenerator {
 
-    public generateRegexFromType = (type: TextualInputTypeEnum): RegExp => {
+    public static generateRegexFromType = (type: TextualInputTypeEnum): RegExp => {
         switch (type) {
             case TextualInputTypeEnum.COLOR:
                 return RegexPatternStorage.color;

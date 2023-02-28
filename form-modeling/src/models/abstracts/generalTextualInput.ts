@@ -66,6 +66,6 @@ export abstract class GeneralTextualInput implements IGeneralTextualInput {
     }
 
     private generateRegexFromType(): RegExp {
-        return new RegexPatternGenerator().generateRegexFromType(this.type);
+        return RegexPatternGenerator.generateRegexFromType(this.type);
     }
 }
