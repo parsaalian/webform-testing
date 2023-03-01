@@ -1,4 +1,4 @@
-import { Nullify } from "../../types/modifiers";
+import { Nullify } from "../../utils/modifiers";
 import { IIcon } from './icon';
 
 export enum ValidationStateEnum {

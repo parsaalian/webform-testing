@@ -1,5 +1,5 @@
 import { IInput } from "./input";
-import { InputOrientationEnum } from "../../types/orientation";
+import { InputOrientationEnum } from "../../utils/orientation";
 import { ILabel } from "../primitives/label";
 
 export interface ISlider extends IInput<number | number[]> {

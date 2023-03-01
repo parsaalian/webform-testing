@@ -1,6 +1,6 @@
 import random from 'random';
 import randomWords from 'random-words';
-import { Nullify } from '../../types/modifiers';
+import { Nullify } from '../../utils/modifiers';
 
 export type DistributionParametersType = {
     [key: string]: any;

@@ -1,4 +1,4 @@
-import { Nullify } from "../../types/modifiers";
+import { Nullify } from "../../utils/modifiers";
 import { IDistribution } from "./distribution";
 
 export abstract class ComponentParameterDistribution {

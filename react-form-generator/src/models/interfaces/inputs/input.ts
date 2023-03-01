@@ -1,4 +1,4 @@
-import { Nullify  } from '../../types/modifiers';
+import { Nullify  } from '../../utils/modifiers';
 import { ILabel } from '../primitives/label';
 import { IValidation } from '../primitives/validation';
 import { IPrefixSuffix } from '../primitives/prefixSuffix';

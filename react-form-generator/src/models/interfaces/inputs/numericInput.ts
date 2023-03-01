@@ -1,4 +1,4 @@
-import { Nullify } from '../../types/modifiers';
+import { Nullify } from '../../utils/modifiers';
 import { IInput } from './input';
 
 export interface INumericInput extends IInput<number> {

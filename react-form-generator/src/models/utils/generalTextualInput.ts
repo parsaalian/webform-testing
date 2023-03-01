@@ -1,9 +1,9 @@
-import { Nullify } from "../types/modifiers";
+import { Nullify } from "./modifiers";
 import {
     IGeneralTextualInput,
     TextualInputTypeEnum
 } from "../interfaces/inputs/generalTextualInput";
-import { RegexPatternGenerator } from "../concrete/regexPatternGenerator";
+import { RegexPatternGenerator } from "./regexPatternGenerator";
 import { ILabel } from "../interfaces/primitives/label";
 import { IValidation } from "../interfaces/primitives/validation";
 import { IPrefixSuffix } from "../interfaces/primitives/prefixSuffix";

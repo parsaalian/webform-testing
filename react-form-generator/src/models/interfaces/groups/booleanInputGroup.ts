@@ -1,5 +1,5 @@
-import { Nullify } from "../../types/modifiers";
-import { InputOrientationEnum } from "../../types/orientation";
+import { Nullify } from "../../utils/modifiers";
+import { InputOrientationEnum } from "../../utils/orientation";
 import {
     IBooleanInput,
     BooleanInputStateEnum

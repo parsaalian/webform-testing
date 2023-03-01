@@ -1,4 +1,4 @@
-import { Nullify } from "../../types/modifiers";
+import { Nullify } from "../../utils/modifiers";
 import { IButton } from "../primitives/button";
 import { IIcon } from "../primitives/icon";
 import { IInput } from "./input";
