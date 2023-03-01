@@ -1,5 +1,8 @@
+import { LabelFloatingEnum } from "../../../interfaces/primitives/label";
+
 export interface BootstrapNumericInput {
     label: string;
+    floating: LabelFloatingEnum;
     disabled: boolean;
     isInvalid: boolean;
     isValid: boolean;

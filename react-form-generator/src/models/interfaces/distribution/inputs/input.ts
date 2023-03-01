@@ -2,19 +2,19 @@ import { KeysToNewType } from "../../mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     DiscreteValuedDistribution,
-    IDistribution,
     NullDistribution,
     RandomWordDistribution
 } from "../distribution";
 import { IInput } from "../../inputs/input";
+import { LabelParameterDistribution } from "../primitives/label";
 
-export type InputParameterType = KeysToNewType<IInput<any>, IDistribution<any>>;
+export type InputParameterType = KeysToNewType<IInput<any>, any>;
 
 export class InputParameterDistribution extends ComponentParameterDistribution {
     public parentDistribution = null;
     public parameters: InputParameterType = {
         value: new NullDistribution(),
-        label: new NullDistribution(),
+        label: new LabelParameterDistribution(),
         disabled: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         readonly: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         required: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),

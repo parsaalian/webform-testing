@@ -76,7 +76,7 @@ export class UniformDistribution extends AbstractDistribution<number> {
     }
 
     public generateSample(): number {
-        return random.uniform(this.distributionParameters.min, this.distributionParameters.max)();
+        return random.uniformInt(this.distributionParameters.min, this.distributionParameters.max)();
     }
 }
 

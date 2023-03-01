@@ -1,6 +1,12 @@
 import { Nullify } from "../../utils/modifiers";
 import { IDistribution } from "./distribution";
 
+export interface IComponentParameterDistribution {
+    parentDistribution: Nullify<ComponentParameterDistribution>;
+    parameters: { [key: string]: IDistribution<any> };
+    generateSample(): { [key: string]: any };
+}
+
 export abstract class ComponentParameterDistribution {
     public parentDistribution: Nullify<ComponentParameterDistribution> = null;
     public parameters: { [key: string]: IDistribution<any> } = {};
