@@ -7,6 +7,7 @@ import {
 } from "../distribution";
 import { IInput } from "../../inputs/input";
 import { LabelParameterDistribution } from "../primitives/label";
+import { ValidationParameterDistribution } from "../primitives/validation";
 
 export type InputParameterType = KeysToNewType<IInput<any>, any>;
 
@@ -20,7 +21,7 @@ export class InputParameterDistribution extends ComponentParameterDistribution {
         required: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         hint: new RandomWordDistribution({ exactly: 1, join: " " }),
         feedback: new RandomWordDistribution({ min: 3, max: 12, join: " " }),
-        validation: new NullDistribution(),
+        validation: new ValidationParameterDistribution(),
         prefix: new NullDistribution(),
         suffix: new NullDistribution(),
         color: new NullDistribution(),

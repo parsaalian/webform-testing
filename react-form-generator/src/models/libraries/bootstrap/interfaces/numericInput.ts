@@ -9,4 +9,8 @@ export interface BootstrapNumericInput {
     plaintext: boolean;
     readOnly: boolean;
     value: number;
+    min: number;
+    max: number;
+    step: number;
+    validation: any;
 }
