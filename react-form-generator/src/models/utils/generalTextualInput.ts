@@ -32,8 +32,8 @@ export abstract class GeneralTextualInput implements IGeneralTextualInput {
         minChars,
         maxChars,
         characterCounter,
-        value,
         label,
+        value,
         readonly,
         disabled,
         required,
@@ -50,7 +50,7 @@ export abstract class GeneralTextualInput implements IGeneralTextualInput {
         this.maxChars = maxChars || -1;
         this.characterCounter = characterCounter || false;
         this.regex = this.generateRegexFromType();
-        this.value = value || null;
+        this.value = value || '';
         this.label = label || null;
         this.readonly = readonly || false;
         this.disabled = disabled || false;

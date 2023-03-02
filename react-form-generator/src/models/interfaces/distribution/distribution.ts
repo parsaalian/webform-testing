@@ -1,5 +1,7 @@
+import _ from 'lodash';
 import random from 'random';
 import randomWords from 'random-words';
+import RandExp from "randexp";
 import { Nullify } from '../../utils/modifiers';
 
 export type DistributionParametersType = {
@@ -92,6 +94,18 @@ export class PoissonDistribution extends AbstractDistribution<number> {
     }
 }
 
+export class RegexDistribution extends AbstractDistribution<string> {
+    constructor(
+        regex: string,
+    ) {
+        super({ regex });
+    }
+
+    public generateSample(): string {
+        return new RandExp(this.distributionParameters.regex).gen();
+    }
+}
+
 export class RandomWordDistribution extends AbstractDistribution<Nullify<string | string[]>> {
     constructor(
         randomWordsOptions: any,
@@ -115,5 +129,30 @@ export class NullDistribution extends AbstractDistribution<null> {
 
     public generateSample(): null {
         return null;
+    }
+}
+
+export class RecursiveKeyValueDistribution extends AbstractDistribution<any> {
+    constructor(subListCount: number, maxDepth: number) {
+        super({
+            subListCount,
+            maxDepth,
+        });
+    }
+
+    public generateSample(): any {
+        return this.generateKeyValueList();
+    }
+
+    private generateKeyValueList(depth: number = 0): any {
+        const count = 1 + random.poisson(this.distributionParameters.subListCount)();
+        const list = _.map(_.range(count), () => ({
+            key: randomWords(1),
+            value: randomWords({ min: 1, max: 3, join: ' ' }),
+            children: depth < this.distributionParameters.maxDepth ?
+                random.choice([null, this.generateKeyValueList(depth + 1)]) :
+                null,
+        }));
+        return list;
     }
 }

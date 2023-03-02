@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
-import NumericInput from '../components/bootstrap/NumericInput';
+import Select from '../components/bootstrap/Select';
 
 function Bootstrap() {
     return (
         <>
-            <NumericInput />
+            <Select />
         </>
     );
 }
