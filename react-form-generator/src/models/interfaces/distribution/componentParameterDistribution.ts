@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { Nullify } from "../../utils/modifiers";
-import { IDistribution } from "./distribution";
+import { IDistribution, AbstractDistribution } from "./distribution";
 
 export interface IComponentParameterDistribution {
     parentDistribution: Nullify<ComponentParameterDistribution>;
@@ -24,15 +24,35 @@ export abstract class ComponentParameterDistribution {
     }
 
     private resolveSampleGeneration(propertyValue: any): any {
-        if (_.isObject(propertyValue)) {
-            return this.resolveSampleGeneration(_.mapValues(propertyValue, (value: any) => this.resolveSampleGeneration(value)));
+        if (this.isPlainObject(propertyValue)) {
+            return propertyValue;
+        }
+        if (propertyValue instanceof AbstractDistribution || propertyValue instanceof ComponentParameterDistribution) {
+            return this.resolveSampleGeneration(propertyValue.generateSample());
         }
         if (_.isArray(propertyValue)) {
             return this.resolveSampleGeneration(_.map(propertyValue, (value: any) => this.resolveSampleGeneration(value)));
         }
-        if (propertyValue instanceof ComponentParameterDistribution) {
-            return this.resolveSampleGeneration(propertyValue.generateSample());
+        if (_.isObject(propertyValue)) {
+            return this.resolveSampleGeneration(_.mapValues(propertyValue, (value: any) => this.resolveSampleGeneration(value)));
         }
         return propertyValue;
+    }
+
+    private isPlainObject(value: any): boolean {
+        if (typeof value === 'string' ||
+            typeof value === 'number' ||
+            typeof value === 'boolean' ||
+            value === null ||
+            value === undefined
+        ) {
+            return true;
+        }
+        if (value instanceof AbstractDistribution || value instanceof ComponentParameterDistribution) {
+            return false;
+        }
+        return _.reduce(value, (result: boolean, value: any) => {
+            return result && !(value instanceof AbstractDistribution) && !(value instanceof ComponentParameterDistribution)
+        }, true);
     }
 }

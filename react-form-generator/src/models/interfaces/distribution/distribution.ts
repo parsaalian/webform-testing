@@ -109,7 +109,7 @@ export class RegexDistribution extends AbstractDistribution<string> {
 export class RandomWordDistribution extends AbstractDistribution<Nullify<string | string[]>> {
     constructor(
         randomWordsOptions: any,
-        canBeEmptyDistribution: DiscreteValuedDistribution<boolean> = new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
+        canBeEmptyDistribution: DiscreteValuedDistribution<boolean> = new DiscreteValuedDistribution([true, false], [0.1, 0.9]),
     ) {
         super({ randomWordsOptions, canBeEmptyDistribution });
     }
@@ -147,12 +147,23 @@ export class RecursiveKeyValueDistribution extends AbstractDistribution<any> {
     private generateKeyValueList(depth: number = 0): any {
         const count = 1 + random.poisson(this.distributionParameters.subListCount)();
         const list = _.map(_.range(count), () => ({
-            key: randomWords(1),
+            key: randomWords({ exactly: 1, join: ' ' }),
             value: randomWords({ min: 1, max: 3, join: ' ' }),
             children: depth < this.distributionParameters.maxDepth ?
                 random.choice([null, this.generateKeyValueList(depth + 1)]) :
                 null,
         }));
         return list;
+    }
+}
+
+export class ArrayOfDistribution extends AbstractDistribution<any> {
+    constructor(countDistribution: IDistribution<number>, valueDistribution: IDistribution<any>) {
+        super({ countDistribution, valueDistribution });
+    }
+
+    public generateSample(): any {
+        const count = this.distributionParameters.countDistribution.generateSample();
+        return _.map(_.range(count), () => this.distributionParameters.valueDistribution.generateSample());
     }
 }

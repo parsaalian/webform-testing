@@ -15,9 +15,8 @@ export enum BooleanInputStateEnum {
     INDETERMINATE = "indeterminate",
 }
 
-export interface IBooleanInput extends IInput<boolean> {
+export interface IBooleanInput extends IInput<BooleanInputStateEnum> {
     type: BooleanInputEnum;
     renderAs: Nullify<IButton | IIcon>
-    state: BooleanInputStateEnum;
     validStates: Array<BooleanInputStateEnum>;
 }

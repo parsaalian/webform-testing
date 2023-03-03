@@ -1,9 +1,11 @@
 import 'antd/dist/reset.css';
-import React from 'react';
+import AntDesignCascader from '../components/antd/Cascader';
 
 function Antd() {
     return (
-        <></>
+        <>
+            <AntDesignCascader />
+        </>
     );
 }
 

@@ -10,8 +10,8 @@ export type SimpleSelectOption = Array<{
 export type SelectOptions = SimpleSelectOption | Array<SimpleSelectOption>;
 
 export interface ISelect extends IInput<any> {
-    maximumSelectionLength: number;
     tagLimits: number;
-    selected: SelectOptions;
+    selected: Array<number>;
     options: SelectOptions;
+    mode: string;
 }

@@ -8,6 +8,7 @@ import {
 } from '../../inputs/booleanInput';
 import { InputParameterDistribution } from './input';
 import { IconParameterDistribution } from '../primitives/icon';
+import { ButtonParameterDistribution } from '../primitives/button';
 
 
 export type BooleanInputParameterType = KeysToNewType<IBooleanInput, any>;
@@ -23,7 +24,13 @@ export class BooleanInputParameterDistribution extends ComponentParameterDistrib
             [
                 null,
                 new DiscreteValuedDistribution(
-                    [new IconParameterDistribution(), new IconParameterDistribution()],
+                    [{
+                        type: 'icon',
+                        values: new IconParameterDistribution()
+                    }, {
+                        type: 'button',
+                        values: new ButtonParameterDistribution()
+                    }],
                     [0.5, 0.5]
                 ),
             ],
