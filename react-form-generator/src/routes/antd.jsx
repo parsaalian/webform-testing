@@ -1,10 +1,10 @@
 import 'antd/dist/reset.css';
-import AntDesignSwitch from '../components/antd/Switch';
+import AntDesignDatePicker from '../components/antd/DatePicker';
 
 function Antd() {
     return (
         <>
-            <AntDesignSwitch />
+            <AntDesignDatePicker />
         </>
     );
 }

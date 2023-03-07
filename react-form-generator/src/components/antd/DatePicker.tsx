@@ -1,10 +1,9 @@
-import { DatePicker } from 'antd';
+import { DatePicker, TimePicker } from 'antd';
 import { DateTimeInputParameterDistribution } from '../../models/interfaces/distribution/inputs/dateInput';
 import { DatePickerMapper } from '../../models/libraries/antd/mappers/datePickerMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-const { RangePicker } = DatePicker;
-
+// must fix date.locale error
 export default function AntDesignDatePicker() {
     return (
         <AntDesignInputItem
@@ -19,9 +18,18 @@ export default function AntDesignDatePicker() {
                 showTime,
                 isRange,
             }) => {
+                let ValuePicker;
+
+                if (picker === "time") {
+                    ValuePicker = TimePicker;
+                }
+                else {
+                    ValuePicker = DatePicker;
+                }
+
                 if (isRange) {
                     return (
-                        <RangePicker
+                        <ValuePicker.RangePicker
                             disabled={disabled}
                             defaultValue={defaultValue}
                             picker={picker}
@@ -30,7 +38,7 @@ export default function AntDesignDatePicker() {
                     );
                 }
                 return (
-                    <DatePicker
+                    <ValuePicker
                         disabled={disabled}
                         defaultValue={defaultValue}
                         picker={picker}
