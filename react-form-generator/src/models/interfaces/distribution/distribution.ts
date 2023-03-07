@@ -133,10 +133,11 @@ export class NullDistribution extends AbstractDistribution<null> {
 }
 
 export class RecursiveKeyValueDistribution extends AbstractDistribution<any> {
-    constructor(subListCount: number, maxDepth: number) {
+    constructor(subListCount: number, maxDepth: number, keyType: string = 'string') {
         super({
             subListCount,
             maxDepth,
+            keyType,
         });
     }
 
@@ -147,7 +148,7 @@ export class RecursiveKeyValueDistribution extends AbstractDistribution<any> {
     private generateKeyValueList(depth: number = 0): any {
         const count = 1 + random.poisson(this.distributionParameters.subListCount)();
         const list = _.map(_.range(count), () => ({
-            key: randomWords({ exactly: 1, join: ' ' }),
+            key: this.distributionParameters.keyType === 'number' ? random.poisson(10000)() : randomWords({ exactly: 1, join: ' ' }),
             value: randomWords({ min: 1, max: 3, join: ' ' }),
             children: depth < this.distributionParameters.maxDepth ?
                 random.choice([null, this.generateKeyValueList(depth + 1)]) :

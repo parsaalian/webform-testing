@@ -21,9 +21,11 @@ export class SliderParameterDistribution extends ComponentParameterDistribution 
         orientation: new DiscreteValuedDistribution(
             [InputOrientationEnum.HORIZONTAL, InputOrientationEnum.VERTICAL], [0.5, 0.5]
         ),
-        marks: new RecursiveKeyValueDistribution(2, 1),
+        marks: new RecursiveKeyValueDistribution(2, 0, 'number'),
+        useMarksOnly: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         hasInputField: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         isInverted: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         hasTrack: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
+        isRange: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
     };
 }

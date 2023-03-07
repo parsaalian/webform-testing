@@ -1,10 +1,10 @@
 import 'antd/dist/reset.css';
-import AntDesignRating from '../components/antd/Rating';
+import AntDesignSwitch from '../components/antd/Switch';
 
 function Antd() {
     return (
         <>
-            <AntDesignRating />
+            <AntDesignSwitch />
         </>
     );
 }
