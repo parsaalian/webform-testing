@@ -6,32 +6,17 @@ import { AntDesignCommonMapper } from "./antdCommonMapper";
 export class SelectMapper extends AntDesignCommonMapper {
     public static mapValues(select: ISelect): AntDesignSelect {
         const {
-            label,
-            disabled,
-            required,
-            validation,
             options,
             tagLimits,
             selected,
             mode,
         } = select;
         
-        const mappedLabel = label && label.value ? label.value : '';
-        const mappedDisabled = disabled || false;
-        const mappedRequired = required || false;
         const mappedMode = mode || 'default';
         const mappedSelected = this.generateDefaultSelectedOptions(options, selected, mode);
-        const {
-            validationState,
-            validationMessage,
-        } = this.mapValidation(validation);
 
         return {
-            label: mappedLabel,
-            disabled: mappedDisabled,
-            required: mappedRequired,
-            validationState,
-            validationMessage,
+            ...this.mapCommonValues(select),
             maxTagCount: tagLimits,
             defaultValue: mappedSelected,
             mode: mappedMode,

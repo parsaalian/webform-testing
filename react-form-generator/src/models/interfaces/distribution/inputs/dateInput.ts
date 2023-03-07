@@ -29,6 +29,7 @@ export class DateTimeInputParameterDistribution extends ComponentParameterDistri
                 1/6,
             ]
         ),
+        isRange: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         staticRender: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
         landscape: new DiscreteValuedDistribution([true, false], [0.5, 0.5]),
     };

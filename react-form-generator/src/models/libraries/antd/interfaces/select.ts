@@ -1,13 +1,8 @@
+import { AntDesignCommonInterface } from "./antdCommonInterface";
 import { SelectOptions } from "../../../interfaces/inputs/select";
 
-export interface AntDesignSelect {
-    label: string;
-    defaultValue: SelectOptions;
-    disabled: boolean;
-    required: boolean;
+export interface AntDesignSelect extends AntDesignCommonInterface {
     maxTagCount: number;
     options: SelectOptions;
-    validationState: string;
-    validationMessage: string;
     mode: string;
 }

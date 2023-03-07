@@ -1,28 +1,26 @@
-import { Checkbox } from 'antd';
+import { Radio } from 'antd';
 import { BooleanInputParameterDistribution } from '../../models/interfaces/distribution/inputs/booleanInput';
-import { CheckboxMapper } from '../../models/libraries/antd/mappers/checkboxMapper';
+import { RadioMapper } from '../../models/libraries/antd/mappers/radioMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignCheckbox() {
+export default function AntDesignRadio() {
     return (
         <AntDesignInputItem
             Distribution={BooleanInputParameterDistribution}
-            Mapper={CheckboxMapper}
+            Mapper={RadioMapper}
             hasExternalLabel={false}
         >
             {({
                 disabled,
                 defaultValue,
-                indeterminate,
                 label,
             }) => (
-                <Checkbox
+                <Radio
                     disabled={disabled}
                     defaultChecked={defaultValue}
-                    indeterminate={indeterminate}
                 >
                     {label}
-                </Checkbox>
+                </Radio>
             )}
         </AntDesignInputItem>
     );

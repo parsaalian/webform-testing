@@ -8,10 +8,12 @@ export enum DateTimeInputTypeEnum {
     WEEK = "week",
     MONTH = "month",
     QUARTER = "quarter",
+    YEAR = "year",
 }
 
 export interface IDateTimeInput extends IInput<Date | Date[]> {
     type: DateTimeInputTypeEnum;
     staticRender: Nullify<boolean>;
     landscape: Nullify<boolean>;
+    isRange: boolean;
 }

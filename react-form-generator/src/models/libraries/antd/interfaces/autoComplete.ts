@@ -1,8 +1,6 @@
 import { SelectOptions } from "../../../interfaces/inputs/select";
 import { AntDesignCommonInterface } from "./antdCommonInterface";
 
-export interface AntDesignCascader extends AntDesignCommonInterface {
-    maxTagCount: number;
+export interface AntDesignAutoComplete extends AntDesignCommonInterface {
     options: SelectOptions;
-    multiple: boolean;
 }

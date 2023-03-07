@@ -1,9 +1,5 @@
-export interface AntDesignCheckbox {
-    label: string;
-    defaultChecked: boolean;
-    disabled: boolean;
-    required: boolean;
+import { AntDesignCommonInterface } from './antdCommonInterface';
+
+export interface AntDesignCheckbox extends AntDesignCommonInterface {
     indeterminate: boolean;
-    validationState: string;
-    validationMessage: string;
 }

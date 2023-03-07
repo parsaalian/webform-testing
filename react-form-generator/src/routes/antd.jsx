@@ -1,10 +1,10 @@
 import 'antd/dist/reset.css';
-import AntDesignCascader from '../components/antd/Cascader';
+import AntDesignRating from '../components/antd/Rating';
 
 function Antd() {
     return (
         <>
-            <AntDesignCascader />
+            <AntDesignRating />
         </>
     );
 }

@@ -1,37 +1,28 @@
-import { Form, Cascader } from 'antd';
-import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
+import { Cascader } from 'antd';
 import { SelectParameterDistribution } from '../../models/interfaces/distribution/inputs/select';
-import { CascaderMapper } from '../../models/libraries/antd/mappers/cacaderMapper';
+import { CascaderMapper } from '../../models/libraries/antd/mappers/cascaderMapper';
+import AntDesignInputItem from './AntDesignInputItem';
 
 export default function AntDesignCascader() {
-    const {
-        label,
-        disabled,
-        required,
-        validationState,
-        validationMessage,
-        options,
-        defaultValue,
-        multiple,
-    } = LibraryComponentGenerator.generateComponent(
-        new SelectParameterDistribution(),
-        CascaderMapper
-    );
-
     return (
-        <Form.Item
-            hasFeedback={validationState !== ''}
-            validateStatus={validationState}
-            help={validationState !== '' ? validationMessage : ''}
-            required={required}
-            label={label}
+        <AntDesignInputItem
+            Distribution={SelectParameterDistribution}
+            Mapper={CascaderMapper}
+            hasExternalLabel={true}
         >
-            <Cascader
-                disabled={disabled}
-                defaultValue={defaultValue}
-                multiple={multiple}
-                options={options}
-            />
-        </Form.Item>
+            {({
+                disabled,
+                defaultValue,
+                options,
+                multiple,
+            }) => (
+                <Cascader
+                    disabled={disabled}
+                    defaultValue={defaultValue}
+                    multiple={multiple}
+                    options={options}
+                />
+            )}
+        </AntDesignInputItem>
     );
 }
