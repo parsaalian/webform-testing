@@ -1,5 +1,5 @@
 import { Switch } from "antd";
-import { BooleanInputParameterDistribution } from "../../models/interfaces/distribution/inputs/booleanInput";
+import { BooleanInputParameterDistribution } from "../../models/distribution/inputs/booleanInput";
 import { SwitchMapper } from "../../models/libraries/antd/mappers/switchMapper";
 import AntDesignInputItem from "./AntDesignInputItem";
 

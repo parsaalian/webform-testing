@@ -1,5 +1,5 @@
 import { Checkbox } from 'antd';
-import { BooleanInputParameterDistribution } from '../../models/interfaces/distribution/inputs/booleanInput';
+import { BooleanInputParameterDistribution } from '../../models/distribution/inputs/booleanInput';
 import { CheckboxMapper } from '../../models/libraries/antd/mappers/checkboxMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

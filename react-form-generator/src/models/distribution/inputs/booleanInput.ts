@@ -1,11 +1,11 @@
-import { KeysToNewType } from '../../mapper';
+import { KeysToNewType } from '../../interfaces/mapper';
 import { ComponentParameterDistribution } from '../componentParameterDistribution';
 import { ConstantValueDistribution, DiscreteValuedDistribution } from '../distribution';
 import {
     IBooleanInput,
     BooleanInputEnum,
     BooleanInputStateEnum,
-} from '../../inputs/booleanInput';
+} from '../../interfaces/inputs/booleanInput';
 import { InputParameterDistribution } from './input';
 import { IconParameterDistribution } from '../primitives/icon';
 import { ButtonParameterDistribution } from '../primitives/button';

@@ -1,11 +1,11 @@
-import { KeysToNewType } from "../../mapper";
+import { KeysToNewType } from "../../interfaces/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     IDistribution,
     RandomWordDistribution,
     DiscreteValuedDistribution
 } from '../distribution';
-import { ILabel } from "../../primitives/label";
+import { ILabel } from "../../interfaces/primitives/label";
 
 export type LabelParameterType = KeysToNewType<ILabel, IDistribution<any>>;
 

@@ -1,7 +1,7 @@
-import { KeysToNewType } from "../../mapper";
+import { KeysToNewType } from "../../interfaces/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import { RandomWordDistribution } from "../distribution";
-import { IButton } from "../../primitives/button";
+import { IButton } from "../../interfaces/primitives/button";
 
 export type ButtonParameterType = KeysToNewType<IButton, any>;
 

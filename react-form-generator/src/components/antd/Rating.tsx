@@ -1,5 +1,5 @@
 import { Rate } from 'antd';
-import { SliderParameterDistribution } from '../../models/interfaces/distribution/inputs/slider';
+import { SliderParameterDistribution } from '../../models/distribution/inputs/slider';
 import { RatingMapper } from '../../models/libraries/antd/mappers/ratingMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

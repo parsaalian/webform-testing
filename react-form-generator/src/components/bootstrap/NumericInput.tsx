@@ -2,7 +2,7 @@ import { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
-import { NumericInputParameterDistribution } from '../../models/interfaces/distribution/inputs/numericInput';
+import { NumericInputParameterDistribution } from '../../models/distribution/inputs/numericInput';
 import { NumericInputMapper } from '../../models/libraries/bootstrap/mappers/numericInputMapper';
 import { LabelFloatingEnum } from '../../models/interfaces/primitives/label';
 import { ValidationMapper } from '../../models/libraries/bootstrap/mappers/validationMapper';

@@ -1,5 +1,5 @@
 import { Cascader } from 'antd';
-import { SelectParameterDistribution } from '../../models/interfaces/distribution/inputs/select';
+import { SelectParameterDistribution } from '../../models/distribution/inputs/select';
 import { CascaderMapper } from '../../models/libraries/antd/mappers/cascaderMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

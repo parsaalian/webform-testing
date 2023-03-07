@@ -1,5 +1,5 @@
 import { Select } from 'antd';
-import { SelectParameterDistribution } from '../../models/interfaces/distribution/inputs/select';
+import { SelectParameterDistribution } from '../../models/distribution/inputs/select';
 import { SelectMapper } from '../../models/libraries/antd/mappers/selectMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

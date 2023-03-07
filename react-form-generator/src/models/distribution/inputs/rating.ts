@@ -1,7 +1,7 @@
-import { KeysToNewType } from "../../mapper";
+import { KeysToNewType } from "../../interfaces/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import { ConstantValueDistribution } from "../distribution";
-import { IRating } from "../../inputs/rating";
+import { IRating } from "../../interfaces/inputs/rating";
 import { SliderParameterDistribution } from "./slider";
 
 export type RatingParameterType = KeysToNewType<IRating, any>;

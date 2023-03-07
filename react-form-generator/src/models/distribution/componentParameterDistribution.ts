@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Nullify } from "../../utils/modifiers";
+import { Nullify } from "../utils/modifiers";
 import { IDistribution, AbstractDistribution } from "./distribution";
 
 export interface IComponentParameterDistribution {

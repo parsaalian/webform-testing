@@ -1,5 +1,5 @@
 import { Slider } from 'antd';
-import { SliderParameterDistribution } from '../../models/interfaces/distribution/inputs/slider';
+import { SliderParameterDistribution } from '../../models/distribution/inputs/slider';
 import { SliderMapper } from '../../models/libraries/antd/mappers/sliderMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

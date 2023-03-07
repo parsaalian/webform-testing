@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
-import { GeneralTextualInputParameterDistribution } from '../../models/interfaces/distribution/inputs/generalTextualInput';
+import { GeneralTextualInputParameterDistribution } from '../../models/distribution/inputs/generalTextualInput';
 import { GeneralTextualMapper } from '../../models/libraries/bootstrap/mappers/generalTextualInputMapper';
 import { LabelFloatingEnum } from '../../models/interfaces/primitives/label';
 import { ValidationMapper } from '../../models/libraries/bootstrap/mappers/validationMapper';

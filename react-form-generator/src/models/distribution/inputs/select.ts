@@ -1,5 +1,5 @@
 
-import { KeysToNewType } from "../../mapper";
+import { KeysToNewType } from "../../interfaces/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     ArrayOfDistribution,
@@ -7,7 +7,7 @@ import {
     PoissonDistribution,
     RecursiveKeyValueDistribution,
 } from "../distribution";
-import { ISelect } from "../../inputs/select";
+import { ISelect } from "../../interfaces/inputs/select";
 import { InputParameterDistribution } from "./input";
 
 export type SelectParameterType = KeysToNewType<ISelect, any>;

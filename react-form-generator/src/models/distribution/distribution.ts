@@ -2,7 +2,7 @@ import _ from 'lodash';
 import random from 'random';
 import randomWords from 'random-words';
 import RandExp from "randexp";
-import { Nullify } from '../../utils/modifiers';
+import { Nullify } from '../utils/modifiers';
 
 export type DistributionParametersType = {
     [key: string]: any;

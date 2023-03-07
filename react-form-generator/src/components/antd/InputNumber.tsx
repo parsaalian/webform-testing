@@ -1,5 +1,5 @@
 import { InputNumber } from 'antd';
-import { NumericInputParameterDistribution } from '../../models/interfaces/distribution/inputs/numericInput';
+import { NumericInputParameterDistribution } from '../../models/distribution/inputs/numericInput';
 import { InputNumberMapper } from '../../models/libraries/antd/mappers/inputNumberMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

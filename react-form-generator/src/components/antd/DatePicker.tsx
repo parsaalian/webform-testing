@@ -1,5 +1,5 @@
 import { DatePicker, TimePicker } from 'antd';
-import { DateTimeInputParameterDistribution } from '../../models/interfaces/distribution/inputs/dateInput';
+import { DateTimeInputParameterDistribution } from '../../models/distribution/inputs/dateInput';
 import { DatePickerMapper } from '../../models/libraries/antd/mappers/datePickerMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

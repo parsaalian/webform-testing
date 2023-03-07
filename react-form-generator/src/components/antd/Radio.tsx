@@ -1,5 +1,5 @@
 import { Radio } from 'antd';
-import { BooleanInputParameterDistribution } from '../../models/interfaces/distribution/inputs/booleanInput';
+import { BooleanInputParameterDistribution } from '../../models/distribution/inputs/booleanInput';
 import { RadioMapper } from '../../models/libraries/antd/mappers/radioMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 

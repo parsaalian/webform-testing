@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
-import { SelectParameterDistribution } from '../../models/interfaces/distribution/inputs/select';
+import { SelectParameterDistribution } from '../../models/distribution/inputs/select';
 import { SelectMapper } from '../../models/libraries/bootstrap/mappers/selectMapper';
 
 export default function Select() {
