@@ -1,5 +1,5 @@
 import { AntDesignCheckbox } from "../interfaces/checkbox";
-import { BooleanInputStateEnum, IBooleanInput } from "../../../interfaces/inputs/booleanInput";
+import { BooleanInputStateEnum, IBooleanInput } from "../../../componentModels/inputs/booleanInput";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class CheckboxMapper extends AntDesignCommonMapper {

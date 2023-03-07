@@ -1,6 +1,6 @@
 import { BootstrapSelect } from "../interfaces/select";
-import { ISelect } from "../../../interfaces/inputs/select";
-import { ValidationStateEnum } from "../../../interfaces/primitives/validation";
+import { ISelect } from "../../../componentModels/inputs/select";
+import { ValidationStateEnum } from "../../../componentModels/primitives/validation";
 
 export class SelectMapper {
     public static mapValues(selectInput: ISelect): BootstrapSelect {

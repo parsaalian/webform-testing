@@ -1,6 +1,6 @@
 import { Nullify } from "../../../utils/modifiers";
-import { IValidation, ValidationStateEnum } from "../../../interfaces/primitives/validation";
-import { IInput } from "../../../interfaces/inputs/input";
+import { IValidation, ValidationStateEnum } from "../../../componentModels/primitives/validation";
+import { IInput } from "../../../componentModels/inputs/input";
 import { AntDesignCommonInterface } from "../interfaces/antdCommonInterface";
 
 export class AntDesignCommonMapper {

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { AntDesignSelect } from "../interfaces/select";
-import { ISelect, SelectOptions } from "../../../interfaces/inputs/select";
+import { ISelect, SelectOptions } from "../../../componentModels/inputs/select";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class SelectMapper extends AntDesignCommonMapper {

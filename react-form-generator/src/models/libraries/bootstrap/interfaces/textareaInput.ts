@@ -1,4 +1,4 @@
-import { LabelFloatingEnum } from "../../../interfaces/primitives/label";
+import { LabelFloatingEnum } from "../../../componentModels/primitives/label";
 
 export interface BootstrapTextAreaInput {
     rows: number;

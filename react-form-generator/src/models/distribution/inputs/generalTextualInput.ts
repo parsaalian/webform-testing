@@ -1,4 +1,4 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     IDistribution,
@@ -8,7 +8,7 @@ import { TextualInputParameterDistribution } from "./textualInput";
 import {
     IGeneralTextualInput,
     TextualInputTypeEnum
-} from "../../interfaces/inputs/generalTextualInput";
+} from "../../componentModels/inputs/generalTextualInput";
 
 export type GeneralTextualInputParameterType = KeysToNewType<IGeneralTextualInput, IDistribution<any>>;
 

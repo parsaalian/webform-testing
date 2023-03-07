@@ -1,5 +1,5 @@
 import { AntDesignDatePicker } from "../interfaces/datePicker";
-import { IDateTimeInput, DateTimeInputTypeEnum } from "../../../interfaces/inputs/datetimeInput";
+import { IDateTimeInput, DateTimeInputTypeEnum } from "../../../componentModels/inputs/datetimeInput";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class DatePickerMapper extends AntDesignCommonMapper {

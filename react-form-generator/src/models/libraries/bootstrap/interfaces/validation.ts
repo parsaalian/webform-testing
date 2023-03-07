@@ -1,4 +1,4 @@
-import { ValidationStateEnum } from '../../../interfaces/primitives/validation'
+import { ValidationStateEnum } from '../../../componentModels/primitives/validation'
 
 export interface BootstrapValidation {
     state: ValidationStateEnum;

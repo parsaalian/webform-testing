@@ -1,10 +1,10 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     DiscreteValuedDistribution,
 } from "../distribution";
 import { InputParameterDistribution } from "./input";
-import { DateTimeInputTypeEnum, IDateTimeInput } from "../../interfaces/inputs/datetimeInput";
+import { DateTimeInputTypeEnum, IDateTimeInput } from "../../componentModels/inputs/datetimeInput";
 
 export type DateTimeInputParameterType = KeysToNewType<IDateTimeInput, any>;
 

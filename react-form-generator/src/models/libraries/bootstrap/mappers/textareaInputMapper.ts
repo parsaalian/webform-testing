@@ -1,7 +1,7 @@
 import { BootstrapTextAreaInput } from "../interfaces/textareaInput";
-import { ITextAreaInput } from "../../../interfaces/inputs/textareaInput";
-import { ValidationStateEnum } from "../../../interfaces/primitives/validation";
-import { LabelFloatingEnum } from "../../../interfaces/primitives/label";
+import { ITextAreaInput } from "../../../componentModels/inputs/textareaInput";
+import { ValidationStateEnum } from "../../../componentModels/primitives/validation";
+import { LabelFloatingEnum } from "../../../componentModels/primitives/label";
 
 export class TextAreaInputMapper {
     public static mapValues(textAreaInput: ITextAreaInput): BootstrapTextAreaInput {

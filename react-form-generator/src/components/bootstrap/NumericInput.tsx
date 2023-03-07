@@ -4,9 +4,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
 import { NumericInputParameterDistribution } from '../../models/distribution/inputs/numericInput';
 import { NumericInputMapper } from '../../models/libraries/bootstrap/mappers/numericInputMapper';
-import { LabelFloatingEnum } from '../../models/interfaces/primitives/label';
+import { LabelFloatingEnum } from '../../models/componentModels/primitives/label';
 import { ValidationMapper } from '../../models/libraries/bootstrap/mappers/validationMapper';
-import { ValidationStateEnum } from '../../models/interfaces/primitives/validation';
+import { ValidationStateEnum } from '../../models/componentModels/primitives/validation';
 
 
 export default class NumericInput extends Component<any, any> {

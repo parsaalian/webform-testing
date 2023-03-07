@@ -3,9 +3,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
 import { TextAreaInputParameterDistribution } from '../../models/distribution/inputs/textareaInput';
 import { TextAreaInputMapper } from '../../models/libraries/bootstrap/mappers/textareaInputMapper';
-import { LabelFloatingEnum } from '../../models/interfaces/primitives/label';
+import { LabelFloatingEnum } from '../../models/componentModels/primitives/label';
 import { ValidationMapper } from '../../models/libraries/bootstrap/mappers/validationMapper';
-import { ValidationStateEnum } from '../../models/interfaces/primitives/validation';
+import { ValidationStateEnum } from '../../models/componentModels/primitives/validation';
 
 export default function TextAreaInput() {
     const {

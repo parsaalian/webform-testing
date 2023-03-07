@@ -1,7 +1,7 @@
 import { BootstrapNumericInput } from "../interfaces/numericInput";
-import { INumericInput } from "../../../interfaces/inputs/numericInput";
-import { ValidationStateEnum } from "../../../interfaces/primitives/validation";
-import { LabelFloatingEnum } from "../../../interfaces/primitives/label";
+import { INumericInput } from "../../../componentModels/inputs/numericInput";
+import { ValidationStateEnum } from "../../../componentModels/primitives/validation";
+import { LabelFloatingEnum } from "../../../componentModels/primitives/label";
 
 export class NumericInputMapper {
     public static mapValues(numericInput: INumericInput): BootstrapNumericInput {

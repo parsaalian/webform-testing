@@ -1,8 +1,8 @@
 import RandExp from "randexp";
 import { BootstrapGeneralTextualInput } from "../interfaces/generalTextualInput";
-import { IGeneralTextualInput } from "../../../interfaces/inputs/generalTextualInput";
-import { ValidationStateEnum } from "../../../interfaces/primitives/validation";
-import { LabelFloatingEnum } from "../../../interfaces/primitives/label";
+import { IGeneralTextualInput } from "../../../componentModels/inputs/generalTextualInput";
+import { ValidationStateEnum } from "../../../componentModels/primitives/validation";
+import { LabelFloatingEnum } from "../../../componentModels/primitives/label";
 import { RegexPatternGenerator } from "../../../utils/regexPatternGenerator";
 
 export class GeneralTextualMapper {

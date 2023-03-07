@@ -1,5 +1,5 @@
 import { AntDesignRadio } from "../interfaces/radio";
-import { IBooleanInput } from "../../../interfaces/inputs/booleanInput";
+import { IBooleanInput } from "../../../componentModels/inputs/booleanInput";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class RadioMapper extends AntDesignCommonMapper {

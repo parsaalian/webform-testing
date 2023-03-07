@@ -1,5 +1,5 @@
 import { AntDesignInputNumber } from "../interfaces/inputNumber";
-import { INumericInput } from "../../../interfaces/inputs/numericInput";
+import { INumericInput } from "../../../componentModels/inputs/numericInput";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class InputNumberMapper extends AntDesignCommonMapper {

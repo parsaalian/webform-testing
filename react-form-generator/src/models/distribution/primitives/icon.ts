@@ -1,7 +1,7 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import { ConstantValueDistribution, NullDistribution } from "../distribution";
-import { IIcon } from "../../interfaces/primitives/icon";
+import { IIcon } from "../../componentModels/primitives/icon";
 
 export type IconParameterType = KeysToNewType<IIcon, any>;
 

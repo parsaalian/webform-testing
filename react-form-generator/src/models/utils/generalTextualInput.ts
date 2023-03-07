@@ -2,11 +2,11 @@ import { Nullify } from "./modifiers";
 import {
     IGeneralTextualInput,
     TextualInputTypeEnum
-} from "../interfaces/inputs/generalTextualInput";
+} from "../componentModels/inputs/generalTextualInput";
 import { RegexPatternGenerator } from "./regexPatternGenerator";
-import { ILabel } from "../interfaces/primitives/label";
-import { IValidation } from "../interfaces/primitives/validation";
-import { IPrefixSuffix } from "../interfaces/primitives/prefixSuffix";
+import { ILabel } from "../componentModels/primitives/label";
+import { IValidation } from "../componentModels/primitives/validation";
+import { IPrefixSuffix } from "../componentModels/primitives/prefixSuffix";
 
 export abstract class GeneralTextualInput implements IGeneralTextualInput {
     public type: TextualInputTypeEnum;

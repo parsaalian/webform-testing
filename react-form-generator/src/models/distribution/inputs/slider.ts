@@ -1,4 +1,4 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     ConstantValueDistribution,
@@ -6,7 +6,7 @@ import {
     PoissonDistribution,
     RecursiveKeyValueDistribution
 } from "../distribution";
-import { ISlider } from "../../interfaces/inputs/slider";
+import { ISlider } from "../../componentModels/inputs/slider";
 import { InputParameterDistribution } from "./input";
 import { InputOrientationEnum } from "../../utils/orientation";
 

@@ -1,4 +1,4 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     IDistribution,
@@ -7,7 +7,7 @@ import {
     ConstantValueDistribution,
 } from "../distribution";
 import { InputParameterDistribution } from "./input";
-import { INumericInput } from "../../interfaces/inputs/numericInput";
+import { INumericInput } from "../../componentModels/inputs/numericInput";
 
 export type NumericInputParameterType = KeysToNewType<INumericInput, IDistribution<any>>;
 

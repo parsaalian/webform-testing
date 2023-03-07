@@ -1,5 +1,5 @@
 import { AntDesignRating } from "../interfaces/rating";
-import { ISlider } from "../../../interfaces/inputs/slider";
+import { ISlider } from "../../../componentModels/inputs/slider";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class RatingMapper extends AntDesignCommonMapper {

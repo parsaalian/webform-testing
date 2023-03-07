@@ -1,5 +1,5 @@
 import { AntDesignSwitch } from "../interfaces/switch";
-import { BooleanInputStateEnum, IBooleanInput } from "../../../interfaces/inputs/booleanInput";
+import { BooleanInputStateEnum, IBooleanInput } from "../../../componentModels/inputs/booleanInput";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class SwitchMapper extends AntDesignCommonMapper {

@@ -1,4 +1,4 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     IDistribution,
@@ -6,7 +6,7 @@ import {
     DiscreteValuedDistribution,
     NullDistribution
 } from '../distribution';
-import { IValidation, ValidationStateEnum } from "../../interfaces/primitives/validation";
+import { IValidation, ValidationStateEnum } from "../../componentModels/primitives/validation";
 
 export type ValidationParameterType = KeysToNewType<IValidation, IDistribution<any>>;
 

@@ -1,4 +1,4 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     IDistribution,
@@ -6,7 +6,7 @@ import {
     DiscreteValuedDistribution
 } from "../distribution";
 import { InputParameterDistribution } from "./input";
-import { ITextualInput } from "../../interfaces/inputs/textualInput";
+import { ITextualInput } from "../../componentModels/inputs/textualInput";
 
 export type TextualInputParameterType = KeysToNewType<ITextualInput, IDistribution<any>>;
 

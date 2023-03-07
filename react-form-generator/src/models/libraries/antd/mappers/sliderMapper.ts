@@ -1,5 +1,5 @@
 import { AntDesignSlider } from "../interfaces/slider";
-import { ISlider } from "../../../interfaces/inputs/slider";
+import { ISlider } from "../../../componentModels/inputs/slider";
 import { AntDesignCommonMapper } from "./antdCommonMapper";
 
 export class SliderMapper extends AntDesignCommonMapper {

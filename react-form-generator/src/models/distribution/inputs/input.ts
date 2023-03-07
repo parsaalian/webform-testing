@@ -1,11 +1,11 @@
-import { KeysToNewType } from "../../interfaces/mapper";
+import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import {
     DiscreteValuedDistribution,
     NullDistribution,
     RandomWordDistribution
 } from "../distribution";
-import { IInput } from "../../interfaces/inputs/input";
+import { IInput } from "../../componentModels/inputs/input";
 import { LabelParameterDistribution } from "../primitives/label";
 import { ValidationParameterDistribution } from "../primitives/validation";
 

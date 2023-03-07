@@ -1,6 +1,6 @@
 import { BootstrapValidation } from "../interfaces/validation";
-import { IValidation } from "../../../interfaces/primitives/validation";
-import { ValidationStateEnum } from "../../../interfaces/primitives/validation";
+import { IValidation } from "../../../componentModels/primitives/validation";
+import { ValidationStateEnum } from "../../../componentModels/primitives/validation";
 
 export class ValidationMapper {
     public static mapValues(validation: IValidation): BootstrapValidation {
