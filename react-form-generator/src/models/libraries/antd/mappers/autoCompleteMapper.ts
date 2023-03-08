@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { AntDesignAutoComplete } from '../interfaces/autoComplete';
 import { ISelect } from "../../../componentModels/inputs/select";
 import { AntDesignCommonMapper } from "./antdCommonMapper";

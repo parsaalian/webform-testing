@@ -3,6 +3,7 @@ import random from 'random';
 import randomWords from 'random-words';
 import RandExp from "randexp";
 import { Nullify } from '../utils/modifiers';
+import { ComponentParameterDistribution } from './componentParameterDistribution';
 
 export type DistributionParametersType = {
     [key: string]: any;
@@ -159,7 +160,10 @@ export class RecursiveKeyValueDistribution extends AbstractDistribution<any> {
 }
 
 export class ArrayOfDistribution extends AbstractDistribution<any> {
-    constructor(countDistribution: IDistribution<number>, valueDistribution: IDistribution<any>) {
+    constructor(
+        countDistribution: IDistribution<number>,
+        valueDistribution: IDistribution<any> | ComponentParameterDistribution
+    ) {
         super({ countDistribution, valueDistribution });
     }
 

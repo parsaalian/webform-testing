@@ -1,10 +1,10 @@
 import 'antd/dist/reset.css';
-import AntDesignDatePicker from '../components/antd/DatePicker';
+import AntDesignGrid from '../components/antd/Grid';
 
 function Antd() {
     return (
         <>
-            <AntDesignDatePicker />
+            <AntDesignGrid />
         </>
     );
 }

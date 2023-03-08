@@ -10,7 +10,7 @@ export class DatePickerMapper extends AntDesignCommonMapper {
             type,
         } = dateInput;
 
-        console.log(value);
+        // console.log(value);
 
         const mappedPicker = this.mapTypeToPicker(type);
         const mappedShowTime = type === DateTimeInputTypeEnum.DATETIME;
