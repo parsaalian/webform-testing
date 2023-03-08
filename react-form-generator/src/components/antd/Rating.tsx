@@ -1,15 +1,9 @@
 import { Rate } from 'antd';
-import { SliderParameterDistribution } from '../../models/distribution/inputs/slider';
-import { RatingMapper } from '../../models/libraries/antd/mappers/ratingMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignRating() {
+export default function AntDesignRating(props) {
     return (
-        <AntDesignInputItem
-            Distribution={SliderParameterDistribution}
-            Mapper={RatingMapper}
-            hasExternalLabel={true}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={true}>
             {({
                 disabled,
                 defaultValue,

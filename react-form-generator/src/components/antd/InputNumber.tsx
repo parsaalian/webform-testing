@@ -1,15 +1,9 @@
 import { InputNumber } from 'antd';
-import { NumericInputParameterDistribution } from '../../models/distribution/inputs/numericInput';
-import { InputNumberMapper } from '../../models/libraries/antd/mappers/inputNumberMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignInputNumber() {
+export default function AntDesignInputNumber(props) {
     return (
-        <AntDesignInputItem
-            Distribution={NumericInputParameterDistribution}
-            Mapper={InputNumberMapper}
-            hasExternalLabel={true}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={true}>
             {({
                 disabled,
                 defaultValue,

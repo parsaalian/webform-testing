@@ -1,15 +1,9 @@
 import { Cascader } from 'antd';
-import { SelectParameterDistribution } from '../../models/distribution/inputs/select';
-import { CascaderMapper } from '../../models/libraries/antd/mappers/cascaderMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignCascader() {
+export default function AntDesignCascader(props) {
     return (
-        <AntDesignInputItem
-            Distribution={SelectParameterDistribution}
-            Mapper={CascaderMapper}
-            hasExternalLabel={true}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={true}>
             {({
                 disabled,
                 defaultValue,

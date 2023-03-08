@@ -1,15 +1,9 @@
 import { Slider } from 'antd';
-import { SliderParameterDistribution } from '../../models/distribution/inputs/slider';
-import { SliderMapper } from '../../models/libraries/antd/mappers/sliderMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignSlider() {
+export default function AntDesignSlider(props) {
     return (
-        <AntDesignInputItem
-            Distribution={SliderParameterDistribution}
-            Mapper={SliderMapper}
-            hasExternalLabel={true}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={true}>
             {({
                 disabled,
                 defaultValue,

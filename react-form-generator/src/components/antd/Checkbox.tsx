@@ -1,15 +1,9 @@
 import { Checkbox } from 'antd';
-import { BooleanInputParameterDistribution } from '../../models/distribution/inputs/booleanInput';
-import { CheckboxMapper } from '../../models/libraries/antd/mappers/checkboxMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignCheckbox() {
+export default function AntDesignCheckbox(props) {
     return (
-        <AntDesignInputItem
-            Distribution={BooleanInputParameterDistribution}
-            Mapper={CheckboxMapper}
-            hasExternalLabel={false}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={false}>
             {({
                 disabled,
                 defaultValue,

@@ -1,15 +1,9 @@
 import { AutoComplete } from 'antd';
-import { SelectParameterDistribution } from '../../models/distribution/inputs/select';
-import { AutoCompleteMapper } from '../../models/libraries/antd/mappers/autoCompleteMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignAutoComplete() {
+export default function AntDesignAutoComplete(props) {
     return (
-        <AntDesignInputItem
-            Distribution={SelectParameterDistribution}
-            Mapper={AutoCompleteMapper}
-            hasExternalLabel={true}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={true}>
             {({
                 disabled,
                 defaultValue,

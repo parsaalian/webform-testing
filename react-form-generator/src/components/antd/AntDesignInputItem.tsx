@@ -1,17 +1,10 @@
 import { Form } from 'antd';
-import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
 
 export default function AntDesignInputItem({
-    Distribution,
-    Mapper,
     hasExternalLabel,
     children,
+    ...props
 }) {
-    const props = LibraryComponentGenerator.generateComponent(
-        new Distribution(),
-        Mapper,
-    );
-
     const {
         label,
         required,

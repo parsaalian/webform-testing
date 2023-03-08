@@ -1,15 +1,9 @@
 import { Select } from 'antd';
-import { SelectParameterDistribution } from '../../models/distribution/inputs/select';
-import { SelectMapper } from '../../models/libraries/antd/mappers/selectMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignSelect() {
+export default function AntDesignSelect(props) {
     return (
-        <AntDesignInputItem
-            Distribution={SelectParameterDistribution}
-            Mapper={SelectMapper}
-            hasExternalLabel={true}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={true}>
             {({
                 disabled,
                 defaultValue,

@@ -1,15 +1,9 @@
 import { Radio } from 'antd';
-import { BooleanInputParameterDistribution } from '../../models/distribution/inputs/booleanInput';
-import { RadioMapper } from '../../models/libraries/antd/mappers/radioMapper';
 import AntDesignInputItem from './AntDesignInputItem';
 
-export default function AntDesignRadio() {
+export default function AntDesignRadio(props) {
     return (
-        <AntDesignInputItem
-            Distribution={BooleanInputParameterDistribution}
-            Mapper={RadioMapper}
-            hasExternalLabel={false}
-        >
+        <AntDesignInputItem {...props} hasExternalLabel={false}>
             {({
                 disabled,
                 defaultValue,
