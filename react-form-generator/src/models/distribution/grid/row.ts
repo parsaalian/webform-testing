@@ -13,7 +13,7 @@ export class RowParameterDistribution extends ComponentParameterDistribution {
 
     constructor(cols: number) {
         super();
-        const count = random.choice([1, 2, 4, 6, 12]) || 1;
+        const count = random.choice([1, 2]) || 1;
         this.parameters = {
             columns: new ArrayOfDistribution(
                 new ConstantValueDistribution(count),

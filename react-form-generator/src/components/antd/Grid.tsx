@@ -63,19 +63,21 @@ export default function AntDesignGrid() {
 
     return (
         <>
-            <Form id="form">
-                {rows.map((row, rowIndex) => (
-                    <Row key={rowIndex}>
-                        {row.columns.map((col, colIndex) => (
-                            <Col key={colIndex} span={col.span}>
-                                <ErrorBoundary>
-                                    {getChildComponent(col.type, col.props)}
-                                </ErrorBoundary>
-                            </Col>
-                        ))}
-                    </Row>
-                ))}
-            </Form>
+            <div id="form">
+                <Form>
+                    {rows.map((row, rowIndex) => (
+                        <Row key={rowIndex}>
+                            {row.columns.map((col, colIndex) => (
+                                <Col key={colIndex} span={col.span}>
+                                    <ErrorBoundary>
+                                        {getChildComponent(col.type, col.props)}
+                                    </ErrorBoundary>
+                                </Col>
+                            ))}
+                        </Row>
+                    ))}
+                </Form>
+            </div>
             <div id="json-object">
                 {simplifyGenerationProperties(rows)}
             </div>

@@ -17,7 +17,7 @@ export class GridParameterDistribution extends ComponentParameterDistribution {
         super();
         this.parameters = {
             rows: new ArrayOfDistribution(
-                new PoissonDistribution(5),
+                new PoissonDistribution(2),
                 new RowParameterDistribution(cols),
             ),
         }
