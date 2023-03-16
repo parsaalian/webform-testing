@@ -40,8 +40,6 @@ function getChildComponent(childName, props) {
 function simplifyGenerationProperties(rows) {
     let inputs: any[] = [];
 
-    console.log(rows);
-
     for (let row of rows) {
         for (let col of row.columns) {
             inputs.push({
@@ -52,8 +50,6 @@ function simplifyGenerationProperties(rows) {
             });
         }
     }
-
-    console.log(inputs);
 
     return JSON.stringify(inputs);
 }

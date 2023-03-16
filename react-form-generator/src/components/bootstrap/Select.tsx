@@ -2,23 +2,25 @@ import Form from 'react-bootstrap/Form';
 import { LibraryComponentGenerator } from '../../models/libraries/libraryComponentGenerator';
 import { SelectParameterDistribution } from '../../models/distribution/inputs/select';
 import { SelectMapper } from '../../models/libraries/bootstrap/mappers/selectMapper';
+import BootstrapInputItem from './BootstrapInputItem';
 
-export default function Select() {
-    const {
-        label,
-        disabled,
-        isValid,
-        isInvalid,
-        options,
-    } = LibraryComponentGenerator.generateComponent(
+export default function BootstrapSelect() {
+    const props = LibraryComponentGenerator.generateComponent(
         new SelectParameterDistribution(),
         SelectMapper,
     );
+    const {
+        isValid,
+        isInvalid,
+    } = props;
 
     return (
-        <Form.Group className="was-validated">
-            <Form.Label>{label}</Form.Label>
-            <Form.Select
+        <BootstrapInputItem {...props} hasExternalLabel={true} hasExternalFeedback={true}>
+            {({
+                disabled,
+                options,
+            }) => (
+                <Form.Select
                 disabled={disabled}
                 isValid={isValid}
                 isInvalid={isInvalid}
@@ -30,6 +32,7 @@ export default function Select() {
                     </option>
                 ))}
             </Form.Select>
-        </Form.Group>
-    );
+            )}
+        </BootstrapInputItem>
+    )
 }

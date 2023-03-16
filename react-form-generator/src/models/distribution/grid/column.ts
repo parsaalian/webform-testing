@@ -2,6 +2,7 @@ import { KeysToNewType } from "../../componentModels/mapper";
 import { ComponentParameterDistribution } from "../componentParameterDistribution";
 import { IColumn } from "../../componentModels/grid/column";
 import { DiscreteValuedDistribution } from "../distribution";
+import { InputTypesEnum } from "./inputTypes";
 
 export type ColumnParameterType = KeysToNewType<IColumn, any>;
 
@@ -13,34 +14,38 @@ export class ColumnParameterDistribution extends ComponentParameterDistribution 
         super();
         this.parameters = {
             content: new DiscreteValuedDistribution([
-                "autoComplete",
-                "cascader",
-                "checkbox",
-                "date",
-                "number",
-                "radio",
-                "rate",
-                "select",
-                "slider",
-                "switch",
-                "transfer",
-                "treeSelect",
-                "upload",
+                InputTypesEnum.AUTOCOMPLETE,
+                InputTypesEnum.CASCADER,
+                InputTypesEnum.CHECKBOX,
+                InputTypesEnum.DATE,
+                InputTypesEnum.NUMBER,
+                InputTypesEnum.RADIO,
+                InputTypesEnum.RATE,
+                InputTypesEnum.SELECT,
+                InputTypesEnum.SLIDER,
+                InputTypesEnum.SWITCH,
+                InputTypesEnum.TEXT,
+                InputTypesEnum.TRANSFER,
+                InputTypesEnum.TREESELECT,
+                InputTypesEnum.UPLOAD,
+                InputTypesEnum.TEXTAREA,
             ],
             [
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
-                1/13,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
+                1/15,
             ]),
             span: span,
         }

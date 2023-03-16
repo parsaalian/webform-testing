@@ -1,0 +1,17 @@
+export enum InputTypesEnum {
+    AUTOCOMPLETE = "autoComplete",
+    CASCADER = "cascader",
+    CHECKBOX = "checkbox",
+    DATE = "date",
+    NUMBER = "number",
+    RADIO = "radio",
+    RATE = "rate",
+    SELECT = "select",
+    SLIDER = "slider",
+    SWITCH = "switch",
+    TEXT = "text",
+    TRANSFER = "transfer",
+    TREESELECT = "treeSelect",
+    UPLOAD = "upload",
+    TEXTAREA = "textarea",
+}

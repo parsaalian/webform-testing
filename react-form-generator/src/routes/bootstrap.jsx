@@ -1,11 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react'
-import Select from '../components/bootstrap/Select';
+import BootstrapGrid from '../components/bootstrap/Grid';
 
 function Bootstrap() {
     return (
         <>
-            <Select />
+            <BootstrapGrid />
         </>
     );
 }
