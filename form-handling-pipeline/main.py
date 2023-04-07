@@ -10,12 +10,12 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
-from form_finder import SimplestFormFinder
-from form_parser import SimplestFormParser
-from form_filler import SimplestFormFiller, GPT3SimpleFormFiller
+from page_transformer import driver_to_doc, simplify_doc
 
 
+# Initial configurations
 load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 parser = argparse.ArgumentParser(
@@ -23,32 +23,40 @@ parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter
 )
 parser.add_argument("--url", type=str, default="http://localhost:8080")
+parser.add_argument("--gpt-model", type=str, default="text-davinci-003")
 args = parser.parse_args()
 config = vars(args)
 
-
 URL = config["url"]
-# MODEL = "text-davinci-003"
-MODEL = "text-ada-001"
+MODEL = config["gpt_model"]
 
-
+# Run Selenium driver
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver.get(URL)
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
+
+# OPTIONAL: Navigate to the form page
 driver.find_element(By.CLASS_NAME, 'navbar-nav').find_element(By.CLASS_NAME, 'dropdown').click()
 driver.find_element(By.CLASS_NAME, 'navbar-nav') \
         .find_element(By.CLASS_NAME, 'dropdown') \
         .find_element(By.TAG_NAME, 'ul') \
         .find_element(By.TAG_NAME, 'li').click()
 
-form_finder = SimplestFormFinder(driver)
+
+# Run the pipeline
+doc = driver_to_doc(driver)
+doc = simplify_doc(doc)
+
+
+'''form_finder = SimplestFormFinder(driver)
 form = form_finder.find_form()
 form_parser = SimplestFormParser(form)
 form_data = form_parser.parse_form()
 form_filler = GPT3SimpleFormFiller(form_data, model=MODEL)
-filled_form = form_filler.fill_form()
+filled_form = form_filler.fill_form()'''
 
 
-time.sleep(5)
+# Quit the driver
+
+time.sleep(1)
 driver.quit()

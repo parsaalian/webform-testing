@@ -1,7 +1,9 @@
 import re
+
 from scipy.spatial import KDTree
 from webcolors import CSS3_HEX_TO_NAMES, hex_to_rgb
-from bs4 import BeautifulSoup as bs, NavigableString, Comment
+
+from bs4 import BeautifulSoup as bs
 from selenium.webdriver.common.by import By
 
 
@@ -17,10 +19,6 @@ FONT_WEIGHT_NAMES = {
         '800': 'extra bold',
         '900': 'heavy',
 }
-UNNECESSARY_TAGS = [
-    'style', 'script', 'noscript', 'link'
-]
-INFORMATION_CUTOFF = 0.8
 COLOR_KDT_TREE = None
 COLOR_NAMES = None
 
@@ -91,63 +89,8 @@ def embed_properties_into_element(driver, element):
     driver.execute_script(script_to_execute, element)
 
 
-def merge_attributes(parent_attributes, child_attributes):
-    merged = parent_attributes.copy()
-    for key, value in child_attributes.items():
-        merged[key] = value
-    return merged
-
-
-def merge_single_child_parents(root):
-    children = list(root.children)
-    if len(children) > 1:
-        for child in children:
-            merge_single_child_parents(child)
-    if len(children) == 1 and type(children[0]) != NavigableString:
-        only_child = children[0]
-        root.attrs = merge_attributes(root.attrs, only_child.attrs)
-        childs_children = list(only_child.children)
-        for i in range(len(childs_children)):
-            root.insert(i + 1, childs_children[i])
-        only_child.extract()
-        merge_single_child_parents(root)
-
-
-def find_attribute_count(doc, attribute):
-    counter = {}
-    for element in doc.find_all():
-        attr_value = element.attrs[attribute]
-        if attr_value not in counter:
-            counter[attr_value] = 0
-        counter[attr_value] += 1
-    counter = dict(sorted(counter.items(), key=lambda item: item[1], reverse=True))
-    
-    max_value = list(counter.values())[0]
-    for key in counter.keys():
-        counter[key] /= max_value
-    return counter
-
-
-# you can do this with colors as well, but the dark-mode/light-mode can cause problems in understanding
-def map_font_sizes(doc):
-    font_count = find_attribute_count(doc, 'fontsize')
-    max_repeated_font_size = int(list(font_count.keys())[0].replace('px', ''))
-    for element in doc.find_all():
-        if type(element) != NavigableString:
-            element.attrs['fontsize'] = int(element.attrs['fontsize'].replace('px', '')) / max_repeated_font_size
-            if 'fontsize' in element.attrs and element.attrs['fontsize'] == 1:
-                del element.attrs['fontsize']
-
-
-def map_font_weight(doc):
-    for element in doc.find_all():
-        if type(element) != NavigableString:
-            if 'fontweight' in element.attrs and element.attrs['fontweight'] == 'normal':
-                del element.attrs['fontweight']
-
-
-def simplify_form(driver, form):
-    queue = [form]
+def driver_to_doc(driver, embed_css=False):
+    queue = [driver.find_element(By.TAG_NAME, 'html')]
     
     while len(queue) > 0:
         element = queue[0]
@@ -159,24 +102,10 @@ def simplify_form(driver, form):
         else:
             children = element.find_elements(By.XPATH, '*')
             queue = [*queue, *children]
-            embed_properties_into_element(driver, element)
+            if embed_css:
+                embed_properties_into_element(driver, element)
         queue = queue[1:]
     
-    doc = bs(form.get_attribute('innerHTML'), features="html.parser")
+    doc = bs(driver.find_element(By.TAG_NAME, 'html').get_attribute('innerHTML'), features="html.parser")
     
-    for element in doc.find_all():
-        if type(element) == Comment or element.name in UNNECESSARY_TAGS:
-            element.extract()
-        elif type(element) != NavigableString:
-            del element['class']
-            del element['style']
-            # for icons: remove unnecessary data of the icon
-            del element['d']
-    
-    merge_single_child_parents(doc.form)
-    
-    map_font_sizes(doc)
-    
-    map_font_weight(doc)
-    
-    return str(doc)
+    return doc
