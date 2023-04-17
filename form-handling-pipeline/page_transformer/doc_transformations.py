@@ -84,7 +84,8 @@ def simplify_doc(doc):
             for attr in angular_attributes:
                 del element[attr]
     
-    merge_single_child_parents(doc)
+    # change it to take names of tags into account
+    # merge_single_child_parents(doc)
     
     # these two functions remove the most repeated value for attributes. Can help with uncluttering the page
     # map_font_sizes(doc)
