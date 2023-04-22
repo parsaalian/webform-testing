@@ -11,8 +11,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
 from page_transformer import driver_to_doc, simplify_doc
-from form_finder.form_finder import simplest_form_finder
-from form_parser.form_parser import simplest_form_parser
+from form_finder.simple_form_finder import simplest_form_finder
+from form_parser.simple_form_parser import simplest_form_parser
 
 
 # Initial configurations
