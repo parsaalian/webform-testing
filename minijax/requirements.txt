@@ -6,3 +6,5 @@ selenium==4.8.0
 selenium-wire==5.1.0
 webcolors==1.12
 webdriver-manager==3.8.5
+pyOpenSSL==22.0.0
+cryptography==38.0.4

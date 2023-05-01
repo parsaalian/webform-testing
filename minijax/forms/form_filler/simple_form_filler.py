@@ -5,6 +5,10 @@ from selenium.webdriver.support.ui import Select
 def fill_form_with_fixed_values(parsed_form):
     for i in parsed_form:
         element = i['element']
+        
+        if i['tag'] == 'button':
+            continue
+        
         if i['tag'] == 'select':
             select = Select(element)
             select.select_by_index(0)

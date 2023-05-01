@@ -89,8 +89,8 @@ def embed_properties_into_element(driver, element):
     driver.execute_script(script_to_execute, element)
 
 
-def driver_to_doc(driver, embed_css=False):
-    queue = [driver.find_element(By.TAG_NAME, 'html')]
+def driver_to_doc(driver, html_element, embed_css=False):
+    queue = [html_element]
     
     while len(queue) > 0:
         element = queue[0]
@@ -106,6 +106,6 @@ def driver_to_doc(driver, embed_css=False):
                 embed_properties_into_element(driver, element)
         queue = queue[1:]
     
-    doc = bs(driver.find_element(By.TAG_NAME, 'html').get_attribute('innerHTML'), features="html.parser")
+    doc = bs(html_element.get_attribute('outerHTML'), features="html.parser")
     
     return doc
