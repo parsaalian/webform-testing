@@ -1,0 +1,9 @@
+models:
+  fast_llm: 'gpt-3.5-turbo'
+  smart_llm: 'gpt-4'
+  embedding: 'text-embedding-ada-002'
+  tokenizer: 'cl100k_base'
+
+parameters:
+  temperature: 0.7
+  embedding_token_limit: 8191

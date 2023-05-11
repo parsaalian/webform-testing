@@ -1,0 +1,1 @@
+from minijax import main

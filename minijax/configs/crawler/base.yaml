@@ -1,0 +1,20 @@
+max_crawling_depth: 3
+max_crawling_iterations: 11
+
+wait:
+  after_state_change: 0.2
+  after_action: 0.2
+
+action:
+  should_exclude_duplicates: true
+  max_retries_after_fail: 5
+
+  enabled:
+    click: true
+    form: true
+    hover: false
+  
+  form:
+    execution_count: 5
+
+report_directory: "report"
