@@ -20,9 +20,11 @@ class Crawler:
         
         self.driver.get(self.cfg.app_url)
         self.title = self.driver.title
+        body = self.driver.find_element(By.TAG_NAME, 'body')
         initial_state = State(
             self.driver.current_url,
-            self.driver.find_element(By.TAG_NAME, 'body').text,
+            body.get_attribute('outerHTML'),
+            body.text,
             None,
             None,
         )

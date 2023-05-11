@@ -19,10 +19,11 @@ cfg = Config()
 
 
 class State:
-    def __init__(self, url, source, prev_state, prev_action):
+    def __init__(self, url, html, text, prev_state, prev_action):
         self.driver = get_driver_container().get_driver()
         self.url = url
-        self.source = source
+        self.html = html
+        self.text = text
         self.root_path = []
         self.actions = []
         # value of neighbors is never used for now
@@ -109,9 +110,11 @@ class State:
                 else:
                     logger.debug(f'{action} failed {retries + 1} times. Skipping.')
             
+            body = self.driver.find_element(By.TAG_NAME, 'body')
             new_state = State(
                 self.driver.current_url,
-                self.driver.find_element(By.TAG_NAME, 'body').text,
+                body.get_attribute('outerHTML'),
+                body.text,
                 self,
                 action
             )
@@ -126,7 +129,8 @@ class State:
         return {
             'id': self.id(),
             'url': self.url,
-            'source': self.source,
+            'html': self.html,
+            'text': self.text,
             'root_path': [str(action) for action in self.root_path],
             'actions': [str(action) for action in self.actions],
             'execution_history': {
@@ -159,8 +163,8 @@ class State:
         if str(self) != str(other):
             return False
         
-        # source-based comparison: maybe pages have the same actions but content is different
-        if self.source != other.source:
+        # text-based comparison: maybe pages have the same actions but content is different
+        if self.text != other.text:
             return False
         
         # full attributes comparison
