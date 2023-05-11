@@ -39,6 +39,7 @@ def fill_form_with_fixed_values(parsed_form):
         
         values[xpath] = element.get_attribute('value')
     
+    print(values)
     return values
 
 

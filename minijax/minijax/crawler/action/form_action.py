@@ -1,17 +1,12 @@
-import time
 from selenium.webdriver.common.by import By
 
-# from minijax.logger import logger
 from minijax.crawler import get_driver_container
 from minijax.crawler.utils import get_element_xpath
-from minijax.config import (
-    Config, FormFinderMode, FormParserMode, FormFillerMode
-)
+from minijax.config import Config
 from minijax.form.finder import find_forms_by_query
 from minijax.form.parser import parse_form_inputs_without_labels
 from minijax.form.filler import fill_form_with_fixed_values, fill_form_with_random_values
 from minijax.crawler.action.base import ActionBase
-
 
 
 cfg = Config()
@@ -28,6 +23,7 @@ class FormAction(ActionBase):
         form = driver.find_element(By.XPATH, self.xpath)
         # fill/fill+parse step
         values = fill_form_conditional(form)
+        print(values)
         self.last_execution_data = values
         # submit step
         result = submit_form(form)
@@ -67,7 +63,7 @@ def parse_form(form):
 
 
 def fill_form_conditional(form):
-    if cfg.model_config['finder'] == FormFillerMode.FIXED or cfg.model_config['filler'] == FormFillerMode.RANDOM:
+    if cfg.model_config['filler'] == 'FIXED' or cfg.model_config['filler'] == 'RANDOM':
         parsed = parse_form(form)
         return fill_form_basic(parsed)
     else:
@@ -75,7 +71,7 @@ def fill_form_conditional(form):
 
 
 def fill_form_basic(form):
-    if cfg.model_config['filler'] == FormFillerMode.FIXED:
+    if cfg.model_config['filler'] == 'FIXED':
         return fill_form_with_fixed_values(form)
     else:
         return fill_form_with_random_values(form)
