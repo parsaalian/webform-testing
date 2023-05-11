@@ -1,5 +1,6 @@
 import time
 import hashlib
+from urllib.parse import urlparse
 
 from selenium.webdriver.common.by import By
 
@@ -89,6 +90,10 @@ class State:
                 logger.debug(f'Skipping: {action}')
                 continue
             
+            if action.outer_domain:
+                logger.debug(f'Skipping: {action} (outer domain)')
+                continue
+            
             try:
                 logger.debug(f'Executing: {action}')
                 action.execute()
@@ -110,18 +115,26 @@ class State:
                 else:
                     logger.debug(f'{action} failed {retries + 1} times. Skipping.')
             
-            body = self.driver.find_element(By.TAG_NAME, 'body')
-            new_state = State(
-                self.driver.current_url,
-                body.get_attribute('outerHTML'),
-                body.text,
-                self,
-                action
-            )
+            # check if action leads to invalid domain
+            current_state_domain = urlparse(self.url, scheme='', allow_fragments=True).netloc
+            new_state_domain = urlparse(self.driver.current_url, scheme='', allow_fragments=True).netloc
+            if current_state_domain != new_state_domain:
+                logger.info('Action leads to invalid domain')
+                action.outer_domain = True
             
-            if self != new_state:
-                self._add_neighbor(action, new_state)
-            
+            else:
+                body = self.driver.find_element(By.TAG_NAME, 'body')
+                new_state = State(
+                    self.driver.current_url,
+                    body.get_attribute('outerHTML'),
+                    body.text,
+                    self,
+                    action
+                )
+                
+                if self != new_state:
+                    self._add_neighbor(action, new_state)
+                
             self.get_to_state()
     
     

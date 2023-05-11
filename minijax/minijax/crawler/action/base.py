@@ -7,6 +7,7 @@ class ActionBase(ABC):
         self.execution_count = execution_count
         self.last_execution_data = {}
         self.execution_history = []
+        self.outer_domain = False
     
     
     def get_execution_count(self):
