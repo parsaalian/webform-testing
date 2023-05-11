@@ -2,13 +2,14 @@ from selenium.webdriver.common.by import By
 
 
 def parse_form_inputs_without_labels(form):
-    inputs = form.find_elements(By.TAG_NAME, 'input')
-    buttons = form.find_elements(By.TAG_NAME, 'button')
-    
-    inputs = list(filter(
-        lambda x: x.get_attribute('type') != 'hidden',
-        inputs
-    ))
+    inputs = form.find_elements(
+        By.XPATH,
+        "//input[not(@type = 'submit') and not(@type = 'hidden')] | //textarea | //select"
+    )
+    buttons = form.find_elements(
+        By.XPATH,
+        '//button | //input[@type = "submit"]'
+    )
     
     inputs = list(map(
         lambda x: {

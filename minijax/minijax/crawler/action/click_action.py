@@ -14,6 +14,10 @@ class ClickAction(ActionBase):
         driver = get_driver_container().get_driver()
         element = driver.find_element(By.XPATH, self.xpath)
         element.click()
+    
+    
+    def id(self):
+        return self.xpath
 
 
 def find_click_actions(driver):

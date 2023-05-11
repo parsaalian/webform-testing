@@ -23,11 +23,14 @@ class FormAction(ActionBase):
         form = driver.find_element(By.XPATH, self.xpath)
         # fill/fill+parse step
         values = fill_form_conditional(form)
-        print(values)
-        self.last_execution_data = values
+        self.action_data = values
         # submit step
         result = submit_form(form)
         # TODO: add feedback steps
+    
+    
+    def id(self):
+        return f'{self.xpath} {str(self.execution_result)}'
 
 
 def find_form_actions(driver):

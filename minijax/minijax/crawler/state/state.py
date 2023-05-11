@@ -60,7 +60,7 @@ class State:
     
     
     def _add_neighbor(self, action, neighbor_state):
-        self.neighbors[action.xpath] = neighbor_state
+        self.neighbors[action.id()] = neighbor_state
     
     
     def get_to_state(self):
@@ -80,7 +80,7 @@ class State:
         for action in self.actions:
             execution_count = action.get_execution_count()
             for _ in range(execution_count):
-                action_execution_queue.append((action, 0))
+                action_execution_queue.append((action.copy(), 0))
         
         while len(action_execution_queue) > 0:
             action, retries = action_execution_queue.pop(0)
@@ -98,16 +98,14 @@ class State:
                 logger.debug(f'Executing: {action}')
                 action.execute()
                 
-                execution_result = ExecutionResult(True, None)
-                action.add_history_entry(execution_result)
+                action.set_execution_result((True, None))
                 
                 time.sleep(cfg.crawler_config['wait']['after_action'])
 
             except Exception as e:
                 logger.debug(f'Exception: {e}')
                 
-                execution_result = ExecutionResult(False, str(e))
-                action.add_history_entry(execution_result)
+                action.set_execution_result((False, str(e)))
                 
                 if retries + 1 < cfg.crawler_config['action']['max_retries_after_fail']:
                     action_execution_queue.append((action, retries + 1))
@@ -146,11 +144,8 @@ class State:
             'text': self.text,
             'root_path': [str(action) for action in self.root_path],
             'actions': [str(action) for action in self.actions],
-            'execution_history': {
-                action.xpath: list(map(lambda x: x.to_json(), action.execution_history)) for action in self.actions
-            },
             'neighbors': {
-                str(action): state.id() for action, state in self.neighbors.items()
+                action: state.id() for action, state in self.neighbors.items()
             }
         }
     

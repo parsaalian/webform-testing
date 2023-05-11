@@ -1,3 +1,5 @@
+import json
+import copy
 from abc import ABC, abstractmethod
 
 
@@ -5,9 +7,14 @@ class ActionBase(ABC):
     def __init__(self, action_element_xpath, execution_count=1):
         self.xpath = action_element_xpath
         self.execution_count = execution_count
-        self.last_execution_data = {}
-        self.execution_history = []
         self.outer_domain = False
+        
+        # execution result is determined by the state while executing action
+        self.execution_data = None
+        # action data is determined by action while getting executed
+        self.action_data = {}
+        # this is a combination of the two above
+        self.execution_result = None
     
     
     def get_execution_count(self):
@@ -18,14 +25,24 @@ class ActionBase(ABC):
         return self.xpath
     
     
-    def add_history_entry(self, result):
-        result.data = self.last_execution_data
-        self.execution_history.append(result)
+    def set_execution_result(self, execution_data):
+        success, exception = execution_data
+        self.execution_result = ExecutionResult(success, exception, self.action_data)
+    
+    
+    def copy(self):
+        return copy.copy(self)
     
     
     @abstractmethod
     def execute(self):
         '''executes the action'''
+        pass
+    
+    
+    @abstractmethod
+    def id(self):
+        '''returns a unique id for the action'''
         pass
     
     
@@ -50,3 +67,7 @@ class ExecutionResult:
             'exception': self.exception,
             'data': self.data
         }
+    
+    
+    def __str__(self):
+        return f"{json.dumps(self.to_json())}"

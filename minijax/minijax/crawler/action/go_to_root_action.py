@@ -12,3 +12,7 @@ class GoToRootAction(ActionBase):
         cfg = Config()
         driver = get_driver_container().get_driver()
         driver.get(cfg.app_url)
+    
+    
+    def id(self):
+        return 'go_to_root'
