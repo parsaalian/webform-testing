@@ -1,0 +1,4 @@
+parameters:
+  model: 'text-davinci-003'
+  temperature: 0
+  embedding_token_limit: 8191

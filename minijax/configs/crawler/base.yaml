@@ -7,7 +7,7 @@ wait:
 
 action:
   should_exclude_duplicates: true
-  max_retries_after_fail: 5
+  max_retries_after_fail: 1
 
   enabled:
     click: true
@@ -15,6 +15,6 @@ action:
     hover: false
   
   form:
-    execution_count: 5
+    execution_count: 1
 
 report_directory: "report"

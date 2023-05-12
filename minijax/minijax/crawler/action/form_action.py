@@ -1,11 +1,14 @@
 from selenium.webdriver.common.by import By
 
+from minijax.config import Config
 from minijax.crawler import get_driver_container
 from minijax.crawler.utils import get_element_xpath
-from minijax.config import Config
+
 from minijax.form.finder import find_forms_by_query
 from minijax.form.parser import parse_form_inputs_without_labels
 from minijax.form.filler import fill_form_with_fixed_values, fill_form_with_random_values
+from minijax.form.gpt3_handler import fill_form_gpt3
+
 from minijax.crawler.action.base import ActionBase
 
 
@@ -81,7 +84,15 @@ def fill_form_basic(form):
 
 
 def fill_form_llm(form):
-    pass
+    parsed = form
+    if cfg.model_config['parser'] != 'NONE':
+        parsed = parse_form(form)
+    
+    if cfg.model_config['filler'] == 'GPT3-ZERO-SHOT':
+        return fill_form_gpt3(parsed, True)
+    if cfg.model_config['filler'] == 'GPT3-EXAMPLED':
+        return fill_form_gpt3(parsed, False)
+    return None
 
 
 def submit_form(form):
