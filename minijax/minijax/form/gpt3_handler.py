@@ -1,4 +1,5 @@
 import openai
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
@@ -35,7 +36,6 @@ YOUR COMMANDS:"""
 
 
 def fill_form_gpt3(form, zero_shot=True):
-    base_xpath = get_element_xpath(driver, form)
     form_html = form.get_attribute('outerHTML')
     prompt = gpt3_completion_prompt.format(form_html=form_html)
     res = openai.Completion.create(

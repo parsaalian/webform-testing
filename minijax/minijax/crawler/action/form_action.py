@@ -8,6 +8,7 @@ from minijax.form.finder import find_forms_by_query
 from minijax.form.parser import parse_form_inputs_without_labels
 from minijax.form.filler import fill_form_with_fixed_values, fill_form_with_random_values
 from minijax.form.gpt3_handler import fill_form_gpt3
+from minijax.form.chatgpt_handler import fill_form_chatgpt
 
 from minijax.crawler.action.base import ActionBase
 
@@ -92,6 +93,10 @@ def fill_form_llm(form):
         return fill_form_gpt3(parsed, True)
     if cfg.model_config['filler'] == 'GPT3-EXAMPLED':
         return fill_form_gpt3(parsed, False)
+    if cfg.model_config['filler'] == 'GPT3.5':
+        return fill_form_chatgpt(parsed, 'gpt-3.5-turbo', True)
+    if cfg.model_config['filler'] == 'GPT4':
+        return fill_form_chatgpt(parsed, 'gpt-4', True)
     return None
 
 
