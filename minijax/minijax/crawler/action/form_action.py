@@ -100,6 +100,5 @@ def submit_form(form):
         By.XPATH,
         '//button[@type = "submit"] | //input[@type = "submit"]'
     )
-    print(submit_button.get_attribute('outerHTML'))
     submit_button.click()
     return True

@@ -73,7 +73,7 @@ class State:
         return self.neighbors
     
     
-    def execute_actions(self, actions_to_exclude=[]):
+    def execute_actions(self, actions_to_exclude={}):
         # create a queue with the number of times that we tried to execute an action
         # some actions (like form filling) might have multiple executions
         action_execution_queue = []
@@ -86,7 +86,9 @@ class State:
             action, retries = action_execution_queue.pop(0)
             
             # might cause problems in an SPA application where URL won't change but content will
-            if action.xpath in actions_to_exclude and cfg.crawler_config['action']['should_exclude_duplicates']:
+            if action.id() in actions_to_exclude and cfg.crawler_config['action']['should_exclude_duplicates']:
+                print(actions_to_exclude[action.id()])
+                self._add_neighbor(action, actions_to_exclude[action.id()])
                 logger.debug(f'Skipping: {action}')
                 continue
             

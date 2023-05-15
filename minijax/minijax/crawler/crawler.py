@@ -45,9 +45,9 @@ class Crawler:
                 actions_to_exclude=self.state_graph.get_executed_actions_in_url(next_state.url)
             )
             
-            for action, neighbor_state in next_state.get_neighbors().items():
-                if not self.state_graph.has_executed_action_in_url(next_state.url, action):
-                    self.state_graph.add_executed_action_to_url(next_state.url, action)
+            for action_id, neighbor_state in next_state.get_neighbors().items():
+                if not self.state_graph.has_executed_action_in_url(next_state.url, action_id):
+                    self.state_graph.add_executed_action_to_url(next_state.url, action_id, neighbor_state)
                 
                 if not self.state_graph.is_in_graph(neighbor_state):
                     self.state_graph.add_state(neighbor_state)

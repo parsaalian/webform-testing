@@ -18,22 +18,22 @@ class StateGraph:
         return True
 
     
-    def add_executed_action_to_url(self, url, action):
+    def add_executed_action_to_url(self, url, action_id, new_state):
         if url not in self.url_action_map:
-            self.url_action_map[url] = []
-        self.url_action_map[url].append(action)
+            self.url_action_map[url] = {}
+        self.url_action_map[url][action_id] = new_state
     
     
     def get_executed_actions_in_url(self, url):
         if url not in self.url_action_map:
-            return []
+            return {}
         return self.url_action_map[url]
     
     
-    def has_executed_action_in_url(self, url, action):
+    def has_executed_action_in_url(self, url, action_id):
         if url not in self.url_action_map:
             return False
-        if action not in self.url_action_map[url]:
+        if action_id not in self.url_action_map[url]:
             return False
         return True
 
