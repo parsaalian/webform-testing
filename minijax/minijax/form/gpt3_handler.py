@@ -3,9 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
 from minijax.config import Config
+from minijax.crawler.driver import get_driver_container
+from minijax.crawler.utils import get_element_xpath
 
 
 cfg = Config()
+driver = get_driver_container().get_driver()
 
 
 gpt3_completion_prompt = """You are an agent filling forms on a website. You can issue these commands:
@@ -19,6 +22,7 @@ YOUR COMMANDS:"""
 
 
 def fill_form_gpt3(form, zero_shot=True):
+    base_xpath = get_element_xpath(driver, form)
     form_html = form.get_attribute('outerHTML')
     prompt = gpt3_completion_prompt.format(form_html=form_html)
     res = openai.Completion.create(
@@ -37,11 +41,13 @@ def fill_form_gpt3(form, zero_shot=True):
         try:
             print(command)
             cmd, xpath, value = command.split('////')
-            values[xpath] = value
+            complete_xpath = f'//{xpath}'
+            value = value.strip('"')
+            values[complete_xpath] = value
             if cmd == 'FILL':
-                form.find_element(By.XPATH, xpath).send_keys(value)
+                form.find_element(By.XPATH, complete_xpath).send_keys(value)
             elif cmd == 'SELECT':
-                select = Select(form.find_element(By.XPATH, xpath))
+                select = Select(form.find_element(By.XPATH, complete_xpath))
                 select.select_by_visible_text(value)
         except:
             continue

@@ -96,6 +96,10 @@ def fill_form_llm(form):
 
 
 def submit_form(form):
-    submit_button = form.find_element(By.XPATH, '//*[@type="submit"]')
+    submit_button = form.find_element(
+        By.XPATH,
+        '//button[@type = "submit"] | //input[@type = "submit"]'
+    )
+    print(submit_button.get_attribute('outerHTML'))
     submit_button.click()
     return True
