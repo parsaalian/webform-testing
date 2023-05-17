@@ -2,12 +2,9 @@ from selenium.webdriver.common.by import By
 
 from minijax.config import Config
 from minijax.crawler import get_driver_container
-from minijax.crawler.utils import get_element_xpath
 
-from minijax.form.finder import find_forms_by_query
 from minijax.form.parser import parse_form_inputs_without_labels
-from minijax.form.filler import fill_form_with_fixed_values, fill_form_with_random_values
-from minijax.models import gpt3_form_handler, chatgpt_form_handler
+from minijax.models import gpt3_form_handler, chatgpt_form_handler, rule_based_form_handler
 
 from minijax.crawler.action.base import ActionBase
 
@@ -54,16 +51,16 @@ def parse_form(form):
 def fill_form_conditional(form):
     if cfg.model_config['workflow']['filler'] == 'FIXED' or cfg.model_config['workflow']['filler'] == 'RANDOM':
         parsed = parse_form(form)
-        return fill_form_basic(parsed)
+        return fill_form_basic(form, parsed)
     else:
         return fill_form_llm(form)
 
 
-def fill_form_basic(form):
+def fill_form_basic(form, parsed):
     if cfg.model_config['workflow']['filler'] == 'FIXED':
-        return fill_form_with_fixed_values(form)
+        return rule_based_form_handler(form, parsed, False)
     else:
-        return fill_form_with_random_values(form)
+        return rule_based_form_handler(form, parsed, True)
 
 
 def fill_form_llm(form):

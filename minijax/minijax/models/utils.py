@@ -15,6 +15,7 @@ def parse_generated_commands(commands_text):
 def execute_generated_commands(form, commands):
     filled_values = {}
     for xpath, (cmd, value) in commands.items():
+        print(xpath, cmd, value)
         if cmd == 'FILL':
             form.find_element(By.XPATH, xpath).send_keys(value)
         elif cmd == 'SELECT':

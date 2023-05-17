@@ -1,4 +1,10 @@
-def get_element_xpath(driver, element):
+from minijax.crawler.driver import get_driver_container
+
+
+driver = get_driver_container().get_driver()
+
+
+def get_element_xpath(element):
     xpath_script = """
         function getPathTo(element) {
             // if (element.id !== '')

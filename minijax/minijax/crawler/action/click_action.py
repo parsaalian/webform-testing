@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 
 from minijax.crawler import get_driver_container
-from minijax.crawler.utils import get_element_xpath
 from minijax.crawler.action.base import ActionBase
 
 

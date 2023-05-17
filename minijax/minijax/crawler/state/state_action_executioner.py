@@ -5,9 +5,9 @@ from selenium.webdriver.common.by import By
 
 from minijax.config import Config
 from minijax.logger import logger
-from minijax.utils import raise_in_debug_mode
 from minijax.crawler import get_driver_container
 from minijax.crawler.state.state import State
+from minijax.utils.raise_in_debug_mode import raise_in_debug_mode
 
 
 cfg = Config()

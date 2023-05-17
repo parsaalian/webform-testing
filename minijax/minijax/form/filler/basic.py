@@ -13,7 +13,7 @@ def fill_form_with_fixed_values(parsed_form):
     
     for i in parsed_form:
         element = i['element']
-        xpath = get_element_xpath(driver, element)
+        xpath = get_element_xpath(element)
         
         if i['tag'] == 'button':
             continue
@@ -49,7 +49,7 @@ def fill_form_with_random_values(parsed_form):
     
     for i in parsed_form:
         element = i['element']
-        xpath = get_element_xpath(driver, element)
+        xpath = get_element_xpath(element)
         
         if i['tag'] == 'button':
             continue

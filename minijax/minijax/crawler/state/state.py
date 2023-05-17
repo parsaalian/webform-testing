@@ -51,7 +51,7 @@ class State:
         # TODO: write a common function for all different action types
         forms = list(filter(lambda x: x.is_displayed(), forms))
         forms_xpath = list(map(
-            lambda x: get_element_xpath(driver, x),
+            lambda x: get_element_xpath(x),
             forms
         ))
         forms_actions = list(map(
@@ -68,7 +68,7 @@ class State:
         tags = driver.find_elements(By.TAG_NAME, 'a')
         tags = list(filter(lambda x: x.is_displayed(), tags))
         tags_xpath = list(map(
-            lambda x: get_element_xpath(driver, x),
+            lambda x: get_element_xpath(x),
             tags
         ))
         tags_actions = list(map(
