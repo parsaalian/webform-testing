@@ -3,11 +3,11 @@ import random
 
 from selenium.webdriver.support.ui import Select
 
-from minijax.utils.get_or_else import get_or_else
+from minijax.utils.functional import get_or_else
 from minijax.crawler.driver import get_driver_container
 from minijax.crawler.utils import get_element_xpath
 
-from .utils import parse_generated_commands, execute_generated_commands
+from ..utils import parse_generated_commands, execute_generated_commands
 
 
 driver = get_driver_container().get_driver()
@@ -88,10 +88,9 @@ def rule_based_response_generator(parsed_form, random=True):
     return commands
 
 
-def rule_based_form_handler(form, parsed_form, random=True):
-    response = rule_based_response_generator(parsed_form, random=random)
-    
-    commands = parse_generated_commands(response)
-    values = execute_generated_commands(form, commands)
-    
-    return values
+def rule_based_value_generator(random=True):
+    def __wrapped(parsed_form):
+        response = rule_based_response_generator(parsed_form, random=random)
+        commands = parse_generated_commands(response)
+        return commands
+    return __wrapped

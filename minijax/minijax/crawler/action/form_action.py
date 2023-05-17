@@ -4,7 +4,7 @@ from minijax.config import Config
 from minijax.crawler import get_driver_container
 
 from minijax.form.parser import parse_form_inputs_without_labels
-from minijax.models import gpt3_form_handler, chatgpt_form_handler, rule_based_form_handler
+from minijax.models.value_generator import gpt3_form_handler, chatgpt_form_handler, rule_based_form_handler
 
 from minijax.crawler.action.base import ActionBase
 

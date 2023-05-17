@@ -11,5 +11,6 @@ workflow:
 
 parameters:
   model: 'gpt-4'
+  zero_shot: true
   temperature: 0.5
   embedding_token_limit: 8191

@@ -11,5 +11,6 @@ workflow:
 
 parameters:
   model: 'gpt-3.5-turbo'
+  zero_shot: true
   temperature: 0.5
   embedding_token_limit: 8191

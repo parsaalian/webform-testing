@@ -1,9 +1,10 @@
 workflow:
   finder: 'BASIC'
   parser: 'NONE'
-  filler: 'GPT3-ZERO-SHOT'
+  filler: 'GPT3'
 
 parameters:
   model: 'text-davinci-003'
+  zero_shot: true
   temperature: 0.5
   embedding_token_limit: 8191

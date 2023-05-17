@@ -11,7 +11,7 @@ from minijax.crawler.action import (
     FormAction,
     ClickAction,
 )
-from minijax.form.finder import find_forms_by_query
+from minijax.models.form_finder import find_forms_by_query
 
 
 cfg = Config()
@@ -42,7 +42,7 @@ class State:
     
     def find_form_actions(self):
         # TODO: change based on different finding modes
-        forms = find_forms_by_query(driver)
+        forms = find_forms_by_query()
         # if cfg.model_config['workflow'].form_finder_mode == FormFinderMode.BASIC:
         #     forms = find_forms_by_query(driver)
         # else:
