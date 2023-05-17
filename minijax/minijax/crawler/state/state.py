@@ -1,14 +1,9 @@
 import time
 import hashlib
-from urllib.parse import urlparse
-
-from selenium.webdriver.common.by import By
 
 from minijax.config import Config
-from minijax.logger import logger
 from minijax.crawler import get_driver_container
 from minijax.crawler.action import (
-    ExecutionResult,
     GoToRootAction,
     find_click_actions,
     find_form_actions,
@@ -59,7 +54,7 @@ class State:
         self.actions = actions
     
     
-    def _add_neighbor(self, action, neighbor_state):
+    def add_neighbor(self, action, neighbor_state):
         self.neighbors[action.id()] = neighbor_state
     
     
@@ -71,71 +66,6 @@ class State:
     
     def get_neighbors(self):
         return self.neighbors
-    
-    
-    def execute_actions(self, actions_to_exclude={}):
-        # create a queue with the number of times that we tried to execute an action
-        # some actions (like form filling) might have multiple executions
-        action_execution_queue = []
-        for action in self.actions:
-            execution_count = action.get_execution_count()
-            for _ in range(execution_count):
-                action_execution_queue.append((action.copy(), 0))
-        
-        while len(action_execution_queue) > 0:
-            action, retries = action_execution_queue.pop(0)
-            
-            # might cause problems in an SPA application where URL won't change but content will
-            if action.id() in actions_to_exclude and cfg.crawler_config['action']['should_exclude_duplicates']:
-                print(actions_to_exclude[action.id()])
-                self._add_neighbor(action, actions_to_exclude[action.id()])
-                logger.debug(f'Skipping: {action}')
-                continue
-            
-            if action.outer_domain:
-                logger.debug(f'Skipping: {action} (outer domain)')
-                continue
-            
-            try:
-                logger.debug(f'Executing: {action}')
-                action.execute()
-                
-                action.set_execution_result((True, None))
-                
-                time.sleep(cfg.crawler_config['wait']['after_action'])
-
-            except Exception as e:
-                logger.debug(f'Exception: {e}')
-                
-                action.set_execution_result((False, str(e)))
-                
-                if retries + 1 < cfg.crawler_config['action']['max_retries_after_fail']:
-                    action_execution_queue.append((action, retries + 1))
-                    logger.debug(f'{action} failed {retries + 1} times. Retrying Later.')
-                else:
-                    logger.debug(f'{action} failed {retries + 1} times. Skipping.')
-            
-            # check if action leads to invalid domain
-            current_state_domain = urlparse(self.url, scheme='', allow_fragments=True).netloc
-            new_state_domain = urlparse(self.driver.current_url, scheme='', allow_fragments=True).netloc
-            if current_state_domain != new_state_domain:
-                logger.info('Action leads to invalid domain')
-                action.outer_domain = True
-            
-            else:
-                body = self.driver.find_element(By.TAG_NAME, 'body')
-                new_state = State(
-                    self.driver.current_url,
-                    body.get_attribute('outerHTML'),
-                    body.text,
-                    self,
-                    action
-                )
-                
-                if self != new_state:
-                    self._add_neighbor(action, new_state)
-                
-            self.get_to_state()
     
     
     def to_json(self):

@@ -4,7 +4,7 @@ from minijax.logger import logger
 from minijax.config import Config
 from minijax.crawler.report import generate_report
 from minijax.crawler import get_driver_container
-from minijax.crawler.state import State, StateGraph
+from minijax.crawler.state import State, StateGraph, StateActionExecutioner
 
 
 class Crawler:
@@ -12,6 +12,7 @@ class Crawler:
         self.cfg = Config()
         self.driver = get_driver_container().get_driver()
         self.state_graph = StateGraph()
+        self.state_action_executioner = StateActionExecutioner()
         self.title = None
     
     
@@ -35,20 +36,15 @@ class Crawler:
             counter += 1
             logger.info(f"\n===================\nIteration: {counter}")
 
-            next_state = crawl_queue[0]
+            state = crawl_queue[0]
             
-            next_state.get_to_state()
+            state.get_to_state()
             
-            logger.info(f"Crawling state: {next_state}")
+            logger.info(f"Crawling state: {state}")
             
-            next_state.execute_actions(
-                actions_to_exclude=self.state_graph.get_executed_actions_in_url(next_state.url)
-            )
+            self.state_action_executioner.execute_actions(state)
             
-            for action_id, neighbor_state in next_state.get_neighbors().items():
-                if not self.state_graph.has_executed_action_in_url(next_state.url, action_id):
-                    self.state_graph.add_executed_action_to_url(next_state.url, action_id, neighbor_state)
-                
+            for _, neighbor_state in state.get_neighbors().items():
                 if not self.state_graph.is_in_graph(neighbor_state):
                     self.state_graph.add_state(neighbor_state)
                     crawl_queue.append(neighbor_state)
