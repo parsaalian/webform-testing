@@ -9,7 +9,6 @@ from minijax.llm.base import (
     Message,
     ModelInfo,
 )
-from minijax.llm.chat import chat_with_ai, create_chat_message, generate_context
 from minijax.llm.llm_utils import (
     call_ai_function,
     chunked_tokens,
@@ -28,9 +27,6 @@ __all__ = [
     "LLMResponse",
     "ChatModelResponse",
     "EmbeddingModelResponse",
-    "create_chat_message",
-    "generate_context",
-    "chat_with_ai",
     "call_ai_function",
     "create_chat_completion",
     "get_ada_embedding",

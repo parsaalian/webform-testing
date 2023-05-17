@@ -17,11 +17,13 @@ class ApiManager(metaclass=Singleton):
         self.total_cost = 0
         self.total_budget = 0
 
+
     def reset(self):
         self.total_prompt_tokens = 0
         self.total_completion_tokens = 0
         self.total_cost = 0
         self.total_budget = 0.0
+
 
     def create_chat_completion(
         self,
@@ -29,7 +31,6 @@ class ApiManager(metaclass=Singleton):
         model: str | None = None,
         temperature: float = None,
         max_tokens: int | None = None,
-        deployment_id=None,
     ) -> str:
         """
         Create a chat completion and update the cost.
@@ -45,28 +46,55 @@ class ApiManager(metaclass=Singleton):
         logger.debug(f"Prompt: {json.dumps(messages, indent=2)}")
         if temperature is None:
             temperature = cfg.llm_config['parameters']['temperature']
-        if deployment_id is not None:
-            response = openai.ChatCompletion.create(
-                deployment_id=deployment_id,
-                model=model,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                api_key=cfg.llm_config['openai_api_key'],
-            )
-        else:
-            response = openai.ChatCompletion.create(
-                model=model,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                api_key=cfg.llm_config['openai_api_key'],
-            )
+        
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            api_key=cfg.llm_config['openai_api_key'],
+        )
         logger.debug(f"Response: {response}")
         prompt_tokens = response.usage.prompt_tokens
         completion_tokens = response.usage.completion_tokens
         self.update_cost(prompt_tokens, completion_tokens, model)
         return response
+
+
+    def create_text_completion(
+        self,
+        prompt: str,
+        model: str | None = None,
+        temperature: float = None,
+        max_tokens: int | None = None,
+    ) -> str:
+        """
+        Create a text completion and update the cost.
+        Args:
+        prompt (str): The text completion prompt to send to the API.
+        model (str): The model to use for the API call.
+        temperature (float): The temperature to use for the API call.
+        max_tokens (int): The maximum number of tokens for the API call.
+        Returns:
+        str: The AI's response.
+        """
+        cfg = Config()
+        logger.debug(f"Prompt: {prompt}")
+        if temperature is None:
+            temperature = cfg.llm_config['parameters']['temperature']
+        response = openai.Completion.create(
+            model=model,
+            prompt=prompt,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            api_key=cfg.llm_config['openai_api_key'],
+        )
+        logger.debug(f"Response: {response}")
+        prompt_tokens = response.usage.prompt_tokens
+        completion_tokens = response.usage.completion_tokens
+        self.update_cost(prompt_tokens, completion_tokens, model)
+        return response
+
 
     def update_cost(self, prompt_tokens, completion_tokens, model):
         """
@@ -85,6 +113,7 @@ class ApiManager(metaclass=Singleton):
         ) / 1000
         logger.debug(f"Total running cost: ${self.total_cost:.3f}")
 
+
     def set_total_budget(self, total_budget):
         """
         Sets the total user-defined budget for API calls.
@@ -93,6 +122,7 @@ class ApiManager(metaclass=Singleton):
         total_budget (float): The total budget for API calls.
         """
         self.total_budget = total_budget
+
 
     def get_total_prompt_tokens(self):
         """
@@ -103,6 +133,7 @@ class ApiManager(metaclass=Singleton):
         """
         return self.total_prompt_tokens
 
+
     def get_total_completion_tokens(self):
         """
         Get the total number of completion tokens.
@@ -112,6 +143,7 @@ class ApiManager(metaclass=Singleton):
         """
         return self.total_completion_tokens
 
+
     def get_total_cost(self):
         """
         Get the total cost of API calls.
@@ -120,6 +152,7 @@ class ApiManager(metaclass=Singleton):
         float: The total cost of API calls.
         """
         return self.total_cost
+
 
     def get_total_budget(self):
         """
