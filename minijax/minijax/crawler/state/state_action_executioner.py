@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 from minijax.config import Config
 from minijax.logger import logger
+from minijax.utils import raise_in_debug_mode
 from minijax.crawler import get_driver_container
 from minijax.crawler.state.state import State
 
@@ -100,6 +101,8 @@ class StateActionExecutioner:
             
             return True
         except Exception as e:
+            raise_in_debug_mode(e)
+            
             logger.debug(f'Exception: {e}')
             
             if retries + 1 < cfg.crawler_config['action']['max_retries_after_fail']:
