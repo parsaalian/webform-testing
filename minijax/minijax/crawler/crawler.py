@@ -7,10 +7,12 @@ from minijax.crawler import get_driver_container
 from minijax.crawler.state import State, StateGraph, StateActionExecutioner
 
 
+cfg = Config()
+driver = get_driver_container().get_driver()
+
+
 class Crawler:
     def __init__(self):
-        self.cfg = Config()
-        self.driver = get_driver_container().get_driver()
         self.state_graph = StateGraph()
         self.state_action_executioner = StateActionExecutioner()
         self.title = None
@@ -19,11 +21,11 @@ class Crawler:
     def crawl(self):
         counter = 0
         
-        self.driver.get(self.cfg.app_url)
-        self.title = self.driver.title
-        body = self.driver.find_element(By.TAG_NAME, 'body')
+        driver.get(cfg.app_url)
+        self.title = driver.title
+        body = driver.find_element(By.TAG_NAME, 'body')
         initial_state = State(
-            self.driver.current_url,
+            driver.current_url,
             body.get_attribute('outerHTML'),
             body.text,
             None,
@@ -32,7 +34,7 @@ class Crawler:
         crawl_queue = [initial_state]
         self.state_graph.add_state(initial_state)
         
-        while len(crawl_queue) > 0 and counter < self.cfg.crawler_config['max_crawling_iterations']:
+        while len(crawl_queue) > 0 and counter < cfg.crawler_config['max_crawling_iterations']:
             counter += 1
             logger.info(f"\n===================\nIteration: {counter}")
 

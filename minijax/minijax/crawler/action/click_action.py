@@ -6,8 +6,8 @@ from minijax.crawler.action.base import ActionBase
 
 
 class ClickAction(ActionBase):
-    def __init__(self, xpath):
-        super().__init__(xpath)
+    def __init__(self, xpath, parent_state):
+        super().__init__(xpath, parent_state)
     
     
     def execute(self):
@@ -18,17 +18,3 @@ class ClickAction(ActionBase):
     
     def id(self):
         return self.xpath
-
-
-def find_click_actions(driver):
-    tags = driver.find_elements(By.TAG_NAME, 'a')
-    tags = list(filter(lambda x: x.is_displayed(), tags))
-    tags_xpath = list(map(
-        lambda x: get_element_xpath(driver, x),
-        tags
-    ))
-    tags_actions = list(map(
-        lambda x: ClickAction(x),
-        tags_xpath
-    ))
-    return tags_actions

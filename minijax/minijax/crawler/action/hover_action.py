@@ -5,10 +5,6 @@ from minijax.crawler import get_driver_container
 from minijax.crawler.action.base import ActionBase
 
 
-def find_hover_actions(driver):
-    return []
-
-
 class HoverAction(ActionBase):
     def __init__(self, action_element_xpath):
         super().__init__(action_element_xpath)

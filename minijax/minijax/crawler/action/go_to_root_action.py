@@ -5,7 +5,7 @@ from minijax.crawler.action.base import ActionBase
 
 class GoToRootAction(ActionBase):
     def __init__(self):
-        super().__init__(None)
+        super().__init__(None, None)
     
     
     def execute(self):

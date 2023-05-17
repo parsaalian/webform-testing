@@ -4,8 +4,9 @@ from abc import ABC, abstractmethod
 
 
 class ActionBase(ABC):
-    def __init__(self, action_element_xpath, execution_count=1):
-        self.xpath = action_element_xpath
+    def __init__(self, xpath, parent_state, execution_count=1):
+        self.xpath = xpath
+        self.parent_state = parent_state
         self.execution_count = execution_count
         self.outer_domain = False
         

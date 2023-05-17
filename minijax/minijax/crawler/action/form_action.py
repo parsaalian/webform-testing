@@ -17,8 +17,12 @@ cfg = Config()
 
 
 class FormAction(ActionBase):
-    def __init__(self, xpath):
-        super().__init__(xpath, execution_count=cfg.crawler_config['action']['form']['execution_count'])
+    def __init__(self, xpath, parent_state):
+        super().__init__(
+            xpath,
+            parent_state,
+            execution_count=cfg.crawler_config['action']['form']['execution_count']
+        )
     
     
     def execute(self):
@@ -35,27 +39,6 @@ class FormAction(ActionBase):
     
     def id(self):
         return f'{self.xpath} {str(self.execution_result)}'
-
-
-def find_form_actions(driver):
-    # TODO: change based on different finding modes
-    forms = find_forms_by_query(driver)
-    # if cfg.model_config.form_finder_mode == FormFinderMode.BASIC:
-    #     forms = find_forms_by_query(driver)
-    # else:
-    #     forms = find_forms_by_query(driver)
-    
-    # TODO: write a common function for all different action types
-    forms = list(filter(lambda x: x.is_displayed(), forms))
-    forms_xpath = list(map(
-        lambda x: get_element_xpath(driver, x),
-        forms
-    ))
-    forms_actions = list(map(
-        lambda x: FormAction(x),
-        forms_xpath
-    ))
-    return forms_actions
 
 
 def parse_form(form):
