@@ -5,7 +5,7 @@ import json
 import openai
 
 from minijax.config import Config
-from minijax.llm.modelsinfo import COSTS
+from minijax.llm.openai.modelsinfo import COSTS
 from minijax.logger import logger
 from minijax.utils import Singleton
 

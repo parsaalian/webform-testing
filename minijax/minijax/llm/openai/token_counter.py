@@ -6,7 +6,7 @@ from typing import List
 
 import tiktoken
 
-from minijax.llm.base import Message
+from minijax.llm.openai.base import Message
 from minijax.logger import logger
 
 

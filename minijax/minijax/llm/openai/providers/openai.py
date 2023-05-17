@@ -1,5 +1,5 @@
 # from: https://github.com/Significant-Gravitas/Auto-GPT/tree/master/autogpt/llm
-from minijax.llm.base import ChatModelInfo, EmbeddingModelInfo
+from minijax.llm.openai.base import ChatModelInfo, EmbeddingModelInfo
 
 OPEN_AI_CHAT_MODELS = {
     "gpt-3.5-turbo": ChatModelInfo(

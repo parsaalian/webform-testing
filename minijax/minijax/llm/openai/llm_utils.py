@@ -13,8 +13,8 @@ from colorama import Fore, Style
 from openai.error import APIError, RateLimitError, Timeout
 
 from minijax.config import Config
-from minijax.llm.api_manager import ApiManager
-from minijax.llm.base import Message
+from minijax.llm.openai.api_manager import ApiManager
+from minijax.llm.openai.base import Message
 from minijax.logger import logger
 
 
