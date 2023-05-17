@@ -43,7 +43,7 @@ class State:
     def find_form_actions(self):
         # TODO: change based on different finding modes
         forms = find_forms_by_query(driver)
-        # if cfg.model_config.form_finder_mode == FormFinderMode.BASIC:
+        # if cfg.model_config['workflow'].form_finder_mode == FormFinderMode.BASIC:
         #     forms = find_forms_by_query(driver)
         # else:
         #     forms = find_forms_by_query(driver)

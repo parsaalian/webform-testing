@@ -1,19 +1,15 @@
-options:
-  finder:
-    - 'BASIC'
-  
-  parser:
-    - 'NONE'
-    - 'BASIC'
-  
-  FILLER:
-    - 'FIXED'
-    - 'RANDOM'
-    - 'GPT3'
-    - 'GPT3.5'
-    - 'GPT4'
-    - 'OTHER'
+models:
+  fast_llm: 'gpt-3.5-turbo'
+  smart_llm: 'gpt-4'
+  embedding: 'text-embedding-ada-002'
+  tokenizer: 'cl100k_base'
 
-finder: 'BASIC'
-parser: 'NONE'
-filler: 'GPT3.5'
+workflow:
+  finder: 'BASIC'
+  parser: 'NONE'
+  filler: 'GPT3.5'
+
+parameters:
+  model: 'gpt-3.5-turbo'
+  temperature: 0.5
+  embedding_token_limit: 8191

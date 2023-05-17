@@ -1,19 +1,9 @@
-options:
-  finder:
-    - 'BASIC'
-  
-  parser:
-    - 'NONE'
-    - 'BASIC'
-  
-  FILLER:
-    - 'FIXED'
-    - 'RANDOM'
-    - 'GPT3'
-    - 'GPT3.5'
-    - 'GPT4'
-    - 'OTHER'
+workflow:
+  finder: 'BASIC'
+  parser: 'NONE'
+  filler: 'GPT3-ZERO-SHOT'
 
-finder: 'BASIC'
-parser: 'NONE'
-filler: 'GPT3-ZERO-SHOT'
+parameters:
+  model: 'text-davinci-003'
+  temperature: 0.5
+  embedding_token_limit: 8191

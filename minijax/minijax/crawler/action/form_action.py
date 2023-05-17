@@ -44,7 +44,7 @@ def parse_form(form):
     parsed = parse_form_inputs_without_labels(form)
 
     # TODO: change based on different parsing modes
-    # if cfg.model_config.form_parser_mode == FormParserMode.BASIC:
+    # if cfg.model_config['workflow'].form_parser_mode == FormParserMode.BASIC:
     #     return parse_form_inputs_without_labels(form)
     # return parse_form_inputs_without_labels(form)
 
@@ -52,7 +52,7 @@ def parse_form(form):
 
 
 def fill_form_conditional(form):
-    if cfg.model_config['filler'] == 'FIXED' or cfg.model_config['filler'] == 'RANDOM':
+    if cfg.model_config['workflow']['filler'] == 'FIXED' or cfg.model_config['workflow']['filler'] == 'RANDOM':
         parsed = parse_form(form)
         return fill_form_basic(parsed)
     else:
@@ -60,7 +60,7 @@ def fill_form_conditional(form):
 
 
 def fill_form_basic(form):
-    if cfg.model_config['filler'] == 'FIXED':
+    if cfg.model_config['workflow']['filler'] == 'FIXED':
         return fill_form_with_fixed_values(form)
     else:
         return fill_form_with_random_values(form)
@@ -68,16 +68,16 @@ def fill_form_basic(form):
 
 def fill_form_llm(form):
     parsed = form
-    if cfg.model_config['parser'] != 'NONE':
+    if cfg.model_config['workflow']['parser'] != 'NONE':
         parsed = parse_form(form)
     
-    if cfg.model_config['filler'] == 'GPT3-ZERO-SHOT':
+    if cfg.model_config['workflow']['filler'] == 'GPT3-ZERO-SHOT':
         return gpt3_form_handler(parsed, True)
-    if cfg.model_config['filler'] == 'GPT3-EXAMPLED':
+    if cfg.model_config['workflow']['filler'] == 'GPT3-EXAMPLED':
         return gpt3_form_handler(parsed, False)
-    if cfg.model_config['filler'] == 'GPT3.5':
+    if cfg.model_config['workflow']['filler'] == 'GPT3.5':
         return chatgpt_form_handler(parsed, True)
-    if cfg.model_config['filler'] == 'GPT4':
+    if cfg.model_config['workflow']['filler'] == 'GPT4':
         return chatgpt_form_handler(parsed, True)
     return None
 

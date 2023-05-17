@@ -1,19 +1,4 @@
-options:
-  finder:
-    - 'BASIC'
-  
-  parser:
-    - 'NONE'
-    - 'BASIC'
-  
-  FILLER:
-    - 'FIXED'
-    - 'RANDOM'
-    - 'GPT3'
-    - 'GPT3.5'
-    - 'GPT4'
-    - 'OTHER'
-
-finder: 'BASIC'
-parser: 'BASIC'
-filler: 'FIXED'
+workflow:
+  finder: 'BASIC'
+  parser: 'BASIC'
+  filler: 'FIXED'

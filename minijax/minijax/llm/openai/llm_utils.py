@@ -90,7 +90,7 @@ def call_ai_function(
     """
     cfg = Config()
     if model is None:
-        model = cfg.llm_config['models']['smart_llm']
+        model = cfg.model_config['models']['smart_llm']
     # For each arg, if any are None, convert to "None":
     args = [str(arg) if arg is not None else "None" for arg in args]
     # parse args to comma separated string
@@ -128,7 +128,7 @@ def create_chat_completion(
     """
     cfg = Config()
     if temperature is None:
-        temperature = cfg.llm_config['parameters']['temperature']
+        temperature = cfg.model_config['parameters']['temperature']
 
     num_retries = 10
     warned_user = False
@@ -207,7 +207,7 @@ def get_ada_embedding(text: str) -> List[float]:
         List[float]: The embedding.
     """
     cfg = Config()
-    model = cfg.llm_config['models']['embedding']
+    model = cfg.model_config['models']['embedding']
     text = text.replace("\n", " ")
 
     kwargs = {"model": model}
@@ -236,19 +236,19 @@ def create_embedding(
     chunk_lengths = []
     for chunk in chunked_tokens(
         text,
-        tokenizer_name=cfg.llm_config['models']['tokenizer'],
-        chunk_length=cfg.llm_config['parameters']['embedding_token_limit'],
+        tokenizer_name=cfg.model_config['models']['tokenizer'],
+        chunk_length=cfg.model_config['parameters']['embedding_token_limit'],
     ):
         embedding = openai.Embedding.create(
             input=[chunk],
-            api_key=cfg.llm_config['openai_api_key'],
+            api_key=cfg.openai_api_key,
             **kwargs,
         )
         api_manager = ApiManager()
         api_manager.update_cost(
             prompt_tokens=embedding.usage.prompt_tokens,
             completion_tokens=0,
-            model=cfg.llm_config['models']['embedding'],
+            model=cfg.model_config['models']['embedding'],
         )
         chunk_embeddings.append(embedding["data"][0]["embedding"])
         chunk_lengths.append(len(chunk))

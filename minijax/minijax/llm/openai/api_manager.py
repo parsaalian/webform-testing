@@ -45,14 +45,14 @@ class ApiManager(metaclass=Singleton):
         cfg = Config()
         logger.debug(f"Prompt: {json.dumps(messages, indent=2)}")
         if temperature is None:
-            temperature = cfg.llm_config['parameters']['temperature']
+            temperature = cfg.model_config['parameters']['temperature']
         
         response = openai.ChatCompletion.create(
             model=model,
             messages=messages,
             temperature=temperature,
             max_tokens=max_tokens,
-            api_key=cfg.llm_config['openai_api_key'],
+            api_key=cfg.openai_api_key,
         )
         logger.debug(f"Response: {response}")
         prompt_tokens = response.usage.prompt_tokens
@@ -81,13 +81,13 @@ class ApiManager(metaclass=Singleton):
         cfg = Config()
         logger.debug(f"Prompt: {prompt}")
         if temperature is None:
-            temperature = cfg.llm_config['parameters']['temperature']
+            temperature = cfg.model_config['parameters']['temperature']
         response = openai.Completion.create(
             model=model,
             prompt=prompt,
             temperature=temperature,
             max_tokens=max_tokens,
-            api_key=cfg.llm_config['openai_api_key'],
+            api_key=cfg.openai_api_key,
         )
         logger.debug(f"Response: {response}")
         prompt_tokens = response.usage.prompt_tokens

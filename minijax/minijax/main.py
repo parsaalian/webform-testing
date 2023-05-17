@@ -7,20 +7,19 @@ from minijax.crawler import get_driver_container, Crawler
 
 def run_crawler(
     url,
+    debug,
     crawler_config_path,
     model_config_path,
-    llm_config_path,
 ):
     cfg = Config()
     crawler_config = yaml.load(open(crawler_config_path, 'r'), Loader=yaml.FullLoader)
     model_config = yaml.load(open(model_config_path, 'r'), Loader=yaml.FullLoader)
-    llm_config = yaml.load(open(llm_config_path, 'r'), Loader=yaml.FullLoader)
     
     if url is not None:
         cfg.set_app_url(url)
+    cfg.set_debug(debug)
     cfg.set_crawler_config(crawler_config)
     cfg.set_model_config(model_config)
-    cfg.set_llm_config(llm_config)
     
     try:
         crawler = Crawler()

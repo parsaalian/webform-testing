@@ -15,9 +15,9 @@ def gpt3_form_handler(form, zero_shot=True):
     prompt = generate_text_completion_prompt(form_html, zero_shot=zero_shot)
     response = api_manager.create_text_completion(
         prompt=prompt,
-        model=cfg.llm_config['parameters']['model'],
-        temperature=cfg.llm_config['parameters']['temperature'],
-        # max_tokens=cfg.llm_config['parameters']['max_tokens'],
+        model=cfg.model_config['parameters']['model'],
+        temperature=cfg.model_config['parameters']['temperature'],
+        # max_tokens=cfg.model_config['parameters']['max_tokens'],
     )
     
     response_text = response.choices[0].text

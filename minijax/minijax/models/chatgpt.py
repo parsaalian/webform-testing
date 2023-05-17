@@ -15,9 +15,9 @@ def chatgpt_form_handler(form, zero_shot=True):
     prompt = generate_chat_completion_prompt(form_html)
     response = api_manager.create_chat_completion(
         messages=prompt,
-        model=cfg.llm_config['parameters']['model'],
-        temperature=cfg.llm_config['parameters']['temperature'],
-        # max_tokens=cfg.llm_config['parameters']['max_tokens'],
+        model=cfg.model_config['parameters']['model'],
+        temperature=cfg.model_config['parameters']['temperature'],
+        # max_tokens=cfg.model_config['parameters']['max_tokens'],
     )
     
     response_text = response.choices[0].message.content
