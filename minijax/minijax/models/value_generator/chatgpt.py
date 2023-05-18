@@ -27,8 +27,7 @@ def chat_gpt_value_generator(
         )
         
         response_text = response.choices[0].message.content
-        commands = parse_generated_commands(response_text)
         
-        return commands
+        return response_text
     
     return __wrapped
