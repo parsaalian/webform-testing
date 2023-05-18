@@ -6,7 +6,11 @@ from minijax.config import Config
 from minijax.utils import Singleton
 from minijax.utils.functional import compose
 
-from .utils import parse_generated_commands, execute_generated_commands
+from .utils import (
+    parse_generated_commands,
+    execute_generated_commands,
+    generate_commands_from_values
+)
 from .form_finder import find_forms_by_query
 from .form_parser import (
     none_parse_form_inputs,
@@ -88,6 +92,17 @@ class Workflow(metaclass=Singleton):
         return __wrapped
 
     
+    def generate_commands_from_values(
+        self,
+        form: WebElement,
+    ) -> function:
+        def __wrapped(values):
+            commands = generate_commands_from_values(form, values)
+            return commands
+        return __wrapped
+
+
+    
     # TODO: add feedback loop
     def execute(
         self,
@@ -99,3 +114,14 @@ class Workflow(metaclass=Singleton):
             parse_generated_commands,
             self.execute_commands(form)
         )(form)
+    
+    
+    def execute_with_values(
+        self,
+        form: WebElement,
+        values: dict[str, str]
+    ) -> dict[str, str]:
+        return compose(
+            self.generate_commands_from_values(form),
+            self.execute_commands(form)
+        )(values)

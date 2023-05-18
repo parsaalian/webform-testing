@@ -94,7 +94,7 @@ class StateActionExecutioner:
         try:
             logger.debug(f'Executing: {action}')
             
-            action.execute()
+            action.execute() if retries == 0 else action.retry()
             action.set_execution_result((True, None))
                 
             time.sleep(cfg.crawler_config['wait']['after_action'])

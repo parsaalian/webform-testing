@@ -42,6 +42,12 @@ class ActionBase(ABC):
     
     
     @abstractmethod
+    def retry(self):
+        '''re-executes the action'''
+        pass
+    
+    
+    @abstractmethod
     def id(self):
         '''returns a unique id for the action'''
         pass

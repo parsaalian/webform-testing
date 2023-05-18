@@ -61,7 +61,7 @@ class State:
     
     def get_to_state(self):
         for action in self.root_path:
-            action.execute()
+            action.retry()
             time.sleep(cfg.crawler_config['wait']['after_action'])
     
     

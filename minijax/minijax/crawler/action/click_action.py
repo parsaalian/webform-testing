@@ -15,5 +15,9 @@ class ClickAction(ActionBase):
         element.click()
     
     
+    def retry(self):
+        self.execute()
+    
+    
     def id(self):
         return self.xpath

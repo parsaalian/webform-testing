@@ -31,6 +31,16 @@ class FormAction(ActionBase):
         result = submit_form(form)
     
     
+    def retry(self):
+        # find form step
+        form = driver.find_element(By.XPATH, self.xpath)
+        # fill/fill+parse step
+        values = self.action_data
+        workflow.execute_with_values(form, values)
+        # submit step
+        result = submit_form(form)
+    
+    
     def id(self):
         return f'{self.xpath} {str(self.execution_result)}'
 
