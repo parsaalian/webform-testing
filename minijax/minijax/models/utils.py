@@ -13,9 +13,9 @@ def strip_value(value):
 
 def parse_single_command(command_text):
     command = command_text.split('----')
-    if len(command) == 2 and (command[0] != 'CLICK' or command[0] != 'BLANK'):
+    if len(command) == 2 and command[0] != 'CLICK' and command[0] != 'BLANK':
         raise Exception(f'Invalid command: {command_text}')
-    if len(command) == 3 and (command[0] != 'FILL' or command[0] != 'SELECT'):
+    if len(command) == 3 and command[0] != 'FILL' and command[0] != 'SELECT':
         raise Exception(f'Invalid command: {command_text}')
     
     cmd, xpath = command[0], command[1]

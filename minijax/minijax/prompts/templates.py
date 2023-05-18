@@ -45,5 +45,6 @@ You can issue these commands:
     - CLICK----X: Click on the element that has a relative xpath X, which is a checkbox or radio button
     - BLANK----X: Leave the element that has a relative xpath X blank (do nothing)
 
-The xpath in this format must be relative to the form element. Ensure the response can be parsed by Python json.loads.
+The xpath in this format must be relative to the form element. Just give me the commands and nothing else.
+YOUR COMMANDS:
 """
