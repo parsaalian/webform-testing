@@ -10,16 +10,19 @@ def run_crawler(
     debug,
     crawler_config_path,
     model_config_path,
+    auth_config_path,
 ):
     cfg = Config()
     crawler_config = yaml.load(open(crawler_config_path, 'r'), Loader=yaml.FullLoader)
     model_config = yaml.load(open(model_config_path, 'r'), Loader=yaml.FullLoader)
+    auth_config = yaml.load(open(auth_config_path, 'r'), Loader=yaml.FullLoader)
     
     if url is not None:
         cfg.set_app_url(url)
     cfg.set_debug(debug)
     cfg.set_crawler_config(crawler_config)
     cfg.set_model_config(model_config)
+    cfg.set_auth_config(auth_config)
     
     try:
         crawler = Crawler()
