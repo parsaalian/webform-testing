@@ -1,5 +1,5 @@
 max_crawling_depth: 3
-max_crawling_iterations: 11
+max_crawling_iterations: 100
 
 wait:
   after_state_change: 0.2
@@ -7,7 +7,7 @@ wait:
 
 action:
   should_exclude_duplicates: true
-  max_retries_after_fail: 1
+  max_retries_after_fail: 5
 
   enabled:
     click: true

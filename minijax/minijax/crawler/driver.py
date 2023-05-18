@@ -8,6 +8,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 class DriverContainer(AbstractSingleton):
     def __init__(self):
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        # wait for elements to load on page if necessary
+        driver.implicitly_wait(10)
         self.driver = driver
     
     

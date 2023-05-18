@@ -88,6 +88,12 @@ class StateActionExecutioner:
         
         if state != new_state:
             self.add_neighbor_to_state(state, action, new_state)
+    
+    
+    def reset_page_cookies(self):
+        driver.delete_all_cookies()
+        driver.refresh()
+        driver.get(cfg.app_url)
 
     
     def execute_single_action(self, action, retries):
@@ -147,4 +153,5 @@ class StateActionExecutioner:
             self.add_neighbor_if_not_same_state(state, action)
             self.add_state_actions_to_map(state)
             
+            self.reset_page_cookies()
             state.get_to_state()

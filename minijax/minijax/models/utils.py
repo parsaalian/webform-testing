@@ -35,7 +35,10 @@ def generate_commands_from_values(form, values):
     for xpath, value in values.items():
         element = form.find_element(By.XPATH, xpath)
         tag_name = element.tag_name
-        input_type = get_or_else(element.attributes, 'type', 'text')
+        try:
+            input_type = get_or_else(element.attributes, 'type', 'text')
+        except:
+            input_type = 'text'
         if tag_name == 'select':
             command_values[xpath] = ('SELECT', value)
         elif tag_name == 'input' and (input_type == 'checkbox' or input_type == 'radio'):
