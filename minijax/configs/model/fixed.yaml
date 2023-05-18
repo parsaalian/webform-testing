@@ -1,4 +1,4 @@
 workflow:
-  finder: 'BASIC'
+  finder: 'QUERY'
   parser: 'BASIC'
   filler: 'FIXED'

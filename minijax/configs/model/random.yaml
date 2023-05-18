@@ -5,6 +5,6 @@ models:
   tokenizer: 'cl100k_base'
 
 workflow:
-  finder: 'BASIC'
+  finder: 'QUERY'
   parser: 'BASIC'
   filler: 'RANDOM'

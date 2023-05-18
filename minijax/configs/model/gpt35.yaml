@@ -5,7 +5,7 @@ models:
   tokenizer: 'cl100k_base'
 
 workflow:
-  finder: 'BASIC'
+  finder: 'QUERY'
   parser: 'NONE'
   filler: 'GPT3.5'
 

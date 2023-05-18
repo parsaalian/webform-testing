@@ -1,5 +1,5 @@
 workflow:
-  finder: 'BASIC'
+  finder: 'QUERY'
   parser: 'NONE'
   filler: 'GPT3'
 

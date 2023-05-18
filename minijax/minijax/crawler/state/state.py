@@ -1,17 +1,15 @@
 import time
 import hashlib
 
-from selenium.webdriver.common.by import By
-
 from minijax.config import Config
 from minijax.crawler import get_driver_container
-from minijax.crawler.utils import get_element_xpath
-from minijax.crawler.action import (
-    GoToRootAction,
-    FormAction,
-    ClickAction,
+from minijax.crawler.action import GoToRootAction
+
+from .state_action_evaluators import (
+    find_click_actions,
+    find_form_actions,
+    find_hover_actions,
 )
-from minijax.models.form_finder import find_forms_by_query
 
 
 cfg = Config()
@@ -40,57 +38,12 @@ class State:
             self.root_path.append(prev_action)
     
     
-    def find_form_actions(self):
-        # TODO: change based on different finding modes
-        forms = find_forms_by_query()
-        # if cfg.model_config['workflow'].form_finder_mode == FormFinderMode.BASIC:
-        #     forms = find_forms_by_query(driver)
-        # else:
-        #     forms = find_forms_by_query(driver)
-        
-        # TODO: write a common function for all different action types
-        forms = list(filter(lambda x: x.is_displayed(), forms))
-        forms_xpath = list(map(
-            lambda x: get_element_xpath(x),
-            forms
-        ))
-        forms_actions = list(map(
-            lambda x: FormAction(
-                xpath=x,
-                parent_state=self,
-            ),
-            forms_xpath
-        ))
-        return forms_actions
-
-    
-    def find_click_actions(self):
-        tags = driver.find_elements(By.TAG_NAME, 'a')
-        tags = list(filter(lambda x: x.is_displayed(), tags))
-        tags_xpath = list(map(
-            lambda x: get_element_xpath(x),
-            tags
-        ))
-        tags_actions = list(map(
-            lambda x: ClickAction(
-                xpath=x,
-                parent_state=self
-            ),
-            tags_xpath
-        ))
-        return tags_actions
-
-    
-    def find_hover_actions(self):
-        return []
-    
-    
     def _eval_actions(self):
         actions = []
         
-        click_actions = self.find_click_actions()
-        hover_actions = self.find_hover_actions()
-        form_actions = self.find_form_actions()
+        click_actions = find_click_actions(self)
+        hover_actions = find_hover_actions(self)
+        form_actions = find_form_actions(self)
         
         if cfg.crawler_config['action']['enabled']['click']:
             actions = [*actions, *click_actions]

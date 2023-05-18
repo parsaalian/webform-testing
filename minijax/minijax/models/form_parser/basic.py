@@ -6,6 +6,10 @@ from selenium.webdriver.remote.webelement import WebElement
 from minijax.models.form_parser.parse_entry import ParseEntry
 
 
+def none_parse_form_inputs(form: WebElement) -> str:
+    return form.get_attribute('outerHTML')
+
+
 def basic_parse_form_inputs(form: WebElement) -> list(ParseEntry):
     inputs = inputs = form.find_elements(
         By.XPATH,

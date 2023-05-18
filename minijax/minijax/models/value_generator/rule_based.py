@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import rstr
 import random
 
@@ -7,7 +9,7 @@ from minijax.utils.functional import get_or_else
 from minijax.crawler.driver import get_driver_container
 from minijax.crawler.utils import get_element_xpath
 
-from ..utils import parse_generated_commands, execute_generated_commands
+from ..form_parser import ParseEntry
 
 
 driver = get_driver_container().get_driver()
@@ -63,9 +65,9 @@ def rule_based_response_generator(parsed_form, random=True):
     commands = ''
     
     for e in parsed_form:
-        element = e['element']
-        tag = e['tag']
-        attributes = e['attributes']
+        element = e.element
+        tag = e.tag
+        attributes = e.attributes
         input_type = get_or_else(attributes, 'type', 'text')
         xpath = get_element_xpath(element)
         
@@ -88,9 +90,12 @@ def rule_based_response_generator(parsed_form, random=True):
     return commands
 
 
-def rule_based_value_generator(random=True):
-    def __wrapped(parsed_form):
+def rule_based_value_generator(
+    random: bool = True
+) -> function:
+    def __wrapped(
+        parsed_form: list(ParseEntry)
+    ) -> str:
         response = rule_based_response_generator(parsed_form, random=random)
-        commands = parse_generated_commands(response)
-        return commands
+        return response
     return __wrapped
