@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+from minijax.logger import logger
 from minijax.config import Config
 from minijax.crawler import get_driver_container
 from minijax.models.workflow import Workflow
@@ -21,33 +22,11 @@ class FormAction(ActionBase):
         )
     
     
-    def should_execute_auth(self):
-        return cfg.auth_config['has_auth'] and \
-            self.parent_state.url == cfg.auth_config['auth_url'] and \
-            self.xpath == cfg.auth_config['form_xpath']
-
-    
-    def execute_auth(self, form):
-        username_xpath = cfg.auth_config['username_xpath']
-        password_xpath = cfg.auth_config['password_xpath']
-        username = cfg.auth_config['username']
-        password = cfg.auth_config['password']
-        form.find_element(By.XPATH, username_xpath).send_keys(username)
-        form.find_element(By.XPATH, password_xpath).send_keys(password)
-        return {
-            username_xpath: username,
-            password_xpath: password,
-        }
-    
-    
     def execute(self):
         # find form step
         form = driver.find_element(By.XPATH, self.xpath)
         # fill/fill+parse step
-        if self.should_execute_auth():
-            values = self.execute_auth(form)
-        else:
-            values = workflow.execute(form)
+        values = workflow.execute(form)
         self.action_data = values
         # submit step
         result = submit_form(form)
@@ -69,9 +48,12 @@ class FormAction(ActionBase):
 
 # TODO: add submit form to workflow
 def submit_form(form):
-    submit_button = form.find_element(
-        By.XPATH,
-        '//button[@type = "submit"] | //input[@type = "submit"]'
-    )
-    submit_button.click()
-    return True
+    try:
+        submit_button = form.find_element(
+            By.XPATH,
+            '//button[@type = "submit"] | //input[@type = "submit"]'
+        )
+        submit_button.click()
+        return True
+    except:
+        logger.debug('Could not find submit button')

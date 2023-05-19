@@ -2,6 +2,7 @@ import time
 from urllib.parse import urlparse
 
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import UnexpectedAlertPresentException
 
 from minijax.config import Config
 from minijax.logger import logger
@@ -88,12 +89,6 @@ class StateActionExecutioner:
         
         if state != new_state:
             self.add_neighbor_to_state(state, action, new_state)
-    
-    
-    def reset_page_cookies(self):
-        driver.delete_all_cookies()
-        driver.refresh()
-        driver.get(cfg.app_url)
 
     
     def execute_single_action(self, action, retries):
@@ -106,6 +101,12 @@ class StateActionExecutioner:
             time.sleep(cfg.crawler_config['wait']['after_action'])
             
             return True
+        except UnexpectedAlertPresentException:
+            logger.debug(f'UnexpectedAlertPresentException: {action}')
+            
+            action.set_execution_result((False, 'UnexpectedAlertPresentException'))
+            
+            return True
         except Exception as e:
             raise_in_debug_mode(e)
             
@@ -116,6 +117,7 @@ class StateActionExecutioner:
                 return False
             else:
                 logger.debug(f'{action} failed {retries + 1} times. Skipping.')
+                action.set_execution_result((False, str(e)))
                 return True
     
     
@@ -147,11 +149,10 @@ class StateActionExecutioner:
             
             if self.action_lead_to_invalid_domain(state):
                 logger.info('Action leads to invalid domain')
+                driver.execute_script("window.stop();")
                 action.outer_domain = True
-                continue
+            else:
+                self.add_neighbor_if_not_same_state(state, action)
+                self.add_state_actions_to_map(state)
             
-            self.add_neighbor_if_not_same_state(state, action)
-            self.add_state_actions_to_map(state)
-            
-            self.reset_page_cookies()
             state.get_to_state()

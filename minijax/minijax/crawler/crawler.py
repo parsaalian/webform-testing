@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 from minijax.logger import logger
 from minijax.config import Config
+from minijax.authenticate import authenticate
 from minijax.crawler.report import generate_report
 from minijax.crawler import get_driver_container
 from minijax.crawler.state import State, StateGraph, StateActionExecutioner
@@ -55,5 +56,7 @@ class Crawler:
     
     
     def start(self):
+        if cfg.app_config['has_auth']:
+            authenticate()
         self.crawl()
         generate_report(self.title, self.state_graph)

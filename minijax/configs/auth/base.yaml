@@ -1,8 +1,0 @@
-has_auth: false
-
-auth_url: http://localhost:8080/
-form_xpath: sample_xpath
-username_xpath: sample_xpath
-password_xpath: sample_xpath
-username: username
-password: password

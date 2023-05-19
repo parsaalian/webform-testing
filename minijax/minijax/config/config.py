@@ -27,8 +27,8 @@ class Config(metaclass=Singleton):
         self.model_config = model_config
     
     
-    def set_auth_config(self, auth_config):
-        self.auth_config = auth_config
+    def set_app_config(self, app_config):
+        self.app_config = app_config
     
     
     def to_json(self):
@@ -37,5 +37,5 @@ class Config(metaclass=Singleton):
             'debug': self.debug,
             'crawler_config': self.crawler_config,
             'model_config': self.model_config,
-            'auth_config': self.auth_config,
+            'app_config': self.app_config,
         }
