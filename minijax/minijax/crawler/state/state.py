@@ -116,8 +116,8 @@ class State:
             return False
         
         # text-based comparison: maybe pages have the same actions but content is different
-        if self.text != other.text:
-            return False
+        '''if self.text != other.text:
+            return False'''
         
         # full attributes comparison
         '''if self.url != other.url:

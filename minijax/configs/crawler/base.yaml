@@ -1,5 +1,5 @@
 max_crawling_depth: 3
-max_crawling_iterations: 5
+max_crawling_iterations: 100
 
 wait:
   after_state_change: 0.2
@@ -15,6 +15,6 @@ action:
     hover: false
   
   form:
-    execution_count: 1
+    execution_count: 5
 
 report_directory: "report"
