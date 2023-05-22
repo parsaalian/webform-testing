@@ -1,5 +1,5 @@
 max_crawling_depth: 3
-max_crawling_iterations: 100
+max_crawling_iterations: 5
 
 wait:
   after_state_change: 0.2

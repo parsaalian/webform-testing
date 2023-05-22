@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from minijax.logger import logger
 from minijax.config import Config
 from minijax.authenticate import authenticate
-from minijax.crawler.report import generate_report
+from minijax.crawler.report import Reporter
 from minijax.crawler import get_driver_container
 from minijax.crawler.state import State, StateGraph, StateActionExecutioner
 
@@ -24,6 +24,7 @@ class Crawler:
         
         driver.get(cfg.app_url)
         self.title = driver.title
+        reporter = Reporter(self.title)
         body = driver.find_element(By.TAG_NAME, 'body')
         initial_state = State(
             driver.current_url,
@@ -42,6 +43,7 @@ class Crawler:
             state = crawl_queue[0]
             
             state.get_to_state()
+            state.save_screenshot(reporter.get_directory())
             
             logger.info(f"Crawling state: {state}")
             
@@ -59,4 +61,5 @@ class Crawler:
         if cfg.app_config['has_auth']:
             authenticate()
         self.crawl()
-        generate_report(self.title, self.state_graph)
+        reporter = Reporter()
+        reporter.generate_report(self.state_graph)

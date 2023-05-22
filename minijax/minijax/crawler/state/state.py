@@ -1,8 +1,10 @@
+import os
 import time
 import hashlib
 
 from minijax.config import Config
 from minijax.crawler import get_driver_container
+from minijax.crawler.utils import save_screenshot
 from minijax.crawler.action import GoToRootAction
 
 from .state_action_evaluators import (
@@ -21,6 +23,7 @@ class State:
         self.url = url
         self.html = html
         self.text = text
+        self.image_path = None
         self.root_path = []
         self.actions = []
         # value of neighbors is never used for now
@@ -53,6 +56,13 @@ class State:
             actions = [*actions, *form_actions]
         
         self.actions = actions
+
+    
+    def save_screenshot(self, base_path):
+        path = os.path.join(base_path, 'screenshots', f'{self.id()}.png')
+        print(path)
+        save_screenshot(path)
+        self.image_path = path
     
     
     def add_neighbor(self, action, neighbor_state):
@@ -75,6 +85,7 @@ class State:
             'url': self.url,
             'html': self.html,
             'text': self.text,
+            'image_path': self.image_path,
             'root_path': [str(action) for action in self.root_path],
             'actions': [str(action) for action in self.actions],
             'neighbors': {
