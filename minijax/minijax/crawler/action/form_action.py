@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from minijax.logger import logger
 from minijax.config import Config
 from minijax.crawler import get_driver_container
+from minijax.crawler.utils import simplify_element
 from minijax.models.workflow import Workflow
 
 from minijax.crawler.action.base import ActionBase
@@ -25,6 +26,9 @@ class FormAction(ActionBase):
     def execute(self):
         # find form step
         form = driver.find_element(By.XPATH, self.xpath)
+        
+        print('SIMPLE')
+        print(simplify_element(form))
         # fill/fill+parse step
         values = workflow.execute(form)
         self.action_data = values

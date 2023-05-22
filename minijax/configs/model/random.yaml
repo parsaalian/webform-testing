@@ -6,5 +6,6 @@ models:
 
 workflow:
   finder: 'QUERY'
+  transform: 'NONE'
   parser: 'BASIC'
   filler: 'RANDOM'

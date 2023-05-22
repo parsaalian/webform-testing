@@ -4,7 +4,8 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from minijax.config import Config
 from minijax.utils import Singleton
-from minijax.utils.functional import compose
+from minijax.utils.functional import unity, compose
+from minijax.crawler.utils import simplify_element
 
 from .utils import (
     parse_generated_commands,
@@ -30,6 +31,7 @@ cfg = Config()
 class Workflow(metaclass=Singleton):
     def __init__(self):
         self.form_finder = None
+        self.form_transformer = None
         self.form_parser = None
         self.value_generator = None
         self.command_executor = None
@@ -45,15 +47,32 @@ class Workflow(metaclass=Singleton):
         return self.form_finder()
     
     
+    def transform_form(
+        self,
+        form: WebElement
+    ) -> str | WebElement:
+        if self.form_transformer is not None:
+            return self.form_transformer(form)
+
+        if self.form_transformer == 'NONE':
+            self.form_transformer = unity
+        if self.form_transformer == 'HTML':
+            self.form_transformer = none_parse_form_inputs
+        if self.form_transformer == 'SIMPLIFY':
+            self.form_transformer = simplify_element
+        
+        return self.form_transformer(form)
+    
+    
     def parse_form(
         self,
         form: WebElement
-    ) -> WebElement | list(ParseEntry):
+    ) -> str | list(ParseEntry):
         if self.form_parser is not None:
             return self.form_parser(form)
         
         if cfg.model_config['workflow']['parser'] == 'NONE':
-            self.form_parser = none_parse_form_inputs
+            self.form_parser = unity
         elif cfg.model_config['workflow']['parser'] == 'BASIC':
             self.form_parser = basic_parse_form_inputs
         
@@ -109,6 +128,7 @@ class Workflow(metaclass=Singleton):
         form: WebElement,
     ) -> dict[str, str]:
         return compose(
+            self.transform_form,
             self.parse_form,
             self.generate_commands,
             parse_generated_commands,

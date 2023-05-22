@@ -1,1 +1,4 @@
 has_auth: false
+
+avoid_actions:
+  -

@@ -1,4 +1,3 @@
-import os
 import yaml
 
 from minijax.config import Config

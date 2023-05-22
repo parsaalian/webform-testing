@@ -1,0 +1,20 @@
+redundant_tags:
+  - head
+  - title
+  - meta
+  - link
+  - style
+  - script
+  - noscript
+  - base
+
+keep_attributes:
+  - href
+  - src
+  - alt
+  - action
+  - name
+  - type
+  - for
+  - id
+  - xpath

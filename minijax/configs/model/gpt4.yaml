@@ -6,6 +6,7 @@ models:
 
 workflow:
   finder: 'QUERY'
+  transform: 'SIMPLIFY'
   parser: 'NONE'
   filler: 'GPT4'
 
