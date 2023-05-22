@@ -106,6 +106,10 @@ def conditional_merge_children(root):
         return root
 
     child = children[0]
+    
+    if is_not_processable(child):
+        return root
+    
     if tags_have_attribute_conflict(root, child):
         return root
 

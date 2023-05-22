@@ -35,6 +35,48 @@ class Workflow(metaclass=Singleton):
         self.form_parser = None
         self.value_generator = None
         self.command_executor = None
+        
+        self._check_workflow_validity()
+    
+    
+    def _check_workflow_validity(self):
+        invalid_combinations = [
+            {
+                'transformer': 'HTML',
+                'parser': 'BASIC',
+            },
+            {
+                'transformer': 'SIMPLIFY',
+                'parser': 'BASIC',
+            },
+            {
+                'parser': 'BASIC',
+                'filler': 'GPT3',
+            },
+            {
+                'parser': 'BASIC',
+                'filler': 'GPT3.5',
+            },
+            {
+                'parser': 'BASIC',
+                'filler': 'GPT4',
+            },
+            {
+                'parser': 'NONE',
+                'filler': 'FIXED',
+            },
+            {
+                'parser': 'NONE',
+                'filler': 'RANDOM',
+            },
+        ]
+        
+        for invalid_combination in invalid_combinations:
+            if all([
+                cfg.model_config['workflow'][key] == value
+                for key, value in invalid_combination.items()
+            ]):
+                raise Exception(f"Invalid workflow combination: {invalid_combination}")
     
     
     def find_forms(self) -> list(WebElement):
@@ -54,11 +96,11 @@ class Workflow(metaclass=Singleton):
         if self.form_transformer is not None:
             return self.form_transformer(form)
 
-        if self.form_transformer == 'NONE':
+        if  cfg.model_config['workflow']['transformer'] == 'NONE':
             self.form_transformer = unity
-        if self.form_transformer == 'HTML':
+        if cfg.model_config['workflow']['transformer'] == 'HTML':
             self.form_transformer = none_parse_form_inputs
-        if self.form_transformer == 'SIMPLIFY':
+        if cfg.model_config['workflow']['transformer'] == 'SIMPLIFY':
             self.form_transformer = simplify_element
         
         return self.form_transformer(form)
