@@ -53,7 +53,7 @@ def find_form_actions(state):
 
 
 def find_click_actions(state):
-    tags = driver.find_elements(By.TAG_NAME, 'a')
+    tags = driver.find_elements(By.XPATH, '//a | //button | //input[@type = "submit"]')
     tags = filter_hidden_elements(tags)
     tags_xpath = map_elements_to_xpath(tags)
     tags_actions = map_to_action_list(tags_xpath, ClickAction, state)

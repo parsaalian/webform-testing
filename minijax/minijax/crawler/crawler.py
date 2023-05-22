@@ -37,22 +37,26 @@ class Crawler:
         self.state_graph.add_state(initial_state)
         
         while len(crawl_queue) > 0 and counter < cfg.crawler_config['max_crawling_iterations']:
+            
             counter += 1
             logger.info(f"\n===================\nIteration: {counter}")
 
             state = crawl_queue[0]
             
-            state.get_to_state()
-            state.save_screenshot(reporter.get_directory())
-            
-            logger.info(f"Crawling state: {state}")
-            
-            self.state_action_executioner.execute_actions(state)
-            
-            for _, neighbor_state in state.get_neighbors().items():
-                if not self.state_graph.is_in_graph(neighbor_state):
-                    self.state_graph.add_state(neighbor_state)
-                    crawl_queue.append(neighbor_state)
+            try:
+                state.get_to_state()
+                state.save_screenshot(reporter.get_directory())
+                
+                logger.info(f"Crawling state: {state}")
+                
+                self.state_action_executioner.execute_actions(state)
+                
+                for _, neighbor_state in state.get_neighbors().items():
+                    if not self.state_graph.is_in_graph(neighbor_state):
+                        self.state_graph.add_state(neighbor_state)
+                        crawl_queue.append(neighbor_state)
+            except Exception as e:
+                logger.error(e)
             
             crawl_queue = crawl_queue[1:]
     
