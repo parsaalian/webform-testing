@@ -16,6 +16,8 @@ from .form_finder import find_forms_by_query
 from .form_parser import (
     none_parse_form_inputs,
     basic_parse_form_inputs,
+    gpt3_form_parser,
+    chat_gpt_form_parser,
     ParseEntry,
 )
 from minijax.models.value_generator import (
@@ -35,8 +37,6 @@ class Workflow(metaclass=Singleton):
         self.form_parser = None
         self.value_generator = None
         self.command_executor = None
-        
-        self._check_workflow_validity()
     
     
     def _check_workflow_validity(self):
@@ -117,6 +117,10 @@ class Workflow(metaclass=Singleton):
             self.form_parser = unity
         elif cfg.model_config['workflow']['parser'] == 'BASIC':
             self.form_parser = basic_parse_form_inputs
+        elif cfg.model_config['workflow']['parser'] == 'GPT3':
+            self.form_parser = gpt3_form_parser(zero_shot=cfg.model_config['parameters']['zero_shot'])
+        elif cfg.model_config['workflow']['parser'] == 'CHATGPT':
+            self.form_parser = chat_gpt_form_parser(zero_shot=cfg.model_config['parameters']['zero_shot'])
         
         return self.form_parser(form)
     
@@ -169,6 +173,7 @@ class Workflow(metaclass=Singleton):
         self,
         form: WebElement,
     ) -> dict[str, str]:
+        self._check_workflow_validity()
         return compose(
             self.transform_form,
             self.parse_form,
@@ -183,6 +188,7 @@ class Workflow(metaclass=Singleton):
         form: WebElement,
         values: dict[str, str]
     ) -> dict[str, str]:
+        self._check_workflow_validity()
         return compose(
             self.generate_commands_from_values(form),
             self.execute_commands(form)

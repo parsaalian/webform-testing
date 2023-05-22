@@ -1,7 +1,7 @@
 workflow:
   finder: 'QUERY'
   transformer: 'SIMPLIFY'
-  parser: 'NONE'
+  parser: 'GPT3'
   filler: 'GPT3'
 
 parameters:

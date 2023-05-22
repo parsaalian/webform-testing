@@ -2,21 +2,19 @@ from __future__ import annotations
 
 from minijax.config import Config
 from minijax.llm.openai import ApiManager
-from minijax.prompts import generate_fill_text_completion_prompt
-
+from minijax.prompts import generate_parse_text_completion_prompt
 
 cfg = Config()
 
-
-def gpt3_value_generator(
+def gpt3_form_parser(
     zero_shot: bool = True
 ) -> function:
-    def __wrapped(
+    def _wrapped(
         form_prompt_str: str
     ) -> str:
         api_manager = ApiManager()
         
-        prompt = generate_fill_text_completion_prompt(form_prompt_str, zero_shot=zero_shot)
+        prompt = generate_parse_text_completion_prompt(form_prompt_str, zero_shot=zero_shot)
         response = api_manager.create_text_completion(
             prompt=prompt,
             model=cfg.model_config['parameters']['model'],
@@ -27,5 +25,5 @@ def gpt3_value_generator(
         response_text = response.choices[0].text
         
         return response_text
-    
-    return __wrapped
+
+    return _wrapped

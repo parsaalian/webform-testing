@@ -2,9 +2,7 @@ from __future__ import annotations
 
 from minijax.config import Config
 from minijax.llm.openai import ApiManager
-from minijax.prompts import generate_chat_completion_prompt
-
-from ..utils import parse_generated_commands
+from minijax.prompts import generate_fill_chat_completion_prompt
 
 
 cfg = Config()
@@ -18,7 +16,7 @@ def chat_gpt_value_generator(
     ) -> str:
         api_manager = ApiManager()
         
-        prompt = generate_chat_completion_prompt(form_prompt_str)
+        prompt = generate_fill_chat_completion_prompt(form_prompt_str)
         response = api_manager.create_chat_completion(
             messages=prompt,
             model=cfg.model_config['parameters']['model'],

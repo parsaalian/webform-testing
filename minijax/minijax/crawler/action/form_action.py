@@ -26,9 +26,6 @@ class FormAction(ActionBase):
     def execute(self):
         # find form step
         form = driver.find_element(By.XPATH, self.xpath)
-        
-        print('SIMPLE')
-        print(simplify_element(form))
         # fill/fill+parse step
         values = workflow.execute(form)
         self.action_data = values
