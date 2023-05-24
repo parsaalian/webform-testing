@@ -1,0 +1,144 @@
+<form>
+ <div class="flex-row space">
+  <div class="mb-4 mr-4 flex flex-1" value="1">
+   <div>
+    <label>
+     *URL (Expects a 200 response from POST)
+    </label>
+   </div>
+   <div class="input-container">
+    <input class="input input--wide" placeholder="https://example.com/feature-changed/" type="text" value=""/>
+   </div>
+  </div>
+  <div class="form-group mb-4 ml-1">
+   <div>
+    <label>
+     Enabled
+    </label>
+   </div>
+   <div>
+    <div style="display: inline-block; height: 28px; position: relative;">
+     <button aria-checked="true" class="rc-switch rc-switch-checked" role="switch" type="button">
+      <span class="rc-switch-inner">
+      </span>
+     </button>
+     <div class="switch-checked">
+      On
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="mb-4 mr-4 flex flex-1" value="1">
+  <div>
+   <label>
+    Secret (Optional) -
+    <a class="text-info" href="https://docs.flagsmith.com/advanced-use/system-administration#validating-signature" rel="noreferrer" target="_blank">
+     More info
+    </a>
+   </label>
+  </div>
+  <div class="input-container">
+   <input class="input input--wide" placeholder="Secret" type="text" value=""/>
+  </div>
+ </div>
+ <div class="mb-4 mr-4 flex flex-1" value="1">
+  <div class="">
+   <div class="mb-3">
+    <p class="text-right">
+     This will create a webhook for the environment
+     <strong>
+      Production
+     </strong>
+    </p>
+   </div>
+   <div class="text-right">
+    <p>
+     <div>
+      <button class="btn btn btn--with-icon primary" disabled="" id="try-it-btn" type="button">
+       Test your webhook
+       <svg class="btn__icon btn__icon--small" viewbox="0 0 315 315">
+        <path d="M293.002 78.53C249.646 3.435 153.618-22.296 78.529 21.068 3.434 64.418-22.298 160.442 21.066 235.534c43.35 75.095 139.375 100.83 214.465 57.47 75.096-43.365 100.84-139.384 57.471-214.474zm-73.168 187.271c-60.067 34.692-136.894 14.106-171.576-45.973C13.568 159.761 34.161 82.935 94.23 48.26c60.071-34.69 136.894-14.106 171.578 45.971 34.685 60.076 14.098 136.886-45.974 171.57zm-6.279-115.149l-82.214-47.949c-7.492-4.374-13.535-.877-13.493 7.789l.421 95.174c.038 8.664 6.155 12.191 13.669 7.851l81.585-47.103c7.506-4.332 7.522-11.388.032-15.762z" fill="#f27157">
+        </path>
+       </svg>
+      </button>
+     </div>
+    </p>
+   </div>
+   <div class="text-right">
+    <button class="btn" data-test="create-feature-btn" disabled="" id="create-feature-btn">
+     Create Webhook
+    </button>
+   </div>
+  </div>
+ </div>
+ <div class="form-group mb-4 ml-1">
+  <div>
+   <label>
+    Example Payload
+   </label>
+   <button class="btn btn--link ml-1">
+    <a class="btn--link" href="https://docs.flagsmith.com/advanced-use/system-administration" target="_blank">
+     View docs
+    </a>
+   </button>
+   <div class="">
+    <pre style="margin-bottom: 10px; height: auto; opacity: 1;"><code class="json hljs language-json" contenteditable="false" style="margin-bottom: 10px;"><span class="hljs-punctuation">{</span>
+ <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"changed_by"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Ben Rometsch"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"new_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"environment"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">23</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Development"</span>
+   <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"feature"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"created_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2021-02-10T20:03:43.348556Z"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"default_enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Show html in a butter bar for certain users"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">7168</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"initial_value"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"butter_bar"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"project"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+     <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">12</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Flagsmith Website"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CONFIG"</span>
+   <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"feature_segment"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"feature_state_value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"&lt;strong&gt;\nYou are using the develop environment.\n&lt;/strong&gt;"</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"identity"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"identity_identifier"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"previous_state"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">"enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"environment"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">23</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Development"</span>
+   <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"feature"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"created_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2021-02-10T20:03:43.348556Z"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"default_enabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Show html in a butter bar for certain users"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">7168</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"initial_value"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"butter_bar"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"project"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+     <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">12</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Flagsmith Website"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"CONFIG"</span>
+   <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"feature_segment"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"feature_state_value"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"&lt;strong&gt;\nYou are using the develop environment.\n&lt;/strong&gt;"</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"identity"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">"identity_identifier"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"timestamp"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2021-06-18T07:50:26.595298Z"</span>
+ <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+ <span class="hljs-attr">"event_type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"FLAG_UPDATED"</span>
+<span class="hljs-punctuation">}</span></code></pre>
+   </div>
+  </div>
+ </div>
+</form>

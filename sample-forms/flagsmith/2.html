@@ -1,0 +1,186 @@
+<div class="modal side-modal fade create-feature-modal in" role="dialog" style="display: block;" tabindex="-1">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-header">
+    New Feature
+    <span class="icon close ion-md-close">
+    </span>
+   </div>
+   <div class="modal-body">
+    <div id="create-feature-modal">
+     <div class="create-feature-tab">
+      <div class="form-group mb-4 mr-3 mt-2 ml-3">
+       <div class="undefined form-group">
+        <div class="flex-row">
+         <div class="mr-4 flex flex-1" value="1">
+          <label class="cols-sm-2 control-label" for="b31a-01b4-76a0">
+           <div>
+            ID*
+           </div>
+          </label>
+         </div>
+        </div>
+        <div>
+         <div>
+          <div class="input-container invalid full-width">
+           <input class="input" data-test="featureID" id="b31a-01b4-76a0" maxlength="150" name="featureID" placeholder="E.g. header_size" type="text" value=""/>
+           <span class="input-icon-right text-danger icon ion ion-ios-close-circle-outline">
+           </span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="">
+       <div>
+        <div class="form-group mb-4 mr-3 ml-3">
+         <div>
+          <label>
+           Enabled by default
+          </label>
+         </div>
+         <div style="display: inline-block; height: 28px; position: relative;">
+          <button aria-checked="false" class="rc-switch" data-test="toggle-feature-button" role="switch" type="button">
+           <span class="rc-switch-inner">
+           </span>
+          </button>
+          <div class="switch-unchecked">
+           Off
+          </div>
+         </div>
+        </div>
+        <div class="form-group mx-3 mb-4 mr-3">
+         <div class="undefined form-group">
+          <span class="question-tooltip">
+           <span currentitem="false" data-for="ef2d-44c6-aacf" data-tip="true">
+            <label class="cols-sm-2 control-label" for="15d4-babd-040e">
+             <div>
+              Value (optional) - these can be set per environment
+              <span class="icon ion-ios-information-circle">
+              </span>
+             </div>
+            </label>
+           </span>
+           <div class="__react_component_tooltip place-right type-dark" data-id="tooltip" id="ef2d-44c6-aacf" style="left: 631px; top: 242px;">
+            <div class="flex-row">
+             <div class="icon--tooltip ion-ios-information-circle pr-2">
+             </div>
+             <span>
+              Features can have values as well as being simply on or off, e.g. a font size for a banner or an environment variable for a server.
+             </span>
+            </div>
+           </div>
+          </span>
+          <div>
+           <div class="value-editor light">
+            <div class="flex-row select-language">
+             <span class="txt active">
+              .txt
+             </span>
+             <span class="json">
+              .json
+             </span>
+             <span class="xml">
+              .xml
+             </span>
+             <span class="ini">
+              .toml
+             </span>
+             <span class="yaml">
+              .yaml
+             </span>
+             <span class="txt primary">
+              <span class="ion ion-md-clipboard mr-0 ml-2 txt primary">
+              </span>
+              copy
+             </span>
+            </div>
+            <div class="">
+             <pre style="height: auto; opacity: 1;"><code class="txt empty hljs language-plaintext" contenteditable="true" data-test="featureValue">Enter a value...</code></pre>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div>
+         <div class="form-group ml-3 mb-4 mr-3">
+         </div>
+         <div class="text-center">
+          <button class="btn btn--outline" data-test="add-variation" type="button">
+           Add Variation
+          </button>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="form-group mb-4 mr-3 ml-3">
+       <div class="undefined form-group">
+        <span class="question-tooltip">
+         <span currentitem="false" data-for="0ee1-6015-ebcd" data-tip="true">
+          <label class="cols-sm-2 control-label" for="a224-8dd2-e378">
+           <div>
+            Tags (optional)
+            <span class="icon ion-ios-information-circle">
+            </span>
+           </div>
+          </label>
+         </span>
+         <div class="__react_component_tooltip place-top type-dark" data-id="tooltip" id="0ee1-6015-ebcd">
+          &lt;div class="flex-row"&gt;&lt;div class="icon--tooltip ion-ios-information-circle pr-2"&gt;&lt;/div&gt;&lt;span&gt;Organise your flags with tags, tagging your features as "&lt;strong&gt;protected&lt;/strong&gt;" will prevent them from accidentally being deleted.&lt;/span&gt;&lt;/div&gt;
+         </div>
+        </span>
+        <div>
+         <div>
+          <div class="flex-row inline-tags mt-2">
+           <div class="flex-row tag-values">
+            <button class="btn btn--outline" type="button">
+             Add Tag
+            </button>
+           </div>
+          </div>
+          <div class="relative">
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="form-group mb-4 mr-3 ml-3">
+       <div class="undefined form-group">
+        <div class="flex-row">
+         <div class="mr-4 flex flex-1" value="1">
+          <label class="cols-sm-2 control-label" for="c3ee-d328-2b88">
+           <div>
+            Description (optional)
+           </div>
+          </label>
+         </div>
+        </div>
+        <div>
+         <div>
+          <div class="input-container full-width">
+           <input class="input" data-test="featureDesc" id="c3ee-d328-2b88" name="featureDesc" placeholder="e.g. 'This determines what size the header is' " type="text" value=""/>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="text-right mr-3">
+       <p class="text-right">
+        This will create the feature for
+        <strong>
+         all environments
+        </strong>
+        , you can edit this feature per environment once the feature is created.
+       </p>
+       <button class="btn" data-test="create-feature-btn" disabled="" id="create-feature-btn">
+        Create Feature
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="modal-footer">
+   </div>
+  </div>
+ </div>
+</div>
