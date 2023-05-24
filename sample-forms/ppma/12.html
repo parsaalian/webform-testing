@@ -1,0 +1,48 @@
+<form action="/ppma/index.php?r=entry/create" id="entry-form" method="post">
+ <input id="Entry_id" name="Entry[id]" type="hidden"/>
+ <label for="Entry_name">
+  Name
+ </label>
+ <input autocomplete="off" id="Entry_name" maxlength="255" name="Entry[name]" type="text"/>
+ <label for="Entry_username">
+  Username
+ </label>
+ <input autocomplete="off" id="Entry_username" maxlength="255" name="Entry[username]" type="text"/>
+ <label class="required" for="Entry_password">
+  Password
+  <span class="required">
+   *
+  </span>
+ </label>
+ <div class="row collapse">
+  <div class="ten columns">
+   <input autocomplete="off" id="Entry_password" maxlength="255" name="Entry[password]" required="required" type="password" value=""/>
+  </div>
+  <div class="one columns">
+   <span class="postfix button secondary expand copy-to-clipboard" data-clipboard-text="" title="copy password">
+    <i class="foundicon-page">
+    </i>
+   </span>
+  </div>
+  <div class="one columns">
+   <span class="postfix button secondary expand show-hide-password">
+    <i class="foundicon-access-eyeball">
+    </i>
+   </span>
+  </div>
+ </div>
+ <label for="Entry_url">
+  URL
+ </label>
+ <input id="Entry_url" maxlength="255" name="Entry[url]" type="text"/>
+ <label for="Entry_tagList">
+  Tags
+ </label>
+ <input id="Entry_tagList" name="Entry[tagList]" placeholder="separate by commas" type="text" value=""/>
+ <label for="Entry_comment">
+  Comment
+ </label>
+ <textarea id="Entry_comment" name="Entry[comment]" rows="5"></textarea>
+ <input id="returnUrl" name="returnUrl" type="hidden" value="/ppma/index.php?r=entry/create"/>
+ <input class="button radius" name="yt0" type="submit" value="Save"/>
+</form>
