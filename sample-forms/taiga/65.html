@@ -1,0 +1,74 @@
+<form class="ng-pristine ng-valid tg-scope" tg-bind-scope="">
+ <div class="project-values-row row table-main visualization">
+  <tg-svg svg-icon="icon-draggable">
+   <svg class="icon icon-draggable" style="fill: ">
+    <use href="#icon-draggable" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-draggable">
+     <!-- -->
+     <!-- -->
+    </use>
+   </svg>
+  </tg-svg>
+  <div class="project-values-name">
+   <span>
+    40
+   </span>
+  </div>
+  <div class="project-values-value">
+   <span>
+    40
+   </span>
+  </div>
+  <div class="project-values-settings">
+   <a class="edit-value" href="">
+    <tg-svg svg-icon="icon-edit" title="Edit value">
+     <svg class="icon icon-edit" style="fill: ">
+      <use href="#icon-edit" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-edit">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+   <a class="delete-value" href="">
+    <tg-svg svg-icon="icon-trash" title="Delete value">
+     <svg class="icon icon-trash" style="fill: ">
+      <use href="#icon-trash" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-trash">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+  </div>
+ </div>
+ <div class="project-values-row row table-main edition hidden">
+  <div class="project-values-name">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty" name="name" ng-model="value.name" placeholder="Name" type="text"/>
+  </div>
+  <div class="project-values-value">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty" data-type="number" name="value" ng-model="value.value" placeholder="Value" type="text"/>
+  </div>
+  <div class="project-values-settings">
+   <a class="save" href="" title="Save">
+    <tg-svg svg-icon="icon-check-empty">
+     <svg class="icon icon-check-empty" style="fill: ">
+      <use href="#icon-check-empty" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-check-empty">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+   <a class="cancel" href="" title="Cancel">
+    <tg-svg class="cancel" svg-icon="icon-close">
+     <svg class="icon icon-close" style="fill: ">
+      <use href="#icon-close" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-close">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+  </div>
+ </div>
+</form>

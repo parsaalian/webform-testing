@@ -1,0 +1,203 @@
+<form class="ng-pristine ng-valid">
+ <fieldset>
+  <label for="default-value-epic" translate="ADMIN.DEFAULT_VALUES.LABEL_EPIC_STATUS">
+   Epic status selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-value-epic" ng-model="project.default_epic_status" ng-options="s.id as s.name for s in epicStatusList">
+   <option label="New" selected="selected" value="number:1481094">
+    New
+   </option>
+   <option label="Ready" value="number:1481095">
+    Ready
+   </option>
+   <option label="In progress" value="number:1481096">
+    In progress
+   </option>
+   <option label="Ready for test" value="number:1481097">
+    Ready for test
+   </option>
+   <option label="Done" value="number:1481098">
+    Done
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <label for="default-value-us" translate="ADMIN.DEFAULT_VALUES.LABEL_US_STATUS">
+   User story status selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-value-us" ng-model="project.default_us_status" ng-options="s.id as s.name for s in usStatusList">
+   <option label="New" selected="selected" value="number:1942491">
+    New
+   </option>
+   <option label="Ready" value="number:1942492">
+    Ready
+   </option>
+   <option label="In progress" value="number:1942493">
+    In progress
+   </option>
+   <option label="Ready for test" value="number:1942494">
+    Ready for test
+   </option>
+   <option label="Done" value="number:1942495">
+    Done
+   </option>
+   <option label="Archived" value="number:1942496">
+    Archived
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <label for="default-points" translate="ADMIN.DEFAULT_VALUES.LABEL_POINTS">
+   Points selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-points" ng-model="project.default_points" ng-options="s.id as s.name for s in pointsList">
+   <option label="?" selected="selected" value="number:3905371">
+    ?
+   </option>
+   <option label="0" value="number:3905372">
+    0
+   </option>
+   <option label="1/2" value="number:3905373">
+    1/2
+   </option>
+   <option label="1" value="number:3905374">
+    1
+   </option>
+   <option label="2" value="number:3905375">
+    2
+   </option>
+   <option label="3" value="number:3905376">
+    3
+   </option>
+   <option label="5" value="number:3905377">
+    5
+   </option>
+   <option label="8" value="number:3905378">
+    8
+   </option>
+   <option label="10" value="number:3905379">
+    10
+   </option>
+   <option label="13" value="number:3905380">
+    13
+   </option>
+   <option label="20" value="number:3905381">
+    20
+   </option>
+   <option label="40" value="number:3905382">
+    40
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <label for="default-value-task" translate="ADMIN.DEFAULT_VALUES.LABEL_TASK_STATUS">
+   Task status selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-value-task" ng-model="project.default_task_status" ng-options="s.id as s.name for s in taskStatusList">
+   <option label="New" selected="selected" value="number:1620223">
+    New
+   </option>
+   <option label="In progress" value="number:1620224">
+    In progress
+   </option>
+   <option label="Ready for test" value="number:1620225">
+    Ready for test
+   </option>
+   <option label="Closed" value="number:1620226">
+    Closed
+   </option>
+   <option label="Needs Info" value="number:1620227">
+    Needs Info
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <label for="default-value-issue-type" translate="ADMIN.DEFAULT_VALUES.LABEL_ISSUE_TYPE">
+   Issue type selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-value-issue-type" ng-model="project.default_issue_type" ng-options="s.id as s.name for s in issueTypesList">
+   <option label="Bug" selected="selected" value="number:978771">
+    Bug
+   </option>
+   <option label="Question" value="number:978772">
+    Question
+   </option>
+   <option label="Enhancement" value="number:978773">
+    Enhancement
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <label for="default-value-issue-status" translate="ADMIN.DEFAULT_VALUES.LABEL_ISSUE_STATUS">
+   Issue status selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-value-issue-status" ng-model="project.default_issue_status" ng-options="s.id as s.name for s in issueStatusList">
+   <option label="New" selected="selected" value="number:2271370">
+    New
+   </option>
+   <option label="In progress" value="number:2271371">
+    In progress
+   </option>
+   <option label="Ready for test" value="number:2271372">
+    Ready for test
+   </option>
+   <option label="Closed" value="number:2271373">
+    Closed
+   </option>
+   <option label="Needs Info" value="number:2271374">
+    Needs Info
+   </option>
+   <option label="Rejected" value="number:2271375">
+    Rejected
+   </option>
+   <option label="Postponed" value="number:2271376">
+    Postponed
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <label for="default-value-priority" translate="ADMIN.DEFAULT_VALUES.LABEL_PRIORITY">
+   Priority selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-value-priority" ng-model="project.default_priority" ng-options="s.id as s.name for s in prioritiesList">
+   <option label="Low" value="number:974295">
+    Low
+   </option>
+   <option label="Normal" selected="selected" value="number:974296">
+    Normal
+   </option>
+   <option label="High" value="number:974297">
+    High
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <label for="default-value-severity" translate="ADMIN.DEFAULT_VALUES.LABEL_SEVERITY">
+   Severity selector
+  </label>
+  <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="default-value-severity" ng-model="project.default_severity" ng-options="s.id as s.name for s in severitiesList">
+   <option label="Wishlist" value="number:1618613">
+    Wishlist
+   </option>
+   <option label="Minor" value="number:1618614">
+    Minor
+   </option>
+   <option label="Normal" selected="selected" value="number:1618615">
+    Normal
+   </option>
+   <option label="Important" value="number:1618616">
+    Important
+   </option>
+   <option label="Critical" value="number:1618617">
+    Critical
+   </option>
+  </select>
+ </fieldset>
+ <fieldset>
+  <button class="btn-small" title="Save" type="submit" variant="primary">
+   <span translate="COMMON.SAVE">
+    Save
+   </span>
+  </button>
+ </fieldset>
+</form>

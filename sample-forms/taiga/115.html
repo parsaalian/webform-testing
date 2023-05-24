@@ -1,0 +1,334 @@
+<form class="ng-pristine ng-valid">
+ <label for="url">
+  Slack webhook url
+ </label>
+ <div class="contrib-form-wrapper">
+  <fieldset class="contrib-input">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" data-type="url" id="url" name="url" ng-model="slackhook.url" placeholder="Slack webhook url" type="text"/>
+  </fieldset>
+  <fieldset aria-hidden="true" class="contrib-test ng-hide" ng-show="slackhook.id">
+   <button class="btn-small" ng-click="ctrl.testHook()" title="Test" variant="primary">
+    <span>
+     Test
+    </span>
+   </button>
+  </fieldset>
+ </div>
+ <label for="channel">
+  Slack webhook channel
+ </label>
+ <div class="contrib-form-wrapper">
+  <fieldset class="contrib-input">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" id="channel" name="channel" ng-model="slackhook.channel" placeholder="#slackchannel" type="text"/>
+  </fieldset>
+ </div>
+ <fieldset>
+  <h2>
+   Notify Epics
+  </h2>
+  <div class="check-item">
+   <span>
+    Create
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" name="notification" ng-model="slackhook.notify_epic_create" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Change
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" name="notification" ng-model="slackhook.notify_epic_change" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Delete
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" name="notification" ng-model="slackhook.notify_epic_delete" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+ </fieldset>
+ <fieldset>
+  <h2>
+   Notify Epics related user stories
+  </h2>
+  <div class="check-item">
+   <span>
+    Create
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" name="notification" ng-model="slackhook.notify_relateduserstory_create" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Delete
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" name="notification" ng-model="slackhook.notify_relateduserstory_delete" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+ </fieldset>
+ <fieldset>
+  <h2>
+   Notify User Stories
+  </h2>
+  <div class="check-item">
+   <span>
+    Create
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_userstory_create" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Change
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_userstory_change" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Delete
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_userstory_delete" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+ </fieldset>
+ <fieldset>
+  <h2>
+   Notify Tasks
+  </h2>
+  <div class="check-item">
+   <span>
+    Create
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_task_create" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Change
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_task_change" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Delete
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_task_delete" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+ </fieldset>
+ <fieldset>
+  <h2>
+   Notify Issues
+  </h2>
+  <div class="check-item">
+   <span>
+    Create
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_issue_create" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Change
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_issue_change" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Delete
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_issue_delete" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+ </fieldset>
+ <fieldset>
+  <h2>
+   Notify Wiki
+  </h2>
+  <div class="check-item">
+   <span>
+    Create
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_wikipage_create" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Change
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_wikipage_change" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+  <div class="check-item">
+   <span>
+    Delete
+   </span>
+   <div class="check">
+    <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" name="notification" ng-model="slackhook.notify_wikipage_delete" style="" type="checkbox"/>
+    <div>
+    </div>
+    <span class="check-text check-yes" translate="COMMON.YES">
+     Yes
+    </span>
+    <span class="check-text check-no" translate="COMMON.NO">
+     No
+    </span>
+   </div>
+  </div>
+ </fieldset>
+ <button class="hidden" type="submit">
+ </button>
+ <a class="btn-small submit-button" href="" ng-click="ctrl.updateOrCreateHook(slackhook)" title="Save" variant="primary">
+  <span>
+   Save
+  </span>
+ </a>
+</form>
