@@ -1,0 +1,401 @@
+<form action="managetimetracker.php?action=showproject&amp;id=1" class="main" method="post" onsubmit="return validateCompleteForm(this);">
+ <fieldset>
+  <div class="row">
+   <label for="start">
+    Start:
+   </label>
+   <input class="text" id="start" name="start" onfocus="dpck.close();" realname="Start" type="text" value=""/>
+  </div>
+  <div class="datepick">
+   <div class="picker" id="datepicker_startfilter" style="display:none;">
+    <table border="0" cellpadding="0" cellspacing="1" class="cal">
+     <tbody>
+      <tr class="head">
+       <td class="back">
+        <a href="javascript:void(0);">
+        </a>
+       </td>
+       <td colspan="5">
+        May 2023
+       </td>
+       <td class="next">
+        <a href="javascript:void(0);">
+        </a>
+       </td>
+      </tr>
+      <tr class="weekday">
+       <td>
+        Mon
+       </td>
+       <td>
+        Tue
+       </td>
+       <td>
+        Wed
+       </td>
+       <td>
+        Thu
+       </td>
+       <td>
+        Fri
+       </td>
+       <td>
+        Sat
+       </td>
+       <td>
+        Sun
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('start').value='01.05.2023';new Effect.Fade('datepicker_startfilter');">
+        1
+       </td>
+       <td class="normalday" onclick="$('start').value='02.05.2023';new Effect.Fade('datepicker_startfilter');">
+        2
+       </td>
+       <td class="normalday" onclick="$('start').value='03.05.2023';new Effect.Fade('datepicker_startfilter');">
+        3
+       </td>
+       <td class="normalday" onclick="$('start').value='04.05.2023';new Effect.Fade('datepicker_startfilter');">
+        4
+       </td>
+       <td class="normalday" onclick="$('start').value='05.05.2023';new Effect.Fade('datepicker_startfilter');">
+        5
+       </td>
+       <td class="normalday" onclick="$('start').value='06.05.2023';new Effect.Fade('datepicker_startfilter');">
+        6
+       </td>
+       <td class="normalday" onclick="$('start').value='07.05.2023';new Effect.Fade('datepicker_startfilter');">
+        7
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('start').value='08.05.2023';new Effect.Fade('datepicker_startfilter');">
+        8
+       </td>
+       <td class="normalday" onclick="$('start').value='09.05.2023';new Effect.Fade('datepicker_startfilter');">
+        9
+       </td>
+       <td class="normalday" onclick="$('start').value='10.05.2023';new Effect.Fade('datepicker_startfilter');">
+        10
+       </td>
+       <td class="normalday" onclick="$('start').value='11.05.2023';new Effect.Fade('datepicker_startfilter');">
+        11
+       </td>
+       <td class="normalday" onclick="$('start').value='12.05.2023';new Effect.Fade('datepicker_startfilter');">
+        12
+       </td>
+       <td class="normalday" onclick="$('start').value='13.05.2023';new Effect.Fade('datepicker_startfilter');">
+        13
+       </td>
+       <td class="normalday" onclick="$('start').value='14.05.2023';new Effect.Fade('datepicker_startfilter');">
+        14
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('start').value='15.05.2023';new Effect.Fade('datepicker_startfilter');">
+        15
+       </td>
+       <td class="normalday" onclick="$('start').value='16.05.2023';new Effect.Fade('datepicker_startfilter');">
+        16
+       </td>
+       <td class="normalday" onclick="$('start').value='17.05.2023';new Effect.Fade('datepicker_startfilter');">
+        17
+       </td>
+       <td class="normalday" onclick="$('start').value='18.05.2023';new Effect.Fade('datepicker_startfilter');">
+        18
+       </td>
+       <td class="normalday" onclick="$('start').value='19.05.2023';new Effect.Fade('datepicker_startfilter');">
+        19
+       </td>
+       <td class="normalday" onclick="$('start').value='20.05.2023';new Effect.Fade('datepicker_startfilter');">
+        20
+       </td>
+       <td class="normalday" onclick="$('start').value='21.05.2023';new Effect.Fade('datepicker_startfilter');">
+        21
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('start').value='22.05.2023';new Effect.Fade('datepicker_startfilter');">
+        22
+       </td>
+       <td class="normalday" onclick="$('start').value='23.05.2023';new Effect.Fade('datepicker_startfilter');">
+        23
+       </td>
+       <td class="today" onclick="$('start').value='24.05.2023';new Effect.Fade('datepicker_startfilter');">
+        24
+       </td>
+       <td class="normalday" onclick="$('start').value='25.05.2023';new Effect.Fade('datepicker_startfilter');">
+        25
+       </td>
+       <td class="normalday" onclick="$('start').value='26.05.2023';new Effect.Fade('datepicker_startfilter');">
+        26
+       </td>
+       <td class="normalday" onclick="$('start').value='27.05.2023';new Effect.Fade('datepicker_startfilter');">
+        27
+       </td>
+       <td class="normalday" onclick="$('start').value='28.05.2023';new Effect.Fade('datepicker_startfilter');">
+        28
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('start').value='29.05.2023';new Effect.Fade('datepicker_startfilter');">
+        29
+       </td>
+       <td class="normalday" onclick="$('start').value='30.05.2023';new Effect.Fade('datepicker_startfilter');">
+        30
+       </td>
+       <td class="normalday" onclick="$('start').value='31.05.2023';new Effect.Fade('datepicker_startfilter');">
+        31
+       </td>
+       <td class="wrong">
+        1
+       </td>
+       <td class="wrong">
+        2
+       </td>
+       <td class="wrong">
+        3
+       </td>
+       <td class="wrong">
+        4
+       </td>
+      </tr>
+      <tr>
+       <td class="dpfoot" colspan="7">
+        <a href="javascript:void(0);" onclick="javascript:new Effect.Fade('datepicker_startfilter','{duration:0.8}');">
+         Close
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+  <div class="row">
+   <label for="end">
+    End:
+   </label>
+   <input class="text" id="end" name="end" onfocus="dpck2.close();" realname="End" type="text" value=""/>
+  </div>
+  <div class="datepick">
+   <div class="picker" id="datepicker_endfilter" style="display:none;">
+    <table border="0" cellpadding="0" cellspacing="1" class="cal">
+     <tbody>
+      <tr class="head">
+       <td class="back">
+        <a href="javascript:void(0);">
+        </a>
+       </td>
+       <td colspan="5">
+        May 2023
+       </td>
+       <td class="next">
+        <a href="javascript:void(0);">
+        </a>
+       </td>
+      </tr>
+      <tr class="weekday">
+       <td>
+        Mon
+       </td>
+       <td>
+        Tue
+       </td>
+       <td>
+        Wed
+       </td>
+       <td>
+        Thu
+       </td>
+       <td>
+        Fri
+       </td>
+       <td>
+        Sat
+       </td>
+       <td>
+        Sun
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='01.05.2023';new Effect.Fade('datepicker_endfilter');">
+        1
+       </td>
+       <td class="normalday" onclick="$('end').value='02.05.2023';new Effect.Fade('datepicker_endfilter');">
+        2
+       </td>
+       <td class="normalday" onclick="$('end').value='03.05.2023';new Effect.Fade('datepicker_endfilter');">
+        3
+       </td>
+       <td class="normalday" onclick="$('end').value='04.05.2023';new Effect.Fade('datepicker_endfilter');">
+        4
+       </td>
+       <td class="normalday" onclick="$('end').value='05.05.2023';new Effect.Fade('datepicker_endfilter');">
+        5
+       </td>
+       <td class="normalday" onclick="$('end').value='06.05.2023';new Effect.Fade('datepicker_endfilter');">
+        6
+       </td>
+       <td class="normalday" onclick="$('end').value='07.05.2023';new Effect.Fade('datepicker_endfilter');">
+        7
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='08.05.2023';new Effect.Fade('datepicker_endfilter');">
+        8
+       </td>
+       <td class="normalday" onclick="$('end').value='09.05.2023';new Effect.Fade('datepicker_endfilter');">
+        9
+       </td>
+       <td class="normalday" onclick="$('end').value='10.05.2023';new Effect.Fade('datepicker_endfilter');">
+        10
+       </td>
+       <td class="normalday" onclick="$('end').value='11.05.2023';new Effect.Fade('datepicker_endfilter');">
+        11
+       </td>
+       <td class="normalday" onclick="$('end').value='12.05.2023';new Effect.Fade('datepicker_endfilter');">
+        12
+       </td>
+       <td class="normalday" onclick="$('end').value='13.05.2023';new Effect.Fade('datepicker_endfilter');">
+        13
+       </td>
+       <td class="normalday" onclick="$('end').value='14.05.2023';new Effect.Fade('datepicker_endfilter');">
+        14
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='15.05.2023';new Effect.Fade('datepicker_endfilter');">
+        15
+       </td>
+       <td class="normalday" onclick="$('end').value='16.05.2023';new Effect.Fade('datepicker_endfilter');">
+        16
+       </td>
+       <td class="normalday" onclick="$('end').value='17.05.2023';new Effect.Fade('datepicker_endfilter');">
+        17
+       </td>
+       <td class="normalday" onclick="$('end').value='18.05.2023';new Effect.Fade('datepicker_endfilter');">
+        18
+       </td>
+       <td class="normalday" onclick="$('end').value='19.05.2023';new Effect.Fade('datepicker_endfilter');">
+        19
+       </td>
+       <td class="normalday" onclick="$('end').value='20.05.2023';new Effect.Fade('datepicker_endfilter');">
+        20
+       </td>
+       <td class="normalday" onclick="$('end').value='21.05.2023';new Effect.Fade('datepicker_endfilter');">
+        21
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='22.05.2023';new Effect.Fade('datepicker_endfilter');">
+        22
+       </td>
+       <td class="normalday" onclick="$('end').value='23.05.2023';new Effect.Fade('datepicker_endfilter');">
+        23
+       </td>
+       <td class="today" onclick="$('end').value='24.05.2023';new Effect.Fade('datepicker_endfilter');">
+        24
+       </td>
+       <td class="normalday" onclick="$('end').value='25.05.2023';new Effect.Fade('datepicker_endfilter');">
+        25
+       </td>
+       <td class="normalday" onclick="$('end').value='26.05.2023';new Effect.Fade('datepicker_endfilter');">
+        26
+       </td>
+       <td class="normalday" onclick="$('end').value='27.05.2023';new Effect.Fade('datepicker_endfilter');">
+        27
+       </td>
+       <td class="normalday" onclick="$('end').value='28.05.2023';new Effect.Fade('datepicker_endfilter');">
+        28
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='29.05.2023';new Effect.Fade('datepicker_endfilter');">
+        29
+       </td>
+       <td class="normalday" onclick="$('end').value='30.05.2023';new Effect.Fade('datepicker_endfilter');">
+        30
+       </td>
+       <td class="normalday" onclick="$('end').value='31.05.2023';new Effect.Fade('datepicker_endfilter');">
+        31
+       </td>
+       <td class="wrong">
+        1
+       </td>
+       <td class="wrong">
+        2
+       </td>
+       <td class="wrong">
+        3
+       </td>
+       <td class="wrong">
+        4
+       </td>
+      </tr>
+      <tr>
+       <td class="dpfoot" colspan="7">
+        <a href="javascript:void(0);" onclick="javascript:new Effect.Fade('datepicker_endfilter','{duration:0.8}');">
+         Close
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+  <div class="row">
+   <label for="usr">
+    User:
+   </label>
+   <select id="usr" name="usr" realname="User">
+    <option value="">
+     Please choose
+    </option>
+    <option value="1">
+     admin
+    </option>
+   </select>
+  </div>
+  <div class="row">
+   <label for="ttask">
+    Task:
+   </label>
+   <select id="ttask" name="task">
+    <option value="">
+     Please choose
+    </option>
+   </select>
+  </div>
+  <input name="action" type="hidden" value="showproject"/>
+  <input name="id" type="hidden" value="1"/>
+  <script type="text/javascript">
+   theCal = new calendar(5,2023);
+			theCal.dayNames = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+			theCal.monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+			theCal.relateTo = "start";
+			theCal.keepEmpty = true;
+			theCal.dateFormat = "d.m.Y";
+			theCal.getDatepicker("datepicker_startfilter");
+  </script>
+  <script type="text/javascript">
+   theCal2 = new calendar(5,2023);
+			theCal2.dayNames = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+			theCal2.monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+			theCal2.relateTo = "end";
+			theCal2.keepEmpty = true;
+			theCal2.dateFormat = "d.m.Y";
+			theCal2.getDatepicker("datepicker_endfilter");
+  </script>
+  <div class="row-butn-bottom">
+   <label>
+   </label>
+   <button onfocus="this.blur();" type="submit">
+    Filter
+   </button>
+   <button onclick="javascript:blindtoggle('filter');toggleClass('filter_report','filter-active','filter');toggleClass('filter_butn','butn_link_active','butn_link');toggleClass('sm_report','smooth','nosmooth');return false;" onfocus="this.blur();">
+    Cancel
+   </button>
+  </div>
+ </fieldset>
+</form>

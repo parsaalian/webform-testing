@@ -1,0 +1,24 @@
+<form action="manageproject.php?action=assign&amp;id=1" class="main" method="post" novalidate="" onsubmit="return validateCompleteForm(this);">
+ <fieldset>
+  <div class="row">
+   <label for="addtheuser">
+    User
+   </label>
+   <select exclude="-1" id="addtheuser" name="user" realname="User" required="1">
+    <option selected="selected" value="-1">
+     Please choose
+    </option>
+   </select>
+  </div>
+  <div class="row-butn-bottom">
+   <label>
+   </label>
+   <button onfocus="this.blur();" type="submit">
+    Add
+   </button>
+   <button onclick="blindtoggle('form_member');toggleClass('addmember','add-active','add');toggleClass('add_butn_member','butn_link_active','butn_link');toggleClass('sm_member','smooth','nosmooth');return false;" onfocus="this.blur();">
+    Cancel
+   </button>
+  </div>
+ </fieldset>
+</form>

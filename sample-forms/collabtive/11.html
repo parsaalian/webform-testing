@@ -1,0 +1,411 @@
+<form action="managemilestone.php?action=add&amp;id=1" class="main" method="post" novalidate="" onsubmit="return validateCompleteForm(this);">
+ <fieldset>
+  <div class="row">
+   <label for="name">
+    Name:
+   </label>
+   <input class="text" id="name" name="name" realname="Name" required="1" type="text"/>
+  </div>
+  <div class="row">
+   <label for="desc">
+    Description:
+   </label>
+   <div class="editor">
+    <textarea aria-hidden="true" cols="1" id="desc" name="desc" realname="Description" rows="3" style="display: none;"></textarea>
+    <span aria-labelledby="desc_voice" class="mceEditor defaultSkin" id="desc_parent" role="application">
+     <span class="mceVoiceLabel" id="desc_voice" style="display:none;">
+      Rich Text Area
+     </span>
+     <table cellpadding="0" cellspacing="0" class="mceLayout" id="desc_tbl" role="presentation" style="width: 400px; height: 250px;">
+      <tbody>
+       <tr class="mceFirst" role="presentation">
+        <td class="mceToolbar mceLeft mceFirst mceLast" role="presentation">
+         <div aria-labelledby="desc_toolbargroup_voice" id="desc_toolbargroup" role="group" tabindex="-1">
+          <span role="application">
+           <span class="mceVoiceLabel" id="desc_toolbargroup_voice" style="display:none;">
+            Toolbar
+           </span>
+           <table align="" aria-disabled="false" aria-pressed="false" cellpadding="0" cellspacing="0" class="mceToolbar mceToolbarRow1 Enabled" id="desc_toolbar1" role="presentation" tabindex="-1">
+            <tbody>
+             <tr>
+              <td class="mceToolbarStart mceToolbarStartButton mceFirst">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="desc_bold_voice" aria-pressed="false" class="mceButton mceButtonEnabled mce_bold" href="javascript:;" id="desc_bold" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Bold (Ctrl+B)">
+                <span class="mceIcon mce_bold">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_bold_voice" style="display: none;">
+                 Bold (Ctrl+B)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="desc_italic_voice" aria-pressed="false" class="mceButton mceButtonEnabled mce_italic" href="javascript:;" id="desc_italic" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Italic (Ctrl+I)">
+                <span class="mceIcon mce_italic">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_italic_voice" style="display: none;">
+                 Italic (Ctrl+I)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="desc_underline_voice" aria-pressed="false" class="mceButton mceButtonEnabled mce_underline" href="javascript:;" id="desc_underline" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Underline (Ctrl+U)">
+                <span class="mceIcon mce_underline">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_underline_voice" style="display: none;">
+                 Underline (Ctrl+U)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <span aria-describedby="desc_fontsizeselect_voiceDesc" aria-haspopup="true" aria-labelledby="desc_fontsizeselect_text" role="button">
+                <table aria-valuenow="Font size" cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_fontsizeselect" id="desc_fontsizeselect" role="presentation" tabindex="-1">
+                 <tbody>
+                  <tr>
+                   <td class="mceFirst">
+                    <span class="voiceLabel" id="desc_fontsizeselect_voiceDesc" style="display:none;">
+                     Font size
+                    </span>
+                    <a class="mceText mceTitle" href="javascript:;" id="desc_fontsizeselect_text" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     Font size
+                    </a>
+                   </td>
+                   <td class="mceLast">
+                    <a class="mceOpen" href="javascript:;" id="desc_fontsizeselect_open" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     <span>
+                      <span aria-hidden="true" class="mceIconOnly" style="display:none;">
+                       ▼
+                      </span>
+                     </span>
+                    </a>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </span>
+              </td>
+              <td class="mceToolbarStart">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+              <td style="position: relative">
+               <span aria-haspopup="true" aria-labelledby="desc_forecolor_voice" role="button">
+                <table cellpadding="0" cellspacing="0" class="mceSplitButton mceSplitButtonEnabled mce_forecolor" id="desc_forecolor" role="presentation" tabindex="-1" title="Select text color">
+                 <tbody>
+                  <tr>
+                   <td class="mceFirst">
+                    <a class="mceAction mce_forecolor" href="javascript:;" id="desc_forecolor_action" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Select text color">
+                     <span class="mceAction mce_forecolor">
+                     </span>
+                     <span class="mceVoiceLabel mceIconOnly" id="desc_forecolor_voice" style="display:none;">
+                      Select text color
+                     </span>
+                     <div class="mceColorPreview" id="desc_forecolor_preview" style="background-color: rgb(136, 136, 136);">
+                     </div>
+                    </a>
+                   </td>
+                   <td class="mceLast">
+                    <a class="mceOpen mce_forecolor" href="javascript:;" id="desc_forecolor_open" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Select text color">
+                     <span class="mceOpen mce_forecolor">
+                      <span aria-hidden="true" class="mceIconOnly" style="display:none;">
+                       ▼
+                      </span>
+                     </span>
+                    </a>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </span>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="desc_bullist_voice" aria-pressed="false" class="mceButton mceButtonEnabled mce_bullist" href="javascript:;" id="desc_bullist" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Unordered list">
+                <span class="mceIcon mce_bullist">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_bullist_voice" style="display: none;">
+                 Unordered list
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="desc_numlist_voice" aria-pressed="false" class="mceButton mceButtonEnabled mce_numlist" href="javascript:;" id="desc_numlist" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Ordered list">
+                <span class="mceIcon mce_numlist">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_numlist_voice" style="display: none;">
+                 Ordered list
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="desc_link_voice" class="mceButton mce_link mceButtonDisabled" href="javascript:;" id="desc_link" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/edit link">
+                <span class="mceIcon mce_link">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_link_voice" style="display: none;">
+                 Insert/edit link
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="desc_unlink_voice" class="mceButton mce_unlink mceButtonDisabled" href="javascript:;" id="desc_unlink" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Unlink">
+                <span class="mceIcon mce_unlink">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_unlink_voice" style="display: none;">
+                 Unlink
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="desc_image_voice" class="mceButton mceButtonEnabled mce_image" href="javascript:;" id="desc_image" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/edit image">
+                <span class="mceIcon mce_image">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="desc_image_voice" style="display: none;">
+                 Insert/edit image
+                </span>
+               </a>
+              </td>
+              <td class="mceToolbarEnd mceToolbarEndButton mceLast">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </span>
+         </div>
+         <a accesskey="z" href="#" onfocus="tinyMCE.getInstanceById('desc').focus();" title="Jump to tool buttons - Alt+Q, Jump to editor - Alt-Z, Jump to element path - Alt-X">
+          <!-- IE -->
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td class="mceIframeContainer mceFirst mceLast">
+         <iframe frameborder="0" id="desc_ifr" src='javascript:""' style="width: 100%; height: 206px;" title="Rich Text Area. Press ALT F10 for toolbar. Press ALT 0 for help.">
+         </iframe>
+        </td>
+       </tr>
+       <tr class="mceLast">
+        <td class="mceStatusbar mceFirst mceLast">
+         <div aria-labelledby="desc_path_voice" id="desc_path_row" role="group">
+          <span>
+          </span>
+         </div>
+         <a class="mceResize" href="javascript:;" id="desc_resize" onclick="return false;">
+         </a>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </span>
+   </div>
+  </div>
+  <div class="clear_both_b">
+  </div>
+  <div class="row">
+   <label for="end">
+    Due:
+   </label>
+   <input class="text" id="end" name="end" realname="Due" required="1" type="text"/>
+  </div>
+  <div class="datepick">
+   <div class="picker" id="datepicker_miles" style="display:none;">
+    <table border="0" cellpadding="0" cellspacing="1" class="cal">
+     <tbody>
+      <tr class="head">
+       <td class="back">
+        <a href="javascript:void(0);">
+        </a>
+       </td>
+       <td colspan="5">
+        May 2023
+       </td>
+       <td class="next">
+        <a href="javascript:void(0);">
+        </a>
+       </td>
+      </tr>
+      <tr class="weekday">
+       <td>
+        Mon
+       </td>
+       <td>
+        Tue
+       </td>
+       <td>
+        Wed
+       </td>
+       <td>
+        Thu
+       </td>
+       <td>
+        Fri
+       </td>
+       <td>
+        Sat
+       </td>
+       <td>
+        Sun
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='01.05.2023';new Effect.Fade('datepicker_miles');">
+        1
+       </td>
+       <td class="normalday" onclick="$('end').value='02.05.2023';new Effect.Fade('datepicker_miles');">
+        2
+       </td>
+       <td class="normalday" onclick="$('end').value='03.05.2023';new Effect.Fade('datepicker_miles');">
+        3
+       </td>
+       <td class="normalday" onclick="$('end').value='04.05.2023';new Effect.Fade('datepicker_miles');">
+        4
+       </td>
+       <td class="normalday" onclick="$('end').value='05.05.2023';new Effect.Fade('datepicker_miles');">
+        5
+       </td>
+       <td class="normalday" onclick="$('end').value='06.05.2023';new Effect.Fade('datepicker_miles');">
+        6
+       </td>
+       <td class="normalday" onclick="$('end').value='07.05.2023';new Effect.Fade('datepicker_miles');">
+        7
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='08.05.2023';new Effect.Fade('datepicker_miles');">
+        8
+       </td>
+       <td class="normalday" onclick="$('end').value='09.05.2023';new Effect.Fade('datepicker_miles');">
+        9
+       </td>
+       <td class="normalday" onclick="$('end').value='10.05.2023';new Effect.Fade('datepicker_miles');">
+        10
+       </td>
+       <td class="normalday" onclick="$('end').value='11.05.2023';new Effect.Fade('datepicker_miles');">
+        11
+       </td>
+       <td class="normalday" onclick="$('end').value='12.05.2023';new Effect.Fade('datepicker_miles');">
+        12
+       </td>
+       <td class="normalday" onclick="$('end').value='13.05.2023';new Effect.Fade('datepicker_miles');">
+        13
+       </td>
+       <td class="normalday" onclick="$('end').value='14.05.2023';new Effect.Fade('datepicker_miles');">
+        14
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='15.05.2023';new Effect.Fade('datepicker_miles');">
+        15
+       </td>
+       <td class="normalday" onclick="$('end').value='16.05.2023';new Effect.Fade('datepicker_miles');">
+        16
+       </td>
+       <td class="normalday" onclick="$('end').value='17.05.2023';new Effect.Fade('datepicker_miles');">
+        17
+       </td>
+       <td class="normalday" onclick="$('end').value='18.05.2023';new Effect.Fade('datepicker_miles');">
+        18
+       </td>
+       <td class="normalday" onclick="$('end').value='19.05.2023';new Effect.Fade('datepicker_miles');">
+        19
+       </td>
+       <td class="normalday" onclick="$('end').value='20.05.2023';new Effect.Fade('datepicker_miles');">
+        20
+       </td>
+       <td class="normalday" onclick="$('end').value='21.05.2023';new Effect.Fade('datepicker_miles');">
+        21
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='22.05.2023';new Effect.Fade('datepicker_miles');">
+        22
+       </td>
+       <td class="normalday" onclick="$('end').value='23.05.2023';new Effect.Fade('datepicker_miles');">
+        23
+       </td>
+       <td class="today" onclick="$('end').value='24.05.2023';new Effect.Fade('datepicker_miles');">
+        24
+       </td>
+       <td class="normalday" onclick="$('end').value='25.05.2023';new Effect.Fade('datepicker_miles');">
+        25
+       </td>
+       <td class="normalday" onclick="$('end').value='26.05.2023';new Effect.Fade('datepicker_miles');">
+        26
+       </td>
+       <td class="normalday" onclick="$('end').value='27.05.2023';new Effect.Fade('datepicker_miles');">
+        27
+       </td>
+       <td class="normalday" onclick="$('end').value='28.05.2023';new Effect.Fade('datepicker_miles');">
+        28
+       </td>
+      </tr>
+      <tr>
+       <td class="normalday" onclick="$('end').value='29.05.2023';new Effect.Fade('datepicker_miles');">
+        29
+       </td>
+       <td class="normalday" onclick="$('end').value='30.05.2023';new Effect.Fade('datepicker_miles');">
+        30
+       </td>
+       <td class="normalday" onclick="$('end').value='31.05.2023';new Effect.Fade('datepicker_miles');">
+        31
+       </td>
+       <td class="wrong">
+        1
+       </td>
+       <td class="wrong">
+        2
+       </td>
+       <td class="wrong">
+        3
+       </td>
+       <td class="wrong">
+        4
+       </td>
+      </tr>
+      <tr>
+       <td class="dpfoot" colspan="7">
+        <a href="javascript:void(0);" onclick="javascript:new Effect.Fade('datepicker_miles','{duration:0.8}');">
+         Close
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+  <script type="text/javascript">
+   theCal = new calendar(5,2023);
+							theCal.dayNames = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+							theCal.monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+							theCal.relateTo = "end";
+							theCal.dateFormat = "d.m.Y";
+							theCal.getDatepicker("datepicker_miles");
+  </script>
+  <div class="row-butn-bottom">
+   <label>
+   </label>
+   <button onfocus="this.blur();" type="submit">
+    Add
+   </button>
+   <button onclick="blindtoggle('addstone');toggleClass('add','add-active','add');toggleClass('add_butn','butn_link_active','butn_link');toggleClass('sm_miles','smooth','nosmooth');return false;" onfocus="this.blur();">
+    Cancel
+   </button>
+  </div>
+ </fieldset>
+</form>
