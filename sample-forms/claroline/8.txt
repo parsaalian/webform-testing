@@ -1,0 +1,1 @@
+http://localhost:3000/claroline11110/claroline/announcements/announcements.php?cmd=rqCreate&cidReset=true&cidReq=SE123

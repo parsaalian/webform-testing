@@ -1,0 +1,35 @@
+<form action="/claroline11110/claroline/document/document.php" method="post">
+ <input name="cidReset" type="hidden" value="true"/>
+ <input name="cidReq" type="hidden" value="SE123"/>
+ <input name="cmd" type="hidden" value="exMkUrl"/>
+ <input name="cwd" type="hidden" value=""/>
+ <label for="fileName">
+  Name
+ </label>
+ <span class="required">
+  *
+ </span>
+ <br/>
+ <input id="fileName" name="fileName" type="text"/>
+ <br/>
+ <label for="url">
+  URL
+ </label>
+ <span class="required">
+  *
+ </span>
+ <br/>
+ <input id="url" name="url" type="text" value=""/>
+ <br/>
+ <p>
+  <label for="comment">
+   Comment
+  </label>
+  <br/>
+  <textarea cols="50" id="comment" name="comment" rows="2"></textarea>
+ </p>
+ <input type="submit" value="Ok"/>
+ <a href="/claroline11110/claroline/document/document.php?cmd=exChDir&amp;file=&amp;cidReset=true&amp;cidReq=SE123">
+  <input onclick="document.location='/claroline11110/claroline/document/document.php?cmd=exChDir&amp;file=&amp;cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+ </a>
+</form>

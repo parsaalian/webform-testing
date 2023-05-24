@@ -1,0 +1,1 @@
+http://localhost:3000/claroline11110/claroline/learnPath/importLearningPath.php?cidReset=true&cidReq=SE123

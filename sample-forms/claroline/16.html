@@ -1,0 +1,16 @@
+<form action="/claroline11110/claroline/learnPath/importLearningPath.php" enctype="multipart/form-data" method="post">
+ <input name="claroFormId" type="hidden" value="646e666c82395"/>
+ <input name="cidReset" type="hidden" value="true"/>
+ <input name="cidReq" type="hidden" value="SE123"/>
+ <input name="uploadedPackage" type="file"/>
+ <br/>
+ <small>
+  Max file size : 2 MB
+ </small>
+ <p>
+  <input type="submit" value="Import"/>
+  <a href="/claroline11110/claroline/learnPath/learningPathList.php?cidReset=true&amp;cidReq=SE123">
+   <input onclick="document.location='/claroline11110/claroline/learnPath/learningPathList.php?cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+  </a>
+ </p>
+</form>

@@ -1,0 +1,95 @@
+<form action="/claroline11110/claroline/wiki/wiki.php?cidReset=true&amp;cidReq=SE123" id="wikiProperties" method="post">
+ <fieldset>
+  <legend>
+   Wiki description
+  </legend>
+  <!-- wikiId = 0 if creation, != 0 if edition  -->
+  <p class="notice">
+   You can choose a title and a description for the wiki :
+  </p>
+  <input name="wikiId" type="hidden" value="0"/>
+  <!-- groupId = 0 if course wiki, != 0 if group_wiki  -->
+  <input name="groupId" type="hidden" value="0"/>
+  <dl>
+   <dt>
+    <label for="wikiTitle">
+     Title of the wiki
+    </label>
+   </dt>
+   <dd>
+    <input id="wikiTitle" maxlength="254" name="title" size="80" type="text" value="New Wiki"/>
+   </dd>
+   <dt>
+    <label for="wikiDesc">
+     Description of the Wiki
+    </label>
+   </dt>
+   <dd>
+    <textarea cols="80" id="wikiDesc" name="desc" rows="10">Enter the description of your wiki here</textarea>
+   </dd>
+  </dl>
+ </fieldset>
+ <fieldset id="acl">
+  <legend>
+   Access control management
+  </legend>
+  <p class="notice">
+   You can set access rights for users using the following grid :
+  </p>
+  <table id="wikiACL" style="text-align: center; padding: 5px;">
+   <tbody>
+    <tr class="matrixAbs">
+     <td>
+      <!-- empty -->
+     </td>
+     <td>
+      Read Pages
+     </td>
+     <td>
+      Edit Pages
+     </td>
+     <td>
+      Create Pages
+     </td>
+    </tr>
+    <tr>
+     <td class="matrixOrd">
+      Course members
+     </td>
+     <td>
+      <input checked="checked" id="course_read" name="acl[course_read]" onclick="updateBoxes('course','read');" type="checkbox"/>
+     </td>
+     <td>
+      <input checked="checked" id="course_edit" name="acl[course_edit]" onclick="updateBoxes('course','edit');" type="checkbox"/>
+     </td>
+     <td>
+      <input checked="checked" id="course_create" name="acl[course_create]" onclick="updateBoxes('course','create');" type="checkbox"/>
+     </td>
+    </tr>
+    <tr>
+     <td class="matrixOrd">
+      Others (*)
+     </td>
+     <td>
+      <input checked="checked" id="other_read" name="acl[other_read]" onclick="updateBoxes('other','read');" type="checkbox"/>
+     </td>
+     <td>
+      <input id="other_edit" name="acl[other_edit]" onclick="updateBoxes('other','edit');" type="checkbox"/>
+     </td>
+     <td>
+      <input disabled="" id="other_create" name="acl[other_create]" onclick="updateBoxes('other','create');" type="checkbox"/>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p class="notice">
+   (*) anonymous users, users who are not members of this course...
+  </p>
+ </fieldset>
+ <input name="cidReset" type="hidden" value="true"/>
+ <input name="cidReq" type="hidden" value="SE123"/>
+ <input name="action[exEdit]" type="submit" value="Ok"/>
+ <a href="/claroline11110/claroline/wiki/wiki.php?action=list&amp;cidReset=true&amp;cidReq=SE123">
+  <input onclick="document.location='/claroline11110/claroline/wiki/wiki.php?action=list&amp;cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+ </a>
+</form>

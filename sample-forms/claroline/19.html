@@ -1,0 +1,68 @@
+<form action="/claroline11110/claroline/phpbb/index.php" method="post">
+ <input name="claroFormId" type="hidden" value="646e6685265b4"/>
+ <input name="cmd" type="hidden" value="exMkForum"/>
+ <input name="forumId" type="hidden" value="0"/>
+ <input name="cidReset" type="hidden" value="true"/>
+ <input name="cidReq" type="hidden" value="SE123"/>
+ <label for="forumName">
+  Name :
+ </label>
+ <br/>
+ <input id="forumName" name="forumName" type="text" value=""/>
+ <br/>
+ <br/>
+ <label for="forumDesc">
+  Description :
+ </label>
+ <br/>
+ <textarea cols="50" id="forumDesc" name="forumDesc" rows="3"></textarea>
+ <br/>
+ <br/>
+ <label for="catId">
+  Category :
+ </label>
+ <br/>
+ <select name="catId">
+  <option value="2">
+   Main
+  </option>
+  <option value="1">
+   Group forums
+  </option>
+ </select>
+ <br/>
+ <br/>
+ <label>
+  Anonymity :
+ </label>
+ <br/>
+ <input checked="checked" id="anonymity_forbidden" name="anonymity" type="radio" value="forbidden"/>
+ <label for="anonymity_forbidden">
+  forbidden
+ </label>
+ <br/>
+ <input id="anonymity_allowed" name="anonymity" type="radio" value="allowed"/>
+ <label for="anonymity_allowed">
+  allowed
+ </label>
+ <br/>
+ <input id="anonymity_default" name="anonymity" type="radio" value="default"/>
+ <label for="anonymity_default">
+  default
+ </label>
+ <br/>
+ <br/>
+ <input id="forumPostUnallowed" name="forumPostUnallowed" type="checkbox"/>
+ <label for="forumPostUnallowed">
+  Locked
+  <small>
+   (No new post allowed)
+  </small>
+ </label>
+ <br/>
+ <br/>
+ <input type="submit" value="Ok"/>
+ <a href="/claroline11110/claroline/phpbb/index.php?cidReset=true&amp;cidReq=SE123">
+  <input onclick="document.location='/claroline11110/claroline/phpbb/index.php?cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+ </a>
+</form>

@@ -1,0 +1,1 @@
+http://localhost:3000/claroline11110/claroline/phpbb/index.php?cmd=rqMkForum&cidReset=true&cidReq=SE123

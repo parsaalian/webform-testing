@@ -1,0 +1,47 @@
+<form action="group.php" method="post">
+ <input name="cidReset" type="hidden" value="true"/>
+ <input name="cidReq" type="hidden" value="SE123"/>
+ <input name="claroFormId" type="hidden" value="646e668bd32af"/>
+ <input name="cmd" type="hidden" value="exMkGroup"/>
+ <table>
+  <tbody>
+   <tr valign="top">
+    <td>
+     <label for="group_quantity">
+      Create
+     </label>
+    </td>
+    <td>
+     <input id="group_quantity" name="group_quantity" size="3" type="text" value="1"/>
+     <label for="group_quantity">
+      new group(s)
+     </label>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <label for="group_max">
+      Max.
+     </label>
+    </td>
+    <td>
+     <input id="group_max" name="group_max" size="3" type="text" value="8"/>
+     seats by groups (optional)
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <label for="creation">
+      Create
+     </label>
+    </td>
+    <td>
+     <input id="creation" name="creation" type="submit" value="Ok"/>
+     <a href="http://localhost:3000/claroline11110/claroline/group/group.php?cidReset=true&amp;cidReq=SE123">
+      <input onclick="document.location='http://localhost:3000/claroline11110/claroline/group/group.php?cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+     </a>
+    </td>
+   </tr>
+  </tbody>
+ </table>
+</form>
