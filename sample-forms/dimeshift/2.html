@@ -1,0 +1,22 @@
+<form action="http://localhost:30000/user/signin" id="signin_modal_form" method="post" role="form">
+ <fieldset>
+  <div class="form-group">
+   <label class="sr-only" for="input_username">
+    Username or Email
+   </label>
+   <input class="form-control" id="input_username" name="username" placeholder="Username or Email" type="text"/>
+  </div>
+  <div class="form-group">
+   <label class="sr-only" for="input_password">
+    Password
+   </label>
+   <input class="form-control" id="input_password" name="password" placeholder="Password" type="password"/>
+  </div>
+  <div class="alert alert-danger errors-container" id="signin_invalid_password_alert" style="display: none;">
+   Invalid username or password
+  </div>
+  <div class="form-group">
+   <input class="btn btn-primary pull-left" data-loading-text="Signing in..." id="signin_modal_form_submit" type="submit" value="Sign In"/>
+  </div>
+ </fieldset>
+</form>
