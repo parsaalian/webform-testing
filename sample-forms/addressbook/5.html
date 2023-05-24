@@ -1,0 +1,107 @@
+<form accept-charset="utf-8" action="group.php" method="post" name="MainForm">
+ <input name="group" type="hidden" value=""/>
+ <table class="sortcompletecallback-applyZebra" id="maintable">
+  <tbody>
+   <tr>
+    <th>
+    </th>
+    <th class="sortable fd-column-1">
+     <a class="fdTableSortTrigger" href="#" title="Sort on “Last name”">
+      Last name
+     </a>
+     <span>
+     </span>
+    </th>
+    <th class="sortable fd-column-2">
+     <a class="fdTableSortTrigger" href="#" title="Sort on “First name”">
+      First name
+     </a>
+     <span>
+     </span>
+    </th>
+    <th class="sortable fd-column-3">
+     <a class="fdTableSortTrigger" href="#" title="Sort on “E-mail”">
+      E-mail
+     </a>
+     <span>
+     </span>
+    </th>
+    <th class="sortable fd-column-4">
+     <a class="fdTableSortTrigger" href="#" title="Sort on “Telephone”">
+      Telephone
+     </a>
+     <span>
+     </span>
+    </th>
+    <th>
+    </th>
+    <th>
+    </th>
+    <th>
+    </th>
+    <th>
+    </th>
+    <th>
+    </th>
+   </tr>
+   <tr class="" name="entry">
+    <td class="center">
+     <input accept="a" alt="Select ( )" id="2" name="selected[]" title="Select ( )" type="checkbox" value="2"/>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+     <a href="mailto:a">
+      a
+     </a>
+    </td>
+    <td>
+    </td>
+    <td class="center">
+     <a href="view.php?id=2">
+      <img alt="Details" src="icons/status_online.png" title="Details"/>
+     </a>
+    </td>
+    <td class="center">
+     <a href="edit.php?id=2">
+      <img alt="Edit" src="icons/pencil.png" title="Edit"/>
+     </a>
+    </td>
+    <td class="center">
+     <a href="vcard.php?id=2">
+      <img alt="vCard" src="icons/vcard.png" title="vCard"/>
+     </a>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+   </tr>
+  </tbody>
+ </table>
+ <input id="MassCB" onclick="MassSelection()" type="checkbox"/>
+ <em>
+  <strong>
+   Select all
+  </strong>
+ </em>
+ <br/>
+ <br/>
+ <div class="left">
+  <input onclick="MailSelection()" type="button" value="Send e-Mail"/>
+ </div>
+ <div class="left">
+  <input onclick="DeleteSel()" type="button" value="Delete"/>
+ </div>
+ <div>
+ </div>
+ <div class="right">
+  <input name="add" type="submit" value="Add to"/>
+  -
+  <select name="to_group">
+  </select>
+ </div>
+ <br/>
+</form>
