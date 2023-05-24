@@ -1,0 +1,1 @@
+https://demo.saleor.io/dashboard/reset-password/
