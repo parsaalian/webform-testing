@@ -1,0 +1,81 @@
+<form action="/gp/cart/desktop/go-to-checkout.html/ref=ox_sc_proceed" id="gutterCartViewForm" method="get">
+ <div class="a-box-group sc-buy-box-group">
+  <input name="partialCheckoutCart" type="hidden" value="1"/>
+  <div class="a-section sc-buy-box-inner-box">
+   <div class="a-row a-spacing-mini sc-subtotal sc-subtotal-buybox sc-java-remote-feature" data-name="Subtotals">
+    <span class="a-size-medium sc-number-of-items" id="sc-subtotal-label-buybox">
+     Subtotal (1 item):
+    </span>
+    <span class="a-color-price sc-price-container a-text-bold" id="sc-subtotal-amount-buybox">
+     <span class="a-size-medium a-color-base sc-price sc-white-space-nowrap">
+      $23.74
+     </span>
+    </span>
+   </div>
+   <div class="a-row a-spacing-base sc-gift">
+    <span class="a-declarative" data-action="sc-buy-box-gift-checkbox-update" data-csa-c-func-deps="aui-da-sc-buy-box-gift-checkbox-update" data-csa-c-id="aoexkp-ib46dp-h7ic7g-l5mquh" data-csa-c-type="widget" data-sc-buy-box-gift-checkbox-update="{}">
+     <div class="a-checkbox" data-a-input-name="isToBeGiftWrapped">
+      <label for="sc-buy-box-gift-checkbox">
+       <input id="sc-buy-box-gift-checkbox" name="isToBeGiftWrapped" type="checkbox" value="1"/>
+       <i class="a-icon a-icon-checkbox">
+       </i>
+       <span class="a-label a-checkbox-label">
+        This order contains a gift
+       </span>
+      </label>
+     </div>
+    </span>
+    <input name="isToBeGiftWrappedBefore" type="hidden" value="0"/>
+   </div>
+   <span cel_widget_id="desktop-ptc-button" class="celwidget" data-cel-widget="desktop-ptc-button" data-csa-c-id="djikl9-fk1kd9-4som3j-3yt9u1" id="desktop-ptc-button-celWidget">
+    <span class="a-button a-button-normal a-button-span12 a-button-primary" data-csa-c-content-id="desktop-ptc-button-content-id" data-csa-c-id="7xeu5g-n7ztol-t9s4aa-mn4ceu" data-csa-c-slot-id="desktop-ptc-button-slot-id" data-csa-c-type="widget" id="sc-buy-box-ptc-button">
+     <span class="a-button-inner">
+      <input aria-labelledby="sc-buy-box-ptc-button-announce" class="a-button-input" data-feature-id="proceed-to-checkout-action" name="proceedToRetailCheckout" type="submit" value="Proceed to checkout"/>
+      <span aria-hidden="true" class="a-button-text" id="sc-buy-box-ptc-button-announce">
+       <div class="a-section a-spacing-none">
+        <div class="sc-without-multicart" data-feature-id="proceed-to-checkout-label">
+         Proceed to Checkout
+        </div>
+        <div class="sc-with-multicart">
+         Check out Amazon Cart
+        </div>
+       </div>
+      </span>
+     </span>
+    </span>
+    <script type="text/javascript">
+     (function(f) {var _np=(window.P._namespace("CSAInteractionFatalForDesktopPtc"));if(_np.guardFatal){_np.guardFatal(f)(_np);}else{f(_np);}}(function(P) {
+    /*
+Javascript snippet to instrument CSA (client Side Analytics) Metrics.
+Here we use the interactionFatals dataset to emit metrics for clicks on the desktop-proceed-to-checkout-button
+Using inline JS because we want these elements modelled as dynamic elements independent of the underlying asset.
+Since these are dynamic elements we want them to be available to CSA to instrument on only once they are loaded.
+So we mark an element as functional to indicate to CSA to start emitting metrics on them.
+Marking these as functional:click means CSA should emit metrics for interaction fatals for events of type click.
+ */
+function publishCsaMetrics(){
+    if (window.csa) {
+        let myElement = document.getElementById("sc-buy-box-ptc-button");
+        if (myElement) {
+            myElement.setAttribute('data-csa-c-type', 'widget');
+            myElement.setAttribute('data-csa-c-slot-id', 'desktop-ptc-button-slot-id');
+            myElement.setAttribute('data-csa-c-content-id', 'desktop-ptc-button-content-id');
+
+            let myContentInstance = csa("Content", {element: myElement});
+            myContentInstance("mark", "functional:click");
+        }
+    }
+}
+publishCsaMetrics();
+
+}));
+    </script>
+   </span>
+   <input name="proceedToCheckout" type="hidden" value="1"/>
+   <div class="a-section a-text-center sc-buy-box-delivery-info">
+   </div>
+  </div>
+ </div>
+ <input name="cartInitiateId" type="hidden" value="1685117565243"/>
+ <input name="executionId" type="hidden" value="4ba523fc-a3e1d92debf5-e55479df4ba7-6f520220.S.3TCSE6B0YANGXWAXYCCD"/>
+</form>
