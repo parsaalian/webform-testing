@@ -1,8 +1,13 @@
-<form>
+<form action="birthdays.php" method="get">
  <label>
-  CSV for Nokia:
+  Birthdays (iCalendar):
  </label>
- <input name="type" type="hidden" value="xls-Nokia"/>
+ <input name="ics" type="hidden" value=""/>
  <input name="submit" type="submit" value="Download"/>
+ (
+ <a href="birthdays.php?ics&amp;user=XXX&amp;pass=YYY">
+  Link
+ </a>
+ )
  <br/>
 </form>
