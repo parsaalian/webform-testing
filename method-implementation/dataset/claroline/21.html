@@ -1,178 +1,68 @@
-<form action="group.php" method="post">
+<form action="/claroline11110/claroline/phpbb/index.php" method="post">
+ <input name="claroFormId" type="hidden" value="64822a906e984"/>
+ <input name="cmd" type="hidden" value="exMkForum"/>
+ <input name="forumId" type="hidden" value="0"/>
  <input name="cidReset" type="hidden" value="true"/>
  <input name="cidReq" type="hidden" value="SE123"/>
- <table border="0" cellpadding="4" cellspacing="0" width="100%">
-  <tbody>
-   <tr>
-    <td valign="top">
-     <b>
-      Registration
-     </b>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input checked="checked" id="self_registration" name="self_registration" type="checkbox" value="1"/>
-      <label for="self_registration">
-       Students are allowed to self-register in groups
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input id="self_unregistration" name="self_unregistration" type="checkbox" value="1"/>
-      <label for="self_unregistration">
-       Students are allowed to unregister from their group(s)
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <b>
-      Tutors
-     </b>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input id="tutor_registration" name="tutor_registration" type="checkbox" value="1"/>
-      <label for="tutor_registration">
-       Tutors are allowed to register/unregister themselves in/from supervised groups
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <b>
-      Limit
-     </b>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      A user can be a member of maximum
-      <select name="limitNbGroupPerUser">
-       <option selected="selected" value="1">
-        1
-       </option>
-       <option value="2">
-        2
-       </option>
-       <option value="3">
-        3
-       </option>
-       <option value="4">
-        4
-       </option>
-       <option value="5">
-        5
-       </option>
-       <option value="6">
-        6
-       </option>
-       <option value="7">
-        7
-       </option>
-       <option value="8">
-        8
-       </option>
-       <option value="9">
-        9
-       </option>
-       <option value="10">
-        10
-       </option>
-       <option value="ALL">
-        ALL
-       </option>
-      </select>
-      groups
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td>
-     <b>
-      Access
-     </b>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input checked="checked" id="private_1" name="private" type="radio" value="1"/>
-      <label for="private_1">
-       Private
-      </label>
-      <input id="private_0" name="private" type="radio" value="0"/>
-      <label for="private_0">
-       Public
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <b>
-      Tools
-     </b>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input checked="checked" id="CLDOC" name="CLDOC" type="checkbox" value="1"/>
-      <label for="CLDOC">
-       Document
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input checked="checked" id="CLFRM" name="CLFRM" type="checkbox" value="1"/>
-      <label for="CLFRM">
-       Forums
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input checked="checked" id="CLWIKI" name="CLWIKI" type="checkbox" value="1"/>
-      <label for="CLWIKI">
-       Wiki
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <span class="item">
-      <input checked="checked" id="CLCHAT" name="CLCHAT" type="checkbox" value="1"/>
-      <label for="CLCHAT">
-       Chat
-      </label>
-     </span>
-    </td>
-   </tr>
-   <tr>
-    <td valign="top">
-     <input name="properties" type="submit" value="Ok"/>
-     <a href="http://localhost:3000/claroline11110/claroline/group/group.php?cmd=rqMkGroup&amp;cidReset=true&amp;cidReq=SE123">
-      <input onclick="document.location='http://localhost:3000/claroline11110/claroline/group/group.php?cmd=rqMkGroup&amp;cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
-     </a>
-    </td>
-   </tr>
-  </tbody>
- </table>
+ <label for="forumName">
+  Name :
+ </label>
+ <br/>
+ <input id="forumName" name="forumName" type="text" value=""/>
+ <br/>
+ <br/>
+ <label for="forumDesc">
+  Description :
+ </label>
+ <br/>
+ <textarea cols="50" id="forumDesc" name="forumDesc" rows="3"></textarea>
+ <br/>
+ <br/>
+ <label for="catId">
+  Category :
+ </label>
+ <br/>
+ <select name="catId">
+  <option value="2">
+   Main
+  </option>
+  <option value="1">
+   Group forums
+  </option>
+ </select>
+ <br/>
+ <br/>
+ <label>
+  Anonymity :
+ </label>
+ <br/>
+ <input checked="checked" id="anonymity_forbidden" name="anonymity" type="radio" value="forbidden"/>
+ <label for="anonymity_forbidden">
+  forbidden
+ </label>
+ <br/>
+ <input id="anonymity_allowed" name="anonymity" type="radio" value="allowed"/>
+ <label for="anonymity_allowed">
+  allowed
+ </label>
+ <br/>
+ <input id="anonymity_default" name="anonymity" type="radio" value="default"/>
+ <label for="anonymity_default">
+  default
+ </label>
+ <br/>
+ <br/>
+ <input id="forumPostUnallowed" name="forumPostUnallowed" type="checkbox"/>
+ <label for="forumPostUnallowed">
+  Locked
+  <small>
+   (No new post allowed)
+  </small>
+ </label>
+ <br/>
+ <br/>
+ <input type="submit" value="Ok"/>
+ <a href="/claroline11110/claroline/phpbb/index.php?cidReset=true&amp;cidReq=SE123">
+  <input onclick="document.location='/claroline11110/claroline/phpbb/index.php?cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+ </a>
 </form>

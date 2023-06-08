@@ -1,1 +1,0 @@
-http://localhost:3000/claroline11110/claroline/document/rqmkhtml.php?cmd=rqMkHtml&cwd=&cidReset=true&cidReq=SE123

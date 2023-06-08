@@ -1,1 +1,0 @@
-http://localhost:3000/claroline11110/module/CLCHAT/index.php?cidReset=true&cidReq=SE123

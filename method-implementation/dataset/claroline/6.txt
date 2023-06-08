@@ -1,1 +1,0 @@
-http://localhost:3000/claroline11110/claroline/course_description/index.php

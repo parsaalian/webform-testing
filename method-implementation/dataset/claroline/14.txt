@@ -1,1 +1,0 @@
-http://localhost:3000/claroline11110/claroline/exercise/admin/edit_question.php?exId=&cmd=rqEdit&cidReset=true&cidReq=SE123

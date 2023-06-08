@@ -1,65 +1,12 @@
-<form action="/claroline11110/claroline/user/user_add.php" enctype="multipart/form-data" method="post">
+<form action="/claroline11110/claroline/phpbb/viewsearch.php" method="post">
  <input name="cidReset" type="hidden" value="true"/>
  <input name="cidReq" type="hidden" value="SE123"/>
- <input id="cmd" name="cmd" type="hidden" value="applySearch"/>
- <fieldset>
-  <legend>
-   Fill in one or more search criteria and press 'Search'
-  </legend>
-  <dl>
-   <dt>
-    <label for="lastname">
-     Name
-    </label>
-    :
-   </dt>
-   <dd>
-    <input id="lastname" name="lastname" size="40" type="text" value=""/>
-   </dd>
-   <dt>
-    <label for="firstname">
-     First name
-    </label>
-    :
-   </dt>
-   <dd>
-    <input id="firstname" name="firstname" size="40" type="text" value=""/>
-   </dd>
-   <dt class="moreOptions">
-    <label for="officialCode">
-     Administrative code
-    </label>
-    :
-   </dt>
-   <dd class="moreOptions">
-    <input id="officialCode" name="officialCode" size="40" type="text" value=""/>
-   </dd>
-   <dt class="moreOptions">
-    <label for="username">
-     Username
-    </label>
-    :
-   </dt>
-   <dd class="moreOptions">
-    <input id="username" name="username" size="40" type="text" value=""/>
-   </dd>
-   <dt class="moreOptions">
-    <label for="email">
-     Email
-    </label>
-    :
-   </dt>
-   <dd class="moreOptions">
-    <input id="email" name="email" size="40" type="text" value=""/>
-   </dd>
-   <dt>
-   </dt>
-   <dd>
-    <input id="applySearch" name="applySearch" type="submit" value="Search"/>
-    <a href="/claroline11110/claroline/user?cidReset=true&amp;cidReq=SE123">
-     <input type="button" value="Cancel"/>
-    </a>
-   </dd>
-  </dl>
- </fieldset>
+ Search :
+ <br/>
+ <input name="searchPattern" type="text"/>
+ <br/>
+ <input type="submit" value="Ok"/>
+ <a href="/claroline11110/claroline/phpbb/index.php?cidReset=true&amp;cidReq=SE123">
+  <input onclick="document.location='/claroline11110/claroline/phpbb/index.php?cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+ </a>
 </form>

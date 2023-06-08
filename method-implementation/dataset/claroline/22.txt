@@ -1,1 +1,0 @@
-http://localhost:3000/claroline11110/claroline/user/user_add.php?cidReset=true&cidReq=SE123

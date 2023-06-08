@@ -1,674 +1,95 @@
-<form action="/claroline11110/claroline/course/create.php" class="msform" id="courseSettings" method="post">
+<form action="/claroline11110/claroline/wiki/wiki.php?cidReset=true&amp;cidReq=SE123" id="wikiProperties" method="post">
+ <fieldset>
+  <legend>
+   Wiki description
+  </legend>
+  <!-- wikiId = 0 if creation, != 0 if edition  -->
+  <p class="notice">
+   You can choose a title and a description for the wiki :
+  </p>
+  <input name="wikiId" type="hidden" value="0"/>
+  <!-- groupId = 0 if course wiki, != 0 if group_wiki  -->
+  <input name="groupId" type="hidden" value="0"/>
+  <dl>
+   <dt>
+    <label for="wikiTitle">
+     Title of the wiki
+    </label>
+   </dt>
+   <dd>
+    <input id="wikiTitle" maxlength="254" name="title" size="80" type="text" value="New Wiki"/>
+   </dd>
+   <dt>
+    <label for="wikiDesc">
+     Description of the Wiki
+    </label>
+   </dt>
+   <dd>
+    <textarea cols="80" id="wikiDesc" name="desc" rows="10">Enter the description of your wiki here</textarea>
+   </dd>
+  </dl>
+ </fieldset>
+ <fieldset id="acl">
+  <legend>
+   Access control management
+  </legend>
+  <p class="notice">
+   You can set access rights for users using the following grid :
+  </p>
+  <table id="wikiACL" style="text-align: center; padding: 5px;">
+   <tbody>
+    <tr class="matrixAbs">
+     <td>
+      <!-- empty -->
+     </td>
+     <td>
+      Read Pages
+     </td>
+     <td>
+      Edit Pages
+     </td>
+     <td>
+      Create Pages
+     </td>
+    </tr>
+    <tr>
+     <td class="matrixOrd">
+      Course members
+     </td>
+     <td>
+      <input checked="checked" id="course_read" name="acl[course_read]" onclick="updateBoxes('course','read');" type="checkbox"/>
+     </td>
+     <td>
+      <input checked="checked" id="course_edit" name="acl[course_edit]" onclick="updateBoxes('course','edit');" type="checkbox"/>
+     </td>
+     <td>
+      <input checked="checked" id="course_create" name="acl[course_create]" onclick="updateBoxes('course','create');" type="checkbox"/>
+     </td>
+    </tr>
+    <tr>
+     <td class="matrixOrd">
+      Others (*)
+     </td>
+     <td>
+      <input checked="checked" id="other_read" name="acl[other_read]" onclick="updateBoxes('other','read');" type="checkbox"/>
+     </td>
+     <td>
+      <input id="other_edit" name="acl[other_edit]" onclick="updateBoxes('other','edit');" type="checkbox"/>
+     </td>
+     <td>
+      <input disabled="" id="other_create" name="acl[other_create]" onclick="updateBoxes('other','create');" type="checkbox"/>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p class="notice">
+   (*) anonymous users, users who are not members of this course...
+  </p>
+ </fieldset>
  <input name="cidReset" type="hidden" value="true"/>
  <input name="cidReq" type="hidden" value="SE123"/>
- <input name="cmd" type="hidden" value="exEdit"/>
- <input name="course_id" type="hidden" value=""/>
- <input name="course_isSourceCourse" type="hidden" value=""/>
- <input name="course_sourceCourseId" type="hidden" value="1"/>
- <input name="claroFormId" type="hidden" value="646e66f371398"/>
- <p>
-  <a class="expand-all" href="#">
-   Expand all
-  </a>
-  /
-  <a class="collapse-all" href="#">
-   Collapse all
-  </a>
- </p>
- <!-- FIRST SECTION: basic settings -->
- <fieldset class="collapsible" id="mandatories">
-  <legend>
-   <a class="doCollapse" href="#">
-    Basic settings
-   </a>
-  </legend>
-  <div class="collapsible-wrapper">
-   <dl>
-    <!-- Course title -->
-    <dt>
-     <label for="course_title">
-      Course title
-     </label>
-     <span class="required">
-      *
-     </span>
-    </dt>
-    <dd>
-     <input id="course_title" name="course_title" size="40" type="text" value=""/>
-     <br/>
-     <span class="notice">
-      e.g.
-      <i>
-       History of Literature
-      </i>
-     </span>
-    </dd>
-    <!-- Course code -->
-    <dt>
-     <label for="course_officialCode">
-      Code
-     </label>
-     <span class="required">
-      *
-     </span>
-    </dt>
-    <dd>
-     <input id="course_officialCode" maxlength="12" name="course_officialCode" type="text" value=""/>
-     <br/>
-     <span class="notice">
-      max. 12 characters, ie.
-      <em>
-       ROM2121
-      </em>
-     </span>
-    </dd>
-    <!-- Course categories -->
-    <dt>
-     <label>
-      Categories
-     </label>
-    </dt>
-    <dd>
-     <table class="multiselect">
-      <tbody>
-       <tr>
-        <td>
-         <label for="mslist1">
-          Linked categories
-         </label>
-         <br/>
-         <select id="mslist1" multiple="multiple" name="linked_categories[]">
-          <option value="2">
-           Sciences
-          </option>
-         </select>
-        </td>
-        <td class="arrows">
-         <a class="msadd" href="#">
-          <img src="/claroline11110/web/img/go_right.png?1232376376"/>
-         </a>
-         <br/>
-         <br/>
-         <a class="msremove" href="#">
-          <img src="/claroline11110/web/img/go_left.png?1232376376"/>
-         </a>
-        </td>
-        <td>
-         <label for="mslist2">
-          Unlinked categories
-         </label>
-         <br/>
-         <select id="mslist2" multiple="multiple" name="unlinked_categories[]">
-          <option value="3">
-           Economics
-          </option>
-          <option value="4">
-           Humanities
-          </option>
-         </select>
-        </td>
-       </tr>
-      </tbody>
-     </table>
-     <span class="notice">
-      Feel free not to associate courses to any categories.
-      <br/>
-      The categories appearing in grey are invisible categories.
-     </span>
-    </dd>
-    <!-- Course language select box -->
-    <dt>
-     <label for="course_language">
-      Language
-     </label>
-     <span class="required">
-      *
-     </span>
-    </dt>
-    <dd>
-     <select id="course_language" name="course_language">
-      <option selected="selected" value="english">
-       English
-      </option>
-     </select>
-    </dd>
-    <!-- Course titular -->
-    <dt>
-     <label for="course_titular">
-      Lecturer(s)
-     </label>
-    </dt>
-    <dd>
-     <input id="course_titular" name="course_titular" type="text" value="John Doe"/>
-    </dd>
-    <!-- Course titular's email -->
-    <dt>
-     <label for="course_email">
-      Email
-     </label>
-    </dt>
-    <dd>
-     <input id="course_email" maxlength="255" name="course_email" type="text" value="jdoe@mydomain.net"/>
-    </dd>
-    <!-- Course access -->
-    <dt>
-     Course access
-     <span class="required">
-      *
-     </span>
-    </dt>
-    <dd>
-     <img alt="open" src="/claroline11110/web/img/access_open.png?1232376376"/>
-     <input checked="checked" id="access_public" name="course_access" type="radio" value="public"/>
-     <label for="access_public">
-      Access allowed to anybody (even without login)
-     </label>
-     <br/>
-     <img alt="open" src="/claroline11110/web/img/access_platform.png?1232376376"/>
-     <input id="access_reserved" name="course_access" type="radio" value="platform"/>
-     <label for="access_reserved">
-      Access allowed only to platform members (user registered to the platform)
-     </label>
-     <br/>
-     <img alt="locked" src="/claroline11110/web/img/access_locked.png?1232376376"/>
-     <input id="access_private" name="course_access" type="radio" value="private"/>
-     <label for="access_private">
-      Access allowed only to course members (people on the user list)
-     </label>
-    </dd>
-    <!-- Course registration + registration key -->
-    <dt>
-     Registration settings
-     <span class="required">
-      *
-     </span>
-    </dt>
-    <dd>
-     <img alt="" src="/claroline11110/web/img/enroll_allowed.png?1232376376"/>
-     <input '="" checked="checked" id="registration_true" name="course_registration" type="radio" value="open"/>
-     <label for="registration_true">
-      Allowed
-     </label>
-     <blockquote>
-      <img alt="" src="/claroline11110/web/img/tick.png?1276266080"/>
-      <input id="registration_validation" name="registration_validation" type="checkbox"/>
-      <label for="registration_validation">
-       Allowed with validation
-      </label>
-      <br/>
-      <img alt="" src="/claroline11110/web/img/enroll_key.png?1232376376"/>
-      <input id="registration_key" name="registration_key" type="checkbox"/>
-      <label for="registration_key">
-       Allowed with enrolment key
-      </label>
-      <input id="course_registrationKey" name="course_registrationKey" type="text" value=""/>
-     </blockquote>
-     <img alt="" src="/claroline11110/web/img/enroll_forbidden.png?1232376376"/>
-     <input id="registration_false" name="course_registration" type="radio" value="close"/>
-     <label for="registration_false">
-      Denied
-     </label>
-    </dd>
-    <!-- Course settings tips -->
-    <dt>
-    </dt>
-    <dd>
-     <span class="notice">
-      By default, all users registered to the platform can enrol to your course. If you want some confidentiality,
-the simplest way is to open registration during one week, ask the students to register themselves, then close registration and check for possible intruders in the user list.
-Another option is to define a registration key which will need to be entered by any student who wants to enrol to the course.
-     </span>
-    </dd>
-   </dl>
-  </div>
- </fieldset>
- <!-- SECOND SECTION: optionnal settings -->
- <fieldset class="collapsible collapsed" id="options">
-  <legend>
-   <a class="doCollapse" href="#">
-    Optionnal settings
-   </a>
-  </legend>
-  <div class="collapsible-wrapper" style="display: none;">
-   <dl>
-    <!-- Course department name -->
-    <dt>
-     <label for="course_departmentName">
-      Department
-     </label>
-    </dt>
-    <dd>
-     <input id="course_departmentName" maxlength="30" name="course_departmentName" type="text" value=""/>
-    </dd>
-    <!-- Course department url -->
-    <dt>
-     <label for="course_extLinkUrl">
-      Department URL
-     </label>
-    </dt>
-    <dd>
-     <input id="course_extLinkUrl" maxlength="180" name="course_extLinkUrl" type="text" value=""/>
-    </dd>
-   </dl>
-  </div>
- </fieldset>
- <!-- THIRD SECTION: advanced options -->
- <fieldset class="collapsible collapsed" id="advancedInformation">
-  <legend>
-   <a class="doCollapse" href="#">
-    Advanced options
-   </a>
-  </legend>
-  <div class="collapsible-wrapper" style="display: none;">
-   <dl>
-    <!-- Visibility in category list -->
-    <dt>
-     Course visibility
-    </dt>
-    <dd>
-     <img alt="" src="/claroline11110/web/img/visible.png?1232376376"/>
-     <input checked="checked" id="visibility_show" name="course_visibility" type="radio" value="1"/>
-     <label for="visibility_show">
-      The course is shown in the courses listing
-     </label>
-     <br/>
-     <img alt="" src="/claroline11110/web/img/invisible.png?1232376376"/>
-     <input id="visibility_hidden" name="course_visibility" type="radio" value="0"/>
-     <label for="visibility_hidden">
-      Visible only to people on the user list
-     </label>
-    </dd>
-    <dt>
-     Maximum number of students
-    </dt>
-    <dd>
-     <input id="course_userLimit" name="course_userLimit" type="text" value="0"/>
-     <br/>
-     <span class="notice">
-      Leave this field empty or use 0 if you don't want to limit the number of users in this course
-      <br/>
-      This limit doesn't include course's tutors and managers
-     </span>
-    </dd>
-   </dl>
-   <!-- Course status -->
-   <dl>
-    <dt>
-     Status
-    </dt>
-    <dd class="adminControl">
-     <input checked="checked" id="course_status_enable" name="course_status_selection" type="radio" value="enable"/>
-     <label for="course_status_enable">
-      Available
-     </label>
-     <br/>
-     <br/>
-     <input id="course_status_date" name="course_status_selection" type="radio" value="date"/>
-     <label for="course_status_date">
-      Available from (included)
-     </label>
-     <select disabled="disabled" id="course_publicationDay" name="course_publicationDay">
-      <option value="1">
-       1
-      </option>
-      <option value="2">
-       2
-      </option>
-      <option value="3">
-       3
-      </option>
-      <option value="4">
-       4
-      </option>
-      <option value="5">
-       5
-      </option>
-      <option value="6">
-       6
-      </option>
-      <option value="7">
-       7
-      </option>
-      <option value="8">
-       8
-      </option>
-      <option value="9">
-       9
-      </option>
-      <option value="10">
-       10
-      </option>
-      <option value="11">
-       11
-      </option>
-      <option value="12">
-       12
-      </option>
-      <option value="13">
-       13
-      </option>
-      <option value="14">
-       14
-      </option>
-      <option value="15">
-       15
-      </option>
-      <option value="16">
-       16
-      </option>
-      <option value="17">
-       17
-      </option>
-      <option value="18">
-       18
-      </option>
-      <option value="19">
-       19
-      </option>
-      <option value="20">
-       20
-      </option>
-      <option value="21">
-       21
-      </option>
-      <option value="22">
-       22
-      </option>
-      <option value="23">
-       23
-      </option>
-      <option selected="selected" value="24">
-       24
-      </option>
-      <option value="25">
-       25
-      </option>
-      <option value="26">
-       26
-      </option>
-      <option value="27">
-       27
-      </option>
-      <option value="28">
-       28
-      </option>
-      <option value="29">
-       29
-      </option>
-      <option value="30">
-       30
-      </option>
-      <option value="31">
-       31
-      </option>
-     </select>
-     <select disabled="disabled" id="course_publicationMonth" name="course_publicationMonth">
-      <option value="1">
-       1
-      </option>
-      <option value="2">
-       2
-      </option>
-      <option value="3">
-       3
-      </option>
-      <option value="4">
-       4
-      </option>
-      <option selected="selected" value="5">
-       5
-      </option>
-      <option value="6">
-       6
-      </option>
-      <option value="7">
-       7
-      </option>
-      <option value="8">
-       8
-      </option>
-      <option value="9">
-       9
-      </option>
-      <option value="10">
-       10
-      </option>
-      <option value="11">
-       11
-      </option>
-      <option value="12">
-       12
-      </option>
-     </select>
-     <select disabled="disabled" id="course_publicationYear" name="course_publicationYear">
-      <option value="2021">
-       2021
-      </option>
-      <option value="2022">
-       2022
-      </option>
-      <option selected="selected" value="2023">
-       2023
-      </option>
-      <option value="2024">
-       2024
-      </option>
-      <option value="2025">
-       2025
-      </option>
-      <option value="2026">
-       2026
-      </option>
-      <option value="2027">
-       2027
-      </option>
-      <option value="2028">
-       2028
-      </option>
-     </select>
-     <span class="notice">
-      (d/m/y)
-     </span>
-     <blockquote>
-      <input disabled="disabled" id="useExpirationDate" name="useExpirationDate" type="checkbox" value="true"/>
-      <label for="useExpirationDate">
-       to (included)
-      </label>
-      <select disabled="disabled" id="course_expirationDay" name="course_expirationDay">
-       <option value="1">
-        1
-       </option>
-       <option value="2">
-        2
-       </option>
-       <option value="3">
-        3
-       </option>
-       <option value="4">
-        4
-       </option>
-       <option value="5">
-        5
-       </option>
-       <option value="6">
-        6
-       </option>
-       <option value="7">
-        7
-       </option>
-       <option value="8">
-        8
-       </option>
-       <option value="9">
-        9
-       </option>
-       <option value="10">
-        10
-       </option>
-       <option value="11">
-        11
-       </option>
-       <option value="12">
-        12
-       </option>
-       <option value="13">
-        13
-       </option>
-       <option value="14">
-        14
-       </option>
-       <option value="15">
-        15
-       </option>
-       <option value="16">
-        16
-       </option>
-       <option value="17">
-        17
-       </option>
-       <option value="18">
-        18
-       </option>
-       <option value="19">
-        19
-       </option>
-       <option value="20">
-        20
-       </option>
-       <option value="21">
-        21
-       </option>
-       <option value="22">
-        22
-       </option>
-       <option value="23">
-        23
-       </option>
-       <option selected="selected" value="24">
-        24
-       </option>
-       <option value="25">
-        25
-       </option>
-       <option value="26">
-        26
-       </option>
-       <option value="27">
-        27
-       </option>
-       <option value="28">
-        28
-       </option>
-       <option value="29">
-        29
-       </option>
-       <option value="30">
-        30
-       </option>
-       <option value="31">
-        31
-       </option>
-      </select>
-      <select disabled="disabled" id="course_expirationMonth" name="course_expirationMonth">
-       <option value="1">
-        1
-       </option>
-       <option value="2">
-        2
-       </option>
-       <option value="3">
-        3
-       </option>
-       <option value="4">
-        4
-       </option>
-       <option selected="selected" value="5">
-        5
-       </option>
-       <option value="6">
-        6
-       </option>
-       <option value="7">
-        7
-       </option>
-       <option value="8">
-        8
-       </option>
-       <option value="9">
-        9
-       </option>
-       <option value="10">
-        10
-       </option>
-       <option value="11">
-        11
-       </option>
-       <option value="12">
-        12
-       </option>
-      </select>
-      <select disabled="disabled" id="course_expirationYear" name="course_expirationYear">
-       <option value="2021">
-        2021
-       </option>
-       <option value="2022">
-        2022
-       </option>
-       <option selected="selected" value="2023">
-        2023
-       </option>
-       <option value="2024">
-        2024
-       </option>
-       <option value="2025">
-        2025
-       </option>
-       <option value="2026">
-        2026
-       </option>
-       <option value="2027">
-        2027
-       </option>
-       <option value="2028">
-        2028
-       </option>
-      </select>
-      <span class="notice">
-       (d/m/y)
-      </span>
-     </blockquote>
-     <input id="course_status_disabled" name="course_status_selection" type="radio" value="disable"/>
-     <label for="course_status_disabled">
-      Not available
-     </label>
-     <blockquote>
-      <input checked="checked" disabled="disabled" id="status_pending" name="course_status" type="radio" value="pending"/>
-      <label for="status_pending">
-       Reactivable by course manager
-      </label>
-      <br/>
-      <input disabled="disabled" id="status_disable" name="course_status" type="radio" value="disable"/>
-      <label for="status_disable">
-       Reactivable by administrator
-      </label>
-      <br/>
-      <input disabled="disabled" id="status_trash" name="course_status" type="radio" value="trash"/>
-      <label for="status_trash">
-       Move to trash
-      </label>
-     </blockquote>
-    </dd>
-   </dl>
-  </div>
- </fieldset>
- <dl>
-  <dt>
-   <input name="changeProperties" type="submit" value="Ok"/>
-   <a href="/claroline11110/index.php">
-    <input onclick="document.location='/claroline11110/index.php';return false" type="button" value="Cancel"/>
-   </a>
-  </dt>
-  <dd>
-  </dd>
- </dl>
+ <input name="action[exEdit]" type="submit" value="Ok"/>
+ <a href="/claroline11110/claroline/wiki/wiki.php?action=list&amp;cidReset=true&amp;cidReq=SE123">
+  <input onclick="document.location='/claroline11110/claroline/wiki/wiki.php?action=list&amp;cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+ </a>
 </form>

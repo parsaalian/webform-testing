@@ -1,1 +1,0 @@
-http://localhost:3000/claroline11110/claroline/calendar/agenda.php?cmd=rqAdd&cidReset=true&cidReq=SE123

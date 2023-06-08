@@ -1,1 +1,0 @@
-http://localhost:3000/claroline11110/claroline/learnPath/learningPathList.php?cmd=create&cidReset=true&cidReq=SE123

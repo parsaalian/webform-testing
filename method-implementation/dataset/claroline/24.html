@@ -1,49 +1,178 @@
-<form action="/claroline11110/claroline/user/addcsvusers.php" enctype="multipart/form-data" method="post">
- <input name="step" type="hidden" value="1"/>
- <input name="class_id" type="hidden" value="0"/>
+<form action="group.php" method="post">
  <input name="cidReset" type="hidden" value="true"/>
  <input name="cidReq" type="hidden" value="SE123"/>
- <input id="firstLineFormat_YES" name="firstLineFormat" type="radio" value="YES"/>
- <label for="firstLineFormat_YES">
-  Use format defined in first line of file
- </label>
- <br/>
- <br/>
- <input checked="checked" id="firstLineFormat_NO" name="firstLineFormat" type="radio" value="NO"/>
- <label for="firstLineFormat_NO">
-  Use the following format :
- </label>
- <br/>
- <br/>
- <span style="font-weight: bold;">
-  lastname,firstname,username,email,officialCode,groupId,groupName
- </span>
- <br/>
- <br/>
- <a class="claroCmd" href="/claroline11110/claroline/user/addcsvusers.php?display=default&amp;cmd=rqLoadDefaultFormat&amp;addType=userTool&amp;cidReset=true&amp;cidReq=SE123">
-  Load default format
- </a>
- |
- <a class="claroCmd" href="/claroline11110/claroline/user/addcsvusers.php?display=default&amp;cmd=rqChangeFormat&amp;addType=userTool&amp;cidReset=true&amp;cidReq=SE123">
-  Edit format to use
- </a>
- <br/>
- <br/>
- CSV file with the user list :
- <input name="CSVfile" type="file"/>
- <br/>
- <br/>
- <h3>
-  Options
- </h3>
- <input id="sendEmailToUserCreated" name="sendEmailToUserCreated" type="checkbox" value="1"/>
- <label for="sendEmailToUserCreated">
-  Send email to new users
- </label>
- <br/>
- <br/>
- <input name="submitCSV" type="submit" value="Add user list"/>
- <a href="/claroline11110/claroline/course/index.php?cid=SE123">
-  <input onclick="document.location='/claroline11110/claroline/course/index.php?cid=SE123';return false" type="button" value="Cancel"/>
- </a>
+ <table border="0" cellpadding="4" cellspacing="0" width="100%">
+  <tbody>
+   <tr>
+    <td valign="top">
+     <b>
+      Registration
+     </b>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input checked="checked" id="self_registration" name="self_registration" type="checkbox" value="1"/>
+      <label for="self_registration">
+       Students are allowed to self-register in groups
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input id="self_unregistration" name="self_unregistration" type="checkbox" value="1"/>
+      <label for="self_unregistration">
+       Students are allowed to unregister from their group(s)
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <b>
+      Tutors
+     </b>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input id="tutor_registration" name="tutor_registration" type="checkbox" value="1"/>
+      <label for="tutor_registration">
+       Tutors are allowed to register/unregister themselves in/from supervised groups
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <b>
+      Limit
+     </b>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      A user can be a member of maximum
+      <select name="limitNbGroupPerUser">
+       <option selected="selected" value="1">
+        1
+       </option>
+       <option value="2">
+        2
+       </option>
+       <option value="3">
+        3
+       </option>
+       <option value="4">
+        4
+       </option>
+       <option value="5">
+        5
+       </option>
+       <option value="6">
+        6
+       </option>
+       <option value="7">
+        7
+       </option>
+       <option value="8">
+        8
+       </option>
+       <option value="9">
+        9
+       </option>
+       <option value="10">
+        10
+       </option>
+       <option value="ALL">
+        ALL
+       </option>
+      </select>
+      groups
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <b>
+      Access
+     </b>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input checked="checked" id="private_1" name="private" type="radio" value="1"/>
+      <label for="private_1">
+       Private
+      </label>
+      <input id="private_0" name="private" type="radio" value="0"/>
+      <label for="private_0">
+       Public
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <b>
+      Tools
+     </b>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input checked="checked" id="CLDOC" name="CLDOC" type="checkbox" value="1"/>
+      <label for="CLDOC">
+       Document
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input checked="checked" id="CLFRM" name="CLFRM" type="checkbox" value="1"/>
+      <label for="CLFRM">
+       Forums
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input checked="checked" id="CLWIKI" name="CLWIKI" type="checkbox" value="1"/>
+      <label for="CLWIKI">
+       Wiki
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <span class="item">
+      <input checked="checked" id="CLCHAT" name="CLCHAT" type="checkbox" value="1"/>
+      <label for="CLCHAT">
+       Chat
+      </label>
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td valign="top">
+     <input name="properties" type="submit" value="Ok"/>
+     <a href="http://localhost:3000/claroline11110/claroline/group/group.php?cmd=rqMkGroup&amp;cidReset=true&amp;cidReq=SE123">
+      <input onclick="document.location='http://localhost:3000/claroline11110/claroline/group/group.php?cmd=rqMkGroup&amp;cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+     </a>
+    </td>
+   </tr>
+  </tbody>
+ </table>
 </form>
