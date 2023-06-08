@@ -1,1 +1,0 @@
-https://demo.saleor.io/dashboard/gift-cards/?asc=true&sort=usedBy

@@ -1,1 +1,0 @@
-https://demo.saleor.io/dashboard/discounts/vouchers?asc=true&sort=code

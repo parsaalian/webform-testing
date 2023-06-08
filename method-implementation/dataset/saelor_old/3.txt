@@ -1,1 +1,0 @@
-https://demo.saleor.io/dashboard/collections/?asc=true&sort=name
