@@ -29,7 +29,7 @@ The xpath in this format must be relative to the form element. Just give the com
 """
 
 
-def chat_gpt_plain(form_html, model='gpt3.5-turbo'):
+def chat_gpt_plain(form_html, openai_key, model='gpt3.5-turbo'):
     api_manager = ApiManager()
     
     prompt = [
@@ -52,6 +52,7 @@ def chat_gpt_plain(form_html, model='gpt3.5-turbo'):
         model=model,
         temperature=0.0,
         max_tokens=256,
+        openai_api_key=openai_key
     )
     
     response_text = response.choices[0].text()

@@ -12,7 +12,6 @@ import tiktoken
 from colorama import Fore, Style
 from openai.error import APIError, RateLimitError, Timeout
 
-from method.config import Config
 from method.llm.openai.api_manager import ApiManager
 from method.llm.openai.base import Message
 from method.logger import logger
@@ -72,7 +71,7 @@ def retry_openai_api(
 
 
 def call_ai_function(
-    function: str, args: list, description: str, model: str | None = None
+    function: str, args: list, description: str, model: str = 'gpt-4'
 ) -> str:
     """Call an AI function
 
@@ -88,9 +87,6 @@ def call_ai_function(
     Returns:
         str: The response from the function
     """
-    cfg = Config()
-    if model is None:
-        model = cfg.model_config['models']['smart_llm']
     # For each arg, if any are None, convert to "None":
     args = [str(arg) if arg is not None else "None" for arg in args]
     # parse args to comma separated string
@@ -126,9 +122,6 @@ def create_chat_completion(
     Returns:
         str: The response from the chat completion
     """
-    cfg = Config()
-    if temperature is None:
-        temperature = cfg.model_config['parameters']['temperature']
 
     num_retries = 10
     warned_user = False
@@ -206,8 +199,7 @@ def get_ada_embedding(text: str) -> List[float]:
     Returns:
         List[float]: The embedding.
     """
-    cfg = Config()
-    model = cfg.model_config['models']['embedding']
+    model = 'text-embedding-ada-002'
     text = text.replace("\n", " ")
 
     kwargs = {"model": model}
@@ -231,24 +223,27 @@ def create_embedding(
     Returns:
         openai.Embedding: The embedding object.
     """
-    cfg = Config()
+    models_embedding = 'text-embedding-ada-002'
+    models_tokenizer = 'cl100k_base'
+    params_embedding_token_limit = 8191
+    
     chunk_embeddings = []
     chunk_lengths = []
     for chunk in chunked_tokens(
         text,
-        tokenizer_name=cfg.model_config['models']['tokenizer'],
-        chunk_length=cfg.model_config['parameters']['embedding_token_limit'],
+        tokenizer_name=models_tokenizer,
+        chunk_length=params_embedding_token_limit,
     ):
         embedding = openai.Embedding.create(
             input=[chunk],
-            api_key=cfg.openai_api_key,
+            # api_key=cfg.openai_api_key,
             **kwargs,
         )
         api_manager = ApiManager()
         api_manager.update_cost(
             prompt_tokens=embedding.usage.prompt_tokens,
             completion_tokens=0,
-            model=cfg.model_config['models']['embedding'],
+            model=models_embedding,
         )
         chunk_embeddings.append(embedding["data"][0]["embedding"])
         chunk_lengths.append(len(chunk))

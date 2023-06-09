@@ -31,6 +31,7 @@ class ApiManager(metaclass=Singleton):
         model: str | None = None,
         temperature: float = None,
         max_tokens: int | None = None,
+        openai_api_key: str | None = None,
     ) -> str:
         """
         Create a chat completion and update the cost.
@@ -42,17 +43,14 @@ class ApiManager(metaclass=Singleton):
         Returns:
         str: The AI's response.
         """
-        cfg = Config()
         logger.debug(f"Prompt: {json.dumps(messages, indent=2)}")
-        if temperature is None:
-            temperature = cfg.model_config['parameters']['temperature']
         
         response = openai.ChatCompletion.create(
             model=model,
             messages=messages,
             temperature=temperature,
             max_tokens=max_tokens,
-            api_key=cfg.openai_api_key,
+            api_key=openai_api_key,
         )
         logger.debug(f"Response: {response}")
         prompt_tokens = response.usage.prompt_tokens
@@ -67,6 +65,7 @@ class ApiManager(metaclass=Singleton):
         model: str | None = None,
         temperature: float = None,
         max_tokens: int | None = None,
+        openai_api_key: str | None = None,
     ) -> str:
         """
         Create a text completion and update the cost.
@@ -78,16 +77,14 @@ class ApiManager(metaclass=Singleton):
         Returns:
         str: The AI's response.
         """
-        cfg = Config()
         logger.debug(f"Prompt: {prompt}")
-        if temperature is None:
-            temperature = cfg.model_config['parameters']['temperature']
+        
         response = openai.Completion.create(
             model=model,
             prompt=prompt,
             temperature=temperature,
             max_tokens=max_tokens,
-            api_key=cfg.openai_api_key,
+            api_key=openai_api_key,
         )
         logger.debug(f"Response: {response}")
         prompt_tokens = response.usage.prompt_tokens
