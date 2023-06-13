@@ -79,6 +79,8 @@ def get_structure_similarity(model, xpath1, xpath2):
 def combined_similarity(model, node1, node2, alpha=0.5):
     text_sim = get_text_similarity(node1, node2)
     structure_sim = get_structure_similarity(model, node1.xpath, node2.xpath)
+    if text_sim == 0:
+        return structure_sim
     return alpha * text_sim + (1 - alpha) * structure_sim
 
 
@@ -100,7 +102,7 @@ def add_weight_to_graph(model, relation_graph):
     return relation_graph
 
 
-def cutoff_low_score_edges(relation_graph):
+def cutoff_low_score_edges(relation_graph, factor=1):
     scores = list(filter(
         lambda x: x != 0,
         map(
@@ -113,7 +115,7 @@ def cutoff_low_score_edges(relation_graph):
     std_dev = np.std(scores)
 
     # Set the cutoff to be one standard deviation above the mean
-    cutoff = mean + std_dev
+    cutoff = mean + factor * std_dev
 
     print("Mean:", mean)
     print("Standard Deviation:", std_dev)
@@ -122,4 +124,5 @@ def cutoff_low_score_edges(relation_graph):
     for edge in relation_graph.edges():
         if edge.type != EdgeType.CHILD and edge.weight < cutoff:
             relation_graph.remove_edge(edge)
+    
     return relation_graph

@@ -76,7 +76,7 @@ class RelationGraph:
 def get_input_visible_text(element):
     text = ''
     attrs = element.attrs
-    
+
     if 'placeholder' in attrs:
         text += f"{attrs['placeholder']} "
     if 'value' in attrs and attrs['value'].strip() != '':

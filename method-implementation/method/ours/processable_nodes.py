@@ -23,6 +23,9 @@ def should_skip_processing(element):
 
 def is_force_not_keep(element):
     # TODO: list of elements not to keep, like children of svg
+    if element.name == 'svg' or element.name == 'path':
+        return True
+
     return False
 
 
@@ -59,11 +62,38 @@ def is_processable(element):
         return True
     
     return False
-        
+
+
+def wrap_free_text(doc):
+    should_wrap = []
+
+    for element in doc.recursiveChildGenerator():
+        if isinstance(element, NavigableString) and \
+            element.parent is not None and \
+            len(element.parent.contents) > 1:
+            
+            should_wrap.append(element)
+
+    for idx, element in enumerate(should_wrap):
+        span = doc.new_tag('span-wrap')
+        span.string = element.string
+        span.attrs = {
+            "x_start": "0",
+            "x_end": "0",
+            "y_start": "0",
+            "y_end": "0",
+            "xpath": f"{element.parent.attrs['xpath']}/SPAN-WRAP[{idx + 1}]"
+        }
+        element.insert_before(span)
+        element.extract()
+    
+    return doc
 
 
 def get_processable_nodes(soup):
     nodes = []
+    
+    soup = wrap_free_text(soup)
     
     for element in soup.recursiveChildGenerator():
         if should_skip_processing(element):
