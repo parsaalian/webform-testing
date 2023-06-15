@@ -19,8 +19,8 @@ pip install webdriver-manager
 ```
 
 # Subjects - dockerized-webapps
-[Opensource Apps](https://github.com/parsaalian/dockerized-webapps/tree/parsa-apps)
-- Use branch `parsa-apps`
+- [dockerized-webapps](https://github.com/parsaalian/dockerized-webapps/tree/parsa-apps)
+  - Use branch `parsa-apps`
 
 # Subjects
 [Opensource Apps](https://github.com/unicodeveloper/awesome-opensource-apps)
