@@ -1,4 +1,24 @@
+from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
+from webdriver_manager.chrome import ChromeDriverManager
+
+
+def create_driver(headless=False):
+    chrome_options = Options()
+    
+    if headless:
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--window-size=3072x1920");
+
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    
+    if not headless:
+        driver.maximize_window()
+    
+    return driver
 
 
 def get_xpath(driver, element):
@@ -43,7 +63,7 @@ def set_attribute(driver, element, key, value):
     driver.execute_script("arguments[0].setAttribute(arguments[1], arguments[2])", element, key, value)
 
 
-def embed_properties(driver, root):
+def embed_properties_into_html(driver, root):
     '''
     This function embeds the x_span, y_span, and xpath
     properties into WebElement as attributes for processing
@@ -60,6 +80,6 @@ def embed_properties(driver, root):
     set_attribute(driver, root, 'y_end', y_span[1])
     
     for child in root.find_elements(By.XPATH, '*'):
-        embed_properties(driver, child)
+        embed_properties_into_html(driver, child)
     
     return root

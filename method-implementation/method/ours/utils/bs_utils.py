@@ -1,0 +1,53 @@
+import networkx as nx
+
+from bs4 import NavigableString, Comment
+
+
+def is_input(soup_element):
+    input_tags = ['input', 'textarea', 'select', 'option', 'button']
+    return soup_element.name in input_tags
+
+
+def is_label(soup_element):
+    return soup_element.name == 'label'
+
+
+def is_text(soup_element):
+    return not is_input(soup_element) and not is_label(soup_element)
+
+
+def is_span_wrap(soup_element):
+    return soup_element.name == 'span-wrap'
+
+
+def is_navigable_string(soup_element):
+    return isinstance(soup_element, NavigableString)
+
+
+def is_comment(soup_element):
+    return isinstance(soup_element, Comment)
+
+
+def has_no_text(soup_element):
+    return soup_element.text is None or soup_element.text.strip() == ''
+
+
+# Function to create a graph from the BeautifulSoup object
+def convert_soup_to_nx_graph(soup):
+    G = nx.DiGraph()
+
+    for tag in soup.find_all():
+        # Assuming 'xpath' attribute exists for each tag
+        xpath = tag.attrs['xpath']
+        
+        if xpath not in G:
+            G.add_node(xpath)
+        for child in tag.children:
+            if is_comment(child) or is_navigable_string(child):
+                continue
+            child_xpath = child.attrs.get('xpath')
+            if child_xpath not in G:
+                G.add_node(child_xpath)
+            G.add_edge(xpath, child_xpath)
+
+    return G

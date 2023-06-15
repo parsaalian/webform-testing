@@ -1,6 +1,3 @@
-from method.ours.driver import create_driver
-from method.ours.attribute_embedding import embed_properties
-from method.ours.processable_nodes import get_processable_nodes
 from method.ours.relation_graph import create_relations_graph
 from method.ours.proximity_links import create_2d_span_ordered_dict
 from method.ours.initial_links import (
@@ -17,9 +14,6 @@ from method.ours.embedding_distance import (
 
 
 __all__ = [
-    'create_driver',
-    'embed_properties',
-    'get_processable_nodes',
     'create_relations_graph',
     'create_2d_span_ordered_dict',
     'add_for_links',
