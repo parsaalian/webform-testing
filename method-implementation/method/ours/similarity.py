@@ -1,6 +1,8 @@
 import numpy as np
 from openai.embeddings_utils import cosine_similarity
 
+from method.ours.relation_graph import EdgeType
+
 
 def get_text_similarity(node1, node2):
     embedding1 = node1.features
@@ -32,3 +34,22 @@ def get_combined_similarity(model, node1, node2, alpha=0.5):
     if text_sim == 0:
         return structure_sim
     return alpha * text_sim + (1 - alpha) * structure_sim
+
+
+def add_similarity_scores_to_graph(model, relation_graph):
+    for node in relation_graph.nodes():
+        edges = list(node.edges.values())
+        
+        for edge in edges:
+            if edge.type == EdgeType.CHILD or edge.type == EdgeType.FOR:
+                edge.set_weight(1)
+                continue
+            sim = get_combined_similarity(model, edge.source, edge.target)
+            if edge.target.has_children():
+                for target_child_edge in edge.target.get_children():
+                    sim = max(
+                        sim,
+                        get_combined_similarity(model, edge.source, target_child_edge.target)
+                    )
+            edge.set_weight(sim)
+    return relation_graph

@@ -1,34 +1,16 @@
-from .relation_graph import RelationEdge, EdgeType
+from method.ours.relation_graph import RelationEdge, EdgeType
 
 
-def add_for_links(relation_graph):
-    for node in relation_graph.nodes():
-        if 'for' in node.element.attrs:
-            source = relation_graph.get_node(node.get_id())
-            
-            for_id = node.element.attrs['for']
-            target = relation_graph.get_node(for_id)
-            
-            edge = RelationEdge(source, target, EdgeType.FOR)
-            relation_graph.add_edge(edge)
-
-    return relation_graph
+def spans_overlap(span1, span2):
+    if span2[0] >= span1[1] and span2[1] > span1[1]:
+        return False
+    if span2[1] <= span1[0] and span2[0] < span1[0]:
+        return False
+    return True
 
 
-def add_parent_child_links(spans_2d, relation_graph):
-    for y_span, x_spans in spans_2d.items():
-        x_nodes = list(x_spans.values())
-
-        for nodes in x_nodes:
-            for child_idx in range(1, len(nodes)):
-                edge = RelationEdge(nodes[0], nodes[child_idx], EdgeType.CHILD)
-                relation_graph.add_edge(edge)
-    
-    return relation_graph
-
-
-def add_left_right_links(spans_2d, relation_graph):
-    for y_span, x_spans in spans_2d.items():
+def create_left_right_links(spans_2d, relation_graph):
+    for _, x_spans in spans_2d.items():
         x_nodes = list(x_spans.values())
         for node_idx, nodes in enumerate(x_nodes):
             repr_node = nodes[0]
@@ -44,14 +26,6 @@ def add_left_right_links(spans_2d, relation_graph):
     return relation_graph
 
 
-def spans_overlap(span1, span2):
-    if span2[0] >= span1[1] and span2[1] > span1[1]:
-        return False
-    if span2[1] <= span1[0] and span2[0] < span1[0]:
-        return False
-    return True
-
-
 def add_row_neighbor_links(relation_graph, node, row, edge_type):
     for nodes in row.values():
         repr_node = nodes[0]
@@ -61,9 +35,9 @@ def add_row_neighbor_links(relation_graph, node, row, edge_type):
     return relation_graph
 
 
-def add_top_bottom_links(spans_2d, relation_graph):
+def create_top_bottom_links(spans_2d, relation_graph):
     rows = list(spans_2d.values())
-    for y_idx, (y_span, x_spans) in enumerate(spans_2d.items()):
+    for y_idx, (_, x_spans) in enumerate(spans_2d.items()):
         for nodes in x_spans.values():
             repr_node = nodes[0]
             if y_idx - 1 >= 0:

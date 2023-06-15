@@ -5,7 +5,7 @@ from .relation_node import RelationNode
 from .relation_edge import RelationEdge, EdgeType
 
 
-def create_relations_graph(bs_doc, text_embedding_method='ADA'):
+def create_relation_graph(bs_doc, text_embedding_method='ADA'):
     graph = RelationGraph()
     
     for n in tqdm(bs_doc):
@@ -20,5 +20,5 @@ __all__ = [
     'RelationNode',
     'RelationEdge',
     'EdgeType',
-    'create_relations_graph',
+    'create_relation_graph',
 ]
