@@ -7,14 +7,10 @@ import spacy
 from openai.embeddings_utils import get_embedding as get_embedding_openai
 
 
-class EdgeDir(Enum):
-    IN = 'IN'
-    OUT = 'OUT'
-
-
 class EdgeType(Enum):
     # connection via for attribute
     FOR = 'FOR'
+    PROBABLE_FOR = 'PROBABLE_FOR'
     
     # neighbor connections
     CHILD = 'CHILD'
@@ -54,7 +50,7 @@ class RelationGraph:
     def add_edge(self, edge):
         source = edge.source
         
-        source.add_edge(edge, EdgeDir.OUT)
+        source.add_edge(edge)
         
         self._edges[edge.get_id()] = edge
     
@@ -62,7 +58,13 @@ class RelationGraph:
     def remove_edge(self, edge):
         source = edge.source
         
-        source.remove_edge(edge, EdgeDir.OUT)
+        source.remove_edge(edge)
+        
+        target_reverse_edges = list(filter(edge.is_reverse, edge.target.edges.values()))
+        
+        if len(target_reverse_edges) > 0:
+            target_reverse_edge = target_reverse_edges[0]
+            edge.target.remove_edge(target_reverse_edge)
         
         self._edges.pop(edge.get_id())
     
@@ -94,10 +96,10 @@ def get_visible_text(element):
         element.name == 'textarea':
         return get_input_visible_text(element)
     
-    if element.string == None:
+    if element.text == None:
         return ''
     
-    return str(element.string)
+    return str(element.text)
 
 
 def get_null_embedding(dim=12288):
@@ -130,9 +132,7 @@ class RelationNode:
         self.visible_text = self._find_visible_text(element)
         self.features = self._calculate_features(self.visible_text, text_embedding_method)
         
-        self.edges = {
-            EdgeDir.OUT: {},
-        }
+        self.edges = {}
         
         self.children_count = 0
     
@@ -157,8 +157,8 @@ class RelationNode:
         return features
     
     
-    def _change_children_count(self, edge, direction, increase=1):
-        if edge.type == EdgeType.CHILD and direction == EdgeDir.OUT:
+    def _change_children_count(self, edge, increase=1):
+        if edge.type == EdgeType.CHILD:
             self.children_count += increase
     
     
@@ -169,18 +169,21 @@ class RelationNode:
     def get_children(self):
         return list(filter(
             lambda x: x.type == EdgeType.CHILD,
-            list(self.edges[EdgeDir.OUT].values())
+            list(self.edges.values())
         ))
     
     
-    def add_edge(self, edge, direction):
-        self.edges[direction][edge.get_id()] = edge
-        self._change_children_count(edge, direction, 1)
+    def add_edge(self, edge):
+        self.edges[edge.get_id()] = edge
+        self._change_children_count(edge, 1)
     
     
-    def remove_edge(self, edge, direction):
-        self.edges[direction].pop(edge.get_id())
-        self._change_children_count(edge, direction, -1)
+    def remove_edge(self, edge):
+        try:
+            self.edges.pop(edge.get_id())
+            self._change_children_count(edge, -1)
+        except Exception as e:
+            print(e)
     
     
     def get_visible_area(self):
@@ -202,15 +205,38 @@ class RelationNode:
 
 
 class RelationEdge:
-    def __init__(self, source, target, conn_type):
+    def __init__(self, source, target, conn_type, weight=0):
         self.source = source
         self.target = target
         self.type = conn_type
-        self.weight = 0
+        self.weight = weight
     
     
     def set_weight(self, weight):
         self.weight = weight
+    
+    
+    def set_type(self, conn_type):
+        self.type = conn_type
+    
+    
+    def is_reverse(self, edge):
+        return self.source == edge.target and \
+            self.target == edge.source and \
+            self.weight == edge.weight and \
+            self.type == self._reverse_type(edge.type)
+    
+    
+    def _reverse_type(self, conn_type):
+        if conn_type == EdgeType.NLEFT:
+            return EdgeType.NRIGHT
+        if conn_type == EdgeType.NRIGHT:
+            return EdgeType.NLEFT
+        if conn_type == EdgeType.NBOTTOM:
+            return EdgeType.NTOP
+        if conn_type == EdgeType.NTOP:
+            return EdgeType.NBOTTOM
+        return None
     
     
     def get_id(self):

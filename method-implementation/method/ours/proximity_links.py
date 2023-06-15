@@ -1,6 +1,3 @@
-from tqdm import tqdm
-
-
 def tuple_avg(t):
     return (t[0] + t[1]) / 2
 
@@ -75,7 +72,7 @@ class SpanOrderedDict:
             self.spans.insert(insert_idx, span)
             return span
         
-        # otherwise, the spans collide with eachother
+        # otherwise, the spans collide with each other
         # print('collide', closest_span)
         span_start = min(closest_span[0], span[0])
         span_end = max(closest_span[1], span[1])
@@ -109,7 +106,7 @@ class SpanOrderedDict:
 def create_span_ordered_dict(relation_nodes, axis):
     spans = SpanOrderedDict()
     
-    for node in tqdm(relation_nodes):
+    for node in relation_nodes:
         span = getattr(node, f'{axis}_span')
         spans.add_item(span, node)
 
@@ -122,8 +119,8 @@ def create_2d_span_ordered_dict(relation_graph):
     for y_span, nodes in y_spans.items():
         x_spans = create_span_ordered_dict(nodes, 'x')
         
-        # sort the items so that the first item in multiple items list is the largets,
-        # and therefore the representitive item.
+        # sort the items so that the first item in multiple items list is the targets,
+        # and therefore the representative item.
         for x_span, sub_nodes in x_spans.items():
             sorted_sub_nodes = sorted(sub_nodes, key=lambda x: x.get_visible_area(), reverse=True)
             x_spans.force_set_item(x_span, sorted_sub_nodes)

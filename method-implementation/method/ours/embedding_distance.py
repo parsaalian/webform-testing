@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 from openai.embeddings_utils import cosine_similarity
 
 import networkx as nx
@@ -7,7 +6,7 @@ from node2vec import Node2Vec
 
 from bs4 import NavigableString, Comment
 
-from .relation_graph import EdgeDir, EdgeType
+from .relation_graph import EdgeType
 
 
 def get_text_similarity(node1, node2):
@@ -85,11 +84,12 @@ def combined_similarity(model, node1, node2, alpha=0.5):
 
 
 def add_weight_to_graph(model, relation_graph):
-    for node in tqdm(relation_graph.nodes()):
-        edges = list(node.edges[EdgeDir.OUT].values())
+    for node in relation_graph.nodes():
+        edges = list(node.edges.values())
         
         for edge in edges:
-            if edge.type == EdgeType.CHILD:
+            if edge.type == EdgeType.CHILD or edge.type == EdgeType.FOR:
+                edge.set_weight(1)
                 continue
             sim = combined_similarity(model, edge.source, edge.target)
             if edge.target.has_children():
