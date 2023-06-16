@@ -1,0 +1,28 @@
+<form accept-charset="utf-8" action="/addressbook/group.php" method="post">
+ <label>
+  Group name:
+ </label>
+ <input name="group_name" size="35" type="text"/>
+ <br/>
+ <label>
+  Parent group
+ </label>
+ <select name="group_parent_id">
+  <option value="0">
+   [none]
+  </option>
+ </select>
+ <br/>
+ <label>
+  Group header (Logo):
+ </label>
+ <textarea cols="40" name="group_header" rows="10"></textarea>
+ <br/>
+ <label>
+  Group footer (Comment):
+ </label>
+ <textarea cols="40" name="group_footer" rows="10"></textarea>
+ <br/>
+ <br/>
+ <input name="submit" type="submit" value="Enter information"/>
+</form>
