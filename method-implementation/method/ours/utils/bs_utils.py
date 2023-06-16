@@ -32,6 +32,30 @@ def has_no_text(soup_element):
     return soup_element.text is None or soup_element.text.strip() == ''
 
 
+def remove_redundant_attributes(soup_element):
+    KEEP_ATTRIBUTES = [
+        'href',
+        'src',
+        'alt',
+        'action',
+        'name',
+        'type',
+        'for',
+        'id',
+    ]
+    
+    for attr in [a for a in soup_element.attrs if a not in KEEP_ATTRIBUTES]:
+        soup_element.attrs.pop(attr)
+    
+    for e in soup_element.find_all():
+        if is_navigable_string(e) or is_comment(e):
+            continue
+        for attr in [a for a in e.attrs if a not in KEEP_ATTRIBUTES]:
+            e.attrs.pop(attr)
+    
+    return soup_element
+
+
 # Function to create a graph from the BeautifulSoup object
 def convert_soup_to_nx_graph(soup):
     G = nx.DiGraph()

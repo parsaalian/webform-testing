@@ -92,7 +92,8 @@ class RelationNode:
             self.edges.pop(edge.get_id())
             self._change_children_count(edge, -1)
         except Exception as e:
-            print(e)
+            # print(e)
+            pass
     
     
     def get_visible_area(self):

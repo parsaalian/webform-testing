@@ -1,4 +1,6 @@
-from method.ours.utils import is_label, is_input
+import copy
+
+from method.ours.utils import is_label, is_input, remove_redundant_attributes
 from method.ours.similarity import get_combined_similarity
 
 
@@ -25,6 +27,7 @@ class InputGroupNode:
     
     
     def _form_group(self, node):
+        # TODO: modify so that we can create more than one edge distance groups
         group = []
         edges = list(node.edges.values())
         
@@ -48,14 +51,25 @@ class InputGroupNode:
         return max(input_sim, label_sim or 0)
     
     
+    def _copy_soup_and_simplify_attrs(self, element):
+        copied = copy.copy(element)
+        copied = remove_redundant_attributes(element)
+        return copied
+    
+    
     def __str__(self):
-        input_string = f'input:\n{str(self.node.element)}\n'
+        input_string = f'input: {str(self._copy_soup_and_simplify_attrs(self.node.element))}\n'
         
         if self.label is not None:
-            input_string += f'with label:\n{str(self.label.element)}\n'
+            input_string += f'with label: {self.label.element.text.strip()}\n'
         
         if len(self.group) > 0:
-            group_related_node_str = '\n'.join(map(lambda x: str(x.element), self.group))
+            group_related_node_str = '\n'.join(
+                map(
+                    lambda x: str(self._copy_soup_and_simplify_attrs(x.element)),
+                    self.group
+                )
+            )
             input_string += f'with the following relevant text tags:\n{group_related_node_str}\n'
         
-        return input_string
+        return input_string.strip()
