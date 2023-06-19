@@ -23,7 +23,7 @@ The list of the constraints and their signatures is as follows:
 14. toEndWith(value) # the input value field must end with a certain value
 15. toMatch(regex) # the input value field must match a certain regex pattern
 
-generate conditions in the as the sample:
+You must only choose constraints from the list above. The name of the constraints must exactly match the functions above. Generate constraints as the sample:
 
 # sample
 expect(field('password'))
@@ -33,7 +33,7 @@ expect(field('password'))
 .toHaveUpperCase()
 .toHaveSpecialChars()
 .not.toBeTruthy()
-.toBeExactlyEqual(field('confirm password'))
+.toBe(field('confirm password'))
 # end of sample
 
 If there are multiple ways to express constraints, use the one with the least number of constraints to describe it.

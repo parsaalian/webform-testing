@@ -13,6 +13,9 @@ class EdgeType(Enum):
     NRIGHT = 'NRIGHT'
     NTOP = 'NTOP'
     NBOTTOM = 'NBOTTOM'
+    
+    # feedback connections
+    FEEDBACK = 'FEEDBACK'
 
 
 class RelationEdge:

@@ -50,6 +50,8 @@ class ConstraintFactory:
             return ToStartWith(is_negative, args)
         if name == 'toEndWith':
             return ToEndWith(is_negative, args)
+        if name == 'toMatch':
+            return ToMatch(is_negative, args)
         raise Exception('Constraint name is not valid')
 
 
@@ -185,7 +187,7 @@ class ToHaveLengthCondition(Constraint):
 class ToHaveCompareCondition(Constraint):
     def __init__(self, is_negative, args):
         super().__init__(is_negative, args)
-        self.condition = args[0]
+        self.condition = args[0].strip("\'")
         self.expected = args[1]
     
     
@@ -423,6 +425,26 @@ class ToEndWith(Constraint):
     def has_conflict(self, other):
         return False
 
+    
+    def matches(self, value):
+        return False
+
+
+class ToMatch(Constraint):
+    def __init__(self, is_negative, args=None):
+        super().__init__(is_negative, args)
+        self.expected = args[0]
+    
+    
+    def to_prompt_string(self):
+        if self.is_negative:
+            return f'input field should not match {self.expected} regex pattern'
+        return f'input field should match {self.expected} regex pattern'
+    
+    
+    def has_conflict(self, other):
+        return False
+    
     
     def matches(self, value):
         return False

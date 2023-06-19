@@ -42,6 +42,9 @@ def remove_redundant_attributes(soup_element):
         'type',
         'for',
         'id',
+        'placeholder',
+        'value',
+        'alt',
     ]
     
     for attr in [a for a in soup_element.attrs if a not in KEEP_ATTRIBUTES]:

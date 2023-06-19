@@ -44,6 +44,8 @@ class RelationNode:
         self.edges = {}
         
         self.children_count = 0
+        
+        self.is_feedback = False
     
     
     def _find_xpath(self, element):
@@ -69,6 +71,14 @@ class RelationNode:
     def _change_children_count(self, edge, increase=1):
         if edge.type == EdgeType.CHILD:
             self.children_count += increase
+    
+    
+    def set_is_feedback(self, is_feedback):
+        self.is_feedback = is_feedback
+    
+    
+    def get_is_feedback(self):
+        return self.is_feedback
     
     
     def has_children(self):

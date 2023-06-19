@@ -50,3 +50,20 @@ class RelationGraph:
         return {
             key: node.get_features() for key, node in self._nodes.items()
         }
+    
+    
+    def diff(self, new_graph):
+        diff = {
+            'added': [],
+            'removed': [],
+        }
+        
+        for node in new_graph.nodes():
+            if node.get_id() not in self._nodes:
+                diff['added'].append(node)
+        
+        for node in self.nodes():
+            if node.get_id() not in new_graph._nodes:
+                diff['removed'].append(node)
+        
+        return diff
