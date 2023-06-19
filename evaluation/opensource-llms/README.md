@@ -34,5 +34,6 @@ TARGET_SOURCE_CHUNKS: The amount of chunks (sources) that will be used to answer
 In order to run a model:
 
 ```shell
-python WebGPT.py
+conda activate opensource-llms
+python webGPT.py
 ```
