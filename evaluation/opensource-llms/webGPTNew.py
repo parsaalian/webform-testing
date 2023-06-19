@@ -110,7 +110,7 @@ def load_model(device_type, model_id, model_basename=None):
 
     return local_llm
 
-
+"""
 # chose device typ to run on as well as to show source documents.
 @click.command()
 @click.option(
@@ -141,9 +141,10 @@ def load_model(device_type, model_id, model_basename=None):
     ),
     help="Device to run on. (Default is cuda)",
 )
-def main(device_type, show_sources):
+"""
+def main():
+    device_type = "cuda"
     logging.info(f"Running on: {device_type}")
-    logging.info(f"Display Source Documents set to: {show_sources}")
 
 
     # load the LLM for generating responses
@@ -200,4 +201,4 @@ if __name__ == "__main__":
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s", level=logging.INFO
     )
-    main(device_type="cuda")
+    main()
