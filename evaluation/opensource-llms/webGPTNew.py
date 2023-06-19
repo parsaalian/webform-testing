@@ -141,30 +141,12 @@ def load_model(device_type, model_id, model_basename=None):
     ),
     help="Device to run on. (Default is cuda)",
 )
-@click.option(
-    "--show_sources",
-    "-s",
-    is_flag=True,
-    help="Show sources along with answers (Default is False)",
-)
 def main(device_type, show_sources):
-    """
-    This function implements the information retrieval task.
-
-
-    1. Loads an embedding model, can be HuggingFaceInstructEmbeddings or HuggingFaceEmbeddings
-    2. Loads the existing vectorestore that was created by inget.py
-    3. Loads the local LLM using load_model function - You can now set different LLMs.
-    4. Setup the Question Answer retreival chain.
-    5. Question answers.
-    """
-
     logging.info(f"Running on: {device_type}")
     logging.info(f"Display Source Documents set to: {show_sources}")
 
-    
 
-    # load the LLM for generating Natural Language responses
+    # load the LLM for generating responses
 
     # for HF models
     # model_id = "TheBloke/vicuna-7B-1.1-HF"
@@ -214,9 +196,8 @@ def main(device_type, show_sources):
 
 
 
-
 if __name__ == "__main__":
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s", level=logging.INFO
     )
-    main()
+    main(device_type="cuda")
