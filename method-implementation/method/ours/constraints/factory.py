@@ -15,9 +15,18 @@ class ConstraintFactory:
             )
         ))
         
+        args = list(map(ConstraintFactory._map_arg_to_object, args))
+        
         constraint_object = ConstraintFactory._create_object_from_parse_result(name, is_negative, args)
         
         return constraint_object
+    
+    
+    @staticmethod
+    def _map_arg_to_object(arg):
+        if arg.startswith('field(\''):
+            return FieldArg(arg.replace('field(\'', '').replace('\')', ''))
+        return ConstantArg(arg)
     
     
     @staticmethod
@@ -55,6 +64,24 @@ class ConstraintFactory:
         raise Exception('Constraint name is not valid')
 
 
+class ConstantArg:
+    def __init__(self, value):
+        self.value = value
+    
+    
+    def __str__(self):
+        return str(self.value)
+
+
+class FieldArg:
+    def __init__(self, field_name):
+        self.field_name = field_name
+    
+    
+    def __str__(self):
+        return f'field({self.field_name})'
+
+
 class Constraint(ABC):
     def __init__(self, is_negative, args=None):
         self.is_negative = is_negative
@@ -87,8 +114,8 @@ class ToBe(Constraint):
     
     def to_prompt_string(self):
         if self.is_negative:
-            return f'input field should not be {self.expected}'
-        return f'input field should be {self.expected}'
+            return f'input field should not be {str(self.expected)}'
+        return f'input field should be {str(self.expected)}'
     
     
     def has_conflict(self, other):
@@ -205,7 +232,7 @@ class ToHaveCompareCondition(Constraint):
             condition_string = 'equal to' if not self.is_negative else 'not equal to'
         if self.condition == '!=':
             condition_string = 'not equal to' if not self.is_negative else 'equal to'
-        return f'input field should be {condition_string} {self.expected}'
+        return f'input field should be {condition_string} {str(self.expected)}'
     
     
     def has_conflict(self, other):
@@ -224,8 +251,8 @@ class ToMatch(Constraint):
     
     def to_prompt_string(self):
         if self.is_negative:
-            return f'input field should not match {self.expected} regex pattern'
-        return f'input field should match {self.expected} regex pattern'
+            return f'input field should not match {str(self.expected)} regex pattern'
+        return f'input field should match {str(self.expected)} regex pattern'
     
     
     def has_conflict(self, other):
@@ -244,8 +271,8 @@ class ToContainSubStr(Constraint):
     
     def to_prompt_string(self):
         if self.is_negative:
-            return f'input field should not contain {self.expected} substring'
-        return f'input field should contain {self.expected} substring'
+            return f'input field should not contain {str(self.expected)} substring'
+        return f'input field should contain {str(self.expected)} substring'
     
     
     def has_conflict(self, other):
@@ -264,8 +291,8 @@ class ToContainChar(Constraint):
     
     def to_prompt_string(self):
         if self.is_negative:
-            return f'input field should not contain {self.expected} character'
-        return f'input field should contain {self.expected} character'
+            return f'input field should not contain {str(self.expected)} character'
+        return f'input field should contain {str(self.expected)} character'
     
     
     def has_conflict(self, other):
@@ -398,8 +425,8 @@ class ToStartWith(Constraint):
     
     def to_prompt_string(self):
         if self.is_negative:
-            return f'input field should not start with {self.expected}'
-        return f'input field should start with {self.expected}'
+            return f'input field should not start with {str(self.expected)}'
+        return f'input field should start with {str(self.expected)}'
     
     
     def has_conflict(self, other):
@@ -418,8 +445,8 @@ class ToEndWith(Constraint):
     
     def to_prompt_string(self):
         if self.is_negative:
-            return f'input field should not end with {self.expected}'
-        return f'input field should end with {self.expected}'
+            return f'input field should not end with {str(self.expected)}'
+        return f'input field should end with {str(self.expected)}'
     
     
     def has_conflict(self, other):
@@ -438,8 +465,8 @@ class ToMatch(Constraint):
     
     def to_prompt_string(self):
         if self.is_negative:
-            return f'input field should not match {self.expected} regex pattern'
-        return f'input field should match {self.expected} regex pattern'
+            return f'input field should not match {str(self.expected)} regex pattern'
+        return f'input field should match {str(self.expected)} regex pattern'
     
     
     def has_conflict(self, other):
