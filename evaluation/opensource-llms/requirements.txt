@@ -127,3 +127,11 @@ wrapt==1.14.1
 XlsxWriter==3.1.2
 yarl==1.9.2
 zstandard==0.21.0
+# add vicuna
+llama-cpp-python==0.1.48
+protobuf==3.20.0; sys_platform != 'darwin'
+protobuf==3.20.0; sys_platform == 'darwin' and platform_machine != 'arm64'
+protobuf==3.20.3; sys_platform == 'darwin' and platform_machine == 'arm64'
+auto-gptq
+
+

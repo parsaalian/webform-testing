@@ -21,11 +21,6 @@ model_n_ctx = os.environ.get('MODEL_N_CTX')
 target_source_chunks = int(os.environ.get('TARGET_SOURCE_CHUNKS', 4))
 
 def main():
-    # Parse the command line arguments
-    embeddings = HuggingFaceEmbeddings(model_name=embeddings_model_name)
-    db = Chroma(persist_directory=persist_directory, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
-    retriever = db.as_retriever(search_kwargs={"k": target_source_chunks})
-
     # Prepare the LLM
     match model_type:
         case "LlamaCpp":
