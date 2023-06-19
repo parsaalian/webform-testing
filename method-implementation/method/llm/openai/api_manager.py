@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 import openai
 
-from method.config import Config
 from method.llm.openai.modelsinfo import COSTS
 from method.logger import logger
 from method.utils import Singleton
