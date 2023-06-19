@@ -26,15 +26,12 @@ def main():
     db = Chroma(persist_directory=persist_directory, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
     retriever = db.as_retriever(search_kwargs={"k": target_source_chunks})
 
-    # activate/deactivate the streaming StdOut callback for LLMs
-    callbacks = StreamingStdOutCallbackHandler()
-
     # Prepare the LLM
     match model_type:
         case "LlamaCpp":
-            llm = LlamaCpp(model_path=model_path, n_ctx=model_n_ctx, callbacks=callbacks, verbose=False)
+            llm = LlamaCpp(model_path=model_path, n_ctx=model_n_ctx, verbose=False)
         case "GPT4All":
-            llm = GPT4All(model=model_path, n_ctx=model_n_ctx, backend='gptj', callbacks=callbacks, verbose=False)
+            llm = GPT4All(model=model_path, n_ctx=model_n_ctx, backend='gptj', verbose=False)
         case "chatgpt-3.5":
             llm = OpenAI(temperature=0, openai_api_key=os.environ.get("OPENAI_API_KEY"))
         case _default:
