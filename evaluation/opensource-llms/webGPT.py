@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from langchain.llms import OpenAI
 from constants import CHROMA_SETTINGS
 from langchain.chains import RetrievalQA
+from langchain import PromptTemplate, LLMChain
 from langchain.vectorstores import Chroma
 from langchain.llms import GPT4All, LlamaCpp
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -51,7 +52,9 @@ def main():
     question = "What NFL team won the Super Bowl in the year Justin Bieber was born?"
 
     # Get the answer from the chain
-    llm_chain.run(question)
+    answer = llm_chain.run(question)
+    print("question: ", question)
+    print("answer: ", answer)
 
     # Interactive questions and answers
     """
