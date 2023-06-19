@@ -144,7 +144,6 @@ def main():
     prompt = PromptTemplate(template=web_form_template, input_variables=["web_form"])
 
     llm_chain = LLMChain(prompt=prompt, llm=llm)
-    question = "What NFL team won the Super Bowl in the year Justin Bieber was born?"
 
     # Get the answer from the chain
     web_form = """
@@ -152,8 +151,8 @@ def main():
         """
 
     answer = llm_chain.run(web_form)
-    print("question: ", web_form)
-    print("answer: ", answer)
+    print("web form (given):", web_form)
+    print("answer:", answer)
 
 
 if __name__ == "__main__":

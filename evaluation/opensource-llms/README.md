@@ -1,11 +1,10 @@
 # Open source LLMs
 
 # Libraries used:
-- [Chroma](https://www.trychroma.com/)
-- [SentenceTransformers](https://www.sbert.net/)
 - [GPT4All](https://github.com/nomic-ai/gpt4all)
 - [LlamaCpp](https://github.com/ggerganov/llama.cpp)
 - [LangChain](https://github.com/hwchase17/langchain)
+- [AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ)
 
 # Environment Setup
 In order to set your environment up to run the code here, first install all requirements:
