@@ -53,28 +53,5 @@ def main():
     print("question: ", question)
     print("answer: ", answer)
 
-    # Interactive questions and answers
-    """
-    while True:
-        query = input("\nEnter a query: ")
-        if query == "exit":
-            break
-
-        # Get the answer from the chain
-        res = qa(query)
-        answer, docs = res['result'], res['source_documents']
-
-        # Print the result
-        print("\n\n> Question:")
-        print(query)
-        print("\n> Answer:")
-        print(answer)
-
-        # Print the relevant sources used for the answer
-        for document in docs:
-            print("\n> " + document.metadata["source"] + ":")
-            print(document.page_content)
-    """
-
 if __name__ == "__main__":
     main()

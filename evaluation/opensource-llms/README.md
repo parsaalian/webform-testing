@@ -37,9 +37,3 @@ In order to run a model:
 ```shell
 python WebGPT.py
 ```
-
-And wait for the script to require your input.
-
-```plaintext
-> Enter a query:
-```
