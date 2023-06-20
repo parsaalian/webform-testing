@@ -1,4 +1,5 @@
 from .abstract import Constraint
+from .args import FieldArg
 
 
 class ToBe(Constraint):
@@ -72,6 +73,7 @@ class ToHaveLengthCondition(Constraint):
         super().__init__(is_negative, args)
         self.condition = args[0]
         self.length = args[1]
+        self.is_field = isinstance(self.length, FieldArg)
     
     
     def to_prompt_string(self):
@@ -362,6 +364,24 @@ class ToMatch(Constraint):
         if self.is_negative:
             return f'input field should not match {str(self.expected)} regex pattern'
         return f'input field should match {str(self.expected)} regex pattern'
+    
+    
+    def has_conflict(self, other):
+        return False
+    
+    
+    def matches(self, value):
+        return False
+
+
+class NotMatchingAny(Constraint):
+    def __init__(self, constraint_name):
+        super().__init__(False, None)
+        self.constraint_name = constraint_name
+    
+    
+    def to_prompt_string(self):
+        return f'this constraint is not valid: {self.constraint_name}'
     
     
     def has_conflict(self, other):

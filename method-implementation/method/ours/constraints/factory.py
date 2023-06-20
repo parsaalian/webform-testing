@@ -62,7 +62,7 @@ class ConstraintFactory:
             return ToEndWith(is_negative, args)
         if name == 'toMatch':
             return ToMatch(is_negative, args)
-        raise Exception('Constraint name is not valid')
+        return NotMatchingAny(name)
 
 
 

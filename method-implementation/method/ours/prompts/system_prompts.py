@@ -41,9 +41,8 @@ Only generate constraints for the inputs in question, not those in the relevant 
 
 # number of tokens: 129
 value_generation_system_prompt = """
-Your task is to generate a set of values for a form field based on the form field information and a set of constraints on the field. Your decisions must always be made independently without seeking user assistance or additional information.
-For each user prompt, you need to generate five distinct values that satisfy the constraints while keeping in mind the nature of the input from the available information.
-Only generate the values and don't explain your answers.
-Generate the values in a Python array. We must be able to parse your generation with json.loads.
-Only generate values for the inputs in question, and not the ones in the relevant information section.
+Your task is to generate a value for a form field based on the form field information and a set of constraints on the field. Your decisions must always be made independently without seeking user assistance or additional information.
+For each user prompt, you need to generate one value that satisfy the constraints while keeping in mind the nature of the input from the available information.
+Only generate the value and don't explain your answers.
+Only generate value for the inputs in question, and not the ones in the relevant information section.
 """.strip()

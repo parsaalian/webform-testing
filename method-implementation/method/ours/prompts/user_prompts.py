@@ -84,7 +84,7 @@ def create_value_generation_user_prompt(
     if relevant_field_values is not None:
         value_generation_user_prompt = f'''
         {value_generation_user_prompt}
-        The relevant field values are:
+        The values for the fields in constraints are:
         {relevant_field_values}
         '''.strip()
     

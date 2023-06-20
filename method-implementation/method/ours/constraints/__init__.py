@@ -1,5 +1,5 @@
-from .factory import ConstraintFactory
+from .utils import generate_constraints_from_string
 
 __all__ = [
-    'ConstraintFactory',
+    'generate_constraints_from_string',
 ]
