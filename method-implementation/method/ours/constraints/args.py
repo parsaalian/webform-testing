@@ -1,6 +1,6 @@
 class ConstantArg:
     def __init__(self, value):
-        self.value = value
+        self.value = value.strip("\'")
     
     
     def __str__(self):
@@ -9,8 +9,8 @@ class ConstantArg:
 
 class FieldArg:
     def __init__(self, field_name):
-        self.field_name = field_name
+        self.value = field_name
     
     
     def __str__(self):
-        return f'field({self.field_name})'
+        return f'field({self.value})'

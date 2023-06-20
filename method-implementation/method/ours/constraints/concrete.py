@@ -40,7 +40,7 @@ class ToBe(Constraint):
     
     
     def matches(self, value):
-        return value == self.expected
+        return value == self.expected.value
 
 
 class ToBeTruthy(Constraint):
@@ -70,23 +70,23 @@ class ToBeTruthy(Constraint):
 class ToHaveLengthCondition(Constraint):
     def __init__(self, is_negative, args):
         super().__init__(is_negative, args)
-        self.condition = args[0].strip("\'")
+        self.condition = args[0]
         self.length = args[1]
     
     
     def to_prompt_string(self):
         condition_string = ''
-        if self.condition == '<':
+        if self.condition.value == '<':
             condition_string = 'less than' if not self.is_negative else 'greater than or equal to'
-        if self.condition == '<=':
+        if self.condition.value == '<=':
             condition_string = 'less than or equal to' if not self.is_negative else 'greater than'
-        if self.condition == '>':
+        if self.condition.value == '>':
             condition_string = 'greater than' if not self.is_negative else 'less than or equal to'
-        if self.condition == '>=':
+        if self.condition.value == '>=':
             condition_string = 'greater than or equal to' if not self.is_negative else 'less than'
-        if self.condition == '==':
+        if self.condition.value == '==':
             condition_string = 'equal to' if not self.is_negative else 'not equal to'
-        if self.condition == '!=':
+        if self.condition.value == '!=':
             condition_string = 'not equal to' if not self.is_negative else 'equal to'
         return f'input field should be {condition_string} {self.length} characters'
     
@@ -109,23 +109,23 @@ class ToHaveLengthCondition(Constraint):
 class ToHaveCompareCondition(Constraint):
     def __init__(self, is_negative, args):
         super().__init__(is_negative, args)
-        self.condition = args[0].strip("\'")
+        self.condition = args[0]
         self.expected = args[1]
     
     
     def to_prompt_string(self):
         condition_string = ''
-        if self.condition == '<':
+        if self.condition.value == '<':
             condition_string = 'less than' if not self.is_negative else 'greater than or equal to'
-        if self.condition == '<=':
+        if self.condition.value == '<=':
             condition_string = 'less than or equal to' if not self.is_negative else 'greater than'
-        if self.condition == '>':
+        if self.condition.value == '>':
             condition_string = 'greater than' if not self.is_negative else 'less than or equal to'
-        if self.condition == '>=':
+        if self.condition.value == '>=':
             condition_string = 'greater than or equal to' if not self.is_negative else 'less than'
-        if self.condition == '==':
+        if self.condition.value == '==':
             condition_string = 'equal to' if not self.is_negative else 'not equal to'
-        if self.condition == '!=':
+        if self.condition.value == '!=':
             condition_string = 'not equal to' if not self.is_negative else 'equal to'
         return f'input field should be {condition_string} {str(self.expected)}'
     
