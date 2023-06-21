@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
@@ -83,3 +84,18 @@ def embed_properties_into_html(driver, root):
         embed_properties_into_html(driver, child)
     
     return root
+
+
+def interact_with_input(element, value):
+    try:
+        element.clear()
+    except:
+        pass
+    
+    if element.tag_name == 'select':
+        select = Select(element)
+        select.select_by_visible_text(value)
+    elif element.get_attribute('type') in ['checkbox', 'radio', 'submit', 'button'] and value:
+        element.click()
+    else:
+        element.send_keys(value)

@@ -49,18 +49,19 @@ def remove_low_score_inputs_from_feedback(relation_graph, feedback_node):
     input_edges = list(filter(lambda x: is_input(x.target.element), edges))
     sorted_input_edges = sorted(input_edges, key=lambda x: x.weight, reverse=True)
     
-    for i in range(1, len(sorted_input_edges)):
-        relation_graph.remove_edge(sorted_input_edges[i])
+    if len(sorted_input_edges) > 0:
+        for i in range(1, len(sorted_input_edges)):
+            relation_graph.remove_edge(sorted_input_edges[i])
     
-    probable_feedback_edge = sorted_input_edges[0]
-    
-    probable_feedback_edge.set_type(EdgeType.FEEDBACK)
-    relation_graph.add_edge(RelationEdge(
-        probable_feedback_edge.target,
-        probable_feedback_edge.source,
-        probable_feedback_edge.type,
-        probable_feedback_edge.weight
-    ))
+        probable_feedback_edge = sorted_input_edges[0]
+        
+        probable_feedback_edge.set_type(EdgeType.FEEDBACK)
+        relation_graph.add_edge(RelationEdge(
+            probable_feedback_edge.target,
+            probable_feedback_edge.source,
+            probable_feedback_edge.type,
+            probable_feedback_edge.weight
+        ))
     
     return relation_graph
 

@@ -4,8 +4,15 @@ from bs4 import NavigableString, Comment
 
 
 def is_input(soup_element):
-    input_tags = ['input', 'textarea', 'select', 'option', 'button']
-    return soup_element.name in input_tags
+    input_tags = ['input', 'textarea', 'select', 'option']
+    if soup_element.name in input_tags:
+        return True
+    
+    if soup_element.name == 'button' and \
+        'type' in soup_element.attrs and \
+        soup_element.attrs['type'] in ['submit']:
+        return True
+    return False
 
 
 def is_label(soup_element):
