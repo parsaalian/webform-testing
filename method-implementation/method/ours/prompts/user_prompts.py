@@ -24,34 +24,37 @@ def create_relevant_info_text(input_group, relevant_count=3):
     return relevant_input_groups_str.strip()
 
 
+def get_form_context(input_groups):
+    labels = list(filter(lambda x: x is not None, map(lambda x: x.label, input_groups)))
+    return '\n'.join(map(lambda x: x.element.text, labels))
+
+
 def create_constraint_generation_user_prompt(
+    form_context,
     input_group,
     relevant_count=3,
     last_try=None,
     generated_constraint_string=None,
 ):
     constraint_generation_user_prompt = f'''
+    The labels for the form are:
+    {form_context}
+    These labels are used to provide context for the functionality of the form.
+    
     We are generating constraints for the following input field:
     {create_field_info_text(input_group)}
+    
     The relevant information available in the form are (in order of relevance):
     {create_relevant_info_text(input_group, relevant_count)}
+    
+    {"The previously generated constraints are:" if generated_constraint_string is not None else ""}
+    {generated_constraint_string if generated_constraint_string is not None else ""}
+    
+    {"We have tried to generate constraints for this field before." if last_try is not None else ""}
+    {last_try["value"] if last_try is not None else ""}
+    {"And got the following inline and global feedback:" if last_try is not None else ""}
+    {last_try["feedback"] if last_try is not None else ""}
     '''.strip()
-    
-    if generated_constraint_string is not None:
-        constraint_generation_user_prompt = f'''
-        {constraint_generation_user_prompt}
-        The previously generated constraints are:
-        {generated_constraint_string}
-        '''.strip()
-    
-    if last_try is not None:
-        constraint_generation_user_prompt = f'''
-        {constraint_generation_user_prompt}
-        We have tried the following value:
-        {last_try['value']}
-        And got the following feedback:
-        {last_try['feedback']}
-        '''.strip()
     
     return format_extra_tabs(constraint_generation_user_prompt)
 
