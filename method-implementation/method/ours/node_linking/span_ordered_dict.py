@@ -1,5 +1,25 @@
-def tuple_avg(t):
+'''def tuple_avg(t):
     return (t[0] + t[1]) / 2
+
+
+def span_binary_search(span_list, item_span):
+    
+    Performs a binary search on a span list, which is a list of tuples (start, end).
+    The list is ordered by the first member of the tuple.
+    The search key is (start + end) / 2.
+    returns index of found item.
+    
+    if len(span_list) == 0:
+        return -1
+    
+    if len(span_list) == 1:
+        return 0
+    
+    middle = len(span_list) // 2
+    if tuple_avg(item_span) >= tuple_avg(span_list[middle]):
+        return middle + span_binary_search(span_list[middle:], item_span)
+    
+    return span_binary_search(span_list[:middle], item_span)'''
 
 
 def span_binary_search(span_list, item_span):
@@ -16,10 +36,18 @@ def span_binary_search(span_list, item_span):
         return 0
     
     middle = len(span_list) // 2
-    if tuple_avg(item_span) >= tuple_avg(span_list[middle]):
-        return middle + span_binary_search(span_list[middle:], item_span)
+    middle_item = span_list[middle]
     
-    return span_binary_search(span_list[:middle], item_span)
+    # if item is before a span
+    if item_span[0] <= middle_item[0] and item_span[1] <= middle_item[0]:
+        return span_binary_search(span_list[:middle], item_span)
+    
+    # if item is after a span
+    if item_span[0] >= middle_item[1] and item_span[1] >= middle_item[1]:
+        return middle + span_binary_search(span_list[middle:], item_span)
+
+    # if item is inside a span, colliding from left, or colliding from right
+    return middle
 
 
 class SpanOrderedDict:

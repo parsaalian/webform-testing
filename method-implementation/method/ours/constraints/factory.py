@@ -32,7 +32,7 @@ class ConstraintFactory:
     
     @staticmethod
     def _create_object_from_parse_result(name, is_negative, args):
-        if name == 'toBe':
+        if name == 'toBeEqual':
             return ToBe(is_negative, args)
         if name == 'toBeTruthy':
             return ToBeTruthy(is_negative)
@@ -40,25 +40,25 @@ class ConstraintFactory:
             return ToHaveLengthCondition(is_negative, args)
         if name == 'toHaveCompareCondition':
             return ToHaveCompareCondition(is_negative, args)
-        if name == 'toContainSubstr':
+        if name == 'toContainSubString':
             return ToContainSubStr(is_negative, args)
         if name == 'toContainChar':
             return ToContainChar(is_negative, args)
-        if name == 'toBeAlpha':
+        if name == 'toBeAlphabetical':
             return ToBeAlpha(is_negative)
-        if name == 'toBeNumeric':
+        if name == 'toBeNumerical':
             return ToBeNumeric(is_negative)
-        if name == 'toBeAlphaNumeric':
+        if name == 'toBeAlphaNumerical':
             return ToBeAlphaNumeric(is_negative)
-        if name == 'toHaveUpperCase':
+        if name == 'toContainUpperCaseChars':
             return ToHaveUpperCase(is_negative)
-        if name == 'toHaveSpecialChars':
+        if name == 'toContainSpecialChars':
             return ToHaveSpecialChars(is_negative)
-        if name == 'toHaveWhiteSpace':
+        if name == 'toContainWhiteSpace':
             return ToHaveWhiteSpace(is_negative)
-        if name == 'toStartWith':
+        if name == 'toStartWithString':
             return ToStartWith(is_negative, args)
-        if name == 'toEndWith':
+        if name == 'toEndWithString':
             return ToEndWith(is_negative, args)
         if name == 'toMatch':
             return ToMatch(is_negative, args)

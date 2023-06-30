@@ -27,7 +27,7 @@ expect(field('password'))
 .toHaveUpperCase()
 .toHaveSpecialChars()
 .not.toBeTruthy()
-.toBe(field('confirm-password'))
+.toBeEqual(field('confirm-password'))
 # end of the sample
 """.strip()
 
