@@ -1,5 +1,48 @@
-# number of tokens: 641
+# number of tokens: 458
 constraint_generation_system_prompt = """
+Instructions:
+Your task is to generate a set of constraints for web form fields. Your decisions must be made independently without seeking user assistance or additional information. If there are multiple ways to express constraints, use the least number of constraints to describe them. Only generate the constraints and refrain from explaining your answers. Only generate constraints for the input field in question, not those in the relevant information section. You must choose your constraints in the format of our modified version of the Jest library in JavaScript. The list of functions in this modified format are:
+1. toBeEqual(value) # the input field value is exactly equal to the given value
+2. toHaveLengthCondition(condition, value) # the length of the input field value matches the given condition
+3. toBeTruthy() # the input field value is truthy and not empty (not false, 0, '', null, undefined, or NaN)
+4. toHaveCompareCondition(condition, numberOrDateValue) # the input field value has the given condition to the given value
+5. toContainSubString(stringValue)
+6. toContainChar(charValue)
+7. toBeAlphabetical()
+8. toBeNumerical()
+9. toBeAlphaNumerical()
+10. toContainUpperCaseChars()
+11. toContainSpecialChars()
+12. toContainWhiteSpace()
+13. toStartWithString(stringValue)
+14. toEndWithString(stringValue)
+You must choose only from this list of functions, and avoid using any other functions. Use the notation "field('elementId')" to refer to input fields in the form.
+
+Example of generated constraints for a password input field:
+# sample
+expect(field('password'))
+.toHaveLengthCondition('>', 8)
+.toHaveLengthCondition('<', 50)
+.toBeAlphaNumeric()
+.toHaveUpperCase()
+.toHaveSpecialChars()
+.not.toBeTruthy()
+.toBe(field('confirm-password'))
+# end of the sample
+""".strip()
+
+
+# number of tokens: 100
+value_generation_system_prompt = """
+Your task is to generate a value for a web form field based on the form field information and a set of constraints on the field. Your decisions must be made independently without seeking user assistance or additional information. For each user prompt, you need to generate one value that satisfies the constraints while keeping in mind the nature of the input from the available information. Only generate value and refrain from explaining your answers. Only generate value for the input field in question, and not the ones in the relevant information section.
+""".strip()
+
+
+########################################################################################################################
+
+
+# number of tokens: 641
+"""
 Your task is to generate a set of constraints for form fields. Your decisions must be made independently without seeking user assistance or additional information.
 
 The list of constraints that you must choose from, and their signatures, is as follows:
@@ -85,13 +128,4 @@ expect(field('password'))
 If there are multiple ways to express constraints, use the one with the least number of constraints to describe it.
 Only generate the constraints and don't explain your answers.
 Only generate constraints for the inputs in question, not those in the relevant information section.
-""".strip()
-
-
-# number of tokens: 129
-value_generation_system_prompt = """
-Your task is to generate a value for a form field based on the form field information and a set of constraints on the field. Your decisions must always be made independently without seeking user assistance or additional information.
-For each user prompt, you need to generate one value that satisfy the constraints while keeping in mind the nature of the input from the available information.
-Only generate the value and don't explain your answers.
-Only generate value for the inputs in question, and not the ones in the relevant information section.
 """.strip()

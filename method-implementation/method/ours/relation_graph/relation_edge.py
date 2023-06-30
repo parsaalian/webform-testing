@@ -4,7 +4,7 @@ from enum import Enum
 class EdgeType(Enum):
     # connection via for attribute
     FOR = 'FOR'
-    PROBABLE_FOR = 'PROBABLE_FOR'
+    P_FOR = 'P_FOR'
     
     # neighbor connections
     CHILD = 'CHILD'
@@ -15,7 +15,10 @@ class EdgeType(Enum):
     NBOTTOM = 'NBOTTOM'
     
     # feedback connections
-    FEEDBACK = 'FEEDBACK'
+    P_FEEDBACK = 'P_FEEDBACK'
+    
+    # text connections
+    P_INFO = 'INFO'
 
 
 class RelationEdge:
