@@ -1,0 +1,30 @@
+<form action="add.php" class="form_admin" id="add_room" method="post">
+ <fieldset>
+  <legend>
+   Add Room
+  </legend>
+  <input name="type" type="hidden" value="room"/>
+  <input name="area" type="hidden" value="1"/>
+  <div>
+   <label for="room_name">
+    Name:
+   </label>
+   <input id="room_name" maxlength="25" name="name" type="text"/>
+  </div>
+  <div>
+   <label for="room_description">
+    Description:
+   </label>
+   <input id="room_description" maxlength="60" name="description" type="text"/>
+  </div>
+  <div>
+   <label for="room_capacity">
+    Capacity:
+   </label>
+   <input id="room_capacity" name="capacity" type="text"/>
+  </div>
+  <div>
+   <input class="submit" type="submit" value="Add Room"/>
+  </div>
+ </fieldset>
+</form>

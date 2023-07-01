@@ -1,0 +1,405 @@
+<form class="form-stacked" data-test-id="organization-settings">
+ <div>
+  <div>
+   <div class="app-7bde58 eptq6fu0" id="General">
+    <div class="app-a4b1nb e1dzfr4k0">
+     General
+    </div>
+    <div class="app-y9c3ws e151korg0">
+     <div class="app-1hvxrq4 e17o6zlr0">
+      <label aria-label="Organization Slug" class="app-4b2jj1 e1p3fqzi0" for="slug">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Organization Slug
+         <div class="app-kpysrd e1tag3g80">
+         </div>
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="slug_help">
+        A unique ID used to identify this organization
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <div class="app-19sk4h4 e2vncy95">
+         <input aria-describedby="slug_help" class="app-1ihi0lg e2vncy93" id="slug" label="Organization Slug" name="slug" type="text" value="ubcsalt"/>
+         <div class="app-19keken e2vncy90" data-test-id="input-trailing-items">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="app-1hvxrq4 e17o6zlr0">
+      <label aria-label="Display Name" class="app-4b2jj1 e1p3fqzi0" for="name">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Display Name
+         <div class="app-kpysrd e1tag3g80">
+         </div>
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="name_help">
+        A human-friendly name for the organization
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <div class="app-19sk4h4 e2vncy95">
+         <input aria-describedby="name_help" class="app-1ihi0lg e2vncy93" id="name" label="Display Name" name="name" type="text" value="UBCSALT"/>
+         <div class="app-19keken e2vncy90" data-test-id="input-trailing-items">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="app-1kiyhxe e17o6zlr0">
+      <label aria-label="Early Adopter" class="app-4b2jj1 e1p3fqzi0" for="isEarlyAdopter">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Early Adopter
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="isEarlyAdopter_help">
+        Opt-in to
+        <a class="app-1poup41 edex8200" href="https://docs.sentry.io/product/accounts/early-adopter/" rel="noreferrer noopener" target="_blank">
+         new features
+        </a>
+        before they're released to the public
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <button aria-checked="false" aria-describedby="isEarlyAdopter_help" class="app-4ik5a6 e1slsb9u1" data-test-id="switch" id="isEarlyAdopter" label="Early Adopter" name="isEarlyAdopter" role="checkbox" type="button">
+         <span class="app-1rio1wp e1slsb9u0">
+         </span>
+        </button>
+       </div>
+       <div class="app-1bakc9g ed9amoy0">
+       </div>
+      </div>
+     </div>
+     <div class="app-1kiyhxe e17o6zlr0">
+      <label aria-label="AI Suggested Solution" class="app-4b2jj1 e1p3fqzi0" for="aiSuggestedSolution">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         AI Suggested Solution
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="aiSuggestedSolution_help">
+        Opt-in to
+        <a class="app-1poup41 edex8200" href="https://docs.sentry.io/product/issues/issue-details/ai-suggested-solution/" rel="noreferrer noopener" target="_blank">
+         ai suggested solution
+        </a>
+        to get AI help on how to solve an issue.
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <button aria-checked="true" aria-describedby="aiSuggestedSolution_help" class="app-4ik5a6 e1slsb9u1" data-test-id="switch" id="aiSuggestedSolution" label="AI Suggested Solution" name="aiSuggestedSolution" role="checkbox" type="button">
+         <span class="app-11ffsr8 e1slsb9u0">
+         </span>
+        </button>
+       </div>
+       <div class="app-1bakc9g ed9amoy0">
+       </div>
+      </div>
+     </div>
+     <div class="app-1kiyhxe e17o6zlr0">
+      <label class="app-4b2jj1 e1p3fqzi0" for="codecovAccess">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         <div class="app-13pvkqe e86pb0a0">
+          Enable Code Coverage Insights
+         </div>
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="codecovAccess_help">
+        <div class="app-13pvkqe e86pb0a0">
+         powered by
+         <svg fill="currentColor" height="16px" viewbox="0 0 24 24" width="16px">
+          <path d="M12.006.481C5.391.486.005 5.831 0 12.399v.03l2.042 1.19.028-.018a5.82 5.82 0 0 1 3.308-1.02c.37 0 .733.034 1.085.1l-.036-.006a5.69 5.69 0 0 1 2.874 1.43l-.004-.002.35.326.198-.434c.192-.42.414-.814.66-1.173.1-.144.208-.29.332-.446l.205-.257-.252-.211a8.33 8.33 0 0 0-3.836-1.807l-.052-.008a8.565 8.565 0 0 0-4.08.251l.06-.016c.972-4.256 4.714-7.223 9.133-7.226a9.31 9.31 0 0 1 6.6 2.713 9.196 9.196 0 0 1 2.508 4.498 8.385 8.385 0 0 0-2.498-.379h-.154c-.356.006-.7.033-1.036.078l.045-.005-.042.006a8.103 8.103 0 0 0-.39.06c-.057.01-.114.022-.17.033a8.102 8.102 0 0 0-.392.09l-.138.034a9.21 9.21 0 0 0-.483.144l-.03.01c-.354.12-.708.268-1.05.44l-.027.013a8.41 8.41 0 0 0-.47.256l-.035.022a8.216 8.216 0 0 0-2.108 1.8l-.011.014-.075.092a8.345 8.345 0 0 0-.378.503c-.088.13-.177.269-.288.452l-.06.104a8.985 8.985 0 0 0-.234.432l-.016.029c-.17.34-.317.698-.44 1.063l-.017.053a8.052 8.052 0 0 0-.41 2.716v-.007.112a12 12 0 0 0 .023.431l-.002-.037a11.676 11.676 0 0 0 .042.412l.005.042.013.103c.018.127.038.252.062.378.241 1.266.845 2.532 1.745 3.66l.041.051.042-.05c.359-.424 1.249-1.77 1.325-2.577v-.015l-.006-.013a5.56 5.56 0 0 1-.64-2.595c0-3.016 2.37-5.521 5.396-5.702l.2-.007a5.93 5.93 0 0 1 3.47 1.025l.027.019L24 12.416v-.03a11.77 11.77 0 0 0-3.51-8.423A11.962 11.962 0 0 0 12.007.48z">
+          </path>
+         </svg>
+         Codecov
+         <a class="app-69j258 edex8200" href="https://app.codecov.io/login/?state=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNzQ0NjAzLCJvcmdfaWQiOjQ1MDUyNDEyMTI1NTExNjh9.TriBV4w5xa0Q8RzUirHq7fWYMfe4FswX4FcsQ4Fp_0M&amp;utm_medium=referral&amp;utm_source=sentry-app-stacktracelink&amp;utm_campaign=sentry-codecov&amp;utm_department=marketing" rel="noreferrer noopener" target="_blank">
+          Learn More
+         </a>
+        </div>
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <button aria-checked="false" aria-describedby="codecovAccess_help" class="app-4ik5a6 e1slsb9u1" data-test-id="switch" id="codecovAccess" label="[object Object]" name="codecovAccess" role="checkbox" type="button">
+         <span class="app-1rio1wp e1slsb9u0">
+         </span>
+        </button>
+       </div>
+       <div class="app-1bakc9g ed9amoy0">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="app-7bde58 eptq6fu0" id="Membership">
+    <div class="app-a4b1nb e1dzfr4k0">
+     Membership
+    </div>
+    <div class="app-y9c3ws e151korg0">
+     <div class="app-1hvxrq4 e17o6zlr0">
+      <label aria-label="Default Role" class="app-4b2jj1 e1p3fqzi0" for="defaultRole">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Default Role
+         <div class="app-kpysrd e1tag3g80">
+         </div>
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="defaultRole_help">
+        The default role new members will receive
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <div class="app-2b097c-container">
+         <span aria-atomic="false" aria-live="polite" aria-relevant="additions text" class="app-7pg0cj-a11yText">
+         </span>
+         <div class="app-7p9405">
+          <div class="app-ye3vy9">
+           <div class="app-y9r1cg-singleValue">
+            <div class="app-hz3b9t e1qwfwjv1">
+             <div class="app-nkx6ku e1qwfwjv0">
+              Member
+             </div>
+            </div>
+           </div>
+           <div class="app-xxilmk">
+            <div class="" style="display: inline-block;">
+             <input aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" id="defaultRole" spellcheck="false" style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;" tabindex="0" type="text" value=""/>
+             <div style='position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 14px; font-family: Rubik, "Avenir Next", "Helvetica Neue", sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;'>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="app-1iraxb2">
+           <div aria-hidden="true" class="app-1td69xg-indicatorContainer">
+            <svg class="app-za8y5k" fill="currentColor" height="14px" viewbox="0 0 16 16" width="14px">
+             <path d="M14,11.75a.74.74,0,0,1-.53-.22L8,6.06,2.53,11.53a.75.75,0,0,1-1.06-1.06l6-6a.75.75,0,0,1,1.06,0l6,6a.75.75,0,0,1,0,1.06A.74.74,0,0,1,14,11.75Z">
+             </path>
+            </svg>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="app-1kiyhxe e17o6zlr0">
+      <label aria-label="Open Membership" class="app-4b2jj1 e1p3fqzi0" for="openMembership">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Open Membership
+         <div class="app-kpysrd e1tag3g80">
+         </div>
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="openMembership_help">
+        Allow organization members to freely join or leave any team
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <button aria-checked="true" aria-describedby="openMembership_help" class="app-4ik5a6 e1slsb9u1" data-test-id="switch" id="openMembership" label="Open Membership" name="openMembership" required="" role="checkbox" type="button">
+         <span class="app-11ffsr8 e1slsb9u0">
+         </span>
+        </button>
+       </div>
+       <div class="app-1bakc9g ed9amoy0">
+       </div>
+      </div>
+     </div>
+     <div class="app-1kiyhxe e17o6zlr0">
+      <label aria-label="Let Members Delete Events" class="app-4b2jj1 e1p3fqzi0" for="eventsMemberAdmin">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Let Members Delete Events
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="eventsMemberAdmin_help">
+        Allow members to delete events (including the delete &amp; discard action) by granting them the `event:admin` scope.
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <button aria-checked="true" aria-describedby="eventsMemberAdmin_help" class="app-4ik5a6 e1slsb9u1" data-test-id="switch" id="eventsMemberAdmin" label="Let Members Delete Events" name="eventsMemberAdmin" role="checkbox" type="button">
+         <span class="app-11ffsr8 e1slsb9u0">
+         </span>
+        </button>
+       </div>
+       <div class="app-1bakc9g ed9amoy0">
+       </div>
+      </div>
+     </div>
+     <div class="app-1kiyhxe e17o6zlr0">
+      <label aria-label="Let Members Create and Edit Alerts" class="app-4b2jj1 e1p3fqzi0" for="alertsMemberWrite">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Let Members Create and Edit Alerts
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="alertsMemberWrite_help">
+        Allow members to create, edit, and delete alert rules by granting them the `alerts:write` scope.
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <button aria-checked="true" aria-describedby="alertsMemberWrite_help" class="app-4ik5a6 e1slsb9u1" data-test-id="switch" id="alertsMemberWrite" label="Let Members Create and Edit Alerts" name="alertsMemberWrite" role="checkbox" type="button">
+         <span class="app-11ffsr8 e1slsb9u0">
+         </span>
+        </button>
+       </div>
+       <div class="app-1bakc9g ed9amoy0">
+       </div>
+      </div>
+     </div>
+     <div class="app-1hvxrq4 e17o6zlr0">
+      <label aria-label="Attachments Access" class="app-4b2jj1 e1p3fqzi0" for="attachmentsRole">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Attachments Access
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="attachmentsRole_help">
+        Role required to download event attachments, such as native crash reports or log files.
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <div class="app-2b097c-container">
+         <span aria-atomic="false" aria-live="polite" aria-relevant="additions text" class="app-7pg0cj-a11yText">
+         </span>
+         <div class="app-7p9405">
+          <div class="app-ye3vy9">
+           <div class="app-y9r1cg-singleValue">
+            <div class="app-hz3b9t e1qwfwjv1">
+             <div class="app-nkx6ku e1qwfwjv0">
+              Member
+             </div>
+            </div>
+           </div>
+           <div class="app-xxilmk">
+            <div class="" style="display: inline-block;">
+             <input aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" id="attachmentsRole" spellcheck="false" style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;" tabindex="0" type="text" value=""/>
+             <div style='position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 14px; font-family: Rubik, "Avenir Next", "Helvetica Neue", sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;'>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="app-1iraxb2">
+           <div aria-hidden="true" class="app-1td69xg-indicatorContainer">
+            <svg class="app-za8y5k" fill="currentColor" height="14px" viewbox="0 0 16 16" width="14px">
+             <path d="M14,11.75a.74.74,0,0,1-.53-.22L8,6.06,2.53,11.53a.75.75,0,0,1-1.06-1.06l6-6a.75.75,0,0,1,1.06,0l6,6a.75.75,0,0,1,0,1.06A.74.74,0,0,1,14,11.75Z">
+             </path>
+            </svg>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="app-1hvxrq4 e17o6zlr0">
+      <label aria-label="Debug Files Access" class="app-4b2jj1 e1p3fqzi0" for="debugFilesRole">
+       <div class="app-qtedz0 e1df4jbh0">
+        <span>
+         Debug Files Access
+        </span>
+       </div>
+       <div class="app-lmig27 eqbpqc40" id="debugFilesRole_help">
+        Role required to download debug information files, proguard mappings and source maps.
+       </div>
+      </label>
+      <div class="app-sucwmd ewgfnkp1">
+       <div class="app-1vvwd06 ewgfnkp0">
+        <div class="app-2b097c-container">
+         <span aria-atomic="false" aria-live="polite" aria-relevant="additions text" class="app-7pg0cj-a11yText">
+         </span>
+         <div class="app-7p9405">
+          <div class="app-ye3vy9">
+           <div class="app-y9r1cg-singleValue">
+            <div class="app-hz3b9t e1qwfwjv1">
+             <div class="app-nkx6ku e1qwfwjv0">
+              Admin
+             </div>
+            </div>
+           </div>
+           <div class="app-xxilmk">
+            <div class="" style="display: inline-block;">
+             <input aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" id="debugFilesRole" spellcheck="false" style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;" tabindex="0" type="text" value=""/>
+             <div style='position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 14px; font-family: Rubik, "Avenir Next", "Helvetica Neue", sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;'>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="app-1iraxb2">
+           <div aria-hidden="true" class="app-1td69xg-indicatorContainer">
+            <svg class="app-za8y5k" fill="currentColor" height="14px" viewbox="0 0 16 16" width="14px">
+             <path d="M14,11.75a.74.74,0,0,1-.53-.22L8,6.06,2.53,11.53a.75.75,0,0,1-1.06-1.06l6-6a.75.75,0,0,1,1.06,0l6,6a.75.75,0,0,1,0,1.06A.74.74,0,0,1,14,11.75Z">
+             </path>
+            </svg>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="app-7bde58 eptq6fu0">
+   <div class="app-a4b1nb e1dzfr4k0">
+    Avatar
+   </div>
+   <div class="app-y9c3ws e151korg0">
+    <div class="app-tr5a66 e7s5np22">
+     <div class="app-1xhj18k e7s5np23">
+      <div aria-label="Avatar Type" class="app-1u72um6 e1neraqr3" role="radiogroup" style="flex: 1 1 0%;">
+       <label aria-checked="true" class="app-1psli92 e1neraqr2">
+        <input aria-label="Use initials" checked="" class="app-13w95cm e72tocb0" type="radio"/>
+        <div class="app-1akufk0 e1neraqr1">
+         Use initials
+        </div>
+       </label>
+       <label aria-checked="false" class="app-1psli92 e1neraqr2">
+        <input aria-label="Upload an image" class="app-13w95cm e72tocb0" type="radio"/>
+        <div class="app-1akufk0 e1neraqr1">
+         Upload an image
+        </div>
+       </label>
+      </div>
+      <span class="avatar app-1wm8olo e1x0b7t61" data-test-id="letter_avatar-avatar" style="width: 90px; height: 90px;" title="ubcsalt">
+       <svg class="app-8bodfy e12mm3kg0" viewbox="0 0 120 120">
+        <rect fill="#e63717" height="120" rx="15" ry="15" width="120" x="0" y="0">
+        </rect>
+        <text fill="#FFFFFF" font-size="65" style="dominant-baseline: central;" text-anchor="middle" x="50%" y="50%">
+         U
+        </text>
+       </svg>
+      </span>
+     </div>
+     <div class="app-1hw29i9 e7s5np20">
+      <fieldset class="form-actions app-3s6dye e7s5np21">
+       <button aria-disabled="false" aria-label="Save Avatar" class="app-1ewfpw2 e16hd6vm2" role="button" type="button">
+        <span class="app-nfcx82 e18pngx40" role="presentation">
+        </span>
+        <span class="app-1x2krai e16hd6vm1">
+         Save Avatar
+        </span>
+       </button>
+      </fieldset>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</form>

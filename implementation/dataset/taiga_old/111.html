@@ -1,0 +1,39 @@
+<form class="ng-pristine ng-valid">
+ <fieldset>
+  <label for="secret-key" translate="ADMIN.THIRD_PARTIES.SECRET_KEY">
+   Secret key
+  </label>
+  <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="secret-key" name="secret-key" ng-model="gitlab.secret" placeholder="Secret key" style="" type="text"/>
+ </fieldset>
+ <fieldset>
+  <div class="select-input-text" tg-select-input-text="">
+   <div>
+    <label for="payload-url" translate="ADMIN.THIRD_PARTIES.PAYLOAD_URL">
+     Payload URL
+    </label>
+    <div class="field-with-option">
+     <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-not-empty" id="payload-url" name="payload-url" ng-model="gitlab.webhooks_url" placeholder="Payload URL" readonly="readonly" style="" type="text"/>
+     <div class="option-wrapper select-input-content" title="Copy to clipboard">
+      <tg-svg svg-icon="icon-clipboard">
+       <svg class="icon icon-clipboard" style="fill: ">
+        <use href="#icon-clipboard" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-clipboard">
+         <!-- -->
+         <!-- -->
+        </use>
+       </svg>
+      </tg-svg>
+     </div>
+    </div>
+   </div>
+  </div>
+ </fieldset>
+ <fieldset>
+  <label for="valid-origin-ips" translate="ADMIN.THIRD_PARTIES.VALID_IPS">
+   Valid source IPs (separated by ,)
+  </label>
+  <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid checksley-validated ng-empty" id="valid-origin-ips" name="valid-origin-ips" ng-model="gitlab.valid_origin_ips" placeholder="Gitlab requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation." tg-valid-origin-ips="" type="text"/>
+ </fieldset>
+ <button class="btn-small" title="Save" translate="COMMON.SAVE" type="submit" variant="primary">
+  Save
+ </button>
+</form>

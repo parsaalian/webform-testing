@@ -1,0 +1,15 @@
+<form action="http://localhost:30000/wallets/add_profit" method="post" role="form">
+ <fieldset>
+  <div class="form-group">
+   <label class="sr-only" for="input_total">
+    Total
+   </label>
+   <input class="form-control" id="input_total" name="total" placeholder="Total" step="0.01" type="number"/>
+  </div>
+  <div class="alert alert-danger errors-container" style="display: none;">
+  </div>
+  <div class="form-group">
+   <input class="btn btn-primary pull-left" data-loading-text="Saving..." type="submit" value="Set"/>
+  </div>
+ </fieldset>
+</form>

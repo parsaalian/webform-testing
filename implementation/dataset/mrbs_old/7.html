@@ -1,0 +1,25 @@
+<form action="admin.php" class="form_general" id="logon" method="post">
+ <fieldset>
+  <legend>
+   Please log in
+  </legend>
+  <div>
+   <label for="NewUserName">
+    Name:
+   </label>
+   <input id="NewUserName" name="NewUserName" type="text"/>
+  </div>
+  <div>
+   <label for="NewUserPassword">
+    Password:
+   </label>
+   <input id="NewUserPassword" name="NewUserPassword" type="password"/>
+  </div>
+  <input name="returl" type="hidden" value="http://localhost:3000/mrbs/web/day.php?year=2023&amp;month=05&amp;day=24&amp;area=1&amp;room=1"/>
+  <input name="TargetURL" type="hidden" value="day.php?year=2023&amp;month=05&amp;day=24&amp;area=1&amp;room=1"/>
+  <input name="Action" type="hidden" value="SetName"/>
+  <div id="logon_submit">
+   <input class="submit" type="submit" value=" Log in "/>
+  </div>
+ </fieldset>
+</form>

@@ -1,6 +1,0 @@
-has_auth: true
-application_name: addressbook
-
-avoid_actions:
-  - //BODY/DIV[1]/DIV[1]/FORM[1]
-  - //BODY/DIV[1]/DIV[1]/FORM[1]/A[1]

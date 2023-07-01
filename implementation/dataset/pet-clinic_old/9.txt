@@ -1,0 +1,1 @@
+http://localhost:8080/petclinic/pettypes/1/edit

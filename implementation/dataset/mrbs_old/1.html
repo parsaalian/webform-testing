@@ -1,0 +1,40 @@
+<form action="day.php" id="Form1" method="get">
+ <div>
+  <span id="dateselector">
+   <input class="date hasDatepicker" id="datepicker" type="text"/>
+   <input disabled="disabled" id="datepicker_alt" name="_alt" type="hidden" value="2023-5-24"/>
+   <input id="datepicker_alt_day" name="day" type="hidden" value="24"/>
+   <input id="datepicker_alt_month" name="month" type="hidden" value="5"/>
+   <input id="datepicker_alt_year" name="year" type="hidden" value="2023"/>
+  </span>
+  <script type="text/javascript">
+   $(function() {
+    $("#datepicker").datepicker({yearRange: '2018:2028',
+                                                       altField: '#datepicker_alt'
+                                                       , onClose: function(dateText, inst) {datepicker_close(dateText, inst, 'Form1');}                                                      });
+        var initial_date = new Date(2023, 4, 24);
+    var dateFormat = $("#datepicker").datepicker( "option", "dateFormat" );
+    document.getElementById('datepicker').value = $.datepicker.formatDate(dateFormat, initial_date);
+    document.getElementById('datepicker_alt_day').value = 24;
+    document.getElementById('datepicker_alt_month').value = 5;
+    document.getElementById('datepicker_alt_year').value = 2023;
+    $(".ui-datepicker").draggable();
+  });
+ 
+  
+  var dateselector = document.getElementById('dateselector');
+  var datepicker_html = '<input class="date" type="text" id="datepicker">\n';
+    datepicker_html += '<input type="hidden" id="datepicker_alt"'
+  datepicker_html += ' name="_alt"';
+  datepicker_html += ' value="2023-5-24"';
+  datepicker_html += ' disabled="disabled">\n';
+    datepicker_html += '<input type="hidden" id="datepicker_alt_day" name="day">\n';
+  datepicker_html += '<input type="hidden" id="datepicker_alt_month" name="month">\n';
+  datepicker_html += '<input type="hidden" id="datepicker_alt_year" name="year">\n';
+  dateselector.innerHTML = datepicker_html;
+  </script>
+  <input name="area" type="hidden" value="1"/>
+  <input name="room" type="hidden" value="1"/>
+  <input type="submit" value="goto"/>
+ </div>
+</form>

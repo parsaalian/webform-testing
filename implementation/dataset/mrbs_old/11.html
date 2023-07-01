@@ -1,0 +1,759 @@
+<form action="edit_entry_handler.php" class="form_general" id="main" method="post">
+ <fieldset>
+  <legend>
+   Add Entry
+  </legend>
+  <div id="div_name">
+   <label for="name">
+    Brief description:
+   </label>
+   <input id="name" maxlength="80" name="name" pattern="\s*\S+.*" required="" type="text" value=""/>
+  </div>
+  <div id="div_description">
+   <label for="description">
+    Full description:
+    <br/>
+    (Number of people,
+    <br/>
+    Internal/External etc.)
+   </label>
+   <textarea cols="40" id="description" name="description" rows="8"></textarea>
+  </div>
+  <div id="div_start_date">
+   <label>
+    Start:
+   </label>
+   <span id="start_dateselector">
+    <input class="date hasDatepicker" id="start_datepicker" type="text"/>
+    <input disabled="disabled" id="start_datepicker_alt" name="start__alt" type="hidden" value="2023-5-24"/>
+    <input id="start_datepicker_alt_day" name="start_day" type="hidden" value="24"/>
+    <input id="start_datepicker_alt_month" name="start_month" type="hidden" value="5"/>
+    <input id="start_datepicker_alt_year" name="start_year" type="hidden" value="2023"/>
+   </span>
+   <script type="text/javascript">
+    $(function() {
+    $("#start_datepicker").datepicker({yearRange: '2018:2028',
+                                                       altField: '#start_datepicker_alt'
+                                                                                                             });
+        var initial_date = new Date(2023, 4, 24);
+    var dateFormat = $("#start_datepicker").datepicker( "option", "dateFormat" );
+    document.getElementById('start_datepicker').value = $.datepicker.formatDate(dateFormat, initial_date);
+    document.getElementById('start_datepicker_alt_day').value = 24;
+    document.getElementById('start_datepicker_alt_month').value = 5;
+    document.getElementById('start_datepicker_alt_year').value = 2023;
+    $(".ui-datepicker").draggable();
+  });
+ 
+  
+  var dateselector = document.getElementById('start_dateselector');
+  var datepicker_html = '<input class="date" type="text" id="start_datepicker">\n';
+    datepicker_html += '<input type="hidden" id="start_datepicker_alt"'
+  datepicker_html += ' name="start__alt"';
+  datepicker_html += ' value="2023-5-24"';
+  datepicker_html += ' disabled="disabled">\n';
+    datepicker_html += '<input type="hidden" id="start_datepicker_alt_day" name="start_day">\n';
+  datepicker_html += '<input type="hidden" id="start_datepicker_alt_month" name="start_month">\n';
+  datepicker_html += '<input type="hidden" id="start_datepicker_alt_year" name="start_year">\n';
+  dateselector.innerHTML = datepicker_html;
+   </script>
+   <select id="start_seconds1" name="start_seconds" onchange="adjustSlotSelectors(this.form)" style="width: 137px;">
+    <option value="25200">
+     07:00
+    </option>
+    <option value="27000">
+     07:30
+    </option>
+    <option value="28800">
+     08:00
+    </option>
+    <option value="30600">
+     08:30
+    </option>
+    <option value="32400">
+     09:00
+    </option>
+    <option value="34200">
+     09:30
+    </option>
+    <option value="36000">
+     10:00
+    </option>
+    <option value="37800">
+     10:30
+    </option>
+    <option value="39600">
+     11:00
+    </option>
+    <option value="41400">
+     11:30
+    </option>
+    <option value="43200">
+     12:00
+    </option>
+    <option value="45000">
+     12:30
+    </option>
+    <option value="46800">
+     13:00
+    </option>
+    <option value="48600">
+     13:30
+    </option>
+    <option value="50400">
+     14:00
+    </option>
+    <option value="52200">
+     14:30
+    </option>
+    <option value="54000">
+     15:00
+    </option>
+    <option value="55800">
+     15:30
+    </option>
+    <option value="57600">
+     16:00
+    </option>
+    <option value="59400">
+     16:30
+    </option>
+    <option value="61200">
+     17:00
+    </option>
+    <option value="63000">
+     17:30
+    </option>
+    <option value="64800">
+     18:00
+    </option>
+    <option value="66600">
+     18:30
+    </option>
+   </select>
+   <div class="group">
+    <div id="ad1">
+     <input class="all_day checkbox" id="all_day1" name="all_day" onclick="OnAllDayClick(this)" type="checkbox" value="yes"/>
+     <label for="all_day1">
+      All day
+     </label>
+    </div>
+   </div>
+   <select disabled="disabled" id="start_seconds2" name="start_seconds" onchange="adjustSlotSelectors(this.form)" style="display: none">
+    <option selected="selected" value="25200">
+     07:00
+    </option>
+    <option value="27000">
+     07:30
+    </option>
+    <option value="28800">
+     08:00
+    </option>
+    <option value="30600">
+     08:30
+    </option>
+    <option value="32400">
+     09:00
+    </option>
+    <option value="34200">
+     09:30
+    </option>
+    <option value="36000">
+     10:00
+    </option>
+    <option value="37800">
+     10:30
+    </option>
+    <option value="39600">
+     11:00
+    </option>
+    <option value="41400">
+     11:30
+    </option>
+    <option value="43200">
+     12:00
+    </option>
+    <option value="45000">
+     12:30
+    </option>
+    <option value="46800">
+     13:00
+    </option>
+    <option value="48600">
+     13:30
+    </option>
+    <option value="50400">
+     14:00
+    </option>
+    <option value="52200">
+     14:30
+    </option>
+    <option value="54000">
+     15:00
+    </option>
+    <option value="55800">
+     15:30
+    </option>
+    <option value="57600">
+     16:00
+    </option>
+    <option value="59400">
+     16:30
+    </option>
+    <option value="61200">
+     17:00
+    </option>
+    <option value="63000">
+     17:30
+    </option>
+    <option value="64800">
+     18:00
+    </option>
+    <option value="66600">
+     18:30
+    </option>
+   </select>
+   <div class="group">
+    <div id="ad2" style="display: none">
+     <input class="all_day checkbox" disabled="disabled" id="all_day2" name="all_day" onclick="OnAllDayClick(this)" type="checkbox" value="yes"/>
+     <label for="all_day2">
+      All day
+     </label>
+    </div>
+   </div>
+  </div>
+  <div id="div_end_date">
+   <label>
+    End:
+   </label>
+   <div>
+    <span id="end_dateselector">
+     <input class="date hasDatepicker" id="end_datepicker" type="text"/>
+     <input disabled="disabled" id="end_datepicker_alt" name="end__alt" type="hidden" value="2023-5-24"/>
+     <input id="end_datepicker_alt_day" name="end_day" type="hidden" value="24"/>
+     <input id="end_datepicker_alt_month" name="end_month" type="hidden" value="5"/>
+     <input id="end_datepicker_alt_year" name="end_year" type="hidden" value="2023"/>
+    </span>
+    <script type="text/javascript">
+     $(function() {
+    $("#end_datepicker").datepicker({yearRange: '2018:2028',
+                                                       altField: '#end_datepicker_alt'
+                                                                                                             });
+        var initial_date = new Date(2023, 4, 24);
+    var dateFormat = $("#end_datepicker").datepicker( "option", "dateFormat" );
+    document.getElementById('end_datepicker').value = $.datepicker.formatDate(dateFormat, initial_date);
+    document.getElementById('end_datepicker_alt_day').value = 24;
+    document.getElementById('end_datepicker_alt_month').value = 5;
+    document.getElementById('end_datepicker_alt_year').value = 2023;
+    $(".ui-datepicker").draggable();
+  });
+ 
+  
+  var dateselector = document.getElementById('end_dateselector');
+  var datepicker_html = '<input class="date" type="text" id="end_datepicker">\n';
+    datepicker_html += '<input type="hidden" id="end_datepicker_alt"'
+  datepicker_html += ' name="end__alt"';
+  datepicker_html += ' value="2023-5-24"';
+  datepicker_html += ' disabled="disabled">\n';
+    datepicker_html += '<input type="hidden" id="end_datepicker_alt_day" name="end_day">\n';
+  datepicker_html += '<input type="hidden" id="end_datepicker_alt_month" name="end_month">\n';
+  datepicker_html += '<input type="hidden" id="end_datepicker_alt_year" name="end_year">\n';
+  dateselector.innerHTML = datepicker_html;
+    </script>
+   </div>
+   <select id="end_seconds1" name="end_seconds" onchange="adjustSlotSelectors(this.form)" style="width: 137px;">
+    <option value="27000">
+     07:30  (30 minutes)
+    </option>
+    <option value="28800">
+     08:00  (1 hour)
+    </option>
+    <option value="30600">
+     08:30  (1.5 hours)
+    </option>
+    <option value="32400">
+     09:00  (2 hours)
+    </option>
+    <option value="34200">
+     09:30  (2.5 hours)
+    </option>
+    <option value="36000">
+     10:00  (3 hours)
+    </option>
+    <option value="37800">
+     10:30  (3.5 hours)
+    </option>
+    <option value="39600">
+     11:00  (4 hours)
+    </option>
+    <option value="41400">
+     11:30  (4.5 hours)
+    </option>
+    <option value="43200">
+     12:00  (5 hours)
+    </option>
+    <option value="45000">
+     12:30  (5.5 hours)
+    </option>
+    <option value="46800">
+     13:00  (6 hours)
+    </option>
+    <option value="48600">
+     13:30  (6.5 hours)
+    </option>
+    <option value="50400">
+     14:00  (7 hours)
+    </option>
+    <option value="52200">
+     14:30  (7.5 hours)
+    </option>
+    <option value="54000">
+     15:00  (8 hours)
+    </option>
+    <option value="55800">
+     15:30  (8.5 hours)
+    </option>
+    <option value="57600">
+     16:00  (9 hours)
+    </option>
+    <option value="59400">
+     16:30  (9.5 hours)
+    </option>
+    <option value="61200">
+     17:00  (10 hours)
+    </option>
+    <option value="63000">
+     17:30  (10.5 hours)
+    </option>
+    <option value="64800">
+     18:00  (11 hours)
+    </option>
+    <option value="66600">
+     18:30  (11.5 hours)
+    </option>
+    <option value="68400">
+     19:00  (12 hours)
+    </option>
+   </select>
+   <select disabled="disabled" id="end_seconds2" name="end_seconds" onchange="adjustSlotSelectors(this.form)" style="display: none">
+    <option value="25200">
+     07:00
+    </option>
+    <option value="27000">
+     07:30
+    </option>
+    <option selected="selected" value="28800">
+     08:00
+    </option>
+    <option value="30600">
+     08:30
+    </option>
+    <option value="32400">
+     09:00
+    </option>
+    <option value="34200">
+     09:30
+    </option>
+    <option value="36000">
+     10:00
+    </option>
+    <option value="37800">
+     10:30
+    </option>
+    <option value="39600">
+     11:00
+    </option>
+    <option value="41400">
+     11:30
+    </option>
+    <option value="43200">
+     12:00
+    </option>
+    <option value="45000">
+     12:30
+    </option>
+    <option value="46800">
+     13:00
+    </option>
+    <option value="48600">
+     13:30
+    </option>
+    <option value="50400">
+     14:00
+    </option>
+    <option value="52200">
+     14:30
+    </option>
+    <option value="54000">
+     15:00
+    </option>
+    <option value="55800">
+     15:30
+    </option>
+    <option value="57600">
+     16:00
+    </option>
+    <option value="59400">
+     16:30
+    </option>
+    <option value="61200">
+     17:00
+    </option>
+    <option value="63000">
+     17:30
+    </option>
+    <option value="64800">
+     18:00
+    </option>
+    <option value="66600">
+     18:30
+    </option>
+    <option value="68400">
+     19:00
+    </option>
+   </select>
+   <span class="error" id="end_time_error">
+   </span>
+  </div>
+  <div id="div_areas">
+   <label for="area">
+    Area:
+   </label>
+   <select id="area" name="area">
+    <option value="1">
+     Building 1
+    </option>
+    <option value="2">
+     Building 2
+    </option>
+   </select>
+  </div>
+  <script type="text/javascript">
+   //<![CDATA[
+      
+      var area = 1;
+      
+      function changeRooms( formObj )
+      {
+        areasObj = eval( "formObj.area" );
+
+        area = areasObj[areasObj.selectedIndex].value;
+        roomsObj = eval( "formObj.elements['rooms']" );
+
+        // remove all entries
+        roomsNum = roomsObj.length;
+        for (i=(roomsNum-1); i >= 0; i--)
+        {
+          roomsObj.options[i] = null;
+        }
+        // add entries based on area selected
+        switch (area){
+          case "1":
+roomsObj.options[0] = new Option("Room 4",4);
+roomsObj.options[1] = new Option("Room 1",1);
+roomsObj.options[2] = new Option("Room 3",3);
+roomsObj.options[3] = new Option("Room 2",2);
+roomsObj.options[0].selected = true;
+break;
+case "2":
+roomsObj.options[0] = new Option("Room 6",10);
+roomsObj.options[1] = new Option("Room 3",7);
+roomsObj.options[2] = new Option("Room 5",9);
+roomsObj.options[3] = new Option("Room 2",6);
+roomsObj.options[4] = new Option("Room 4",8);
+roomsObj.options[5] = new Option("Room 1",5);
+roomsObj.options[0].selected = true;
+break;
+        } //switch
+        
+                var oldStartId = "start_seconds" + currentArea;
+        var oldEndId = "end_seconds" + currentArea;
+        var newStartId = "start_seconds" + area;
+        var newEndId = "end_seconds" + area;
+        var oldAllDayId = "ad" + currentArea;
+        var newAllDayId = "ad" + area;
+        var oldAreaStartValue = formObj[oldStartId].options[formObj[oldStartId].selectedIndex].value;
+        var oldAreaEndValue = formObj[oldEndId].options[formObj[oldEndId].selectedIndex].value;
+        $("#" + oldStartId).hide()
+                           .attr('disabled', 'disabled');
+        $("#" + oldEndId).hide()
+                         .attr('disabled', 'disabled');
+        $("#" + newStartId).show()
+                           .removeAttr('disabled');
+        $("#" + newEndId).show()
+                         .removeAttr('disabled');
+                         +        $("#" + oldAllDayId).hide();
+        $("#" + newAllDayId).show();
+        if($("#all_day" + currentArea).attr('checked') == 'checked')
+        { 
+          $("#all_day" + area).attr('checked', 'checked').removeAttr('disabled');
+        }
+        else
+        {
+          $("#all_day" + area).removeAttr('checked').removeAttr('disabled');
+        }
+        $("#all_day" + currentArea).removeAttr('disabled');
+        var oldArea = currentArea;
+        currentArea = area;
+        prevStartValue = undefined;
+        adjustSlotSelectors(formObj, oldArea, oldAreaStartValue, oldAreaEndValue);
+      }
+      
+      // Create area selector, only if we have Javascript
+      var div_areas = document.getElementById('div_areas');
+      // First of all create a label and insert it into the <div>
+      var area_label = document.createElement('label');
+      var area_label_text = document.createTextNode('Area:');
+      area_label.appendChild(area_label_text);
+      area_label.setAttribute('for', 'area');
+      div_areas.appendChild(area_label);
+      // Now give it a select box
+      var area_select = document.createElement('select');
+      area_select.setAttribute('id', 'area');
+      area_select.setAttribute('name', 'area');
+      area_select.onchange = function(){changeRooms(this.form)}; // setAttribute doesn't work for onChange with IE6
+      // populated with options
+      var option;
+      var option_text
+              option = document.createElement('option');
+        option.value = 1;
+        option_text = document.createTextNode('Building 1');
+                  option.selected = true;
+                  option.appendChild(option_text);
+        area_select.appendChild(option);
+                option = document.createElement('option');
+        option.value = 2;
+        option_text = document.createTextNode('Building 2');
+                option.appendChild(option_text);
+        area_select.appendChild(option);
+              // insert the <select> which we've just assembled into the <div>
+      div_areas.appendChild(area_select);
+      
+            
+      //]]>
+  </script>
+  <div id="div_rooms">
+   <label for="rooms">
+    Rooms:
+   </label>
+   <div class="group">
+    <select id="rooms" multiple="multiple" name="rooms[]" required="" size="5">
+     <option value="4">
+      Room 4
+     </option>
+     <option selected="selected" value="1">
+      Room 1
+     </option>
+     <option value="3">
+      Room 3
+     </option>
+     <option value="2">
+      Room 2
+     </option>
+    </select>
+    <span>
+     Use Control-Click to select more than one room
+    </span>
+   </div>
+  </div>
+  <div id="div_type">
+   <label for="type">
+    Type:
+   </label>
+   <select id="type" name="type">
+    <option value="E">
+     External
+    </option>
+    <option selected="selected" value="I">
+     Internal
+    </option>
+   </select>
+  </div>
+  <div id="div_confirmation_status">
+   <label>
+    Confirmation status:
+   </label>
+   <div class="group">
+    <label>
+     <input checked="checked" class="radio" name="confirmed" type="radio" value="1"/>
+     Confirmed
+    </label>
+    <label>
+     <input class="radio" name="confirmed" type="radio" value="0"/>
+     Tentative
+    </label>
+   </div>
+  </div>
+  <fieldset id="rep_info">
+   <legend>
+   </legend>
+   <div id="rep_type">
+    <label>
+     Repeat type:
+    </label>
+    <div class="group">
+     <label>
+      <input checked="checked" class="radio" name="rep_type" type="radio" value="0"/>
+      None
+     </label>
+     <label>
+      <input class="radio" name="rep_type" type="radio" value="1"/>
+      Daily
+     </label>
+     <label>
+      <input class="radio" name="rep_type" type="radio" value="2"/>
+      Weekly
+     </label>
+     <label>
+      <input class="radio" name="rep_type" type="radio" value="3"/>
+      Monthly
+     </label>
+     <label>
+      <input class="radio" name="rep_type" type="radio" value="4"/>
+      Yearly
+     </label>
+     <label>
+      <input class="radio" name="rep_type" type="radio" value="5"/>
+      Monthly, corresponding day
+     </label>
+     <label>
+      <input class="radio" name="rep_type" type="radio" value="6"/>
+      n-Weekly
+     </label>
+    </div>
+   </div>
+   <div id="rep_end_date">
+    <label>
+     Repeat end date:
+    </label>
+    <span id="rep_end_dateselector">
+     <input class="date hasDatepicker" id="rep_end_datepicker" type="text"/>
+     <input disabled="disabled" id="rep_end_datepicker_alt" name="rep_end__alt" type="hidden" value="2023-5-24"/>
+     <input id="rep_end_datepicker_alt_day" name="rep_end_day" type="hidden" value="24"/>
+     <input id="rep_end_datepicker_alt_month" name="rep_end_month" type="hidden" value="5"/>
+     <input id="rep_end_datepicker_alt_year" name="rep_end_year" type="hidden" value="2023"/>
+    </span>
+    <script type="text/javascript">
+     $(function() {
+    $("#rep_end_datepicker").datepicker({yearRange: '2018:2028',
+                                                       altField: '#rep_end_datepicker_alt'
+                                                                                                             });
+        var initial_date = new Date(2023, 4, 24);
+    var dateFormat = $("#rep_end_datepicker").datepicker( "option", "dateFormat" );
+    document.getElementById('rep_end_datepicker').value = $.datepicker.formatDate(dateFormat, initial_date);
+    document.getElementById('rep_end_datepicker_alt_day').value = 24;
+    document.getElementById('rep_end_datepicker_alt_month').value = 5;
+    document.getElementById('rep_end_datepicker_alt_year').value = 2023;
+    $(".ui-datepicker").draggable();
+  });
+ 
+  
+  var dateselector = document.getElementById('rep_end_dateselector');
+  var datepicker_html = '<input class="date" type="text" id="rep_end_datepicker">\n';
+    datepicker_html += '<input type="hidden" id="rep_end_datepicker_alt"'
+  datepicker_html += ' name="rep_end__alt"';
+  datepicker_html += ' value="2023-5-24"';
+  datepicker_html += ' disabled="disabled">\n';
+    datepicker_html += '<input type="hidden" id="rep_end_datepicker_alt_day" name="rep_end_day">\n';
+  datepicker_html += '<input type="hidden" id="rep_end_datepicker_alt_month" name="rep_end_month">\n';
+  datepicker_html += '<input type="hidden" id="rep_end_datepicker_alt_year" name="rep_end_year">\n';
+  dateselector.innerHTML = datepicker_html;
+    </script>
+   </div>
+   <div id="rep_day">
+    <label>
+     Repeat day:
+     <br/>
+     (for weekly or n-weekly)
+    </label>
+    <div class="group">
+     <label>
+      <input class="checkbox" name="rep_day[]" type="checkbox" value="0"/>
+      Sunday
+     </label>
+     <label>
+      <input class="checkbox" name="rep_day[]" type="checkbox" value="1"/>
+      Monday
+     </label>
+     <label>
+      <input class="checkbox" name="rep_day[]" type="checkbox" value="2"/>
+      Tuesday
+     </label>
+     <label>
+      <input class="checkbox" name="rep_day[]" type="checkbox" value="3"/>
+      Wednesday
+     </label>
+     <label>
+      <input class="checkbox" name="rep_day[]" type="checkbox" value="4"/>
+      Thursday
+     </label>
+     <label>
+      <input class="checkbox" name="rep_day[]" type="checkbox" value="5"/>
+      Friday
+     </label>
+     <label>
+      <input class="checkbox" name="rep_day[]" type="checkbox" value="6"/>
+      Saturday
+     </label>
+    </div>
+   </div>
+   <div>
+    <label for="rep_num_weeks">
+     Number of weeks:
+     <br/>
+     (for n-weekly)
+    </label>
+    <input id="rep_num_weeks" min="2" name="rep_num_weeks" step="1" type="number"/>
+   </div>
+   <div>
+    <label for="skip">
+     Skip past conflicts:
+    </label>
+    <input class="checkbox" id="skip" name="skip" type="checkbox" value="1"/>
+   </div>
+  </fieldset>
+  <input name="returl" type="hidden" value="http://localhost:3000/mrbs/web/day.php?year=2023&amp;month=05&amp;day=24&amp;area=1&amp;room=1&amp;returl=http%3A%2F%2Flocalhost%3A3000%2Fmrbs%2Fweb%2Fday.php%3Fyear%3D2023%26month%3D05%26day%3D24%26area%3D1%26room%3D1"/>
+  <input name="create_by" type="hidden" value="administrator"/>
+  <input name="rep_id" type="hidden" value="0"/>
+  <input name="edit_type" type="hidden" value="series"/>
+  <fieldset class="submit_buttons">
+   <legend>
+   </legend>
+   <div id="edit_entry_submit_back">
+    <input class="submit" formnovalidate="" name="back_button" type="submit" value="Back"/>
+   </div>
+   <div id="edit_entry_submit_save">
+    <input class="submit default_action" name="save_button" type="submit" value="Save"/>
+   </div>
+   <div class="good" id="conflict_check" title="No scheduling conflicts">
+    ✔
+   </div>
+   <div class="good" id="policy_check" title="No policy conflicts">
+    ✔
+   </div>
+  </fieldset>
+  <div id="check_results" style="display: none">
+   <div id="check_tabs">
+    <ul id="details_tabs">
+     <li>
+      <a href="#schedule_details">
+       Schedule
+      </a>
+     </li>
+     <li>
+      <a href="#policy_details">
+       Policy
+      </a>
+     </li>
+     <li id="ui-tab-dialog-close">
+     </li>
+    </ul>
+    <div id="schedule_details">
+     No scheduling conflicts
+    </div>
+    <div id="policy_details">
+     No policy conflicts
+    </div>
+   </div>
+  </div>
+ </fieldset>
+</form>

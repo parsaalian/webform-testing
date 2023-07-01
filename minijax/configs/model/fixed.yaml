@@ -1,5 +1,0 @@
-workflow:
-  finder: 'QUERY'
-  transformer: 'NONE'
-  parser: 'BASIC'
-  filler: 'FIXED'

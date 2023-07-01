@@ -1,0 +1,718 @@
+<form action="/claroline11110/claroline/learnPath/learningPathList.php" method="post">
+ <fieldset>
+  <input name="cidReset" type="hidden" value="true"/>
+  <input name="cidReq" type="hidden" value="SE123"/>
+  <h4>
+   Create a new learning path
+  </h4>
+  <dl>
+   <dt>
+    <label for="newPathName">
+     Title
+    </label>
+   </dt>
+   <dd>
+    <input id="newPathName" maxlength="255" name="newPathName" type="text"/>
+   </dd>
+   <dt>
+    <label for="newComment">
+     Comment
+    </label>
+   </dt>
+   <dd>
+    <script language="javascript" src="/claroline11110/claroline/editor/tiny_mce/tiny_mce/tiny_mce.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript">
+     var text_dir = "ltr";
+    </script>
+    <script language="javascript" src="/claroline11110/claroline/editor/tiny_mce/advanced.conf.js" type="text/javascript">
+    </script>
+    <textarea aria-hidden="true" class="advancedMCE" cols="55" id="newComment" name="newComment" rows="15" style="width: 100%; display: none;">&lt;!-- content: html tiny_mce --&gt;</textarea>
+    <span aria-labelledby="newComment_voice" class="mceEditor clarolineSkin clarolineSkinSilver" id="newComment_parent" role="application">
+     <span class="mceVoiceLabel" id="newComment_voice" style="display:none;">
+      Rich Text Area
+     </span>
+     <table cellpadding="0" cellspacing="0" class="mceLayout" id="newComment_tbl" role="presentation" style="width: 100%; height: 186px;">
+      <tbody>
+       <tr class="mceFirst" role="presentation">
+        <td class="mceToolbar mceLeft mceFirst mceLast" role="toolbar">
+         <div aria-labelledby="newComment_toolbargroup_voice" id="newComment_toolbargroup" role="group" tabindex="-1">
+          <span role="application">
+           <span class="mceVoiceLabel" id="newComment_toolbargroup_voice" style="display:none;">
+            Toolbar
+           </span>
+           <table align="" aria-disabled="false" aria-pressed="false" cellpadding="0" cellspacing="0" class="mceToolbar mceToolbarRow1 Enabled" id="newComment_toolbar1" role="presentation" tabindex="-1">
+            <tbody>
+             <tr>
+              <td class="mceToolbarStart mceToolbarStartListBox mceFirst">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+              <td style="position: relative">
+               <span aria-describedby="newComment_fontselect_voiceDesc" aria-haspopup="true" aria-labelledby="newComment_fontselect_voiceDesc" role="listbox">
+                <table aria-valuenow="Font Family" cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_fontselect" id="newComment_fontselect" role="presentation" tabindex="-1">
+                 <tbody>
+                  <tr>
+                   <td class="mceFirst">
+                    <span class="voiceLabel" id="newComment_fontselect_voiceDesc" style="display:none;">
+                     Font Family
+                    </span>
+                    <a class="mceText mceTitle" href="javascript:;" id="newComment_fontselect_text" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     Font Family
+                    </a>
+                   </td>
+                   <td class="mceLast">
+                    <a class="mceOpen" href="javascript:;" id="newComment_fontselect_open" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     <span>
+                      <span aria-hidden="true" class="mceIconOnly" style="display:none;">
+                       ▼
+                      </span>
+                     </span>
+                    </a>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </span>
+              </td>
+              <td style="position: relative">
+               <span aria-describedby="newComment_fontsizeselect_voiceDesc" aria-haspopup="true" aria-labelledby="newComment_fontsizeselect_voiceDesc" role="listbox">
+                <table aria-valuenow="Font Size" cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_fontsizeselect" id="newComment_fontsizeselect" role="presentation" tabindex="-1">
+                 <tbody>
+                  <tr>
+                   <td class="mceFirst">
+                    <span class="voiceLabel" id="newComment_fontsizeselect_voiceDesc" style="display:none;">
+                     Font Size
+                    </span>
+                    <a class="mceText mceTitle" href="javascript:;" id="newComment_fontsizeselect_text" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     Font Size
+                    </a>
+                   </td>
+                   <td class="mceLast">
+                    <a class="mceOpen" href="javascript:;" id="newComment_fontsizeselect_open" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     <span>
+                      <span aria-hidden="true" class="mceIconOnly" style="display:none;">
+                       ▼
+                      </span>
+                     </span>
+                    </a>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </span>
+              </td>
+              <td style="position: relative">
+               <span aria-describedby="newComment_formatselect_voiceDesc" aria-haspopup="true" aria-labelledby="newComment_formatselect_voiceDesc" role="listbox">
+                <table cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_formatselect" id="newComment_formatselect" role="presentation" tabindex="-1">
+                 <tbody>
+                  <tr>
+                   <td class="mceFirst">
+                    <span class="voiceLabel" id="newComment_formatselect_voiceDesc" style="display:none;">
+                     Format
+                    </span>
+                    <a class="mceText" href="javascript:;" id="newComment_formatselect_text" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     Format
+                    </a>
+                   </td>
+                   <td class="mceLast">
+                    <a class="mceOpen" href="javascript:;" id="newComment_formatselect_open" onclick="return false;" onmousedown="return false;" tabindex="-1">
+                     <span>
+                      <span aria-hidden="true" class="mceIconOnly" style="display:none;">
+                       ▼
+                      </span>
+                     </span>
+                    </a>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </span>
+              </td>
+              <td class="mceToolbarStart">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_bold_voice" class="mceButton mceButtonEnabled mce_bold" href="javascript:;" id="newComment_bold" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Bold (Ctrl+B)">
+                <span class="mceIcon mce_bold">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_bold_voice" style="display: none;">
+                 Bold (Ctrl+B)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_italic_voice" class="mceButton mceButtonEnabled mce_italic" href="javascript:;" id="newComment_italic" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Italic (Ctrl+I)">
+                <span class="mceIcon mce_italic">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_italic_voice" style="display: none;">
+                 Italic (Ctrl+I)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_underline_voice" class="mceButton mceButtonEnabled mce_underline" href="javascript:;" id="newComment_underline" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Underline (Ctrl+U)">
+                <span class="mceIcon mce_underline">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_underline_voice" style="display: none;">
+                 Underline (Ctrl+U)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_strikethrough_voice" class="mceButton mceButtonEnabled mce_strikethrough" href="javascript:;" id="newComment_strikethrough" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Strikethrough">
+                <span class="mceIcon mce_strikethrough">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_strikethrough_voice" style="display: none;">
+                 Strikethrough
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_sub_voice" class="mceButton mceButtonEnabled mce_sub" href="javascript:;" id="newComment_sub" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Subscript">
+                <span class="mceIcon mce_sub">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_sub_voice" style="display: none;">
+                 Subscript
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_sup_voice" class="mceButton mceButtonEnabled mce_sup" href="javascript:;" id="newComment_sup" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Superscript">
+                <span class="mceIcon mce_sup">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_sup_voice" style="display: none;">
+                 Superscript
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_undo_voice" class="mceButton mce_undo mceButtonDisabled" href="javascript:;" id="newComment_undo" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Undo (Ctrl+Z)">
+                <span class="mceIcon mce_undo">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_undo_voice" style="display: none;">
+                 Undo (Ctrl+Z)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_redo_voice" class="mceButton mce_redo mceButtonDisabled" href="javascript:;" id="newComment_redo" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Redo (Ctrl+Y)">
+                <span class="mceIcon mce_redo">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_redo_voice" style="display: none;">
+                 Redo (Ctrl+Y)
+                </span>
+               </a>
+              </td>
+              <td class="mceToolbarEnd mceToolbarEndButton mceLast">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+           <table align="" aria-disabled="false" aria-pressed="false" cellpadding="0" cellspacing="0" class="mceToolbar mceToolbarRow2 Enabled" id="newComment_toolbar2" role="presentation" tabindex="-1">
+            <tbody>
+             <tr>
+              <td class="mceToolbarStart mceToolbarStartButton mceFirst">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_cut_voice" class="mceButton mceButtonEnabled mce_cut" href="javascript:;" id="newComment_cut" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Cut (Ctrl+X)">
+                <span class="mceIcon mce_cut">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_cut_voice" style="display: none;">
+                 Cut (Ctrl+X)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_copy_voice" class="mceButton mceButtonEnabled mce_copy" href="javascript:;" id="newComment_copy" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Copy (Ctrl+C)">
+                <span class="mceIcon mce_copy">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_copy_voice" style="display: none;">
+                 Copy (Ctrl+C)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_paste_voice" class="mceButton mceButtonEnabled mce_paste" href="javascript:;" id="newComment_paste" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Paste (Ctrl+V)">
+                <span class="mceIcon mce_paste">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_paste_voice" style="display: none;">
+                 Paste (Ctrl+V)
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_pasteword_voice" class="mceButton mceButtonEnabled mce_pasteword" href="javascript:;" id="newComment_pasteword" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Paste from Word">
+                <span class="mceIcon mce_pasteword">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_pasteword_voice" style="display: none;">
+                 Paste from Word
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_justifyleft_voice" class="mceButton mceButtonEnabled mce_justifyleft" href="javascript:;" id="newComment_justifyleft" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Align Left">
+                <span class="mceIcon mce_justifyleft">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_justifyleft_voice" style="display: none;">
+                 Align Left
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_justifycenter_voice" class="mceButton mceButtonEnabled mce_justifycenter" href="javascript:;" id="newComment_justifycenter" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Align Center">
+                <span class="mceIcon mce_justifycenter">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_justifycenter_voice" style="display: none;">
+                 Align Center
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_justifyright_voice" class="mceButton mceButtonEnabled mce_justifyright" href="javascript:;" id="newComment_justifyright" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Align Right">
+                <span class="mceIcon mce_justifyright">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_justifyright_voice" style="display: none;">
+                 Align Right
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_justifyfull_voice" class="mceButton mceButtonEnabled mce_justifyfull" href="javascript:;" id="newComment_justifyfull" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Align Full">
+                <span class="mceIcon mce_justifyfull">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_justifyfull_voice" style="display: none;">
+                 Align Full
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_bullist_voice" aria-pressed="false" class="mceButton mceButtonEnabled mce_bullist" href="javascript:;" id="newComment_bullist" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/Remove Bulleted List">
+                <span class="mceIcon mce_bullist">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_bullist_voice" style="display: none;">
+                 Insert/Remove Bulleted List
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_numlist_voice" aria-pressed="false" class="mceButton mceButtonEnabled mce_numlist" href="javascript:;" id="newComment_numlist" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/Remove Numbered List">
+                <span class="mceIcon mce_numlist">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_numlist_voice" style="display: none;">
+                 Insert/Remove Numbered List
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_outdent_voice" class="mceButton mce_outdent mceButtonDisabled" href="javascript:;" id="newComment_outdent" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Decrease Indent">
+                <span class="mceIcon mce_outdent">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_outdent_voice" style="display: none;">
+                 Decrease Indent
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_indent_voice" class="mceButton mceButtonEnabled mce_indent" href="javascript:;" id="newComment_indent" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Increase Indent">
+                <span class="mceIcon mce_indent">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_indent_voice" style="display: none;">
+                 Increase Indent
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <div aria-haspopup="true" aria-labelledby="newComment_forecolor_voice" id="newComment_forecolor" role="button" tabindex="-1">
+                <table cellpadding="0" cellspacing="0" class="mceSplitButton mceSplitButtonEnabled mce_forecolor" role="presentation" title="Select Text Color">
+                 <tbody>
+                  <tr>
+                   <td class="mceFirst">
+                    <a class="mceAction mce_forecolor" href="javascript:;" id="newComment_forecolor_action" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Select Text Color">
+                     <span class="mceAction mce_forecolor">
+                     </span>
+                     <span class="mceVoiceLabel mceIconOnly" id="newComment_forecolor_voice" style="display:none;">
+                      Select Text Color
+                     </span>
+                     <div class="mceColorPreview" id="newComment_forecolor_preview" style="background-color: rgb(136, 136, 136);">
+                     </div>
+                    </a>
+                   </td>
+                   <td class="mceLast">
+                    <a class="mceOpen mce_forecolor" href="javascript:;" id="newComment_forecolor_open" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Select Text Color">
+                     <span class="mceOpen mce_forecolor">
+                      <span aria-hidden="true" class="mceIconOnly" style="display:none;">
+                       ▼
+                      </span>
+                     </span>
+                    </a>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </div>
+              </td>
+              <td style="position: relative">
+               <div aria-haspopup="true" aria-labelledby="newComment_backcolor_voice" id="newComment_backcolor" role="button" tabindex="-1">
+                <table cellpadding="0" cellspacing="0" class="mceSplitButton mceSplitButtonEnabled mce_backcolor" role="presentation" title="Select Background Color">
+                 <tbody>
+                  <tr>
+                   <td class="mceFirst">
+                    <a class="mceAction mce_backcolor" href="javascript:;" id="newComment_backcolor_action" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Select Background Color">
+                     <span class="mceAction mce_backcolor">
+                     </span>
+                     <span class="mceVoiceLabel mceIconOnly" id="newComment_backcolor_voice" style="display:none;">
+                      Select Background Color
+                     </span>
+                     <div class="mceColorPreview" id="newComment_backcolor_preview" style="background-color: rgb(136, 136, 136);">
+                     </div>
+                    </a>
+                   </td>
+                   <td class="mceLast">
+                    <a class="mceOpen mce_backcolor" href="javascript:;" id="newComment_backcolor_open" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Select Background Color">
+                     <span class="mceOpen mce_backcolor">
+                      <span aria-hidden="true" class="mceIconOnly" style="display:none;">
+                       ▼
+                      </span>
+                     </span>
+                    </a>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </div>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_hr_voice" class="mceButton mceButtonEnabled mce_hr" href="javascript:;" id="newComment_hr" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert Horizontal Line">
+                <span class="mceIcon mce_hr">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_hr_voice" style="display: none;">
+                 Insert Horizontal Line
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_link_voice" class="mceButton mce_link mceButtonDisabled" href="javascript:;" id="newComment_link" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/Edit Link">
+                <span class="mceIcon mce_link">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_link_voice" style="display: none;">
+                 Insert/Edit Link
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_unlink_voice" class="mceButton mce_unlink mceButtonDisabled" href="javascript:;" id="newComment_unlink" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Unlink">
+                <span class="mceIcon mce_unlink">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_unlink_voice" style="display: none;">
+                 Unlink
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_claroimage_voice" class="mceButton mceButtonEnabled mce_claroimage" href="javascript:;" id="newComment_claroimage" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/Edit Image">
+                <span class="mceIcon mce_claroimage">
+                 <img alt="Insert/Edit Image" class="mceIcon" src="http://localhost:3000/claroline11110/claroline/editor/tiny_mce/tiny_mce/plugins/claroimage/img/icon.png"/>
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_claroimage_voice" style="display: none;">
+                 Insert/Edit Image
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_media_voice" class="mceButton mceButtonEnabled mce_media" href="javascript:;" id="newComment_media" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/Edit Embedded Media">
+                <span class="mceIcon mce_media">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_media_voice" style="display: none;">
+                 Insert/Edit Embedded Media
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_dailytube_voice" class="mceButton mceButtonEnabled mce_dailytube" href="javascript:;" id="newComment_dailytube" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert DailyMotion or YouTube video">
+                <span class="mceIcon mce_dailytube">
+                 <img alt="Insert DailyMotion or YouTube video" class="mceIcon" src="http://localhost:3000/claroline11110/claroline/editor/tiny_mce/tiny_mce/plugins/dailytube/img/dailytube.png"/>
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_dailytube_voice" style="display: none;">
+                 Insert DailyMotion or YouTube video
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_template_voice" class="mceButton mceButtonEnabled mce_template" href="javascript:;" id="newComment_template" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert Predefined Template Content">
+                <span class="mceIcon mce_template">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_template_voice" style="display: none;">
+                 Insert Predefined Template Content
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_code_voice" class="mceButton mceButtonEnabled mce_code" href="javascript:;" id="newComment_code" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Edit HTML Source">
+                <span class="mceIcon mce_code">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_code_voice" style="display: none;">
+                 Edit HTML Source
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_texformula_voice" class="mceButton mceButtonEnabled mce_texformula" href="javascript:;" id="newComment_texformula" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="LaTeX equation  editor">
+                <span class="mceIcon mce_texformula">
+                 <img alt="LaTeX equation  editor" class="mceIcon" src="http://localhost:3000/claroline11110/claroline/editor/tiny_mce/tiny_mce/plugins/texformula/img/latex.png"/>
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_texformula_voice" style="display: none;">
+                 LaTeX equation  editor
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_spoiler_voice" class="mceButton mceButtonEnabled mce_spoiler" href="javascript:;" id="newComment_spoiler" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Spoiler  editor">
+                <span class="mceIcon mce_spoiler">
+                 <img alt="Spoiler  editor" class="mceIcon" src="http://localhost:3000/claroline11110/claroline/editor/tiny_mce/tiny_mce/plugins/spoiler/img/spoiler.png"/>
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_spoiler_voice" style="display: none;">
+                 Spoiler  editor
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_resources_voice" class="mceButton mceButtonEnabled mce_resources" href="javascript:;" id="newComment_resources" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Resources linker">
+                <span class="mceIcon mce_resources">
+                 <img alt="Resources linker" class="mceIcon" src="http://localhost:3000/claroline11110/claroline/editor/tiny_mce/tiny_mce/plugins/resources/img/resources.png"/>
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_resources_voice" style="display: none;">
+                 Resources linker
+                </span>
+               </a>
+              </td>
+              <td class="mceToolbarEnd mceToolbarEndButton mceLast">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+           <table align="" aria-disabled="false" aria-pressed="false" cellpadding="0" cellspacing="0" class="mceToolbar mceToolbarRow3 Enabled" id="newComment_toolbar3" role="presentation" tabindex="-1">
+            <tbody>
+             <tr>
+              <td class="mceToolbarStart mceToolbarStartButton mceFirst">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_table_voice" class="mceButton mceButtonEnabled mce_table" href="javascript:;" id="newComment_table" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert/Edit Table">
+                <span class="mceIcon mce_table">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_table_voice" style="display: none;">
+                 Insert/Edit Table
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_row_props_voice" class="mceButton mce_row_props mceButtonDisabled" href="javascript:;" id="newComment_row_props" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Table Row Properties">
+                <span class="mceIcon mce_row_props">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_row_props_voice" style="display: none;">
+                 Table Row Properties
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_cell_props_voice" class="mceButton mce_cell_props mceButtonDisabled" href="javascript:;" id="newComment_cell_props" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Table Cell Properties">
+                <span class="mceIcon mce_cell_props">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_cell_props_voice" style="display: none;">
+                 Table Cell Properties
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_row_before_voice" class="mceButton mce_row_before mceButtonDisabled" href="javascript:;" id="newComment_row_before" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert Row Before">
+                <span class="mceIcon mce_row_before">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_row_before_voice" style="display: none;">
+                 Insert Row Before
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_row_after_voice" class="mceButton mce_row_after mceButtonDisabled" href="javascript:;" id="newComment_row_after" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert Row After">
+                <span class="mceIcon mce_row_after">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_row_after_voice" style="display: none;">
+                 Insert Row After
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_delete_row_voice" class="mceButton mce_delete_row mceButtonDisabled" href="javascript:;" id="newComment_delete_row" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Delete Row">
+                <span class="mceIcon mce_delete_row">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_delete_row_voice" style="display: none;">
+                 Delete Row
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_col_before_voice" class="mceButton mce_col_before mceButtonDisabled" href="javascript:;" id="newComment_col_before" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert Column Before">
+                <span class="mceIcon mce_col_before">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_col_before_voice" style="display: none;">
+                 Insert Column Before
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_col_after_voice" class="mceButton mce_col_after mceButtonDisabled" href="javascript:;" id="newComment_col_after" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Insert Column After">
+                <span class="mceIcon mce_col_after">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_col_after_voice" style="display: none;">
+                 Insert Column After
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_delete_col_voice" class="mceButton mce_delete_col mceButtonDisabled" href="javascript:;" id="newComment_delete_col" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Delete Column">
+                <span class="mceIcon mce_delete_col">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_delete_col_voice" style="display: none;">
+                 Delete Column
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_split_cells_voice" class="mceButton mce_split_cells mceButtonDisabled" href="javascript:;" id="newComment_split_cells" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Split Merged Table Cells">
+                <span class="mceIcon mce_split_cells">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_split_cells_voice" style="display: none;">
+                 Split Merged Table Cells
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <a aria-disabled="true" aria-labelledby="newComment_merge_cells_voice" class="mceButton mce_merge_cells mceButtonDisabled" href="javascript:;" id="newComment_merge_cells" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Merge Table Cells">
+                <span class="mceIcon mce_merge_cells">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_merge_cells_voice" style="display: none;">
+                 Merge Table Cells
+                </span>
+               </a>
+              </td>
+              <td style="position: relative">
+               <span aria-orientation="vertical" class="mceSeparator" role="separator" tabindex="-1">
+               </span>
+              </td>
+              <td style="position: relative">
+               <a aria-labelledby="newComment_help_voice" class="mceButton mceButtonEnabled mce_help" href="javascript:;" id="newComment_help" onclick="return false;" onmousedown="return false;" role="button" tabindex="-1" title="Help">
+                <span class="mceIcon mce_help">
+                </span>
+                <span class="mceVoiceLabel mceIconOnly" id="newComment_help_voice" style="display: none;">
+                 Help
+                </span>
+               </a>
+              </td>
+              <td class="mceToolbarEnd mceToolbarEndButton mceLast">
+               <span>
+                <!-- IE -->
+               </span>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </span>
+         </div>
+         <a accesskey="z" href="#" onfocus="tinyMCE.getInstanceById('newComment').focus();" title="Jump to tool buttons - Alt+Q, Jump to editor - Alt-Z, Jump to element path - Alt-X">
+          <!-- IE -->
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td class="mceIframeContainer mceFirst mceLast">
+         <iframe allowtransparency="true" frameborder="0" id="newComment_ifr" src='javascript:""' style="width: 100%; height: 100px; display: block;" title="Rich Text AreaPress ALT-F10 for toolbar. Press ALT-0 for help">
+         </iframe>
+        </td>
+       </tr>
+       <tr class="mceLast">
+        <td class="mceStatusbar mceFirst mceLast">
+         <div aria-labelledby="newComment_path_voice" id="newComment_path_row" role="group">
+          <span id="newComment_path_voice">
+           Path
+          </span>
+          <span>
+           :
+          </span>
+          <span id="newComment_path">
+          </span>
+         </div>
+         <a class="mceResize" href="javascript:;" id="newComment_resize" onclick="return false;" tabindex="-1">
+         </a>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </span>
+   </dd>
+  </dl>
+ </fieldset>
+ <input name="cmd" type="hidden" value="create"/>
+ <input type="submit" value="Ok"/>
+ <a href="/claroline11110/claroline/learnPath/learningPathList.php?cidReset=true&amp;cidReq=SE123">
+  <input onclick="document.location='/claroline11110/claroline/learnPath/learningPathList.php?cidReset=true&amp;cidReq=SE123';return false" type="button" value="Cancel"/>
+ </a>
+</form>

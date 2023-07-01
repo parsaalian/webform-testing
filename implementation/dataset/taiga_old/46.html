@@ -1,0 +1,51 @@
+<form class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength">
+ <div class="row table-main new-value hidden">
+  <div class="color-column">
+   <tg-color-selector init-color="newValue.color" on-select-color="newValue.color = color">
+    <!-- -->
+    <!-- -->
+    <div class="color-selector" ng-if="vm.userCanChangeColor()">
+     <div class="tag-color empty-color" ng-class="{'empty-color': !vm.color}" ng-click="vm.toggleColorList()" ng-style="{'background': vm.color}" role="button" tabindex="0">
+     </div>
+     <!-- -->
+    </div>
+    <!-- -->
+   </tg-color-selector>
+  </div>
+  <div class="status-name">
+   <input aria-invalid="true" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength" data-maxlength="255" data-required="true" name="name" ng-model="newValue.name" placeholder="Write a name for the new status" type="text"/>
+  </div>
+  <div class="is-closed-column">
+   <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" data-required="true" name="is_closed" ng-model="newValue.is_closed" ng-options="e.id as e.name | translate for e in [{'id':true, 'name': 'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]">
+    <option label="Yes" value="boolean:true">
+     Yes
+    </option>
+    <option label="No" selected="selected" value="boolean:false">
+     No
+    </option>
+   </select>
+  </div>
+  <div class="options-column">
+   <a class="add-new" href="" title="Add">
+    <tg-svg svg-icon="icon-check-empty">
+     <svg class="icon icon-check-empty" style="fill: ">
+      <use href="#icon-check-empty" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-check-empty">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+   <a class="delete-new" href="" title="Cancel">
+    <tg-svg svg-icon="icon-close">
+     <svg class="icon icon-close" style="fill: ">
+      <use href="#icon-close" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-close">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+  </div>
+ </div>
+</form>

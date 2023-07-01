@@ -1,0 +1,438 @@
+<form class="ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" ng-if="lightboxOpen" style="">
+ <h2 class="title" ng-switch="mode">
+  <!-- -->
+  <span ng-switch-when="new">
+   New issue
+  </span>
+  <!-- -->
+  <!-- -->
+  <!-- -->
+ </h2>
+ <div aria-hidden="true" class="button-group ng-hide" ng-show="getOrCreate == true">
+  <div class="button-group-single" ng-click="setMode('add-existing')" role="button" tabindex="0">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty" id="add-existing" name="related-with-selector" ng-model="mode" type="radio" value="add-existing"/>
+   <label class="" for="add-existing">
+    <span class="name">
+     Existing issue
+    </span>
+   </label>
+  </div>
+  <div class="button-group-single" ng-click="setMode('new')" role="button" tabindex="0">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty" id="new" name="related-with-selector" ng-model="mode" type="radio" value="new"/>
+   <label class="" for="new">
+    <span class="name">
+     New issue
+    </span>
+   </label>
+  </div>
+ </div>
+ <!-- -->
+ <!-- -->
+ <div ng-if="mode != 'add-existing'">
+  <div class="form-wrapper">
+   <div class="main">
+    <fieldset>
+     <input aria-invalid="true" class="ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-maxlength ng-touched" data-maxlength="500" data-required="true" name="subject" ng-model="obj.subject" ng-model-options="{ debounce: 200 }" placeholder="Subject" tg-auto-select="tg-auto-select" type="text"/>
+    </fieldset>
+    <fieldset>
+     <!-- -->
+     <tg-tag-line-common class="tags-block" ng-if="project" on-add-tag="addTag(name, color)" on-delete-tag="deleteTag(tag)" permissions="add_issue" project="project" tags="obj.tags">
+      <div class="tags-container">
+       <!-- -->
+       <!-- -->
+       <!-- -->
+       <button class="btn-filter ng-animate-disabled" ng-click="vm.displayTagInput()" ng-if="!vm.addTag &amp;&amp; vm.checkPermissions()" title="Add tag" variant="secondary">
+        <span class="add-tag-text" translate="COMMON.TAGS.ADD">
+         Add tag
+        </span>
+        <tg-svg svg-icon="icon-add" svg-title-translate="COMMON.TAGS.ADD">
+         <svg class="icon icon-add" style="fill: ">
+          <use href="#icon-add" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-add">
+           <!-- -->
+           <!-- -->
+           <title ng-if="svgTitleTranslate">
+            Add tag
+           </title>
+           <!-- -->
+          </use>
+         </svg>
+        </tg-svg>
+       </button>
+       <!-- -->
+       <!-- -->
+      </div>
+     </tg-tag-line-common>
+     <!-- -->
+    </fieldset>
+    <fieldset>
+     <textarea aria-invalid="false" class="description ng-pristine ng-untouched ng-valid ng-empty" name="description" ng-attr-placeholder="{{ 'LIGHTBOX.CREATE_EDIT.' + translationID + '_PLACEHOLDER_DESCRIPTION' | translate }}" ng-model="obj.description" ng-model-options="{ debounce: 200 }" placeholder="Please add descriptive text to help others better understand this issue" rows="7"></textarea>
+    </fieldset>
+    <fieldset>
+     <section>
+     </section>
+     <tg-attachments-simple attachments="attachments" on-add="addAttachment(attachment)" on-delete="deleteAttachment(attachment)">
+      <section class="attachments attachment-simple" tg-attachments-drop="vm.addAttachments(files)">
+       <div class="attachments-header">
+        <h3 class="attachments-title">
+         <span class="attachments-num">
+          0
+         </span>
+         <span class="attachments-text" translate="ATTACHMENT.SECTION_NAME">
+          Attachments
+         </span>
+        </h3>
+        <div class="add-attach" id="a11y-add-attach" title="Add new attachment. ">
+         <button class="btn-icon add-attachment-button" ng-click="displayAttachmentInput()" type="button" variant="primary">
+          <tg-svg svg-icon="icon-add">
+           <svg class="icon icon-add" style="fill: ">
+            <use href="#icon-add" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-add">
+             <!-- -->
+             <!-- -->
+            </use>
+           </svg>
+          </tg-svg>
+         </button>
+         <input aria-invalid="false" aria-label="Add new attachment. " class="ng-pristine ng-untouched ng-valid ng-empty" id="add-attach" multiple="multiple" ng-model="files" tg-file-change="vm.addAttachments(files)" type="file"/>
+        </div>
+       </div>
+       <!-- -->
+       <div class="attachments-empty" ng-if="!vm.attachments.size">
+        <div>
+         Drop attachments here!
+        </div>
+       </div>
+       <!-- -->
+       <div class="attachment-body attachment-list">
+        <!-- -->
+       </div>
+      </section>
+     </tg-attachments-simple>
+    </fieldset>
+   </div>
+   <sidebar class="sidebar ticket-data">
+    <fieldset class="status-button">
+     <div class="status-dropdown editable" style="background-color:#8C2318">
+      <span class="status-text">
+       New
+      </span>
+      <tg-svg svg-icon="icon-arrow-down">
+       <svg class="icon icon-arrow-down" style="fill: ">
+        <use href="#icon-arrow-down" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-arrow-down">
+         <!-- -->
+         <!-- -->
+        </use>
+       </svg>
+      </tg-svg>
+     </div>
+     <ul class="pop-status popover">
+      <!-- -->
+      <li ng-repeat="s in statusList">
+       <a class="status" data-status-id="2271370" href="" title="New">
+        <span class="item-text">
+         New
+        </span>
+       </a>
+      </li>
+      <!-- -->
+      <li ng-repeat="s in statusList">
+       <a class="status" data-status-id="2271371" href="" title="In progress">
+        <span class="item-text">
+         In progress
+        </span>
+       </a>
+      </li>
+      <!-- -->
+      <li ng-repeat="s in statusList">
+       <a class="status" data-status-id="2271372" href="" title="Ready for test">
+        <span class="item-text">
+         Ready for test
+        </span>
+       </a>
+      </li>
+      <!-- -->
+      <li ng-repeat="s in statusList">
+       <a class="status" data-status-id="2271373" href="" title="Closed">
+        <span class="item-text">
+         Closed
+        </span>
+       </a>
+      </li>
+      <!-- -->
+      <li ng-repeat="s in statusList">
+       <a class="status" data-status-id="2271374" href="" title="Needs Info">
+        <span class="item-text">
+         Needs Info
+        </span>
+       </a>
+      </li>
+      <!-- -->
+      <li ng-repeat="s in statusList">
+       <a class="status" data-status-id="2271375" href="" title="Rejected">
+        <span class="item-text">
+         Rejected
+        </span>
+       </a>
+      </li>
+      <!-- -->
+      <li ng-repeat="s in statusList">
+       <a class="status" data-status-id="2271376" href="" title="Postponed">
+        <span class="item-text">
+         Postponed
+        </span>
+       </a>
+      </li>
+      <!-- -->
+     </ul>
+    </fieldset>
+    <div ng-switch="objType">
+     <!-- -->
+     <div ng-switch-when="issue">
+      <section aria-invalid="false" class="ticket-assigned-to ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="obj" required-perm="modify_issue" tg-assigned-to-inline="tg-assigned-to-inline">
+       <div class="assigned-inline">
+        <div class="ticket-user-list">
+         <div class="user-list-single">
+          <div class="user-list-avatar" ng-class="{ 'is-iocaine': isIocaine }">
+           <img alt="Assign" src="v-1682488164091/images/unnamed.png" style="background-color: "/>
+           <!-- -->
+          </div>
+          <!-- -->
+          <div class="user-list-name" ng-if="fullNameVisible">
+           <!-- -->
+           <!-- -->
+           <a class="users-dropdown user-assigned editable" ng-class="{ 'editable': isEditable }" ng-if="isEditable" title="Edit assignment">
+            <span class="assigned-name">
+             <!-- -->
+             <span ng-if="fullNameVisible">
+              Assign
+             </span>
+             <!-- -->
+            </span>
+           </a>
+           <!-- -->
+           <!-- -->
+           <span ng-if="isEditable &amp;&amp; isUnassigned">
+            <span>
+            </span>
+            <span class="read-only" translate="COMMON.OR">
+             or
+            </span>
+            <a class="self-assign" href="#" ng-click="selfAssign()">
+             <span>
+              Assign to me
+             </span>
+            </a>
+           </span>
+           <!-- -->
+          </div>
+          <!-- -->
+          <!-- -->
+         </div>
+        </div>
+        <div class="pop-users popover">
+         <input aria-invalid="false" class="users-search ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" data-maxlength="500" ng-model="usersSearch" placeholder="Search for users" type="text"/>
+         <!-- -->
+         <a class="user-list-single" data-user-id="365840" href="" ng-repeat="user in users" title="Mahdi Ghorbani">
+          <img class="user-list-avatar" style="background: "/>
+          <span class="user-list-name" href="" title="Mahdi Ghorbani">
+           Mahdi Ghorbani
+          </span>
+         </a>
+         <!-- -->
+         <a class="user-list-single" data-user-id="365577" href="" ng-repeat="user in users" title="Yasamin Tabatabaee">
+          <img class="user-list-avatar" style="background: "/>
+          <span class="user-list-name" href="" title="Yasamin Tabatabaee">
+           Yasamin Tabatabaee
+          </span>
+         </a>
+         <!-- -->
+         <a class="user-list-single" data-user-id="365397" href="" ng-repeat="user in users" title="parsaalian">
+          <img class="user-list-avatar" style="background: "/>
+          <span class="user-list-name" href="" title="parsaalian">
+           parsaalian
+          </span>
+         </a>
+         <!-- -->
+         <!-- -->
+        </div>
+       </div>
+      </section>
+      <div class="ticket-data-container">
+       <tg-issue-type-button aria-invalid="false" class="ticket-status ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="obj" not-auto-save="true">
+        <div class="type-data clickable">
+         <div class="label level-name" translate="COMMON.FIELDS.TYPE">
+          Type
+         </div>
+         <div class="level-data">
+          <span class="label">
+           Bug
+          </span>
+          <span class="level-color" style="background-color:#89BAB4">
+          </span>
+         </div>
+         <ul class="popover pop-type">
+          <li>
+           <a class="type" data-type-id="978771" href="" title="Bug">
+            <span class="item-text">
+             Bug
+            </span>
+           </a>
+          </li>
+          <li>
+           <a class="type" data-type-id="978772" href="" title="Question">
+            <span class="item-text">
+             Question
+            </span>
+           </a>
+          </li>
+          <li>
+           <a class="type" data-type-id="978773" href="" title="Enhancement">
+            <span class="item-text">
+             Enhancement
+            </span>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </tg-issue-type-button>
+       <tg-issue-severity-button aria-invalid="false" class="ticket-status ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="obj" not-auto-save="true">
+        <div class="severity-data clickable">
+         <div class="label level-name" translate="COMMON.FIELDS.SEVERITY">
+          Severity
+         </div>
+         <div class="level-data">
+          <span class="label">
+           Normal
+          </span>
+          <span class="level-color" style="background-color:#0000FF">
+          </span>
+         </div>
+         <ul class="popover pop-severity">
+          <li>
+           <a class="severity" data-severity-id="1618613" href="" title="Wishlist">
+            <span class="item-text">
+             Wishlist
+            </span>
+           </a>
+          </li>
+          <li>
+           <a class="severity" data-severity-id="1618614" href="" title="Minor">
+            <span class="item-text">
+             Minor
+            </span>
+           </a>
+          </li>
+          <li>
+           <a class="severity" data-severity-id="1618615" href="" title="Normal">
+            <span class="item-text">
+             Normal
+            </span>
+           </a>
+          </li>
+          <li>
+           <a class="severity" data-severity-id="1618616" href="" title="Important">
+            <span class="item-text">
+             Important
+            </span>
+           </a>
+          </li>
+          <li>
+           <a class="severity" data-severity-id="1618617" href="" title="Critical">
+            <span class="item-text">
+             Critical
+            </span>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </tg-issue-severity-button>
+       <tg-issue-priority-button aria-invalid="false" class="ticket-status ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="obj" not-auto-save="true">
+        <div class="priority-data clickable">
+         <div class="label level-name" translate="COMMON.FIELDS.PRIORITY">
+          Priority
+         </div>
+         <div class="level-data">
+          <span class="label priority-priority">
+           Normal
+          </span>
+          <span class="level-color" style="background-color:#669933">
+          </span>
+         </div>
+         <ul class="popover pop-priority">
+          <li>
+           <a class="priority" data-priority-id="974295" href="" title="Low">
+            Low
+           </a>
+          </li>
+          <li>
+           <a class="priority" data-priority-id="974296" href="" title="Normal">
+            Normal
+           </a>
+          </li>
+          <li>
+           <a class="priority" data-priority-id="974297" href="" title="High">
+            High
+           </a>
+          </li>
+         </ul>
+        </div>
+       </tg-issue-priority-button>
+      </div>
+      <div class="ticket-detail-settings">
+       <tg-due-date-popover due-date="obj.due_date" is-closed="obj.is_closed" item="obj" not-auto-save="true" obj-type="issue">
+        <div class="due-date-button-wrapper">
+         <button class="btn-icon due-date-button is-editable date-picker-popover-trigger" ng-attr-title="{{ vm.title() }}" ng-class="{'date-set':  vm.color()}" ng-disabled="vm.disabled()" ng-style="{background: vm.color()}" title="">
+          <tg-svg svg-icon="icon-clock">
+           <svg class="icon icon-clock" style="fill: ">
+            <use href="#icon-clock" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-clock">
+             <!-- -->
+             <!-- -->
+            </use>
+           </svg>
+          </tg-svg>
+         </button>
+         <input autocomplete="off" class="due-date no-focus" picker-value="" type="hidden"/>
+         <div aria-hidden="true" class="date-picker-popover ng-hide" ng-hide="!open">
+          <div class="date-picker-container">
+           <div class="pika-single is-hidden is-bound">
+           </div>
+          </div>
+          <!-- -->
+         </div>
+        </div>
+       </tg-due-date-popover>
+       <button class="btn-icon is-blocked item-block" ng-class="{ 'item-unblock': obj.is_blocked, 'item-block': !obj.is_blocked }" type="button">
+        <tg-svg svg-icon="icon-lock">
+         <svg class="icon icon-lock" style="fill: ">
+          <use href="#icon-lock" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-lock">
+           <!-- -->
+           <!-- -->
+          </use>
+         </svg>
+        </tg-svg>
+       </button>
+      </div>
+     </div>
+     <!-- -->
+     <!-- -->
+     <!-- -->
+    </div>
+    <tg-blocking-message-input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-empty" ng-model="obj.blocked_note" watch="obj.is_blocked">
+     <fieldset class="blocked-note hidden">
+      <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-empty" name="blocked_note" ng-attr-placeholder="{{'COMMON.BLOCKED_NOTE' | translate}}" ng-model="obj.blocked_note" placeholder="Why is this blocked?" type="text"/>
+     </fieldset>
+    </tg-blocking-message-input>
+   </sidebar>
+  </div>
+  <div class="btn-container">
+   <button class="btn-big add-item" id="submitButton" ng-switch="mode" tg-loading="vm.loading" type="submit" variant="primary">
+    <!-- -->
+    <span ng-switch-when="new">
+     Create
+    </span>
+    <!-- -->
+    <!-- -->
+   </button>
+  </div>
+ </div>
+ <!-- -->
+</form>

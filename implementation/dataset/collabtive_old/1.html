@@ -1,0 +1,26 @@
+<form action="manageuser.php?action=login" id="loginform" method="post" name="loginform" onsubmit="return validateCompleteForm(this,'input_error');">
+ <fieldset>
+  <div class="row">
+   <label class="username" for="username">
+   </label>
+   <input class="text" id="username" name="username" realname="Name" required="1" type="text"/>
+  </div>
+  <div class="row">
+   <label class="pass" for="pass">
+   </label>
+   <input class="text" id="pass" name="pass" realname="Password" type="password"/>
+  </div>
+  <div class="row">
+   <label class="keep" for="stay" onclick="toggleClass(this,'keep','keep-active');">
+    <span>
+     Stay logged in
+    </span>
+   </label>
+   <input id="stay" name="staylogged" type="checkbox" value="1"/>
+  </div>
+  <div class="row">
+   <button class="loginbutn" onfocus="this.blur();" title="Login" type="submit">
+   </button>
+  </div>
+ </fieldset>
+</form>

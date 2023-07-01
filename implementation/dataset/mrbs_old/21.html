@@ -1,0 +1,227 @@
+<form action="report.php" class="form_general" id="report_form" method="get">
+ <fieldset>
+  <legend>
+   Report on Meetings
+  </legend>
+  <fieldset>
+   <legend>
+    Search criteria
+   </legend>
+   <div id="div_report_start">
+    <label>
+     Report start date:
+    </label>
+    <span id="from_dateselector">
+     <input class="date hasDatepicker" id="from_datepicker" type="text"/>
+     <input disabled="disabled" id="from_datepicker_alt" name="from__alt" type="hidden" value="2023-5-24"/>
+     <input id="from_datepicker_alt_day" name="from_day" type="hidden" value="24"/>
+     <input id="from_datepicker_alt_month" name="from_month" type="hidden" value="5"/>
+     <input id="from_datepicker_alt_year" name="from_year" type="hidden" value="2023"/>
+    </span>
+    <script type="text/javascript">
+     $(function() {
+    $("#from_datepicker").datepicker({yearRange: '2018:2028',
+                                                       altField: '#from_datepicker_alt'
+                                                                                                             });
+        var initial_date = new Date(2023, 4, 24);
+    var dateFormat = $("#from_datepicker").datepicker( "option", "dateFormat" );
+    document.getElementById('from_datepicker').value = $.datepicker.formatDate(dateFormat, initial_date);
+    document.getElementById('from_datepicker_alt_day').value = 24;
+    document.getElementById('from_datepicker_alt_month').value = 5;
+    document.getElementById('from_datepicker_alt_year').value = 2023;
+    $(".ui-datepicker").draggable();
+  });
+ 
+  
+  var dateselector = document.getElementById('from_dateselector');
+  var datepicker_html = '<input class="date" type="text" id="from_datepicker">\n';
+    datepicker_html += '<input type="hidden" id="from_datepicker_alt"'
+  datepicker_html += ' name="from__alt"';
+  datepicker_html += ' value="2023-5-24"';
+  datepicker_html += ' disabled="disabled">\n';
+    datepicker_html += '<input type="hidden" id="from_datepicker_alt_day" name="from_day">\n';
+  datepicker_html += '<input type="hidden" id="from_datepicker_alt_month" name="from_month">\n';
+  datepicker_html += '<input type="hidden" id="from_datepicker_alt_year" name="from_year">\n';
+  dateselector.innerHTML = datepicker_html;
+    </script>
+   </div>
+   <div id="div_report_end">
+    <label>
+     Report end date:
+    </label>
+    <span id="to_dateselector">
+     <input class="date hasDatepicker" id="to_datepicker" type="text"/>
+     <input disabled="disabled" id="to_datepicker_alt" name="to__alt" type="hidden" value="2023-7-23"/>
+     <input id="to_datepicker_alt_day" name="to_day" type="hidden" value="23"/>
+     <input id="to_datepicker_alt_month" name="to_month" type="hidden" value="7"/>
+     <input id="to_datepicker_alt_year" name="to_year" type="hidden" value="2023"/>
+    </span>
+    <script type="text/javascript">
+     $(function() {
+    $("#to_datepicker").datepicker({yearRange: '2018:2028',
+                                                       altField: '#to_datepicker_alt'
+                                                                                                             });
+        var initial_date = new Date(2023, 6, 23);
+    var dateFormat = $("#to_datepicker").datepicker( "option", "dateFormat" );
+    document.getElementById('to_datepicker').value = $.datepicker.formatDate(dateFormat, initial_date);
+    document.getElementById('to_datepicker_alt_day').value = 23;
+    document.getElementById('to_datepicker_alt_month').value = 7;
+    document.getElementById('to_datepicker_alt_year').value = 2023;
+    $(".ui-datepicker").draggable();
+  });
+ 
+  
+  var dateselector = document.getElementById('to_dateselector');
+  var datepicker_html = '<input class="date" type="text" id="to_datepicker">\n';
+    datepicker_html += '<input type="hidden" id="to_datepicker_alt"'
+  datepicker_html += ' name="to__alt"';
+  datepicker_html += ' value="2023-7-23"';
+  datepicker_html += ' disabled="disabled">\n';
+    datepicker_html += '<input type="hidden" id="to_datepicker_alt_day" name="to_day">\n';
+  datepicker_html += '<input type="hidden" id="to_datepicker_alt_month" name="to_month">\n';
+  datepicker_html += '<input type="hidden" id="to_datepicker_alt_year" name="to_year">\n';
+  dateselector.innerHTML = datepicker_html;
+    </script>
+   </div>
+   <div id="div_areamatch">
+    <label for="areamatch">
+     Match area:
+    </label>
+    <input aria-autocomplete="list" aria-haspopup="true" autocomplete="off" class="ui-autocomplete-input" id="areamatch" name="areamatch" role="textbox" type="text" value=""/>
+   </div>
+   <div id="div_roommatch">
+    <label for="roommatch">
+     Match room:
+    </label>
+    <input aria-autocomplete="list" aria-haspopup="true" autocomplete="off" class="ui-autocomplete-input" id="roommatch" name="roommatch" role="textbox" type="text" value=""/>
+   </div>
+   <div id="div_typematch">
+    <label for="typematch">
+     Match type:
+    </label>
+    <select id="typematch" multiple="multiple" name="typematch[]" size="5">
+     <option value="E">
+      External
+     </option>
+     <option value="I">
+      Internal
+     </option>
+    </select>
+    <span>
+     Use Control-Click to select more than one type
+    </span>
+   </div>
+   <div id="div_namematch">
+    <label for="namematch">
+     Match brief description:
+    </label>
+    <input id="namematch" name="namematch" type="text" value=""/>
+   </div>
+   <div id="div_descrmatch">
+    <label for="descrmatch">
+     Match full description:
+    </label>
+    <input id="descrmatch" name="descrmatch" type="text" value=""/>
+   </div>
+   <div id="div_creatormatch">
+    <label for="creatormatch">
+     Created by:
+    </label>
+    <input id="creatormatch" name="creatormatch" type="text" value=""/>
+   </div>
+   <div id="div_confirmationstatus">
+    <label>
+     Confirmation status:
+    </label>
+    <div class="group">
+     <label>
+      <input checked="checked" class="radio" name="match_confirmed" type="radio" value="2"/>
+      All
+     </label>
+     <label>
+      <input class="radio" name="match_confirmed" type="radio" value="1"/>
+      Confirmed
+     </label>
+     <label>
+      <input class="radio" name="match_confirmed" type="radio" value="0"/>
+      Tentative
+     </label>
+    </div>
+   </div>
+  </fieldset>
+  <fieldset>
+   <legend>
+    Output options
+   </legend>
+   <div id="div_output">
+    <label>
+     Output:
+    </label>
+    <div class="group">
+     <label>
+      <input checked="checked" class="radio" name="output" type="radio" value="0"/>
+      Report
+     </label>
+     <label>
+      <input class="radio" name="output" type="radio" value="1"/>
+      Summary
+     </label>
+    </div>
+   </div>
+   <div id="div_format">
+    <label>
+     Format:
+    </label>
+    <div class="group">
+     <label>
+      <input checked="checked" class="radio" name="output_format" type="radio" value="0"/>
+      HTML
+     </label>
+     <label>
+      <input class="radio" name="output_format" type="radio" value="1"/>
+      CSV
+     </label>
+    </div>
+   </div>
+   <div id="div_sortby">
+    <label>
+     Sort report by:
+    </label>
+    <div class="group">
+     <label>
+      <input checked="checked" class="radio" name="sortby" type="radio" value="r"/>
+      Room
+     </label>
+     <label>
+      <input class="radio" name="sortby" type="radio" value="s"/>
+      Start date/time
+     </label>
+    </div>
+   </div>
+   <div id="div_sumby">
+    <label>
+     Summarize by:
+    </label>
+    <div class="group">
+     <label>
+      <input checked="checked" class="radio" name="sumby" type="radio" value="d"/>
+      Brief description
+     </label>
+     <label>
+      <input class="radio" name="sumby" type="radio" value="c"/>
+      Creator
+     </label>
+     <label>
+      <input class="radio" name="sumby" type="radio" value="t"/>
+      Type
+     </label>
+    </div>
+   </div>
+  </fieldset>
+  <div id="report_submit">
+   <input name="phase" type="hidden" value="2"/>
+   <input class="submit" type="submit" value="Run Report"/>
+  </div>
+ </fieldset>
+ <input name="datatable" type="hidden" value="1"/>
+</form>

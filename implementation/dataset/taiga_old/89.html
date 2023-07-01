@@ -1,0 +1,90 @@
+<form class="ng-pristine ng-valid tg-scope ng-valid-required ng-valid-maxlength" tg-bind-scope="">
+ <div class="row tag-row table-main visualization" ng-class="">
+  <div class="color-column">
+   <!-- -->
+   <!-- -->
+   <div class="current-color empty-color" ng-if="!tag.color">
+   </div>
+   <!-- -->
+  </div>
+  <div class="status-name">
+   <span ng-bind-html="tag.name | emojify">
+    student
+   </span>
+  </div>
+  <div class="options-column">
+   <a class="mix-tags" href="">
+    <tg-svg svg-icon="icon-merge" title="Merge Tags">
+     <svg class="icon icon-merge" style="fill: ">
+      <use href="#icon-merge" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-merge">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+    <div class="popover merge-explanation">
+     <span translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE">
+      Merge Tags
+     </span>
+    </div>
+   </a>
+   <a class="edit-value" href="">
+    <tg-svg svg-icon="icon-edit" title="Edit value">
+     <svg class="icon icon-edit" style="fill: ">
+      <use href="#icon-edit" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-edit">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+   <a class="delete-tag" href="" tg-loading="loadingDelete">
+    <tg-svg svg-icon="icon-trash" title="Delete value">
+     <svg class="icon icon-trash" style="fill: ">
+      <use href="#icon-trash" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-trash">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+  </div>
+ </div>
+ <div class="row tag-row table-main edition hidden">
+  <tg-color-selector aria-invalid="false" class="color-column ng-pristine ng-untouched ng-valid ng-not-empty" init-color="tag.color" ng-model="tag" on-select-color="tag.color = color">
+   <!-- -->
+   <!-- -->
+   <div class="color-selector" ng-if="vm.userCanChangeColor()">
+    <div class="tag-color empty-color" ng-class="{'empty-color': !vm.color}" ng-click="vm.toggleColorList()" ng-style="{'background': vm.color}" role="button" tabindex="0">
+    </div>
+    <!-- -->
+   </div>
+   <!-- -->
+  </tg-color-selector>
+  <div class="status-name">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required ng-valid-maxlength" data-maxlength="255" data-required="true" name="to_tag" ng-model="tag.name" placeholder="Write a name for the new element" type="text"/>
+  </div>
+  <div class="options-column" tg-loading="loadingEdit">
+   <a class="save" href="">
+    <tg-svg svg-icon="icon-check-empty" title="Save">
+     <svg class="icon icon-check-empty" style="fill: ">
+      <use href="#icon-check-empty" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-check-empty">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+   <a class="cancel" href="">
+    <tg-svg svg-icon="icon-close" title="Cancel">
+     <svg class="icon icon-close" style="fill: ">
+      <use href="#icon-close" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-close">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+  </div>
+ </div>
+</form>

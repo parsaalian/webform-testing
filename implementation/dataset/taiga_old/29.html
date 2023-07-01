@@ -1,0 +1,107 @@
+<form class="ng-pristine ng-valid tg-scope ng-valid-required ng-valid-maxlength" tg-bind-scope="">
+ <div class="row table-main visualization">
+  <tg-svg svg-icon="icon-draggable">
+   <svg class="icon icon-draggable" style="fill: ">
+    <use href="#icon-draggable" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-draggable">
+     <!-- -->
+     <!-- -->
+    </use>
+   </svg>
+  </tg-svg>
+  <div class="color-column">
+   <div class="current-color" ng-style="{background: value.color}" style="background: rgb(255, 138, 132);">
+   </div>
+  </div>
+  <div class="status-name">
+   <span>
+    Ready
+   </span>
+  </div>
+  <div class="status-slug">
+   <span>
+    ready
+   </span>
+  </div>
+  <div class="is-closed-column">
+   <tg-svg aria-hidden="true" class="ng-hide" ng-show="value.is_closed" svg-icon="icon-check">
+    <svg class="icon icon-check" style="fill: ">
+     <use href="#icon-check" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-check">
+      <!-- -->
+      <!-- -->
+     </use>
+    </svg>
+   </tg-svg>
+  </div>
+  <div class="options-column">
+   <a class="edit-value" href="">
+    <tg-svg svg-icon="icon-edit" title="Edit value">
+     <svg class="icon icon-edit" style="fill: ">
+      <use href="#icon-edit" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-edit">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+   <a class="delete-value" href="">
+    <tg-svg svg-icon="icon-trash" title="Delete value">
+     <svg class="icon icon-trash" style="fill: ">
+      <use href="#icon-trash" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-trash">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+  </div>
+ </div>
+ <div class="row table-main edition hidden">
+  <div class="color-column">
+   <tg-color-selector init-color="value.color" on-select-color="value.color = color">
+    <!-- -->
+    <!-- -->
+    <div class="color-selector" ng-if="vm.userCanChangeColor()">
+     <div class="tag-color" ng-class="{'empty-color': !vm.color}" ng-click="vm.toggleColorList()" ng-style="{'background': vm.color}" role="button" style="background: rgb(255, 138, 132);" tabindex="0">
+     </div>
+     <!-- -->
+    </div>
+    <!-- -->
+   </tg-color-selector>
+  </div>
+  <div class="status-name">
+   <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required ng-valid-maxlength" data-maxlength="255" data-required="true" name="name" ng-model="value.name" placeholder="Write a name for the new status" type="text"/>
+  </div>
+  <div class="is-closed-column">
+   <select aria-invalid="false" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" data-required="true" name="is_closed" ng-model="value.is_closed" ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]">
+    <option label="Yes" value="boolean:true">
+     Yes
+    </option>
+    <option label="No" selected="selected" value="boolean:false">
+     No
+    </option>
+   </select>
+  </div>
+  <div class="options-column">
+   <a class="save" href="" title="Save">
+    <tg-svg svg-icon="icon-check-empty">
+     <svg class="icon icon-check-empty" style="fill: ">
+      <use href="#icon-check-empty" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-check-empty">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+   <a class="cancel" href="" title="Cancel">
+    <tg-svg class="cancel" svg-icon="icon-close">
+     <svg class="icon icon-close" style="fill: ">
+      <use href="#icon-close" ng-attr-href="{{ '#' + svgIcon }}" ng-attr-xlink:href="{{ '#' + svgIcon }}" xlink:href="#icon-close">
+       <!-- -->
+       <!-- -->
+      </use>
+     </svg>
+    </tg-svg>
+   </a>
+  </div>
+ </div>
+</form>
