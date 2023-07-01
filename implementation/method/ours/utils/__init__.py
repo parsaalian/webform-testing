@@ -1,7 +1,7 @@
 import numpy as np
 
 from .bs_utils import *
-from .driver_utils import create_driver, embed_properties_into_html, interact_with_input
+from .driver_utils import create_driver, get_xpath, embed_properties_into_html, interact_with_input
 
 
 def get_normal_cutoff_score(array, factor=0.5):
