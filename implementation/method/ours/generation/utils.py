@@ -1,0 +1,70 @@
+from selenium.webdriver.common.by import By
+
+from method.ours.utils import interact_with_input
+
+
+class ValueTable:
+    def __init__(self):
+        self.entries = {}
+    
+    
+    def add_entry(self, field_id, input_group, constraints):
+        self.entries[field_id] = ValueTableEntry(input_group, constraints)
+    
+    
+    def get_entry_by_field_id(self, field_id):
+        return self.entries[field_id]
+    
+    
+    def get_entry_by_input_group(self, input_group):
+        filtered = list(filter(
+            lambda x: x.input_group.node.xpath == input_group.node.xpath,
+            self.entries.values()
+        ))
+        if len(filtered) > 0:
+            return filtered[0]
+        return None
+
+
+class ValueTableEntry:
+    def __init__(self, input_group, constraints):
+        self.input_group = input_group
+        self.constraints = constraints
+        self.feedback = None
+        self.value = None
+    
+    
+    def set_value(self, value):
+        self.value = value
+    
+    
+    def set_feedback(self, feedback):
+        self.feedback = feedback
+
+
+def fill_form_with_value_table(driver, value_table, input_groups):
+    for input_group in input_groups:
+        entry = value_table.get_entry_by_input_group(input_group)
+        
+        if entry is None:
+            continue
+        
+        print(entry.input_group.node)
+        print(entry.value)
+        
+        element = driver.find_element(By.XPATH, entry.input_group.node.xpath)
+        
+        # skip form-changing elements for now. TODO: handle these cases
+        if element.get_attribute('type') in ['submit', 'radio', 'checkbox']:
+            continue
+    
+        interact_with_input(element, entry.value)
+
+
+def submit_form(driver, input_groups):
+    submit = list(filter(
+        lambda x: x.node.element.attrs['type'] == 'submit',
+        input_groups
+    ))[0]
+    
+    interact_with_input(driver.find_element(By.XPATH, submit.node.xpath), True)

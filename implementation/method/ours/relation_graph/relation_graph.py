@@ -52,6 +52,13 @@ class RelationGraph:
         }
     
     
+    def is_a_child_node(self, node):
+        return len(list(filter(
+            lambda x: x.target == node and x.type.value == 'CHILD',
+            self.edges()
+        ))) > 0
+    
+    
     def diff(self, new_graph):
         diff = {
             'added': [],
@@ -59,11 +66,11 @@ class RelationGraph:
         }
         
         for node in new_graph.nodes():
-            if node.get_id() not in self._nodes:
+            if node.get_id() not in self._nodes and not new_graph.is_a_child_node(node):
                 diff['added'].append(node)
         
         for node in self.nodes():
-            if node.get_id() not in new_graph._nodes:
+            if node.get_id() not in new_graph._nodes and not self.is_a_child_node(node):
                 diff['removed'].append(node)
         
         return diff

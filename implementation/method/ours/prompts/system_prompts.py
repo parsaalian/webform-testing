@@ -19,7 +19,6 @@ Your task is to generate a set of constraints for web form fields. Your decision
 You must choose only from this list of functions, and avoid using any other functions. Use the notation "field('elementId')" to refer to input fields in the form.
 
 Example of generated constraints for a password input field:
-# sample
 expect(field('password'))
 .toHaveLengthCondition('>', 8)
 .toHaveLengthCondition('<', 50)
@@ -28,7 +27,6 @@ expect(field('password'))
 .toHaveSpecialChars()
 .not.toBeTruthy()
 .toBeEqual(field('confirm-password'))
-# end of the sample
 """.strip()
 
 

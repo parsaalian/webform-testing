@@ -12,6 +12,7 @@ def is_input(soup_element):
         'type' in soup_element.attrs and \
         soup_element.attrs['type'] in ['submit']:
         return True
+    
     return False
 
 
@@ -52,6 +53,16 @@ def remove_redundant_attributes(soup_element):
         'placeholder',
         'value',
         'alt',
+        # input attributes
+        'min',
+        'max',
+        'maxlength',
+        'multiple',
+        'pattern',
+        'required',
+        'readonly',
+        'disabled',
+        'step',
     ]
     
     for attr in [a for a in soup_element.attrs if a not in KEEP_ATTRIBUTES]:
