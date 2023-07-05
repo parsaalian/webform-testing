@@ -4,6 +4,7 @@ from deepdiff import DeepDiff
 
 feedback_keywords = [
     'invalid',
+    'valid',
     'required',
     'error',
     'not possible',
@@ -15,6 +16,7 @@ feedback_keywords = [
     'exceeds',
     'denied',
     'please enter',
+    'please select',
     'format',
     'does not match',
     'try again',
