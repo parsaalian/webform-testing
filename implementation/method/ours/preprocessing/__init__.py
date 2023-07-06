@@ -6,6 +6,13 @@ from method.ours.utils import (
     has_no_text
 )
 
+force_not_keep_tags = [
+    'script', 'style', 'noscript', 'meta', 'link', 'head', 'html', 'body', 'title', 'iframe',
+    'svg', 'path', 'defs', 'g', 'symbol', 'use', 'image', 'rect', 'circle', 'ellipse', 'line',
+    'polyline', 'polygon', 'text', 'tspan', 'textPath', 'switch', 'foreignObject', 'desc',
+    'legend', 'source', 'track', 'audio', 'video', 'canvas', 'map', 'area', 'base', 'col',
+]
+
 
 def is_displayed(element):
     if is_navigable_string(element) and not has_no_text(element):
@@ -33,13 +40,6 @@ def should_skip_processing(element):
 
 
 def is_force_not_keep(element):
-    force_not_keep_tags = [
-        'script', 'style', 'noscript', 'meta', 'link', 'head', 'html', 'body', 'title', 'iframe',
-        'svg', 'path', 'defs', 'g', 'symbol', 'use', 'image', 'rect', 'circle', 'ellipse', 'line',
-        'polyline', 'polygon', 'text', 'tspan', 'textPath', 'switch', 'foreignObject', 'desc',
-        'legend', 'source', 'track', 'audio', 'video', 'canvas', 'map', 'area', 'base', 'col',
-    ]
-    
     if element.name in force_not_keep_tags:
         return True
 

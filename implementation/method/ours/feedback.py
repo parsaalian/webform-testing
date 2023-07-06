@@ -1,5 +1,7 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Script
 from deepdiff import DeepDiff
+
+from .preprocessing import force_not_keep_tags
 
 
 feedback_keywords = [
@@ -60,7 +62,7 @@ feedback_keywords = [
 
 def has_feedback_keyword(sentence):
     for keyword in feedback_keywords:
-        if keyword in sentence:
+        if keyword in sentence.lower():
             return True
     return False
 
@@ -77,14 +79,22 @@ def get_global_feedback(html1, html2):
 
     if 'type_changes' in diff:
         for type_change in diff['type_changes'].values():
+            if type_change['new_type'] == Script:
+                continue
+            if type_change['new_value'].name in force_not_keep_tags:
+                continue
             changes.append(type_change['new_value'])
 
     if 'values_changed' in diff:
         for value_change in diff['values_changed'].values():
+            if value_change['new_value'].name in force_not_keep_tags:
+                continue
             changes.append(value_change['new_value'])
 
     if 'iterable_item_added' in diff:
         for iterable_item in diff['iterable_item_added'].values():
+            if iterable_item.name in force_not_keep_tags:
+                continue
             changes.append(iterable_item)
     
     changes = list(filter(lambda x: x.strip() != '', map(lambda x: x.text.strip(), changes)))
