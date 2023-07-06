@@ -30,6 +30,7 @@ class FormTests(unittest.TestCase):
         # )
         # submit the form
         # assert the feedback url and feedback if any
+        # save the dom and the screenshots
 
 
 if __name__ == "__main__":
