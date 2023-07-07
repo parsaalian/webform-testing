@@ -67,7 +67,7 @@ def has_feedback_keyword(sentence):
     return False
 
 
-def get_global_feedback(html1, html2):
+def get_global_feedback(html1, html2, remove_form_children=False):
     # Parse the HTML.
     soup1 = BeautifulSoup(html1, 'html.parser')
     soup2 = BeautifulSoup(html2, 'html.parser')
@@ -96,6 +96,9 @@ def get_global_feedback(html1, html2):
             if iterable_item.name in force_not_keep_tags:
                 continue
             changes.append(iterable_item)
+    
+    if remove_form_children:
+        changes = list(filter(lambda x: x.find_parent('form') is None, changes))
     
     changes = list(filter(lambda x: x.strip() != '', map(lambda x: x.text.strip(), changes)))
     
