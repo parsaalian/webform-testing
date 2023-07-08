@@ -18,6 +18,9 @@ class Constraint(ABC):
                 return True
         return False
 
+    def flip_negative(self):
+        self.is_negative = not self.is_negative
+
     
     def get_field_args(self):
         return [arg.value for arg in self.args if isinstance(arg, FieldArg)]
@@ -25,17 +28,4 @@ class Constraint(ABC):
     
     @abstractmethod
     def to_prompt_string(self):
-        pass
-    
-    
-    @abstractmethod
-    def has_conflict(self, other):
-        '''
-        In resolving conflicts, we assume that both constraints has been held at the same time.
-        '''
-        pass
-    
-    
-    @abstractmethod
-    def matches(self, value):
         pass

@@ -25,6 +25,15 @@ class ValueTable:
             return filtered[0]
         return None
 
+    
+    def copy(self):
+        copy = ValueTable()
+        for field_id, entry in self.entries.items():
+            copy.add_entry(field_id, entry.input_group, entry.constraints)
+            copy.get_entry_by_field_id(field_id).set_value(entry.value)
+            copy.get_entry_by_field_id(field_id).set_feedback(entry.feedback)
+        return copy
+
 
 class ValueTableEntry:
     def __init__(self, input_group, constraints):

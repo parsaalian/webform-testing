@@ -13,6 +13,10 @@ def create_driver(headless=False):
     if headless:
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--window-size=3072x1920");
+    
+    chrome_options.add_experimental_option('prefs', {
+        'profile.default_content_setting_values.geolocation': 2,
+    })
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     

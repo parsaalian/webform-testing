@@ -16,6 +16,7 @@ Your task is to generate a set of constraints for web form fields. Your decision
 12. toContainWhiteSpace()
 13. toStartWithString(stringValue)
 14. toEndWithString(stringValue)
+15. freeTextConstraint(constraintStringValue) # for constraints that cannot be expressed as a deterministic function from the above functions
 You must choose only from this list of functions, and avoid using any other functions. Use the notation "field('elementId')" to refer to input fields in the form.
 
 Example of generated constraints for a password input field:
@@ -26,6 +27,7 @@ expect(field('password'))
 .toHaveUpperCase()
 .toHaveSpecialChars()
 .not.toBeTruthy()
+.freeTextConstraint('your password must be a dog\'s name')
 .toBeEqual(field('confirm-password'))
 """.strip()
 

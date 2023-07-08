@@ -62,6 +62,8 @@ class ConstraintFactory:
             return ToEndWith(is_negative, args)
         if name == 'toMatch':
             return ToMatch(is_negative, args)
+        if name == 'freeTextConstraint':
+            return FreeText(is_negative, args)
         return NotMatchingAny(name)
 
 

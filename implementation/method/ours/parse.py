@@ -16,47 +16,26 @@ from method.ours.input_group import (
 )
 
 
-def initial_parse(driver, form, TEXT_EMBEDDING_METHOD='ADA'):
+def parse_form(driver, form, prev_relation_graph=None, TEXT_EMBEDDING_METHOD='ADA'):
     form = embed_properties_into_html(driver, form)
     form_doc = bs(form.get_attribute('outerHTML'), 'html.parser')
-
+    
     form_processable_nodes = get_processable_nodes(form_doc)
     node2vec_model = create_node2vec_model(form_doc)
-
+    
     relation_graph = create_relation_graph(form_processable_nodes, TEXT_EMBEDDING_METHOD)
 
     relation_graph = create_base_links(relation_graph)
-
-    relation_graph = add_similarity_scores_to_graph(node2vec_model, relation_graph)
-
-    relation_graph = prune_relation_graph_extra_edges(relation_graph)
-    relation_graph = prune_low_score_uncertain_edges(relation_graph, factor=0.5)
-
-    input_groups = create_input_groups(relation_graph)
-    input_groups = prune_low_score_group_relations(input_groups, node2vec_model, factor=0.5)
     
-    return relation_graph, input_groups
-
-
-def parse_after_feedback(driver, form, prev_relation_graph, TEXT_EMBEDDING_METHOD='ADA'):
-    form = embed_properties_into_html(driver, form)
-    form_doc = bs(form.get_attribute('outerHTML'), 'html.parser')
-
-    form_processable_nodes = get_processable_nodes(form_doc)
-    node2vec_model = create_node2vec_model(form_doc)
-
-    relation_graph = create_relation_graph(form_processable_nodes, TEXT_EMBEDDING_METHOD)
-
-    relation_graph = create_base_links(relation_graph)
-
     relation_graph = add_similarity_scores_to_graph(node2vec_model, relation_graph)
     
-    diff = prev_relation_graph.diff(relation_graph)
-    
-    for node in diff['added']:
-        if node.element.name == 'span-wrap':
-            continue
-        node.set_is_feedback(True)
+    if prev_relation_graph is not None:
+        diff = prev_relation_graph.diff(relation_graph)
+        
+        for node in diff['added']:
+            if node.element.name == 'span-wrap':
+                continue
+            node.set_is_feedback(True)
     
     relation_graph = prune_relation_graph_extra_edges(relation_graph)
     relation_graph = prune_low_score_uncertain_edges(relation_graph, factor=0.5)
