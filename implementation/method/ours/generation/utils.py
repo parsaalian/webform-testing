@@ -24,6 +24,13 @@ class ValueTable:
         if len(filtered) > 0:
             return filtered[0]
         return None
+    
+    
+    def get_values_dict(self):
+        values = {}
+        for entry in self.entries.values():
+            values[entry.input_group.node.xpath] = entry.value
+        return values
 
     
     def copy(self):

@@ -8,6 +8,7 @@ class Constraint(ABC):
         self.is_negative = is_negative
         self.args = args
         self.is_field = self._set_is_field(args)
+        self.is_approved = False
     
     
     def _set_is_field(self, args):
@@ -21,6 +22,10 @@ class Constraint(ABC):
     def flip_negative(self):
         self.is_negative = not self.is_negative
 
+
+    def approve(self):
+        self.is_approved = True
+    
     
     def get_field_args(self):
         return [arg.value for arg in self.args if isinstance(arg, FieldArg)]

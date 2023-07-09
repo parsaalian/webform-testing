@@ -32,7 +32,7 @@ class ConstraintFactory:
     
     @staticmethod
     def _create_object_from_parse_result(name, is_negative, args):
-        if name == 'toBeEqual':
+        if name == 'toBeEqual' or name == 'toBe' or name == 'toEqual':
             return ToBe(is_negative, args)
         if name == 'toBeTruthy':
             return ToBeTruthy(is_negative)
