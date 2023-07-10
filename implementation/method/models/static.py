@@ -1,4 +1,29 @@
-{
+from method.ours.utils import get_xpath
+
+from .utils import rule_based_value_generator
+
+
+fixed_rules = {
+    'text': lambda: 'test',
+    'email': lambda: 'test@test.com',
+    'password': lambda: 'test',
+    'number': lambda: '0',
+    'range': lambda: '0',
+    'date': lambda: '2020-01-01',
+    'time': lambda: '00:00',
+    'datetime-local': lambda: '2020-01-01T00:00',
+    'week': lambda: '2020-W01',
+    'month': lambda: '2020-01',
+    'tel': lambda: '0123456789',
+    'url': lambda: 'https://test.com',
+    'color': lambda: '#000000',
+    
+    'boolean': lambda: True,
+    'select': lambda _: 0,
+}
+
+
+fixed_variations = {
     "text": {
         "empty": [""],
         "maximumLength": ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"],
@@ -137,3 +162,43 @@
         ]
     }
 }
+
+
+def flatten_variations(variations):
+    ret_var = {}
+    for t, var_dict in variations.items():
+        ret_var[t] = []
+        for _, var_list in var_dict.items():
+            ret_var[t].extend(var_list)
+    return ret_var
+
+
+def generate_variation(driver, inputs):
+    flatten_fixed_variations = flatten_variations(fixed_variations)
+    variations = {
+        get_xpath(driver, element): [] for element in inputs
+    }
+    
+    for element in inputs:
+        element_xpath = get_xpath(driver, element)
+        input_type = element.get_attribute('type') or 'text'
+        
+        if input_type not in flatten_fixed_variations:
+            continue
+        
+        variations[element_xpath] = flatten_fixed_variations[input_type]
+    
+    return variations
+
+
+def generate_static_values(driver, inputs):
+    values = {}
+    success = rule_based_value_generator(driver, inputs, fixed_rules)
+    fails = generate_variation(driver, inputs)
+    for xpath, value in success.items():
+        values[xpath] = {
+            'passing': value,
+            'failing': fails[xpath]
+        }
+    
+    return values
