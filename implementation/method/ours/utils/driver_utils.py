@@ -99,6 +99,9 @@ def interact_with_input(element, value):
     except:
         pass
     
+    if value is None:
+        return
+    
     if element.tag_name == 'select':
         select = Select(element)
         select.select_by_visible_text(value)

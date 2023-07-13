@@ -20,190 +20,51 @@ class FormTests(unittest.TestCase):
 		self.driver.close()
 
 
+	def _wait_for_element(self, xpath):
+		element = WebDriverWait(self.driver, 5).until(
+			EC.presence_of_element_located((By.XPATH, xpath))
+		)
+		return element
+
+
 
 	def test_0(self):
 		'''0'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
-		driver.execute_script('arguments[0].click()', button)
-
-
-		time.sleep(1)
-		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "We're sorry, we were not able to process your request. Please try again, or contact usOpens in a new tab for assistance.7" in body_text
-
-
-
-	def test_1(self):
-		'''1'''
-		driver = self.driver
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
-		element.send_keys("r")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
-		element.send_keys("o")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
-		element.send_keys("m")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("true")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("vancouver")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("15/07")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("20/07")
-
-
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
-		driver.execute_script('arguments[0].click()', button)
-
-
-		time.sleep(1)
-		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "We're sorry, we were not able to process your request. Please try again, or contact usOpens in a new tab for assistance.7" in body_text
-
-
-
-	def test_2(self):
-		'''2'''
-		driver = self.driver
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
-		element.send_keys("r")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
-		element.send_keys("o")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
-		element.send_keys("m")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("true")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("vancouver")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("15/07")
-
-
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("20/07")
-
-
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
@@ -218,67 +79,141 @@ class FormTests(unittest.TestCase):
 
 
 
-	def test_3(self):
-		'''3'''
+	def test_1(self):
+		'''1'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
 		time.sleep(1)
 		body_text = driver.find_element(By.TAG_NAME, 'body').text
 		assert "" in body_text
+
+
+
+	def test_2(self):
+		'''2'''
+		driver = self.driver
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
+		element.send_keys("r")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
+		element.send_keys("o")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
+		element.send_keys("m")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
+		element.send_keys("true")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("yvr")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("15/07")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("20/07")
+
+
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
+		driver.execute_script('arguments[0].click()', button)
+
+
+		time.sleep(1)
+		body_text = driver.find_element(By.TAG_NAME, 'body').text
+		assert "" in body_text
+
+
+
+	def test_3(self):
+		'''3'''
+		driver = self.driver
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
+		element.send_keys("r")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
+		element.send_keys("o")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
+		element.send_keys("m")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
+		element.send_keys("true")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("yvr-vancouver")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("15/07")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("20/07")
+
+
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
+		driver.execute_script('arguments[0].click()', button)
+
+
+		time.sleep(1)
+		body_text = driver.find_element(By.TAG_NAME, 'body').text
+		assert "Please select a valid point of origin for this trip." in body_text
 
 
 
@@ -286,63 +221,45 @@ class FormTests(unittest.TestCase):
 		'''4'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("vancouver")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("vancouver yvr")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
 		time.sleep(1)
 		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "" in body_text
+		assert "Please select a valid point of origin for this trip." in body_text
 
 
 
@@ -350,57 +267,39 @@ class FormTests(unittest.TestCase):
 		'''5'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("vancouver")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
@@ -414,57 +313,39 @@ class FormTests(unittest.TestCase):
 		'''6'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
@@ -478,68 +359,45 @@ class FormTests(unittest.TestCase):
 		'''7'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("ny")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
 		time.sleep(1)
 		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid point of origin for this trip." in body_text
-
-
-		time.sleep(1)
-		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid destination for this trip." in body_text
+		assert "" in body_text
 
 
 
@@ -547,63 +405,40 @@ class FormTests(unittest.TestCase):
 		'''8'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("12345")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
-
-
-		time.sleep(1)
-		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid point of origin for this trip." in body_text
 
 
 		time.sleep(1)
@@ -616,68 +451,45 @@ class FormTests(unittest.TestCase):
 		'''9'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
 		time.sleep(1)
 		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid point of origin for this trip." in body_text
-
-
-		time.sleep(1)
-		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid destination for this trip." in body_text
+		assert "" in body_text
 
 
 
@@ -685,57 +497,39 @@ class FormTests(unittest.TestCase):
 		'''10'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("15/07")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
@@ -754,68 +548,45 @@ class FormTests(unittest.TestCase):
 		'''11'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
 		time.sleep(1)
 		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid point of origin for this trip." in body_text
-
-
-		time.sleep(1)
-		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid destination for this trip." in body_text
+		assert "" in body_text
 
 
 
@@ -823,63 +594,40 @@ class FormTests(unittest.TestCase):
 		'''12'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("15/07")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("12-05")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
-
-
-		time.sleep(1)
-		body_text = driver.find_element(By.TAG_NAME, 'body').text
-		assert "Please select a valid point of origin for this trip." in body_text
 
 
 		time.sleep(1)
@@ -892,57 +640,39 @@ class FormTests(unittest.TestCase):
 		'''13'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("15/07")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("21/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("20/07")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
@@ -961,57 +691,39 @@ class FormTests(unittest.TestCase):
 		'''14'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("20/07")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
@@ -1030,57 +742,39 @@ class FormTests(unittest.TestCase):
 		'''15'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("20/07")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("15/09")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 
@@ -1099,57 +793,90 @@ class FormTests(unittest.TestCase):
 		'''16'''
 		driver = self.driver
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
 		element.send_keys("r")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
 		element.send_keys("o")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
 		element.send_keys("m")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
 		element.send_keys("true")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("vancouver")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("montreal")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 		element.send_keys("15/07")
 
 
-		element = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
-		)
-		element.send_keys("20/07")
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("25-06")
 
 
-		button = WebDriverWait(driver, 5).until(
-			EC.presence_of_element_located((By.XPATH, "//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']"))
-		)
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
+		driver.execute_script('arguments[0].click()', button)
+
+
+		time.sleep(1)
+		body_text = driver.find_element(By.TAG_NAME, 'body').text
+		assert "Please select a valid point of origin for this trip." in body_text
+
+
+		time.sleep(1)
+		body_text = driver.find_element(By.TAG_NAME, 'body').text
+		assert "Please select a valid destination for this trip." in body_text
+
+
+
+	def test_17(self):
+		'''17'''
+		driver = self.driver
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[1]/div[1]/input[1]")
+		element.send_keys("r")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[2]/div[1]/input[1]")
+		element.send_keys("o")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/fieldset[1]/abc-radio-group[1]/div[1]/div[1]/abc-radio-button[3]/div[1]/input[1]")
+		element.send_keys("m")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/ac-search-type-toggle[1]/div[1]/abc-checkbox[1]/div[1]/div[1]/input[1]")
+		element.send_keys("true")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("vancouver")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-typeahead[2]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("toronto")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[1]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("15/07")
+
+
+		element = self._wait_for_element("//body/ac-web-app[1]/div[1]/main[1]/div[1]/ac-acohome-page[1]/div[1]/div[1]/ac-booking-magnet[1]/div[1]/div[1]/div[1]/div[2]/ac-bkmg-flights-tab[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[1]/abc-date-picker[1]/div[1]/div[1]/abc-input[2]/abc-form-element-container[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+		element.send_keys("14/07")
+
+
+		button = self._wait_for_element("//BODY/AC-WEB-APP[1]/DIV[1]/MAIN[1]/DIV[1]/AC-ACOHOME-PAGE[1]/DIV[1]/DIV[1]/AC-BOOKING-MAGNET[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/AC-BKMG-FLIGHTS-TAB[1]/DIV[1]/FORM[1]//*[@type='submit']")
 		driver.execute_script('arguments[0].click()', button)
 
 

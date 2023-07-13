@@ -1,3 +1,4 @@
+import copy
 from abc import ABC, abstractmethod
 
 from .args import FieldArg
@@ -9,6 +10,10 @@ class Constraint(ABC):
         self.args = args
         self.is_field = self._set_is_field(args)
         self.is_approved = False
+    
+    
+    def copy(self):
+        return copy.deepcopy(self)
     
     
     def _set_is_field(self, args):
@@ -34,3 +39,8 @@ class Constraint(ABC):
     @abstractmethod
     def to_prompt_string(self):
         pass
+    
+    
+    '''@abstractmethod
+    def to_test_string(self):
+        pass'''

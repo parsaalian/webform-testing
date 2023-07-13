@@ -25,6 +25,13 @@ class FormTests(unittest.TestCase):
 \t\tself.driver.close()
 
 
+\tdef _wait_for_element(self, xpath):
+\t\telement = WebDriverWait(self.driver, 5).until(
+\t\t\tEC.presence_of_element_located((By.XPATH, xpath))
+\t\t)
+\t\treturn element
+
+
 {test_cases}
 
 
@@ -42,17 +49,13 @@ test_case_template = '''
 
 
 send_key_template = '''
-\t\telement = WebDriverWait(driver, 5).until(
-\t\t\tEC.presence_of_element_located((By.XPATH, "{xpath}"))
-\t\t)
+\t\telement = self._wait_for_element("{xpath}")
 \t\telement.send_keys("{value}")
 '''
 
 
 submit_template = '''
-\t\tbutton = WebDriverWait(driver, 5).until(
-\t\t\tEC.presence_of_element_located((By.XPATH, "{form_xpath}//*[@type='submit']"))
-\t\t)
+\t\tbutton = self._wait_for_element("{form_xpath}//*[@type='submit']")
 \t\tdriver.execute_script('arguments[0].click()', button)
 '''
 

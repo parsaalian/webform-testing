@@ -34,4 +34,4 @@ def generate_llm_values(
     
     response_text = response.choices[0].message.content
     
-    return json.load(response_text)
+    return json.loads(response_text)

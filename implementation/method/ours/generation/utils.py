@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.common.by import By
 
 from method.ours.utils import interact_with_input
@@ -83,4 +84,9 @@ def submit_form(driver, input_groups):
         input_groups
     ))[0]
     
-    interact_with_input(driver.find_element(By.XPATH, submit.node.xpath), True)
+    for _ in range(3):
+        try:
+            interact_with_input(driver.find_element(By.XPATH, submit.node.xpath), True)
+            time.sleep(0.5)
+        except:
+            break
