@@ -84,9 +84,12 @@ def submit_form(driver, input_groups):
         input_groups
     ))[0]
     
-    for _ in range(3):
+    for i in range(5):
         try:
             interact_with_input(driver.find_element(By.XPATH, submit.node.xpath), True)
             time.sleep(0.5)
-        except:
-            break
+            print(i)
+        except Exception as e:
+            # print(e)
+            # break
+            pass

@@ -21,7 +21,8 @@ class RelationGraph:
     
     
     def remove_node(self, node):
-        self._nodes.pop(node.get_id())
+        if node.get_id() in self._nodes:
+            self._nodes.pop(node.get_id())
     
     
     def add_edge(self, edge):

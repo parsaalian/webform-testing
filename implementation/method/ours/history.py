@@ -88,6 +88,10 @@ class HistoryTable:
         }, ignore_index=True)
     
     
+    def to_csv(self, output_file):
+        self.table.to_csv(output_file, index=False)
+    
+    
     def to_test_case(self, output_file):
         test_cases = []
         

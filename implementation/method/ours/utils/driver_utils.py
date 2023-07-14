@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -91,6 +93,13 @@ def embed_properties_into_html(driver, root):
         embed_properties_into_html(driver, child)
     
     return root
+
+
+def wait_for_elements(driver, xpath, timeout=5):
+    elements = WebDriverWait(driver, timeout).until(
+        EC.presence_of_all_elements_located((By.XPATH, xpath))
+    )
+    return elements
 
 
 def interact_with_input(element, value):
