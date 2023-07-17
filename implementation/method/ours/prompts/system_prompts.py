@@ -17,7 +17,7 @@ Your task is to generate a set of constraints for web form fields. Your decision
 13. toStartWithString(stringValue)
 14. toEndWithString(stringValue)
 15. freeTextConstraint(constraintStringValue) # for constraints that cannot be expressed as a deterministic function from the above functions
-You must choose only from this list of functions, and avoid using any other functions. Use the notation "field('elementId')" to refer to input fields in the form.
+You must choose only from this list of functions, and avoid using any other functions. Use the notation "field('elementId')" to refer to input fields in the form. When generating constraints for date-related fields, also take current date into your considerations.
 
 Example of generated constraints for a password input field:
 expect(field('password'))
@@ -34,7 +34,12 @@ expect(field('password'))
 
 # number of tokens: 100
 value_generation_system_prompt = """
-Your task is to generate a value for a web form field based on the form field information and a set of constraints on the field. Your decisions must be made independently without seeking user assistance or additional information. For each user prompt, you need to generate one value that satisfies the constraints while keeping in mind the nature of the input from the available information. Only generate value and refrain from explaining your answers. Only generate value for the input field in question, and not the ones in the relevant information section.
+Your task is to generate a value for a web form field based on the form field information and a set of constraints on the field.
+Your decisions must be made independently without seeking user assistance or additional information.
+For each user prompt, you need to generate one value that satisfies the constraints while keeping in mind the nature of the input from the available information.
+Only generate value and refrain from explaining your answers.
+Only generate value for the input field in question, and not the ones in the relevant information section.
+When generating values, generate the ones that actually conform to the constraints, and refrain from altering real-world values to fit the constraint, e.g. do not change the value \"New York\" to \"NewYork\" to satisfy the constraint not to contain whitespace.
 """.strip()
 
 

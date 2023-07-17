@@ -23,6 +23,11 @@ class RelationGraph:
     def remove_node(self, node):
         if node.get_id() in self._nodes:
             self._nodes.pop(node.get_id())
+            
+            edges = list(filter(lambda x: x.source == node or x.target == node, self.edges()))
+            
+            for edge in edges:
+                self.remove_edge(edge)
     
     
     def add_edge(self, edge):
@@ -67,11 +72,11 @@ class RelationGraph:
         }
         
         for node in new_graph.nodes():
-            if node.get_id() not in self._nodes and not new_graph.is_a_child_node(node):
+            if node.get_id() not in self._nodes: # and not new_graph.is_a_child_node(node):
                 diff['added'].append(node)
         
         for node in self.nodes():
-            if node.get_id() not in new_graph._nodes and not self.is_a_child_node(node):
+            if node.get_id() not in new_graph._nodes: # and not self.is_a_child_node(node):
                 diff['removed'].append(node)
         
         return diff

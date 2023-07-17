@@ -57,6 +57,8 @@ feedback_keywords = [
     'forbidden',
     'disconnect',
     'prohibited',
+    'cannot',
+    'can\'t',
 ]
 
 

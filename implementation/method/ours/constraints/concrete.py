@@ -44,11 +44,11 @@ class ToHaveLengthCondition(Constraint):
             condition_string = 'greater than' if not self.is_negative else 'less than or equal to'
         if self.condition.value == '>=':
             condition_string = 'greater than or equal to' if not self.is_negative else 'less than'
-        if self.condition.value == '==':
+        if self.condition.value == '==' or self.condition.value == '=':
             condition_string = 'equal to' if not self.is_negative else 'not equal to'
         if self.condition.value == '!=':
             condition_string = 'not equal to' if not self.is_negative else 'equal to'
-        return f'input field should be {condition_string} {self.length} characters'
+        return f'input field\'s length should be {condition_string} {self.length} characters'
 
 
 class ToHaveCompareCondition(Constraint):

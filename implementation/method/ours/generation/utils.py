@@ -69,13 +69,16 @@ def fill_form_with_value_table(driver, value_table, input_groups):
         print(entry.input_group.node)
         print(entry.value)
         
-        element = driver.find_element(By.XPATH, entry.input_group.node.xpath)
+        try:
+            element = driver.find_element(By.XPATH, entry.input_group.node.xpath)
+            
+            # skip form-changing elements for now. TODO: handle these cases
+            if element.get_attribute('type') in ['submit', 'radio', 'checkbox']:
+                continue
         
-        # skip form-changing elements for now. TODO: handle these cases
-        if element.get_attribute('type') in ['submit', 'radio', 'checkbox']:
-            continue
-    
-        interact_with_input(element, entry.value)
+            interact_with_input(element, entry.value)
+        except:
+            print('unable to fill input', entry.input_group.node.xpath)
 
 
 def submit_form(driver, input_groups):

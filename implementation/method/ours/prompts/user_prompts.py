@@ -1,3 +1,6 @@
+import datetime
+
+
 def format_extra_tabs(input_str):
     return input_str.replace('\n\t\t\t', '\n').replace('\n\t\t', '\n').replace('\n\t', '\n')
 
@@ -45,6 +48,7 @@ def create_constraint_generation_user_prompt(
     }
 ):
     constraint_generation_user_prompt = f'''
+    Today's date: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}. When generating constraints for date fields, also generate constraints to compare them with the current date, past, and future if applicable.
     {'The following are all the labels in the form, which provide context for the functionality of the form:' if ablation_inclusion['context'] else ''}
     {form_context if ablation_inclusion['context'] else ""}
     We are generating constraints for the following input field:

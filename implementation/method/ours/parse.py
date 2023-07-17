@@ -14,6 +14,7 @@ from method.ours.input_group import (
     create_input_groups,
     prune_low_score_group_relations
 )
+from method.ours.feedback import has_feedback_keyword
 
 
 def parse_form(driver, form, prev_relation_graph=None, TEXT_EMBEDDING_METHOD='ADA'):
@@ -35,7 +36,11 @@ def parse_form(driver, form, prev_relation_graph=None, TEXT_EMBEDDING_METHOD='AD
         for node in diff['added']:
             if node.element.name == 'span-wrap':
                 continue
-            node.set_is_feedback(True)
+            # only keep feedbacks in the new relation graph
+            if has_feedback_keyword(node.element.text):
+                node.set_is_feedback(True)
+            else:
+                relation_graph.remove_node(node)
     
     relation_graph = prune_relation_graph_extra_edges(relation_graph)
     relation_graph = prune_low_score_uncertain_edges(relation_graph, factor=0.5)
