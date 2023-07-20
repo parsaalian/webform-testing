@@ -1,4 +1,5 @@
 from .utils import generate_constraints_from_string
+from .concrete import Invalid
 
 
 def split_constant_and_field_constraints(constraints):
@@ -10,4 +11,5 @@ def split_constant_and_field_constraints(constraints):
 __all__ = [
     'split_constant_and_field_constraints',
     'generate_constraints_from_string',
+    'Invalid',
 ]

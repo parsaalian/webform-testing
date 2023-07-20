@@ -35,7 +35,9 @@ def should_skip_processing(element):
     should_skip = \
         is_comment(element) or \
         (is_navigable_string(element) and has_no_text(element)) or \
-        not is_displayed(element)
+        not is_displayed(element) or \
+        (not is_navigable_string(element) and "disabled" in element.attrs)
+        
     return should_skip
 
 

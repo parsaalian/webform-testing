@@ -29,9 +29,16 @@ def split_args(arg_string):
             current_arg.append(char)
     args.append(''.join(current_arg).strip())  # add the last argument
     return args
-
+'''
 # Test the function
 result = parse_function("totoHaveLengthCondition('=', field('hello-world'))")
 print(f"Function name: {result[0]}")
 for arg in result[1]:
-    print(f"Argument: {arg}")
+    print(f"Argument: {arg}")'''
+
+
+
+regex = r"(not\.)?(\w+)\((.*)\)[\.|\.\n]?"
+string = "expect(field('test')).not.toMatch('test')"
+match = split_functions(string)
+print(match)

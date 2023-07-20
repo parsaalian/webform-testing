@@ -81,17 +81,23 @@ def fill_form_with_value_table(driver, value_table, input_groups):
             print('unable to fill input', entry.input_group.node.xpath)
 
 
-def submit_form(driver, input_groups):
-    submit = list(filter(
-        lambda x: x.node.element.attrs['type'] == 'submit',
-        input_groups
-    ))[0]
+def submit_form(driver, input_groups=None, explicit_submit=None):
+    if explicit_submit is not None:
+        submit = explicit_submit
+    else:
+        submit = list(filter(
+            lambda x: 'type' in x.node.element.attrs and x.node.element.attrs['type'] == 'submit',
+            input_groups
+        ))[0]
     
     for i in range(5):
         try:
-            interact_with_input(driver.find_element(By.XPATH, submit.node.xpath), True)
-            time.sleep(0.5)
-            print(i)
+            if explicit_submit is not None:
+                submit.click()
+            else:
+                interact_with_input(driver.find_element(By.XPATH, submit.node.xpath), True)
+                time.sleep(0.5)
+                print(i)
         except Exception as e:
             # print(e)
             # break

@@ -225,6 +225,15 @@ class FreeText(Constraint):
         return f'input field should conform to the given condition: {self.constraint_text}'
 
 
+class Invalid(Constraint):
+    def __init__(self):
+        super().__init__(False, None)
+    
+    
+    def to_prompt_string(self):
+        return 'input field value should be invalid'
+
+
 class NotMatchingAny(Constraint):
     def __init__(self, constraint_name):
         super().__init__(False, None)

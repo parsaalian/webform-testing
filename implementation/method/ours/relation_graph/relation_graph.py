@@ -49,7 +49,8 @@ class RelationGraph:
             target_reverse_edge = target_reverse_edges[0]
             edge.target.remove_edge(target_reverse_edge)
         
-        self._edges.pop(edge.get_id())
+        if edge.get_id() in self._edges:
+            self._edges.pop(edge.get_id())
     
     
     def get_node_features(self):
