@@ -98,73 +98,14 @@ def generate_constraints_for_input_groups(
         if input_group.node.element.name == 'button':
             continue
         
-        value_table = generate_constraints_for_input_group(
-            input_group,
-            value_table,
-            form_context,
-            global_feedback=global_feedback
-        )
-    
-    return value_table
-
-
-'''def generate_constraints_for_input_groups(input_groups):
-    form_context = get_form_context(input_groups)
-    
-    value_table = ValueTable()
-    
-    for input_group in input_groups:
-        # skip submit button
-        if input_group.node.element.name == 'button':
-            continue
-        
-        constraint_user_prompt = create_constraint_generation_user_prompt(form_context, input_group)
-        
-        generated_constraints = generate_constraints_with_llm(
-            constraint_user_prompt,
-            openai_api_key=openai.api_key
-        )
-        
-        field_name, constraints = generate_constraints_from_string(generated_constraints)
-        
-        value_table.add_entry(field_name, input_group, constraints)
-    
-    return value_table
-
-
-def generate_constraints_for_input_groups_after_feedback(value_table, input_groups, global_feedback):
-    form_context = get_form_context(input_groups)
-    
-    for input_group in input_groups:
-        # skip submit button
-        if input_group.node.element.name == 'button':
-            continue
-        
-        last_entry = value_table.get_entry_by_input_group(input_group)
-        
-        local_feedback = get_local_feedback(input_group)
-        
-        feedback_string = '\n'.join([*local_feedback, *global_feedback]).strip()
-        
-        last_try = {
-            "value": last_entry.value,
-            "feedback": feedback_string
-        }
-        
-        if feedback_string != '':
-            constraint_user_prompt = create_constraint_generation_user_prompt(
-                form_context,
+        try:
+            value_table = generate_constraints_for_input_group(
                 input_group,
-                last_try=last_try,
-                constraints=last_entry.constraints
+                value_table,
+                form_context,
+                global_feedback=global_feedback
             )
-            
-            generated_constraints = generate_constraints_with_llm(
-                constraint_user_prompt,
-                openai_api_key=openai.api_key
-            )
-            
-            field_name, constraints = generate_constraints_from_string(generated_constraints)
-            value_table.add_entry(field_name, input_group, constraints)
+        except Exception as e:
+            print(e)
     
-    return value_table'''
+    return value_table

@@ -24,6 +24,7 @@ def create_driver(headless=False):
     chrome_options.add_experimental_option('useAutomationExtension', False)
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    driver.set_page_load_timeout(15)
     
     if not headless:
         driver.maximize_window()
@@ -113,7 +114,10 @@ def interact_with_input(element, value):
     
     if element.tag_name == 'select':
         select = Select(element)
-        select.select_by_visible_text(value)
+        try:
+            select.select_by_value(value)
+        except:
+            select.select_by_visible_text(value)
     elif element.get_attribute('type') in ['checkbox', 'radio', 'submit', 'button'] and value:
         element.click()
     else:

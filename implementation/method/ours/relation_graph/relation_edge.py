@@ -8,7 +8,8 @@ class EdgeType(Enum):
     
     # neighbor connections
     CHILD = 'CHILD'
-    # TODO: if no use, change all neighbour types to simple 'NEIGHBOUR'
+    PARENT = 'PARENT'
+    
     NLEFT = 'NLEFT'
     NRIGHT = 'NRIGHT'
     NTOP = 'NTOP'

@@ -77,8 +77,8 @@ def fill_form_with_value_table(driver, value_table, input_groups):
                 continue
         
             interact_with_input(element, entry.value)
-        except:
-            print('unable to fill input', entry.input_group.node.xpath)
+        except Exception as e:
+            print('unable to fill input', entry.input_group.node.xpath, e)
 
 
 def submit_form(driver, input_groups=None, explicit_submit=None):
