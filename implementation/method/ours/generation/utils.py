@@ -94,11 +94,12 @@ def submit_form(driver, input_groups=None, explicit_submit=None):
         try:
             if explicit_submit is not None:
                 submit.click()
+                print(i)
             else:
                 interact_with_input(driver.find_element(By.XPATH, submit.node.xpath), True)
                 time.sleep(0.5)
                 print(i)
         except Exception as e:
-            # print(e)
+            print(e)
             # break
             pass

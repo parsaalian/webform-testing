@@ -50,6 +50,12 @@ def generate_constraints_for_input_group(
     value_table,
     form_context,
     global_feedback=[],
+    ablation_inclusion={
+        'context': True,
+        'relevant': True,
+        'constraints': True,
+        'feedback': True,
+    }
 ):
     last_entry = value_table.get_entry_by_input_group(input_group)
         
@@ -69,7 +75,8 @@ def generate_constraints_for_input_group(
             form_context,
             input_group,
             last_try=last_try,
-            constraints=constraints
+            constraints=constraints,
+            ablation_inclusion=ablation_inclusion
         )
         
         generated_constraints = generate_constraints_with_llm(
@@ -86,7 +93,13 @@ def generate_constraints_for_input_group(
 def generate_constraints_for_input_groups(
     input_groups,
     value_table=None,
-    global_feedback=[]
+    global_feedback=[],
+    ablation_inclusion={
+        'context': True,
+        'relevant': True,
+        'constraints': True,
+        'feedback': True,
+    }
 ):
     form_context = get_form_context(input_groups)
     
@@ -103,7 +116,8 @@ def generate_constraints_for_input_groups(
                 input_group,
                 value_table,
                 form_context,
-                global_feedback=global_feedback
+                global_feedback=global_feedback,
+                ablation_inclusion=ablation_inclusion
             )
         except Exception as e:
             print(e)

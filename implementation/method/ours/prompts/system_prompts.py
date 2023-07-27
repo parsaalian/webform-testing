@@ -17,6 +17,7 @@ Your task is to generate a set of constraints for web form fields. Your decision
 13. toStartWithString(stringValue)
 14. toEndWithString(stringValue)
 15. freeTextConstraint(constraintStringValue) # for constraints that cannot be expressed as a deterministic function from the above functions
+16. dummy(relevantField) # add if value of some field could help with filling of this field
 You must choose only from this list of functions, and avoid using any other functions. Use the notation "field('elementId')" to refer to input fields in the form. When generating constraints for date-related fields, also take current date into your considerations.
 
 Example of generated constraints for a password input field:
@@ -28,9 +29,25 @@ expect(field('password'))
 .toHaveSpecialChars()
 .not.toBeTruthy()
 .freeTextConstraint('your password must be a dog\'s name')
+.dummy(field('email'))
 .toBeEqual(field('confirm-password'))
 """.strip()
 
+'''
+Today's date: 2023-07-25 11:13:46. When generating constraints for date fields, also generate constraints to compare them with the current date, past, and future if applicable.
+The following are all the labels in the form, which provide context for the functionality of the form:
+First Name, Last Name, Email address, First Name, Last Name, Company, Phone, Address line 1, Address line 2, City, ZIP / Postal code, Country, Note
+We are generating constraints for the following input field:
+input: <input name=\"postalCode\" type=\"text\" value=\"\"/>
+with label: ZIP / Postal code
+The relevant input fields available in the form are (in order of relevance):
+1.
+input: <input name=\"city\" type=\"text\" value=\"\"/>
+with label: City
+2.
+input: <input name=\"streetAddress1\" type=\"text\" value=\"\"/>
+with label: Address line 1
+'''
 
 # number of tokens: 100
 value_generation_system_prompt = """

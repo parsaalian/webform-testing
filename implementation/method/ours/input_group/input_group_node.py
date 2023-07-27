@@ -57,8 +57,11 @@ class InputGroupNode:
         return copied
     
     
-    def __str__(self):
+    def to_prompt_string(self, relevant=True):
         input_string = f'input: {str(self._copy_soup_and_simplify_attrs(self.node.element))}\n'
+        
+        if not relevant:
+            return input_string.strip()
         
         if self.label is not None:
             input_string += f'with label: {self.label.element.text.strip()}\n'
@@ -73,3 +76,7 @@ class InputGroupNode:
             input_string += f'with the following relevant text tags:\n{group_related_node_str}\n'
         
         return input_string.strip()
+    
+    
+    def __str__(self):
+        return self.to_prompt_string(relevant=True)

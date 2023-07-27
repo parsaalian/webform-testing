@@ -46,6 +46,12 @@ def generate_value_for_input_group(
     input_group,
     value_table,
     form_context,
+    ablation_inclusion={
+        'context': True,
+        'input_group': True,
+        'constraints': True,
+        'related': True,
+    }
 ):
     value_entry = value_table.get_entry_by_input_group(input_group)
     
@@ -71,6 +77,7 @@ def generate_value_for_input_group(
         value_entry.input_group,
         including_constraints,
         relevant_field_values=relevant_field_values if len(relevant_field_values) > 0 else None,
+        ablation_inclusion=ablation_inclusion
     )
     
     generated_value = generate_values_with_llm(
@@ -83,7 +90,16 @@ def generate_value_for_input_group(
     return value_table
 
 
-def generate_values_for_input_groups(input_groups, value_table):
+def generate_values_for_input_groups(
+    input_groups,
+    value_table,
+    ablation_inclusion={
+        'context': True,
+        'input_group': True,
+        'constraints': True,
+        'related': True,
+    }
+):
     form_context = get_form_context(input_groups)
 
     for input_group in input_groups:
@@ -100,6 +116,7 @@ def generate_values_for_input_groups(input_groups, value_table):
             input_group,
             value_table,
             form_context=form_context,
+            ablation_inclusion=ablation_inclusion
         )
     
     return value_table

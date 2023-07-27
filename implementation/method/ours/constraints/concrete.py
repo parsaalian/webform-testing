@@ -225,6 +225,18 @@ class FreeText(Constraint):
         return f'input field should conform to the given condition: {self.constraint_text}'
 
 
+class Dummy(Constraint):
+    def __init__(self, is_negative, args):
+        super().__init__(is_negative, args)
+        self.relevant_value = args[0]
+    
+    
+    def to_prompt_string(self):
+        if self.is_negative:
+            return ''
+        return f'this relevant field value: {self.relevant_value}'
+
+
 class Invalid(Constraint):
     def __init__(self):
         super().__init__(False, None)

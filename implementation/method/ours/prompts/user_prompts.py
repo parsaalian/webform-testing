@@ -7,7 +7,7 @@ def format_extra_tabs(input_str):
 
 def create_field_info_text(input_group, ablation_inclusion=True):
     # TODO: include ablation in turning group into string
-    input_data_str = str(input_group)
+    input_data_str = input_group.to_prompt_string(relevant=ablation_inclusion)
     
     return input_data_str.strip()
 
@@ -41,7 +41,6 @@ def create_constraint_generation_user_prompt(
     constraints=None,
     ablation_inclusion={
         'context': True,
-        'input_group': True,
         'relevant': True,
         'constraints': True,
         'feedback': True,
@@ -52,7 +51,7 @@ def create_constraint_generation_user_prompt(
     {'The following are all the labels in the form, which provide context for the functionality of the form:' if ablation_inclusion['context'] else ''}
     {form_context if ablation_inclusion['context'] else ""}
     We are generating constraints for the following input field:
-    {create_field_info_text(input_group, ablation_inclusion['input_group'])}
+    {create_field_info_text(input_group, ablation_inclusion['relevant'])}
     {'The relevant input fields available in the form are (in order of relevance):' if ablation_inclusion['relevant'] else ''}
     {create_relevant_info_text(input_group, relevant_count) if ablation_inclusion['relevant'] else ""}
     {"The previously generated constraints are:" if constraints is not None and ablation_inclusion['constraints'] else ""}
