@@ -38,3 +38,9 @@ tokenizer, model = load_model()
 system_message = constants.system_message
 prompt = constants.prompt
 print(run_inference(tokenizer, model, system_message, prompt))
+
+print("\n\n*** Generate #2.....:")
+print(run_inference(tokenizer, model, system_message, prompt))
+
+print("\n\n*** Generate #3.....:")
+print(run_inference(tokenizer, model, system_message, prompt))
