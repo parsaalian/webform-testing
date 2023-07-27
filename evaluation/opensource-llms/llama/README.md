@@ -16,6 +16,7 @@ It will prompt for two passwords:
 
 Then run the following commands:
 ```
+conda activate llama2
 cd /home/webtesting/webform-testing/evaluation/opensource-llms/llama
 python llama2.py
 ```
