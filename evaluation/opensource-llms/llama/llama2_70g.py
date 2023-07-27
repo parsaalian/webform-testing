@@ -1,6 +1,6 @@
 from transformers import AutoTokenizer, pipeline, logging
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
-
+import constants
 
 def load_model_llama2_70b(model_name_or_path="TheBloke/Llama-2-70B-chat-GPTQ",
                           model_basename="gptq_model-4bit--1g", use_triton=False):
