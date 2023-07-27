@@ -1,10 +1,9 @@
 from transformers import AutoTokenizer, pipeline, logging
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 
-import constants
 
-
-def load_model(model_name_or_path="TheBloke/Llama-2-70B-chat-GPTQ", model_basename="gptq_model-4bit--1g", use_triton=False):
+def load_model_llama2_70b(model_name_or_path="TheBloke/Llama-2-70B-chat-GPTQ",
+                          model_basename="gptq_model-4bit--1g", use_triton=False):
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True, device_map="auto")
 
     model = AutoGPTQForCausalLM.from_quantized(model_name_or_path,
@@ -16,8 +15,23 @@ def load_model(model_name_or_path="TheBloke/Llama-2-70B-chat-GPTQ", model_basena
                                                quantize_config=None)
     return tokenizer, model
 
+
+def load_model_llama2_13b(model_name_or_path="TheBloke/Llama-2-13B-chat-GPTQ",
+                          model_basename="gptq_model-4bit-128g", use_triton=False):
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True, device_map="auto")
+
+    model = AutoGPTQForCausalLM.from_quantized(model_name_or_path,
+                                               model_basename=model_basename,
+                                               inject_fused_attention=False,
+                                               use_safetensors=True,
+                                               trust_remote_code=False,
+                                               use_triton=use_triton,
+                                               quantize_config=None)
+    return tokenizer, model
+
+
 def run_inference(tokenizer, model, system_message, prompt):
-    prompt_template=f'''[INST] <<SYS>>
+    prompt_template = f'''[INST] <<SYS>>
     {system_message}
     <</SYS>>
 
@@ -39,6 +53,3 @@ prompt = constants.prompt
 response = run_inference(tokenizer, model, system_message, prompt)
 print("\n\n*** output.....:")
 print(response)
-
-
-
