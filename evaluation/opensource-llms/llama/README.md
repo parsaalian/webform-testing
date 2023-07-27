@@ -51,6 +51,10 @@ huggingface-cli login
 ```
 
 
+# Llama 2 - 13B
 
+```
+git clone --branch gptq-4bit-32g-actorder_True https://huggingface.co/TheBloke/Llama-2-13B-chat-GPTQ
+```
 
 
