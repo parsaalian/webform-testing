@@ -27,7 +27,7 @@ def run_inference(tokenizer, model, system_message, prompt):
     print("\n\n*** Generate:")
 
     input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
-    output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
+    output = model.generate(inputs=input_ids, temperature=0.0, max_new_tokens=512)
     return tokenizer.decode(output[0])
 
 
