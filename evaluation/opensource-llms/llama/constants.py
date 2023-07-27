@@ -16,12 +16,6 @@ Your decisions must always be made independently, without seeking user assistanc
 3. Reflect on past decisions and strategies to refine your approach.
 4. Every command carries a cost, so be smart and efficient. Aim to complete tasks in the fewest possible steps.
 
-You can issue these commands:
-- `FILL----X----"Y"`: Fill the <input> or <textarea> element with a relative xpath X with value Y.
-- `SELECT----X----"Y"`: Select the option Y in the <select> element with a relative xpath X.
-- `CLICK----X`: Click on the element with a relative xpath X, which is a checkbox or radio button.
-- `BLANK----X`: Leave the element with a relative xpath X blank (do nothing).
-
 The xpath in this format must be relative to the form element. Just give the commands and nothing else.
 """
 
