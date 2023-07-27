@@ -1,6 +1,6 @@
 # OpenLLMs - Llama 2 
 
-### Environment setup - from scratch
+### Environment setup - from scratch (first time)
 
 ```
 conda create -n llama2 python=3.10.9
@@ -23,4 +23,9 @@ git clone --branch gptq-4bit-32g-actorder_True https://huggingface.co/TheBloke/L
 ## Llama 2 13B
 ```
 git clone --branch gptq-4bit-32g-actorder_True https://huggingface.co/TheBloke/Llama-2-13B-chat-GPTQ
+```
+
+### Environment setup
+```
+conda create -n llama2 --file environment.txt
 ```
