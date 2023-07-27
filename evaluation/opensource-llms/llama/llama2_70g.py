@@ -24,8 +24,6 @@ def run_inference(tokenizer, model, system_message, prompt):
     {prompt} [/INST]
     '''
 
-    print("\n\n*** Generate:")
-
     input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
     output = model.generate(inputs=input_ids, temperature=0.0, max_new_tokens=512)
     return tokenizer.decode(output[0])
@@ -37,18 +35,10 @@ tokenizer, model = load_model()
 # Run inference
 system_message = constants.system_message
 prompt = constants.prompt
-print("\n\n*** Generate #1.....:")
+
 response = run_inference(tokenizer, model, system_message, prompt)
-print("\n\n*** Generate #1 output.....:")
+print("\n\n*** output.....:")
 print(response)
 
-print("\n\n*** Generate #2.....:")
-response = print(run_inference(tokenizer, model, system_message, prompt))
-print("\n\n*** Generate #2 output.....:")
-print(response)
 
-print("\n\n*** Generate #3.....:")
-response = print(run_inference(tokenizer, model, system_message, prompt))
-print("\n\n*** Generate #2 output.....:")
-print(response)
 
