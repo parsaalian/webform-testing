@@ -43,25 +43,30 @@ def run_inference(tokenizer, model, system_message, prompt):
     return tokenizer.decode(output[0])
 
 
-# Load the model - load_model_llama2_70b
-tokenizer, model = load_model_llama2_70b()
+def run_inference_70b():
+    # Load the model - load_model_llama2_70b
+    tokenizer, model = load_model_llama2_70b()
 
-# Run inference
-system_message = constants.system_message
-prompt = constants.prompt
+    # Run inference
+    system_message = constants.system_message
+    prompt = constants.prompt
 
-response = run_inference(tokenizer, model, system_message, prompt)
-print("\n\n*** output LLAMA (70B).....:")
-print(response)
+    response = run_inference(tokenizer, model, system_message, prompt)
+    print("\n\n*** output LLAMA (70B).....:")
+    print(response)
 
+def run_inference_13b():
+    # Load the model - load_model_llama2_13b
+    tokenizer, model = load_model_llama2_13b()
 
-# Load the model - load_model_llama2_13b
-tokenizer, model = load_model_llama2_13b()
+    # Run inference
+    system_message = constants.system_message
+    prompt = constants.prompt
 
-# Run inference
-system_message = constants.system_message
-prompt = constants.prompt
+    response = run_inference(tokenizer, model, system_message, prompt)
+    print("\n\n*** output LLAMA (13B).....:")
+    print(response)
 
-response = run_inference(tokenizer, model, system_message, prompt)
-print("\n\n*** output LLAMA (13B).....:")
-print(response)
+if __name__ == "__main__":
+    run_inference_70b()
+    run_inference_13b()
