@@ -13,8 +13,7 @@ def load_model(model_name_or_path="TheBloke/Llama-2-70B-chat-GPTQ", model_basena
                                                quantize_config=None)
     return tokenizer, model
 
-def run_inference(tokenizer, model, prompt="Tell me about AI"):
-    system_message = "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information."
+def run_inference(tokenizer, model, system_message, prompt):
     prompt_template=f'''[INST] <<SYS>>
     {system_message}
     <</SYS>>
@@ -33,4 +32,6 @@ def run_inference(tokenizer, model, prompt="Tell me about AI"):
 tokenizer, model = load_model()
 
 # Run inference
-print(run_inference(tokenizer, model))
+system_message = "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information."
+prompt = "Tell me about AI"
+print(run_inference(tokenizer, model, system_message, prompt))
