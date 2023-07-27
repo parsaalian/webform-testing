@@ -43,13 +43,25 @@ def run_inference(tokenizer, model, system_message, prompt):
     return tokenizer.decode(output[0])
 
 
-# Load the model
-tokenizer, model = load_model()
+# Load the model - load_model_llama2_70b
+tokenizer, model = load_model_llama2_70b()
 
 # Run inference
 system_message = constants.system_message
 prompt = constants.prompt
 
 response = run_inference(tokenizer, model, system_message, prompt)
-print("\n\n*** output.....:")
+print("\n\n*** output LLAMA (70B).....:")
+print(response)
+
+
+# Load the model - load_model_llama2_13b
+tokenizer, model = load_model_llama2_13b()
+
+# Run inference
+system_message = constants.system_message
+prompt = constants.prompt
+
+response = run_inference(tokenizer, model, system_message, prompt)
+print("\n\n*** output LLAMA (13B).....:")
 print(response)
