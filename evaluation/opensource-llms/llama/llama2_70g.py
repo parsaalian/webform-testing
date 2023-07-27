@@ -6,14 +6,14 @@ model_basename = "gptq_model-4bit--1g"
 
 use_triton = False
 
-tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True)
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True, device_map="auto")
 
 model = AutoGPTQForCausalLM.from_quantized(model_name_or_path,
                                            model_basename=model_basename,
                                            inject_fused_attention=False, # Required for Llama 2 70B model at this time.
                                            use_safetensors=True,
                                            trust_remote_code=False,
-                                           device="cuda:0",
+                                           #device="cuda:0",
                                            use_triton=use_triton,
                                            quantize_config=None)
 
@@ -62,4 +62,3 @@ pipe = pipeline(
 )
 
 print(pipe(prompt_template)[0]['generated_text'])
-
