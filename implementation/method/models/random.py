@@ -7,11 +7,11 @@ from .utils import rule_based_value_generator
 
 
 random_rules = {
-    'text': lambda: rstr.xeger(r'[A-Za-z0-9]{10}'),
+    'text': lambda: rstr.xeger(r'.*'),
     'email': lambda: rstr.xeger(r'[A-Za-z0-9]{10}') + '@' + rstr.xeger(r'[A-Za-z0-9]{10}') + '.com',
-    'password': lambda: rstr.xeger(r'[A-Za-z0-9]{10}'),
-    'number': lambda: random.randint(0, 1000),
-    'range': lambda: random.randint(0, 1000),
+    'password': lambda: rstr.xeger(r'.{10}'),
+    'number': lambda: rstr.xeger(r'[0-9]*'),
+    'range': lambda: rstr.xeger(r'[0-9]*'),
     'date': lambda: rstr.xeger(r'[0-9]{4}') + '-' + rstr.xeger(r'[0-9]{2}') + '-' + rstr.xeger(r'[0-9]{2}'),
     'time': lambda: rstr.xeger(r'[0-9]{2}') + ':' + rstr.xeger(r'[0-9]{2}'),
     'datetime-local': lambda: rstr.xeger(r'[0-9]{4}') + '-' + rstr.xeger(r'[0-9]{2}') + '-' + rstr.xeger(r'[0-9]{2}') + 'T' + rstr.xeger(r'[0-9]{2}') + ':' + rstr.xeger(r'[0-9]{2}'),
