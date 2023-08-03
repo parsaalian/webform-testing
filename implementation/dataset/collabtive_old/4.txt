@@ -1,1 +1,0 @@
-http://localhost:3000/collabtive/index.php?mode=login
