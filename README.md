@@ -10,6 +10,22 @@ conda install --file requirements.txt
 pip install -r requirements.txt
 ```
 
+## Usage
+Before running the project, you need to download the [ChromeDriver](https://chromedriver.chromium.org/downloads), and set the executable path in `.env` file with `CHROME_DRIVER_EXECUTABLE` key.
+
+You also need to set the OpenAI API key in `.env` file with `OPENAI_API_KEY` key.
+
+```
+# run baseline
+python baseline.py
+
+# run Llama 2 workflow
+python3 llama.py
+
+# run GPT-4 workflow
+python method.py
+```
+
 ## Dockerized Open-Source Subjects
 - [Angular Pet Clinic](https://github.com/dockersamples/spring-petclinic-docker)
 - [Saleor](https://github.com/saleor/saleor-platform)
