@@ -1,12 +1,18 @@
 # from: https://github.com/Significant-Gravitas/Auto-GPT/tree/master/autogpt/llm
 from __future__ import annotations
 
+import os
 import json
-import openai
+from dotenv import load_dotenv
+from openai import OpenAI
 
 from method.llm.openai.modelsinfo import COSTS
 from method.logger import logger
 from method.utils import Singleton
+
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 class ApiManager(metaclass=Singleton):
@@ -44,13 +50,10 @@ class ApiManager(metaclass=Singleton):
         """
         logger.debug(f"Prompt: {json.dumps(messages, indent=2)}")
         
-        response = openai.ChatCompletion.create(
-            model=model,
-            messages=messages,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            api_key=openai_api_key,
-        )
+        response = client.chat.completions.create(model=model,
+        messages=messages,
+        temperature=temperature,
+        max_tokens=max_tokens)
         logger.debug(f"Response: {response}")
         prompt_tokens = response.usage.prompt_tokens
         completion_tokens = response.usage.completion_tokens
@@ -78,13 +81,10 @@ class ApiManager(metaclass=Singleton):
         """
         logger.debug(f"Prompt: {prompt}")
         
-        response = openai.Completion.create(
-            model=model,
-            prompt=prompt,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            api_key=openai_api_key,
-        )
+        response = client.completions.create(model=model,
+        prompt=prompt,
+        temperature=temperature,
+        max_tokens=max_tokens)
         logger.debug(f"Response: {response}")
         prompt_tokens = response.usage.prompt_tokens
         completion_tokens = response.usage.completion_tokens

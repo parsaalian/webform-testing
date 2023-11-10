@@ -1,20 +1,26 @@
 # from: https://github.com/Significant-Gravitas/Auto-GPT/tree/master/autogpt/llm
 from __future__ import annotations
 
+import os
 import functools
 import time
+from dotenv import load_dotenv
 from itertools import islice
 from typing import List, Optional
 
 import numpy as np
-import openai
+from openai import OpenAI
+from openai import APIError, RateLimitError, Timeout
+
 import tiktoken
 from colorama import Fore, Style
-from openai.error import APIError, RateLimitError, Timeout
 
 from method.llm.openai.api_manager import ApiManager
 from method.llm.openai.base import Message
 from method.logger import logger
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def retry_openai_api(
@@ -234,11 +240,9 @@ def create_embedding(
         tokenizer_name=models_tokenizer,
         chunk_length=params_embedding_token_limit,
     ):
-        embedding = openai.Embedding.create(
-            input=[chunk],
-            # api_key=cfg.openai_api_key,
-            **kwargs,
-        )
+        embedding = client.embeddings.create(input=[chunk],
+        # api_key=cfg.openai_api_key,
+        **kwargs)
         api_manager = ApiManager()
         api_manager.update_cost(
             prompt_tokens=embedding.usage.prompt_tokens,

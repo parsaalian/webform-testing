@@ -29,7 +29,7 @@ from method.ours.feedback import (
 
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+raise Exception("The 'openai.api_key' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(api_key=os.getenv("OPENAI_API_KEY"))'")
 
 # Global Variables
 HEADLESS = False

@@ -1,5 +1,10 @@
+import os
 import spacy
-from openai.embeddings_utils import get_embedding as get_embedding_openai
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def get_null_embedding(dim=12288):
@@ -14,7 +19,8 @@ def get_spacy_embedding(text):
 
 
 def get_ada_embedding(text):
-    return get_embedding_openai(text.lower())
+    return client.embeddings.create(input = [text], model='text-embedding-ada-002').data[0].embedding
+    # return get_embedding_openai(text.lower())
 
 
 def get_text_embedding(text, text_embedding_method='ADA', dim=12288):

@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 
 load_dotenv()
 
@@ -28,7 +28,8 @@ def create_driver(headless=False):
     # chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     # chrome_options.add_experimental_option('useAutomationExtension', False)
 
-    driver = webdriver.Chrome(executable_path=os.getenv("CHROME_DRIVER_EXECUTABLE"), options=chrome_options)
+    # driver = webdriver.Chrome(executable_path=os.getenv("CHROME_DRIVER_EXECUTABLE"), options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     driver.set_page_load_timeout(15)
     
     if not headless:
