@@ -38,6 +38,16 @@ def create_driver(headless=False):
     return driver
 
 
+def get_application_context(driver):
+    title = driver.title
+    description_tag = driver.find_element_by_xpath(
+        "//meta[@name='description' or @name='og:description' or @property='og:description']"
+    )
+    description = description_tag.get_attribute('content')
+    
+    return f'''Title: {title}\nDescription: {description}'''
+
+
 def get_xpath(driver, element):
     xpath_script = """
     function getPathTo(element) {

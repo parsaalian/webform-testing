@@ -6,7 +6,8 @@ from .driver_utils import (
     get_xpath,
     embed_properties_into_html,
     interact_with_input,
-    wait_for_elements
+    wait_for_elements,
+    get_application_context
 )
 
 

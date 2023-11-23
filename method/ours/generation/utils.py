@@ -27,6 +27,11 @@ class ValueTable:
         return None
     
     
+    def print(self):
+        for value_entry in self.entries.values():
+            value_entry.print()
+    
+    
     def get_values_dict(self):
         values = {}
         for entry in self.entries.values():
@@ -57,6 +62,19 @@ class ValueTableEntry:
     
     def set_feedback(self, feedback):
         self.feedback = feedback
+    
+    
+    def print(self):
+        constraint_string = "\n".join(list(map(lambda x: x.to_prompt_string(), self.constraints)))
+        
+        output = f'''
+        input field:
+        {self.input_group.to_prompt_string()}
+        constraints:
+        {constraint_string}
+        '''
+        
+        print(output)
 
 
 def fill_form_with_value_table(driver, value_table, input_groups):
@@ -103,3 +121,10 @@ def submit_form(driver, input_groups=None, explicit_submit=None):
             print(e)
             # break
             pass
+
+
+def combine_contexts(app_context, form_context):
+    return f'''
+    {app_context}
+    The following are all the labels in the form, which provide context for the functionality of the form: {form_context}
+    '''.strip()

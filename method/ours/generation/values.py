@@ -8,6 +8,8 @@ from method.ours.prompts import (
 )
 from method.ours.constraints import split_constant_and_field_constraints
 
+from .utils import combine_contexts
+
 
 def generate_values_with_llm(
     user_value_prompt,
@@ -45,12 +47,13 @@ def generate_values_with_llm(
 def generate_value_for_input_group(
     input_group,
     value_table,
-    form_context,
+    context,
     ablation_inclusion={
+        'relevant': True,
         'context': True,
-        'input_group': True,
+        'date': True,
         'constraints': True,
-        'related': True,
+        'feedback': True
     }
 ):
     value_entry = value_table.get_entry_by_input_group(input_group)
@@ -73,7 +76,7 @@ def generate_value_for_input_group(
             relevant_field_values.append((field_arg, value))
     
     value_user_prompt = create_value_generation_user_prompt(
-        form_context,
+        context,
         value_entry.input_group,
         including_constraints,
         relevant_field_values=relevant_field_values if len(relevant_field_values) > 0 else None,
@@ -93,14 +96,17 @@ def generate_value_for_input_group(
 def generate_values_for_input_groups(
     input_groups,
     value_table,
+    app_context="",
     ablation_inclusion={
+        'relevant': True,
         'context': True,
-        'input_group': True,
+        'date': True,
         'constraints': True,
-        'related': True,
+        'feedback': True
     }
 ):
     form_context = get_form_context(input_groups)
+    context = combine_contexts(app_context, form_context)
 
     for input_group in input_groups:
         # skip submit button
@@ -115,7 +121,7 @@ def generate_values_for_input_groups(
         value_table = generate_value_for_input_group(
             input_group,
             value_table,
-            form_context=form_context,
+            context=context,
             ablation_inclusion=ablation_inclusion
         )
     

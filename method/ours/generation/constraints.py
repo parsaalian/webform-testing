@@ -9,7 +9,7 @@ from method.ours.prompts import (
 from method.ours.constraints import generate_constraints_from_string
 from method.ours.feedback import get_local_feedback
 
-from .utils import ValueTable
+from .utils import ValueTable, combine_contexts
 
 
 def generate_constraints_with_llm(
@@ -48,13 +48,14 @@ def generate_constraints_with_llm(
 def generate_constraints_for_input_group(
     input_group,
     value_table,
-    form_context,
+    context,
     global_feedback=[],
     ablation_inclusion={
-        'context': True,
         'relevant': True,
+        'context': True,
+        'date': True,
         'constraints': True,
-        'feedback': True,
+        'feedback': True
     }
 ):
     last_entry = value_table.get_entry_by_input_group(input_group)
@@ -72,7 +73,7 @@ def generate_constraints_for_input_group(
     
     if last_try is None or (last_try is not None and feedback_string != ''):
         constraint_user_prompt = create_constraint_generation_user_prompt(
-            form_context,
+            context,
             input_group,
             last_try=last_try,
             constraints=constraints,
@@ -94,14 +95,17 @@ def generate_constraints_for_input_groups(
     input_groups,
     value_table=None,
     global_feedback=[],
+    app_context="",
     ablation_inclusion={
-        'context': True,
         'relevant': True,
+        'context': True,
+        'date': True,
         'constraints': True,
-        'feedback': True,
+        'feedback': True
     }
 ):
     form_context = get_form_context(input_groups)
+    context = combine_contexts(app_context, form_context)
     
     if value_table is None:
         value_table = ValueTable()
@@ -115,7 +119,7 @@ def generate_constraints_for_input_groups(
             value_table = generate_constraints_for_input_group(
                 input_group,
                 value_table,
-                form_context,
+                context,
                 global_feedback=global_feedback,
                 ablation_inclusion=ablation_inclusion
             )
