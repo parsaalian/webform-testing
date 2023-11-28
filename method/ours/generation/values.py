@@ -7,6 +7,7 @@ from method.ours.prompts import (
     value_generation_system_prompt
 )
 from method.ours.constraints import split_constant_and_field_constraints
+from method.ours.feedback import get_local_feedback
 
 from .utils import combine_contexts
 
@@ -48,6 +49,7 @@ def generate_value_for_input_group(
     input_group,
     value_table,
     context,
+    global_feedback=[],
     ablation_inclusion={
         'relevant': True,
         'context': True,
@@ -61,6 +63,19 @@ def generate_value_for_input_group(
     constraints = value_entry.constraints
     constant_constraints, field_constraints = split_constant_and_field_constraints(constraints)
     including_constraints = [*constant_constraints]
+    
+    last_entry = value_table.get_entry_by_input_group(input_group)
+        
+    local_feedback = get_local_feedback(input_group)
+    
+    feedback_string = '\n'.join([*local_feedback, *global_feedback]).strip()
+    
+    last_try = {
+        "value": last_entry.value,
+        "feedback": feedback_string
+    } if last_entry is not None and feedback_string != '' else None
+    
+    constraints = last_entry.constraints if last_entry is not None else None
     
     relevant_field_values = []
     for field_constraint in field_constraints:
@@ -79,6 +94,7 @@ def generate_value_for_input_group(
         context,
         value_entry.input_group,
         including_constraints,
+        last_try=last_try,
         relevant_field_values=relevant_field_values if len(relevant_field_values) > 0 else None,
         ablation_inclusion=ablation_inclusion
     )
@@ -96,6 +112,7 @@ def generate_value_for_input_group(
 def generate_values_for_input_groups(
     input_groups,
     value_table,
+    global_feedback=[],
     app_context="",
     ablation_inclusion={
         'relevant': True,
@@ -121,6 +138,7 @@ def generate_values_for_input_groups(
         value_table = generate_value_for_input_group(
             input_group,
             value_table,
+            global_feedback=global_feedback,
             context=context,
             ablation_inclusion=ablation_inclusion
         )

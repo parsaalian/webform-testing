@@ -8,7 +8,7 @@ def get_text_similarity(node1, node2):
     embedding1 = node1.features
     embedding2 = node2.features
     try:
-        sim = distance.cosine(embedding1, embedding2)
+        sim = 1 - distance.cosine(embedding1, embedding2)
         return 0 if np.isnan(sim) else sim
     except:
         return 0
@@ -25,7 +25,7 @@ def get_structure_similarity(model, xpath1, xpath2):
     vector2 = model.wv[xpath2]
 
     # Calculate and return cosine similarity
-    return distance.cosine(vector1, vector2)
+    return 1 - distance.cosine(vector1, vector2)
 
 
 def get_combined_similarity(model, node1, node2, alpha=0.5):

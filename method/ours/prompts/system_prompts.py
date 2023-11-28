@@ -17,7 +17,6 @@ Your task is to generate a set of constraints for web form fields. Your decision
 13. toStartWithString(stringValue)
 14. toEndWithString(stringValue)
 15. freeTextConstraint(constraintStringValue) # for constraints that cannot be expressed as a deterministic function from the above functions
-16. dummy(relevantField) # add if value of some field could help with filling of this field
 You must choose only from this list of functions, and avoid using any other functions. Use the notation "field('elementId')" to refer to input fields in the form. When generating constraints for date-related fields, also take current date into your considerations.
 
 Example of generated constraints for a password input field:
@@ -29,7 +28,6 @@ expect(field('password'))
 .toHaveSpecialChars()
 .not.toBeTruthy()
 .freeTextConstraint('your password must be a dog\'s name')
-.dummy(field('email'))
 .toBeEqual(field('confirm-password'))
 """.strip()
 

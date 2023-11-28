@@ -3,7 +3,7 @@ class ConstantArg:
         self.value = value.strip("\'")
     
     
-    def __str__(self):
+    def to_prompt_string(self, _={}):
         return str(self.value)
 
 
@@ -12,5 +12,7 @@ class FieldArg:
         self.value = field_name
     
     
-    def __str__(self):
+    def to_prompt_string(self, possible_field_value={}):
+        if self.value in possible_field_value:
+            return f'{possible_field_value[self.value]}'
         return f'field({self.value})'

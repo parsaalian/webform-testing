@@ -55,8 +55,6 @@ def create_constraint_generation_user_prompt(
     {create_field_info_text(input_group, ablation_inclusion['relevant'])}
     {'The relevant input fields available in the form are (in order of relevance):' if ablation_inclusion['relevant'] else ''}
     {create_relevant_info_text(input_group, relevant_count) if ablation_inclusion['relevant'] else ""}
-    {"The previously generated constraints are:" if constraints is not None and ablation_inclusion['constraints'] else ""}
-    {create_constraints_text(constraints) if constraints is not None and ablation_inclusion['constraints'] else ""}
     {"We have tried the following value in this field before:" if last_try is not None  and ablation_inclusion['feedback'] else ""}
     {last_try["value"] if last_try is not None and ablation_inclusion['feedback'] else ""}
     {"And got the following inline and global feedback:" if last_try is not None and ablation_inclusion['feedback'] else ""}
@@ -66,8 +64,9 @@ def create_constraint_generation_user_prompt(
     return format_extra_tabs(constraint_generation_user_prompt)
 
 
-def create_constraints_text(constraints):
-    input_constraints_string = '\n'.join(map(lambda x: x.to_prompt_string(), constraints))
+def create_constraints_text(constraints, relevant_field_values):
+    relevant_dict = dict(relevant_field_values) if relevant_field_values is not None else {}
+    input_constraints_string = '\n'.join(map(lambda x: x.to_prompt_string(relevant_dict), constraints))
     return input_constraints_string
 
 
@@ -81,19 +80,26 @@ def create_value_generation_user_prompt(
     input_group,
     constraints,
     relevant_field_values=None,
+    last_try=None,
     ablation_inclusion={
         'relevant': True,
         'context': True,
+        'feedback': True,
     }
 ):
+    # {"The values for the fields in constraints are:" if relevant_field_values is not None else ""}
+    # {create_relevant_field_values_text(relevant_field_values) if relevant_field_values is not None else ""}
+    
     value_generation_user_prompt = f'''
     {context if ablation_inclusion['context'] else ""}
     We are generating filling values for the following input field:
     {create_field_info_text(input_group, ablation_inclusion['relevant'])}
     The constraints on this input field are:
-    {create_constraints_text(constraints)}
-    {"The values for the fields in constraints are:" if relevant_field_values is not None else ""}
-    {create_relevant_field_values_text(relevant_field_values) if relevant_field_values is not None else ""}
+    {create_constraints_text(constraints, relevant_field_values)}
+    {"We have tried the following value in this field before:" if last_try is not None  and ablation_inclusion['feedback'] else ""}
+    {last_try["value"] if last_try is not None and ablation_inclusion['feedback'] else ""}
+    {"And got the following inline and global feedback:" if last_try is not None and ablation_inclusion['feedback'] else ""}
+    {last_try["feedback"] if last_try is not None and ablation_inclusion['feedback'] else ""}
     '''.strip()
     
     return format_extra_tabs(value_generation_user_prompt)

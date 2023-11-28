@@ -8,10 +8,10 @@ class ToBe(Constraint):
         self.expected = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
-            return f'input field should not be equal to {str(self.expected)}'
-        return f'input field should be equal to {str(self.expected)}'
+            return f'input field should not be equal to {self.expected.to_prompt_string(relevant_dict)}'
+        return f'input field should be equal to {self.expected.to_prompt_string(relevant_dict)}'
 
 
 class ToBeTruthy(Constraint):
@@ -19,7 +19,7 @@ class ToBeTruthy(Constraint):
         super().__init__(is_negative)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return 'input field should be empty'
         return 'input field should be non-empty'
@@ -34,7 +34,7 @@ class ToHaveLengthCondition(Constraint):
         self.is_field = isinstance(self.length, FieldArg)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         condition_string = ''
         if self.condition.value == '<':
             condition_string = 'less than' if not self.is_negative else 'greater than or equal to'
@@ -58,7 +58,7 @@ class ToHaveCompareCondition(Constraint):
         self.expected = args[1]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         condition_string = ''
         if self.condition.value == '<':
             condition_string = 'less than' if not self.is_negative else 'greater than or equal to'
@@ -72,7 +72,7 @@ class ToHaveCompareCondition(Constraint):
             condition_string = 'equal to' if not self.is_negative else 'not equal to'
         if self.condition.value == '!=':
             condition_string = 'not equal to' if not self.is_negative else 'equal to'
-        return f'input field should be {condition_string} {str(self.expected)}'
+        return f'input field should be {condition_string} {self.expected.to_prompt_string(relevant_dict)}'
 
 
 class ToMatch(Constraint):
@@ -81,10 +81,10 @@ class ToMatch(Constraint):
         self.expected = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
-            return f'input field should not match {str(self.expected)} regex pattern'
-        return f'input field should match {str(self.expected)} regex pattern'
+            return f'input field should not match {self.expected.to_prompt_string(relevant_dict)} regex pattern'
+        return f'input field should match {self.expected.to_prompt_string(relevant_dict)} regex pattern'
 
 
 class ToContainSubStr(Constraint):
@@ -93,10 +93,10 @@ class ToContainSubStr(Constraint):
         self.expected = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
-            return f'input field should not contain {str(self.expected)} substring'
-        return f'input field should contain {str(self.expected)} substring'
+            return f'input field should not contain {self.expected.to_prompt_string(relevant_dict)} substring'
+        return f'input field should contain {self.expected.to_prompt_string(relevant_dict)} substring'
 
 
 class ToContainChar(Constraint):
@@ -105,10 +105,10 @@ class ToContainChar(Constraint):
         self.expected = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
-            return f'input field should not contain {str(self.expected)} character'
-        return f'input field should contain {str(self.expected)} character'
+            return f'input field should not contain {self.expected.to_prompt_string(relevant_dict)} character'
+        return f'input field should contain {self.expected.to_prompt_string(relevant_dict)} character'
 
 
 class ToBeAlpha(Constraint):
@@ -116,7 +116,7 @@ class ToBeAlpha(Constraint):
         super().__init__(is_negative)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return 'input field should be numerical'
         return 'input field should be alphabetic'
@@ -127,7 +127,7 @@ class ToBeNumeric(Constraint):
         super().__init__(is_negative)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
             return 'input field should be alphabetical'
         return 'input field should be numeric'
@@ -138,7 +138,7 @@ class ToBeAlphaNumeric(Constraint):
         super().__init__(is_negative)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return 'input field should be alphabetical or numerical'
         return 'input field should be alphanumeric'
@@ -149,7 +149,7 @@ class ToHaveUpperCase(Constraint):
         super().__init__(is_negative)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return f'input field should not have uppercase characters'
         return f'input field should have uppercase characters'
@@ -160,7 +160,7 @@ class ToHaveSpecialChars(Constraint):
         super().__init__(is_negative)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return f'input field should not have special characters'
         return f'input field should have special characters'
@@ -171,7 +171,7 @@ class ToHaveWhiteSpace(Constraint):
         super().__init__(is_negative)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return f'input field should not have whitespace characters'
         return f'input field should have whitespace characters'
@@ -183,10 +183,10 @@ class ToStartWith(Constraint):
         self.expected = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
-            return f'input field should not start with {str(self.expected)}'
-        return f'input field should start with {str(self.expected)}'
+            return f'input field should not start with {self.expected.to_prompt_string(relevant_dict)}'
+        return f'input field should start with {self.expected.to_prompt_string(relevant_dict)}'
 
 
 class ToEndWith(Constraint):
@@ -195,10 +195,10 @@ class ToEndWith(Constraint):
         self.expected = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
-            return f'input field should not end with {str(self.expected)}'
-        return f'input field should end with {str(self.expected)}'
+            return f'input field should not end with {self.expected.to_prompt_string(relevant_dict)}'
+        return f'input field should end with {self.expected.to_prompt_string(relevant_dict)}'
 
 
 class ToMatch(Constraint):
@@ -207,10 +207,10 @@ class ToMatch(Constraint):
         self.expected = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         if self.is_negative:
-            return f'input field should not match {str(self.expected)} regex pattern'
-        return f'input field should match {str(self.expected)} regex pattern'
+            return f'input field should not match {self.expected.to_prompt_string(relevant_dict)} regex pattern'
+        return f'input field should match {self.expected.to_prompt_string(relevant_dict)} regex pattern'
 
 
 class FreeText(Constraint):
@@ -219,7 +219,7 @@ class FreeText(Constraint):
         self.constraint_text = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return f'input field should refrain from following the given condition: {self.constraint_text}'
         return f'input field should conform to the given condition: {self.constraint_text}'
@@ -231,7 +231,7 @@ class Dummy(Constraint):
         self.relevant_value = args[0]
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, _={}):
         if self.is_negative:
             return ''
         return f'this relevant field value: {self.relevant_value}'
@@ -242,7 +242,7 @@ class Invalid(Constraint):
         super().__init__(False, None)
     
     
-    def to_prompt_string(self):
+    def to_prompt_string(self, relevant_dict={}):
         return 'input field value should be invalid'
 
 
@@ -252,5 +252,6 @@ class NotMatchingAny(Constraint):
         self.constraint_name = constraint_name
     
     
-    def to_prompt_string(self):
-        return f'this constraint is not valid: {self.constraint_name}'
+    def to_prompt_string(self, _={}):
+        # return f'this constraint is not valid: {self.constraint_name}'
+        return ''
