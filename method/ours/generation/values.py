@@ -12,9 +12,19 @@ from method.ours.feedback import get_local_feedback
 from .utils import combine_contexts
 
 
-def generate_values_with_llm(
-    user_value_prompt,
-    openai_api_key,
+def generate_values_with_llama(
+    user_value_prompt=None,
+    model=None,
+    tokenizer=None,
+    temperature=0.0,
+    max_tokens=512,
+):
+    pass
+
+
+def generate_values_with_gpt4(
+    user_value_prompt=None,
+    openai_api_key=None,
     model='gpt-4',
     temperature=0,
     max_tokens=None,
@@ -45,6 +55,31 @@ def generate_values_with_llm(
     return response_text
 
 
+def generate_values_with_llm(
+    model_settings=None,
+    user_value_prompt=None,
+):
+    if model_settings == None or 'model' not in model_settings:
+        raise ValueError("must provide a model")
+
+    if model_settings['model'] == 'gpt-4':
+        return generate_values_with_gpt4(
+            user_constraint_prompt=user_value_prompt,
+            model=model_settings['model'],
+            openai_api_key=model_settings['openai_api_key'],
+            temperature=model_settings['temperature'] if 'temperature' in model_settings else 0.0,
+            max_tokens=model_settings['max_tokens'] if 'max_tokens' in model_settings else None,
+        )
+    
+    return generate_values_with_llama(
+        user_constraint_prompt=user_value_prompt,
+        model=model_settings['model'],
+        tokenizer=model_settings['tokenizer'],
+        temperature=model_settings['temperature'] if 'temperature' in model_settings else 0.0,
+        max_tokens=model_settings['max_tokens'] if 'max_tokens' in model_settings else 512,
+    )
+
+
 def generate_value_for_input_group(
     input_group,
     value_table,
@@ -56,7 +91,9 @@ def generate_value_for_input_group(
         'date': True,
         'constraints': True,
         'feedback': True
-    }
+    },
+    model='gpt-4',
+    tokenizer=None,
 ):
     value_entry = value_table.get_entry_by_input_group(input_group)
     
@@ -90,7 +127,7 @@ def generate_value_for_input_group(
             including_constraints.append(field_constraint)
             relevant_field_values.append((field_arg, value))
     
-    value_user_prompt = create_value_generation_user_prompt(
+    user_value_prompt = create_value_generation_user_prompt(
         context,
         value_entry.input_group,
         including_constraints,
@@ -99,9 +136,15 @@ def generate_value_for_input_group(
         ablation_inclusion=ablation_inclusion
     )
     
+    model_settings = {
+        'model': model,
+        'tokenizer': tokenizer,
+        'openai_api_key': openai.api_key,
+    }
+    
     generated_value = generate_values_with_llm(
-        value_user_prompt,
-        openai_api_key=openai.api_key
+        user_value_prompt=user_value_prompt,
+        model_settings=model_settings,
     )
     
     value_entry.set_value(generated_value)
@@ -111,16 +154,18 @@ def generate_value_for_input_group(
 
 def generate_values_for_input_groups(
     input_groups,
-    value_table,
-    global_feedback=[],
+    value_table=None,
     app_context="",
+    global_feedback=[],
     ablation_inclusion={
         'relevant': True,
         'context': True,
         'date': True,
         'constraints': True,
         'feedback': True
-    }
+    },
+    model='gpt-4',
+    tokenizer=None,
 ):
     form_context = get_form_context(input_groups)
     context = combine_contexts(app_context, form_context)
@@ -138,9 +183,11 @@ def generate_values_for_input_groups(
         value_table = generate_value_for_input_group(
             input_group,
             value_table,
-            global_feedback=global_feedback,
             context=context,
-            ablation_inclusion=ablation_inclusion
+            global_feedback=global_feedback,
+            ablation_inclusion=ablation_inclusion,
+            model=model,
+            tokenizer=tokenizer,
         )
     
     return value_table

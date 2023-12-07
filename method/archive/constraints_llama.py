@@ -6,27 +6,16 @@ from method.ours.prompts import (
 from method.ours.constraints import generate_constraints_from_string_llama
 from method.ours.feedback import get_local_feedback
 
-from method.ours.generation.utils import ValueTable
+from method.ours.generation.utils import ValueTable, combine_contexts
 import traceback
 
 def generate_constraints_with_llama(
     model, 
     tokenizer, 
     user_constraint_prompt,
-    temperature=0,
-    max_tokens=None,
+    temperature=0.0,
+    max_tokens=512,
 ):    
-    messages = [
-        {
-            "role": "system",
-            "content": constraint_generation_system_prompt,
-        },
-        {
-            "role": "user",
-            "content": user_constraint_prompt
-        }
-    ]
-    
     prompt_template = f'''[INST] <<SYS>>
     {constraint_generation_system_prompt}
     <</SYS>>
@@ -36,11 +25,9 @@ def generate_constraints_with_llama(
     '''
 
     input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
-    output = model.generate(inputs=input_ids, temperature=0.0, max_new_tokens=512)
+    output = model.generate(inputs=input_ids, temperature=temperature, max_new_tokens=max_tokens)
     output_from_llm = tokenizer.decode(output[0])
 
-
-    #print(f"output_from_llm:{output_from_llm}")
     return output_from_llm
 
 
@@ -49,7 +36,7 @@ def generate_constraints_for_input_group_llama(
     tokenizer, 
     input_group,
     value_table,
-    form_context,
+    context,
     global_feedback=[],
     ablation_inclusion={
         'context': True,
@@ -73,7 +60,7 @@ def generate_constraints_for_input_group_llama(
     
     if last_try is None or (last_try is not None and feedback_string != ''):
         constraint_user_prompt = create_constraint_generation_user_prompt(
-            form_context,
+            context,
             input_group,
             last_try=last_try,
             constraints=constraints,
@@ -99,6 +86,7 @@ def generate_constraints_for_input_groups_llama(
     input_groups,
     value_table=None,
     global_feedback=[],
+    app_context="",
     ablation_inclusion={
         'context': True,
         'relevant': True,
@@ -107,6 +95,7 @@ def generate_constraints_for_input_groups_llama(
     }
 ):
     form_context = get_form_context(input_groups)
+    context = combine_contexts(app_context, form_context)
     
     if value_table is None:
         value_table = ValueTable()
@@ -123,7 +112,7 @@ def generate_constraints_for_input_groups_llama(
                 tokenizer,
                 input_group,
                 value_table,
-                form_context,
+                context,
                 global_feedback=global_feedback,
                 ablation_inclusion=ablation_inclusion
             )
