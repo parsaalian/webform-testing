@@ -140,6 +140,8 @@ def generate_constraints_for_input_group(
             user_constraint_prompt=user_constraint_prompt,
             model_settings=model_settings,
         )
+
+        print(f"generated constraints: {generated_constraints}")
         
         field_name, constraints = generate_constraints_from_string(generated_constraints)
         value_table.add_entry(field_name, input_group, constraints)
