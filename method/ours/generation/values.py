@@ -19,7 +19,33 @@ def generate_values_with_llama(
     temperature=0.0,
     max_tokens=512,
 ):
-    pass
+    messages = [
+        {
+            "role": "system",
+            "content": value_generation_system_prompt,
+        },
+        {
+            "role": "user",
+            "content": user_value_prompt
+        }
+    ]
+
+    prompt_template = f'''[INST] <<SYS>>
+        {value_generation_system_prompt}
+        <</SYS>>
+    
+        {user_value_prompt}
+        DO NOT EXPLAIN YOUR ANSWERS. [/INST]
+        '''
+
+    print(f"prompting to LLM:{prompt_template}")
+
+    input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
+    output = model.generate(inputs=input_ids, temperature=0.0, max_new_tokens=512)
+    output = tokenizer.decode(output[0])
+
+    print(f"output from LLM:{output}")
+    return output
 
 
 def generate_values_with_gpt4(
@@ -72,7 +98,7 @@ def generate_values_with_llm(
         )
     
     return generate_values_with_llama(
-        user_constraint_prompt=user_value_prompt,
+        user_value_prompt=user_value_prompt,
         model=model_settings['model'],
         tokenizer=model_settings['tokenizer'],
         temperature=model_settings['temperature'] if 'temperature' in model_settings else 0.0,
