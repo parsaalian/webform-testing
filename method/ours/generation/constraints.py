@@ -1,5 +1,6 @@
 import openai
 import traceback
+import re
 
 from method.llm.openai import ApiManager
 from method.ours.prompts import (
@@ -142,7 +143,8 @@ def generate_constraints_for_input_group(
         )
 
         print(f"generated constraints: {generated_constraints}")
-        
+
+        generated_constraints = parse_llama_output(generated_constraints)
         field_name, constraints = generate_constraints_from_string(generated_constraints)
         value_table.add_entry(field_name, input_group, constraints)
     
@@ -191,3 +193,25 @@ def generate_constraints_for_input_groups(
             traceback.print_exc()
     
     return value_table
+
+def parse_llama_output(input_string):
+    # Find the start of the relevant section
+    start_pattern = re.compile(r"Here are the generated constraints for the input field:\n\n")
+    start_match = start_pattern.search(input_string)
+
+    if not start_match:
+        return None
+
+    start_pos = start_match.end()
+
+    # Extract everything after the identified starting point
+    constraints_string = input_string[start_pos:]
+
+    # Adjust the pattern to capture the complete 'expect' block
+    expect_pattern = re.compile(r"(expect\(field\('.+?'\)\)(?:[\s\S]+?)(?=Note:|$))")
+    expect_match = expect_pattern.search(constraints_string)
+
+    if expect_match:
+        return expect_match.group(0).strip()
+    else:
+        return None
