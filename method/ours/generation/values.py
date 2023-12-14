@@ -90,7 +90,7 @@ def generate_values_with_llm(
 
     if model_settings['model'] == 'gpt-4':
         return generate_values_with_gpt4(
-            user_constraint_prompt=user_value_prompt,
+            user_value_prompt=user_value_prompt,
             model=model_settings['model'],
             openai_api_key=model_settings['openai_api_key'],
             temperature=model_settings['temperature'] if 'temperature' in model_settings else 0.0,
