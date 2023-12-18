@@ -20,10 +20,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from method.models import generate_random_values, generate_static_values, generate_llm_values
-from method.ours.utils import create_driver, get_xpath, interact_with_input
-from method.ours.history import HistoryTable
-from method.ours.feedback import get_global_feedback
+from method.ours.utils import create_driver, get_xpath, get_application_context
 
 
 # In[2]:
@@ -37,7 +34,7 @@ HEADLESS = False
 TEXT_EMBEDDING_METHOD = 'ADA'
 GRAPH_EMBEDDING_METHOD = 'NODE2VEC'
 
-URL = 'https://www.stubhub.ca/'
+URL = 'https://www.united.com/en/us'
 # 'https://www.macys.com/'
 # 'https://www.amazon.com/'
 # 'https://www.carmax.com/'
@@ -59,7 +56,6 @@ URL = 'https://www.stubhub.ca/'
 # 'https://www.budget.com/en/home'
 # 'https://www.thetrainline.com/en-us'
 # 'https://www.mbta.com/'
-# 'https://www.tripadvisor.com/'
 # 'https://resy.com/'
 # 'https://www.yelp.com/'
 # 'https://www.aa.com/homePage.do'
@@ -169,7 +165,7 @@ def find_form():
     return WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((
             By.XPATH,
-            '//BODY/DIV[1]/DIV[1]/DIV[1]/DIV[2]/DIV[2]/DIV[1]/DIV[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/DIV[1]/DIV[1]/DIV[2]/DIV[1]'
+            '//BODY/HEADER[1]/DIV[2]/DIV[1]/DIV[1]/SECTION[2]/DIV[2]/FORM[1]'
         ))
     )
 
@@ -206,199 +202,90 @@ inputs = list(filter(
 # In[5]:
 
 
-history_table = HistoryTable(
-    url=URL,
-    xpath=form_xpath
-)
+try:
+    app_context = get_application_context(driver).replace('\n', ' ')
+except:
+    app_context = None
 
 
-# In[6]:
+# In[8]:
 
 
-METHOD = 'llm'
+input_widget_context = ''
 
-
-# In[ ]:
-
-
-values = None
-if METHOD == 'static':
-    values = generate_static_values(driver, inputs)
-elif METHOD == 'random':
-    values = generate_random_values(driver, inputs)
-else:
-    values = generate_llm_values(form.get_attribute('outerHTML'), openai.api_key)
-
-
-# In[ ]:
-
-
-values
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[13]:
-
-
-def get_element(element_id):
-    return driver.find_element(By.ID if METHOD == 'llm' else By.XPATH, element_id)
-
-
-def send_values(elemend_ids, values):
-    for element_id in elemend_ids:
-        try:
-            element = get_element(element_id)
-        except:
-            continue
-        value = values[element_id]
-        
-        element_type = element.get_attribute('type') or 'text'
+for i in inputs:
+    if i.tag_name != 'input':
+        continue
     
-        if element_type in ['radio', 'checkbox'] or element.tag_name in ['button']:
-            continue
-        
-        try:
-            interact_with_input(element, value)
-        except:
-            pass
-
-        
-def submit_form(form):
-    # submit = driver.find_element(By.XPATH, f'{form_xpath}//*[@type="submit"]')
-    # driver.find_element(By.TAG_NAME, 'body').click()
-    submit = find_button()
-    
-    for _ in range(3):
-        try:
-            interact_with_input(submit, True)
-            time.sleep(0.5)
-        except:
-            break
-
-
-# In[16]:
-
-
-passing_set = {
-    element_id: values[element_id]['passing'] for element_id in values.keys()
-}
-
-
-for element_id, element_values in values.items():
-    get_to_form(driver)
-    time.sleep(1)
+    input_id = i.get_attribute('id')
     
     try:
-        element = get_element(element_id)
+        label = form.find_element(By.XPATH, f'//*[@for="{input_id}"]').text.replace('\n', ' ')
+        input_widget_context += f'This input is about {label}. {label} is [MASK]. '
     except:
-        continue
-    element_type = element.get_attribute('type') or 'text'
-    
-    if element_type in ['radio', 'checkbox', 'submit']:
-        continue
-    
-    # print(element)
-    
-    for failing_value in element_values['failing']:
-        # try:
-        get_to_form(driver)
-        time.sleep(1)
-    
-        passing_copy = copy.copy(passing_set)
-        passing_copy[element_id] = failing_value
-        send_values(values.keys(), passing_copy)
+        label = i.get_attribute('title') or i.get_attribute('placeholder') or i.get_attribute('name') or i.get_attribute('id')
+        if label is not None:
+            input_widget_context += f'This input is about {label}. {label} is [MASK]. '
 
-        time.sleep(1)
+# print(input_widget_context)
 
-        submit_form(form)
 
-        new_html = driver.find_element(By.TAG_NAME, 'body').get_attribute('outerHTML')
-        global_feedback = get_global_feedback(html, new_html, remove_form_children=False)
+# In[3]:
 
-        history_table.add(
-            passing_copy,
-            'base',
-            global_feedback,
-            driver.current_url
-        )
-        # except Exception as e:
-        #     print(e)
+
+FORM_FUNC = 'Search'
+
+prompt = f'''
+The app is {app_context if app_context is not None else ''}, in its {FORM_FUNC} form. {input_widget_context}
+'''.strip()
+
+
+# In[ ]:
+
+
+prompt
 
 
 # In[14]:
 
 
-for i, v in enumerate(history_table.table['values']):
-    jv = json.loads(v)
-    for key, value in jv.items():
-        if key not in history_table.table.columns:
-            history_table.table[key] = None
-        history_table.table.loc[i, key] = value
+from openai import OpenAI
+client = OpenAI()
+
+response = client.chat.completions.create(
+  model="gpt-4",
+  messages=[
+    {
+      "role": "system",
+      "content": "You are required to generate values for a given input or list of inputs given in a text. Please create an array of values, the first element is a passing value for the inputs, and the rest are failing values. Please note that each [MASK] is showing a different input. Give the values for different inputs in arrays, like the following format (exclude the comments from your answer):\n[\n{\n[first_input_name]: [first_input_value],\n[second_input_name]: [second_input_value]\n...\n},\n{\n[first_input_name]: [first_input_value],\n[second_input_name]: [second_input_value]\n...\n},\n...\n]"
+    },
+    {
+      "role": "user",
+      "content": prompt
+    }
+  ],
+  temperature=0,
+  max_tokens=2048,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0
+)
 
 
-# In[19]:
+# In[15]:
 
 
-history_table.table
+values = json.loads(response.choices[0].message.content)
+
+passing = values[0]
+failing = values[1:]
+
+print("Passing:", passing)
+print()
+
+for f in failing:
+    print("Failing:", f)
+    print()
 
 
 # In[ ]:
