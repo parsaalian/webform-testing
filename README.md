@@ -1,5 +1,5 @@
 # FormNexus
-Source code for "FormNexus: Bridging Semantics and Testing for Web Forms".
+Source code for "Semantic Constraint Inference for Web Form Test Generation". All experiments were conducted on a Linux server equipped with a 10-core 3.70 GHz Intel Core i9-10900X processor, 64 GB DDR4 3000MHz memory, two NVIDIA RTX A5000 24 GB GPUs, a 2 TB SATA SSD, running Ubuntu 20.04, and facilitated by a built-in 1 Gigabit Ethernet.
 
 ## Requirements
 Install the requirements with the following command:
@@ -20,7 +20,7 @@ You also need to set the OpenAI API key in `.env` file with `OPENAI_API_KEY` key
 python baseline.py
 
 # run Llama 2 workflow
-python3 llama.py
+python llama.py
 
 # run GPT-4 workflow
 python method.py
@@ -179,5 +179,5 @@ The values for the fields in constraints are:
 53. cannot
 54. can't
 
-## Random and Static Test Rules
-You can find these rules in `method/models/random` and `method/models/static` files respectively.
+## Static Test Rules
+You can find these rules in `method/models/static` file.
